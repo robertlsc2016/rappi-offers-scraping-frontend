@@ -1,0 +1,472 @@
+{"name":"Hortmix Banana Prata  500 g","price":7.18,"discount":0.2,"real_price":8.98}
+{"name":"Banana Nanica Hortmix 500 g","price":7.11,"discount":0.2,"real_price":8.89}
+{"name":"Kero Coco Água de Coco","price":15.48,"discount":0.25,"real_price":20.63}
+{"name":"Manga Palmer Hortmix 400 g","price":4,"discount":0.2,"real_price":5}
+{"name":"Nestle Panettone Classic Trufado 450 g","price":22.49,"discount":0.1,"real_price":24.99}
+{"name":"Cereal Sucrilhos® Original Kellogg's® 240g","price":11.79,"discount":0.1,"real_price":13.09}
+{"name":"Mamão Papaya Hortmix 500 g","price":6.62,"discount":0.2,"real_price":8.28}
+{"name":"Cereal Sucrilhos® Less Sugar Kellogg´s® 170g","price":10.34,"discount":0.1,"real_price":11.49}
+{"name":"Abacaxi Pérola Hortmix - - 1 Und","price":18.67,"discount":0.2,"real_price":23.33}
+{"name":"Ameixa Importada","price":8.62,"discount":0.2,"real_price":10.77}
+{"name":"Carambola Bandeja","price":18.14,"discount":0.2,"real_price":22.67}
+{"name":"Hortmix Goiaba Vermelha","price":7.34,"discount":0.2,"real_price":9.17}
+{"name":"La Finca Café Em Grão Especial Chocolate 250 g","price":27.2,"discount":0.15,"real_price":32}
+{"name":"La Finca Café Em Grão Fermentado 500 g","price":44.2,"discount":0.15,"real_price":52}
+{"name":"2 x Nestle Aveia Em Flocos Finos 170 g","price":10.18,"discount":0.15,"real_price":11.98}
+{"name":"Coca-Cola Sem Açúcar 1,5L","price":8.7,"discount":0.15,"real_price":10.23}
+{"name":"Fanta Guaraná 2L","price":6.73,"discount":0.2,"real_price":8.41}
+{"name":"Pipó Pipoca Gourmet Ovomaltine","price":11.11,"discount":0.09967589,"real_price":12.34}
+{"name":"Oakberry Pipoca Pipó Paçoca Com Açaí","price":8.75,"discount":0.4997141,"real_price":17.49}
+{"name":"Holysoup Macarrão Mac Queijo","price":26.25,"discount":0.24978569,"real_price":34.99}
+{"name":"Holysoup Macarrão Super Mac Alfredo","price":28.5,"discount":0.24980262,"real_price":37.99}
+{"name":"Sundown Protetor Solar Praia e Piscina FPS 50 ","price":62.04,"discount":0.05985751,"real_price":65.99}
+{"name":"Liv up Hambúrguer de Fraldinha","price":13.6,"discount":0.19947025,"real_price":16.99}
+{"name":"Arabia Esfiha de Carne","price":25.2,"discount":0.09967842,"real_price":27.99}
+{"name":"Liv Up Quiche Caprese","price":15.03,"discount":0.10000005,"real_price":16.7}
+{"name":"Liv up Frango Com Crosta de Castanha de Caju","price":14.4,"discount":0.09943716,"real_price":15.99}
+{"name":"Bacon Sliders Burger Congelado","price":34.56,"discount":0.1,"real_price":38.4}
+{"name":"Coxa de frango, arroz, feijão e farofa 370g ","price":17.75,"discount":0.49985912,"real_price":35.49}
+{"name":"Liv up Frango Com Limao Siciliano","price":15.3,"discount":0.09947025,"real_price":16.99}
+{"name":"Zinho Pão Bolinha Recheado com Catupiry","price":21.73,"discount":0.09983429,"real_price":24.14}
+{"name":"Nuu Pizza Pão de Queijo Linguicinha","price":16.8,"discount":0.49985117,"real_price":33.59}
+{"name":"Repeat Bolinho de Arroz Pré-Assado","price":25.16,"discount":0.09982114,"real_price":27.95}
+{"name":"Hortmix Banana Prata  500 g","price":7.18,"discount":0.2,"real_price":8.98}
+{"name":"Nestlé Iogurte Natural Integral","price":3.41,"discount":0.1,"real_price":3.79}
+{"name":"Hortmix Limão Tahiti  500 g","price":4.56,"discount":0.2,"real_price":5.69}
+{"name":"Nestlé Iogurte Natural Com Mel","price":2.67,"discount":0.29788917,"real_price":3.79}
+{"name":"Mamão Papaya Hortmix 500 g","price":6.62,"discount":0.2,"real_price":8.28}
+{"name":"Cereal Sucrilhos® Less Sugar Kellogg´s® 170g","price":10.34,"discount":0.1,"real_price":11.49}
+{"name":"Cereal Froot Loops® sabor de Frutas Kellogg's® 230g","price":16,"discount":0.1995996,"real_price":19.98}
+{"name":"Cereal Choco Krispis® sabor Chocolate Kellogg's® 200g","price":8.89,"discount":0.29936957,"real_price":12.69}
+{"name":"Ameixa Importada","price":8.62,"discount":0.2,"real_price":10.77}
+{"name":"Laranja Lima Hortmix - - 1 Kg","price":16.67,"discount":0.2,"real_price":20.83}
+{"name":"Kellogg's Granola Sucrilhos Chocolate 210 g","price":13.05,"discount":0.1,"real_price":14.5}
+{"name":"Kelloggs Cereal Granola Kids Original","price":12.28,"discount":0.1,"real_price":13.64}
+{"name":"Fa Khalas Tâmaras Recheio Amêndoas","price":17.23,"discount":0.2,"real_price":21.54}
+{"name":"2 x Nescafe Cafe em Capsula Dolce Gusto Espresso Intenso","price":37.18,"discount":0.15,"real_price":43.74}
+{"name":"2 x Nescafe Cafe em Capsula Dolce Gusto Espresso","price":43.3,"discount":0.15,"real_price":50.94}
+{"name":"2 x Nestle Creme de Leite Original","price":10.18,"discount":0.15,"real_price":11.98}
+{"name":"Vigor Iogurte Grego Tradicional","price":3.6,"discount":0.09774439,"real_price":3.99}
+{"name":"Vigor Iogurte Grego Frutas Vermelhas","price":2.4,"discount":0.3984962,"real_price":3.99}
+{"name":"Vigor Grego Iogurte Tradicional Zero Gorduras","price":3.6,"discount":0.09774439,"real_price":3.99}
+{"name":"Vigor Grego Iogurte Sabor Flocos","price":2,"discount":0.49874687,"real_price":3.99}
+{"name":"Nestlé Iogurte Natural Com Mel","price":2.67,"discount":0.29788917,"real_price":3.79}
+{"name":"YoPRO Iogurte 15g de Proteínas Morango","price":9.63,"discount":0.09915805,"real_price":10.69}
+{"name":"Nestlé Iogurte Natural Desnatado","price":2.67,"discount":0.29788917,"real_price":3.79}
+{"name":"Parmalat Leite UHT Desnatado","price":5.18,"discount":0.30000004,"real_price":7.4}
+{"name":"Italac Whey Protein Cappuccino Zero Lactose","price":5.4,"discount":0.09849744,"real_price":5.99}
+{"name":"Nestlé Iogurte Morango","price":1.92,"discount":0.39811915,"real_price":3.19}
+{"name":"Power Whey Bebida Láctea Doce de Leite","price":7.83,"discount":0.09896429,"real_price":8.69}
+{"name":"Power Whey Bebida Láctea Cookies'n Cream","price":7.47,"discount":0.09891438,"real_price":8.29}
+{"name":"Parmalat Leite UHT Integral.","price":6.31,"discount":0.09985738,"real_price":7.01}
+{"name":"Nude Bebida de Aveia Cacau","price":13.5,"discount":0.2495831,"real_price":17.99}
+{"name":"Granado Sabonete Líquido de Glicerina Bebê","price":15.6,"discount":0.39976913,"real_price":25.99}
+{"name":"Rexona Desodorante Antitranspirante Bamboo","price":18.45,"discount":0.099560715,"real_price":20.49}
+{"name":"Intimus Absorvente Interno Super","price":15.3,"discount":0.3997646,"real_price":25.49}
+{"name":"Pantene Shampoo Liso Extremo","price":21.66,"discount":0.23973323,"real_price":28.49}
+{"name":"Colgate Fio Dental Encerado","price":12,"discount":0.1994663,"real_price":14.99}
+{"name":"Rexona Desodorante Antitranspirante Cotton Dry","price":14,"discount":0.19954258,"real_price":17.49}
+{"name":"Oral-B Creme Dental com Carvão 3D White Mineral Clean","price":15.2,"discount":0.049405877,"real_price":15.99}
+{"name":"Johnson's Baby Lenços Umedecidos Recém Nascido","price":34.65,"discount":0.09976617,"real_price":38.49}
+{"name":"Band-Aid Curativo Transparente","price":13.41,"discount":0.09999999,"real_price":14.9}
+{"name":"Dove Baby Sabonete em Barra Hidratação Balanceada","price":3.78,"discount":0.36894822,"real_price":5.99}
+{"name":"Johnsons Baby Sabonete Líquido Recém Nascido","price":19.98,"discount":0.25972584,"real_price":26.99}
+{"name":"Ricca Elástico para Cabelo Sem Metal","price":5.25,"discount":0.49952334,"real_price":10.49}
+{"name":"Gillette Carga para Aparelho de Barbear Mach3 Sensitive","price":36.19,"discount":0.429989,"real_price":63.49}
+{"name":"Pantene Shampoo Bambu Nutre & Cresce","price":25.65,"discount":0.099684104,"real_price":28.49}
+{"name":"Mundial Cortador de Unha do Pé","price":10.08,"discount":0.369606,"real_price":15.99}
+{"name":"Crystal Água Mineral Natural com Gás","price":2.5,"discount":0.1,"real_price":2.78}
+{"name":"Coca-Cola Original 350ml","price":3.23,"discount":0.2,"real_price":4.04}
+{"name":"Red Bull Spring Edition Frutas Vermelhas","price":8.99,"discount":0.1,"real_price":9.99}
+{"name":"Monster Energético Energy","price":8.8,"discount":0.15,"real_price":10.35}
+{"name":"Monster Energético Mango Loco","price":8.8,"discount":0.15,"real_price":10.35}
+{"name":"Energético Red Bull; Melancia; 250 ml","price":9.95,"discount":0.1,"real_price":11.06}
+{"name":"Sprite Lemon Fresh 1,5L","price":6.08,"discount":0.2,"real_price":7.6}
+{"name":"Monster Energético Watermelon","price":8.8,"discount":0.15,"real_price":10.35}
+{"name":"Smart Water Água Adicionada de Sais","price":4.84,"discount":0.15,"real_price":5.69}
+{"name":"Fanta Guaraná 350Ml","price":2.82,"discount":0.2,"real_price":3.52}
+{"name":"Refrigerante Guaraná Antarctica Sem Açúcar 350 mL Lata","price":3.03,"discount":0.1984127,"real_price":3.78}
+{"name":"Natural One Suco Verde","price":12.72,"discount":0.099787675,"real_price":14.13}
+{"name":"Isotonico Powerade Gold Rush","price":4.01,"discount":0.09887631,"real_price":4.45}
+{"name":"Agua De Coco Verde Vitcoco 200 Ml","price":1.85,"discount":0.49864498,"real_price":3.69}
+{"name":"Engov After Berry Vibes","price":11.75,"discount":0.09961687,"real_price":13.05}
+{"name":"Vim Desinfetante Cloro Gel Lavanda","price":12.14,"discount":0.05,"real_price":12.78}
+{"name":"Fiat Lux Prendedor Plastroupas Emb N05","price":5.85,"discount":0.09861323,"real_price":6.49}
+{"name":"Downy Amaciante Concentrado Perfume Collection Adorável","price":16.86,"discount":0.39978638,"real_price":28.09}
+{"name":"Scotch Brite Esponja De Limpeza Verde Esfera","price":8.55,"discount":0.099051595,"real_price":9.49}
+{"name":"Mr Músculo Desengordurante Cozinha Refil Laranja 400 mL","price":8.82,"discount":0.100000046,"real_price":9.8}
+{"name":"Wyda Papel Manteiga","price":11.34,"discount":0.09928515,"real_price":12.59}
+{"name":"Mon Bijou Facilitador de Passar Pureza","price":11.55,"discount":0.44973797,"real_price":20.99}
+{"name":"Facilitador de Passar Roupas Passe Bem 4 em 1 Refil 400 mL","price":15.3,"discount":0.09947025,"real_price":16.99}
+{"name":"Glade Odorizador para Pequenos Ambientes Gel Lavanda ","price":7.2,"discount":0.19911012,"real_price":8.99}
+{"name":"Ola Lava Roupas Líquidos Lava Roupas Delicadas Bebê","price":21.6,"discount":0.09962482,"real_price":23.99}
+{"name":"Cif Saponáceo Cremoso Multiuso Laranja","price":9.21,"discount":0.4997284,"real_price":18.41}
+{"name":"Lava Roupas Líquido Ypê Power Act 1L","price":12.8,"discount":0.35967982,"real_price":19.99}
+{"name":"Omo Lava Roupas em Pó Lavagem Perfeita Sanitiza & Higieniza","price":19.38,"discount":0.31976134,"real_price":28.49}
+{"name":"Polpanorte Açaí Com Granola Turma da Mônica","price":8.79,"discount":0.2,"real_price":10.99}
+{"name":"Bala Macia Bubbaloo Mix 15g","price":2.01,"discount":0.05,"real_price":2.12}
+{"name":"Combo Pasta Naked Nuts Mix + Pasta Mix Pedaços de Pistache","price":121.49,"discount":0.1,"real_price":134.98}
+{"name":"3 x Kitkat Chocolate Mini Moments Caramel 34 g","price":9.6,"discount":0.2,"real_price":12}
+{"name":"2 x Caixa de Bombom Nestle Prestígio 252 g","price":30.92,"discount":0.15,"real_price":36.38}
+{"name":"3 x Nestle Chocolate Branco Galak 80 g","price":20.62,"discount":0.2,"real_price":25.77}
+{"name":"2 x Kit Kat Chocolate Branco","price":9,"discount":0.1,"real_price":10}
+{"name":"2 x Garoto Chocolate Ao Leite Baton","price":3.34,"discount":0.2,"real_price":4.18}
+{"name":"2 x Nestle Bombom Caixa Especialidades","price":28.54,"discount":0.15,"real_price":33.58}
+{"name":"5 x Kit Kat Wafer Chocolate Ao Leite","price":17,"discount":0.2,"real_price":21.25}
+{"name":"3 x Nestle Tablete Chocolate Crunch 80 g","price":18.53,"discount":0.2,"real_price":23.16}
+{"name":"Brownie do Luiz Tradicional 50 g","price":4.2,"discount":0.39914164,"real_price":6.99}
+{"name":"Lacta Chocolate Ao Leite","price":12.6,"discount":0.099356644,"real_price":13.99}
+{"name":"Mentos Goma de Mascar Pure Fresh Mint sem Açúcar","price":1.89,"discount":0.09569375,"real_price":2.09}
+{"name":"Hershey's Chocolate Late Special Dark Café 85 g","price":4.95,"discount":0.49949446,"real_price":9.89}
+{"name":"Oreo Biscoito Recheado Coca-Cola","price":3.19,"discount":0.2,"real_price":3.99}
+{"name":"Barra de Cereal Sucrilhos® original 20g ","price":5.39,"discount":0.1,"real_price":5.99}
+{"name":"Mindu Snack Tradicional","price":6.46,"discount":0.24,"real_price":8.5}
+{"name":"3 x Nesfit Biscoito Cacau e Cereais 160 g","price":11.65,"discount":0.15,"real_price":13.71}
+{"name":"3 x Nestle Biscoito de Leite Passatempo 150 g","price":9.16,"discount":0.15,"real_price":10.77}
+{"name":"4 x Biscoito Oreo Sabor Coca-Cola 90 g","price":7.98,"discount":0.5,"real_price":15.96}
+{"name":"3 x Biscoito Oreo Sabor Coca-Cola 90 g","price":7.18,"discount":0.4,"real_price":11.97}
+{"name":"3 x Nestle Duplo Chocolate Choco Cookies 120 g","price":24.51,"discount":0.15,"real_price":28.83}
+{"name":"Combo Pringles Original + Pringles Queijo","price":23.54,"discount":0.15,"real_price":27.69}
+{"name":"5 x Pringles Salgadinho de Batata Sabor Original","price":61.59,"discount":0.15,"real_price":72.45}
+{"name":"3 x Nestle Biscoito Choco Cookies Recheio de Chocolate 120 g","price":17.22,"discount":0.15,"real_price":20.25}
+{"name":"Tostines Biscoito Belga Especiarias Pacote","price":4.95,"discount":0.09836065,"real_price":5.49}
+{"name":"Salgadinho Onda Requeijão Elma Chips Cheetos 40G","price":2.93,"discount":0.098461516,"real_price":3.25}
+{"name":"Pipoca Artesanal Com Manteiga de Cinema Sem Glúten Mais Pura","price":6.58,"discount":0.44937238,"real_price":11.95}
+{"name":"Batata Frita Lays Rústica Cream Cheese 68G","price":8.46,"discount":0.09904156,"real_price":9.39}
+{"name":"Sadia Queijo Mussarela Fatiado Soltíssimo","price":12.6,"discount":0.099356644,"real_price":13.99}
+{"name":"Perdigão Mortadela Ouro Defumada","price":7.65,"discount":0.098939896,"real_price":8.49}
+{"name":"Sadia Presunto Cozido Fatiado Soltíssimo","price":7.25,"discount":0.49965492,"real_price":14.49}
+{"name":"Sadia Salame Italiano Fatiado","price":15.12,"discount":0.09946402,"real_price":16.79}
+{"name":"Italac Queijo Mussarela Fatiado","price":7.62,"discount":0.099290796,"real_price":8.46}
+{"name":"Sadia Linguia Calabresa Cozida e Defumada","price":14.4,"discount":0.09943716,"real_price":15.99}
+{"name":"Sadia Bacon em Fatias na Receita","price":11.4,"discount":0.39968407,"real_price":18.99}
+{"name":"Sadia Peito de Peru Soltíssimo Fatiado Cozido e Defumado","price":19.35,"discount":0.099581175,"real_price":21.49}
+{"name":"Sadia Copa Fatiada Speciale","price":18,"discount":0.09954976,"real_price":19.99}
+{"name":"Polenghi Creme de Ricota Light","price":10.79,"discount":0.09933219,"real_price":11.98}
+{"name":"Nestlé Requeijão Cremoso Tradicional","price":4.75,"discount":0.49947312,"real_price":9.49}
+{"name":"Tirolez Queijo Mussarela Stick","price":24.78,"discount":0.09989102,"real_price":27.53}
+{"name":"Tirolez Queijo Provolonete","price":35.73,"discount":0.10000003,"real_price":39.7}
+{"name":"Sol Cerveja Premium Long Neck","price":4.53,"discount":0.3,"real_price":6.47}
+{"name":"Drink Pronto Mike'S Ice Pitaia 275Ml Long Neck","price":7.2,"discount":0.09887359,"real_price":7.99}
+{"name":"Alecrim Vinho Tinto","price":30.51,"discount":0.10000003,"real_price":33.9}
+{"name":"Pueblo Del Sol Cabernet Sauvignon","price":16.23,"discount":0.49984595,"real_price":32.45}
+{"name":"Grey Goose Vodka ","price":193.5,"discount":0.09995816,"real_price":214.99}
+{"name":"Foye Vinho Branco Chileno Reserva Sauvignon Blanc ","price":33.93,"discount":0.10000001,"real_price":37.7}
+{"name":"Vinho Metropolitano Doc Vc Cab Sauv 2023","price":21.36,"discount":0.39999995,"real_price":35.6}
+{"name":"Trivento Vinho Argentino Reserve Rosé Malbec","price":60.7,"discount":0.09994071,"real_price":67.44}
+{"name":"Pueblo Del Sol Tannat","price":16.23,"discount":0.49984595,"real_price":32.45}
+{"name":"Foye Carmenere Vinho Reserva","price":17.95,"discount":0.5,"real_price":35.9}
+{"name":"Vinho Gravedad Cab. Sauv.","price":42.3,"discount":0.09980852,"real_price":46.99}
+{"name":"Bacardí Rum Brasileiro Mojito","price":36.71,"discount":0.44987267,"real_price":66.73}
+{"name":"Almaden Vinho Branco Seco Chardonnay","price":24.77,"discount":0.44980007,"real_price":45.02}
+{"name":"Ice 51 Bebida Mista Alcoólica Gaseificada Balada","price":6.44,"discount":0.099300705,"real_price":7.15}
+{"name":"Catuaba Selvagem Tradicional 900ml","price":15.99,"discount":0.099662185,"real_price":17.76}
+{"name":"Nestle Panettone Classic Trufado 450 g","price":22.49,"discount":0.1,"real_price":24.99}
+{"name":"Torrada Light Marilan Lev Magic Toast Pacote 6 Unidades","price":4.72,"discount":0.24960257,"real_price":6.29}
+{"name":"Wickbold Pão do Forno 100% Nutrição","price":5.47,"discount":0.5,"real_price":10.94}
+{"name":"Wickbold Pão de Forma Tradicional Premium","price":4.92,"discount":0.39999998,"real_price":8.2}
+{"name":"Bauducco Pão de Forma Tradicional.","price":4.68,"discount":0.40000004,"real_price":7.8}
+{"name":"Bauducco Pão Bisnaguinha","price":7.65,"discount":0.098939896,"real_price":8.49}
+{"name":"Ana Maria Bolo de Baunilha com Gotas de Chocolate","price":5.95,"discount":0.09984876,"real_price":6.61}
+{"name":"Wickbold Pão Integral Castanha-do-Pará & Quinoa Grão Sabor","price":10.44,"discount":0.10000007,"real_price":11.6}
+{"name":"Ana Maria Bolo Baunilha","price":2.25,"discount":0.1,"real_price":2.5}
+{"name":"Wickbold Pão para Hot Dog Original","price":7.92,"discount":0.10000001,"real_price":8.8}
+{"name":"Wickbold Pão Tortilha Wrap Integral","price":7.87,"discount":0.09954233,"real_price":8.74}
+{"name":"Wickbold Pão Tortilha Wrap Original Tá Pronto","price":7.87,"discount":0.09954233,"real_price":8.74}
+{"name":"Pullman Bisnaga na Chapa Artesano.","price":7.68,"discount":0.3995309,"real_price":12.79}
+{"name":"Ana Maria Bolinho Chocolate com Recheio de Chocolate","price":1.37,"discount":0.5,"real_price":2.74}
+{"name":"Bauducco Pão para Hot-dog","price":3.91,"discount":0.4993598,"real_price":7.81}
+{"name":"Uva Thompson Hortmix 500 g","price":12.78,"discount":0.2,"real_price":15.98}
+{"name":"La Vita Rúcula Fatiada e Higienizada","price":9.6,"discount":0.2,"real_price":12}
+{"name":"Melão Amarelo Hortmix - - 1300 G","price":13.1,"discount":0.2,"real_price":16.38}
+{"name":"Uva Black sem Semente Vitória ","price":14.66,"discount":0.2,"real_price":18.32}
+{"name":"Cebola Hortmix 1 Kg","price":4.78,"discount":0.2,"real_price":5.98}
+{"name":"Pepino Japonês Hortmix 500 g","price":11.18,"discount":0.2,"real_price":13.98}
+{"name":"La Vita Salsinha Picada e Higienizada","price":5.4,"discount":0.2,"real_price":6.75}
+{"name":"Seleta de Legumes Congelada Sadia Veg &tal","price":7.99,"discount":0.2,"real_price":9.99}
+{"name":"Pera Portuguesa Hortmix - - 250 G","price":6.66,"discount":0.2,"real_price":8.33}
+{"name":"Ameixa Importada","price":8.62,"discount":0.2,"real_price":10.77}
+{"name":"Laranja Lima Hortmix - - 1 Kg","price":16.67,"discount":0.2,"real_price":20.83}
+{"name":"Cogumelo Shimeji Hortmix Preto - - 200 G","price":18.94,"discount":0.2,"real_price":23.67}
+{"name":"Hortmix Batata Asterix   1 Kg","price":10.66,"discount":0.2,"real_price":13.33}
+{"name":"Abacate Hortmix Embalado - - 500 G","price":11.64,"discount":0.2,"real_price":14.55}
+{"name":"Pimentão Misto","price":14,"discount":0.2,"real_price":17.5}
+{"name":"Vono Sopa Cremosa Sabor Mandioquinha Com Cebola e Salsa 17 g","price":3.15,"discount":0.09742118,"real_price":3.49}
+{"name":"Massa Leve Massa para Pastel de Forno","price":6.5,"discount":0.49961507,"real_price":12.99}
+{"name":"Da Terrinha Grão de Bico","price":5.7,"discount":0.39936775,"real_price":9.49}
+{"name":"Vono Sopa Cremosa Sabor Abóbora Com Carne 17 g","price":2.7,"discount":0.09698995,"real_price":2.99}
+{"name":"Rap 10 Massa Tapioca","price":15.89,"discount":0.09971668,"real_price":17.65}
+{"name":"Camil Massa de Sêmola Penne","price":2.75,"discount":0.44889778,"real_price":4.99}
+{"name":"Camil Massa de Sêmola Espaguete 8","price":4.5,"discount":0.09819635,"real_price":4.99}
+{"name":"Camil Massa de Sêmola Espaguete 8 Com Ovos","price":4.5,"discount":0.09819635,"real_price":4.99}
+{"name":"Barilla Macarrão de Sêmola Grano Duro Spaghetti N.5","price":12.49,"discount":0.09949532,"real_price":13.87}
+{"name":"Barilla Macarrão Fettuccine Grano Duro","price":30.15,"discount":0.09973132,"real_price":33.49}
+{"name":"Yoki Grão de Bico","price":8.74,"discount":0.5,"real_price":17.48}
+{"name":"Liv up Caldo Verde Com Frango","price":12,"discount":0.39969984,"real_price":19.99}
+{"name":"Massa Leve Massa Para Pizza de Frigideira","price":7.8,"discount":0.39999998,"real_price":13}
+{"name":"Yoki Ervilha Partida Tipo 2","price":15.21,"discount":0.099467106,"real_price":16.89}
+{"name":"Kicaldo Feijão Preto Tipo 1","price":13.5,"discount":0.09939959,"real_price":14.99}
+{"name":"Wyda Papel Manteiga","price":11.34,"discount":0.09928515,"real_price":12.59}
+{"name":"Prafesta Garfo Plástico Descartável Sobremesa Cristal","price":4.09,"discount":0.0991189,"real_price":4.54}
+{"name":"Cor & Art Glitter pó Cosmético Especial","price":12.33,"discount":0.5,"real_price":24.66}
+{"name":"2 x Nestle Aveia Em Flocos Finos 170 g","price":10.18,"discount":0.15,"real_price":11.98}
+{"name":"Kitano Bicarbonato de Sódio","price":2.25,"discount":0.096385546,"real_price":2.49}
+{"name":"Dr. Oetker Amido De Milho","price":4.43,"discount":0.09959354,"real_price":4.92}
+{"name":"Yoki Farofa de Mandioca Caseiríssima Costelinha Defumada","price":8.1,"discount":0.09899882,"real_price":8.99}
+{"name":"Yoki Farofa de Mandioca Caseiríssima Com Pedaços de Cebola","price":5.4,"discount":0.39933255,"real_price":8.99}
+{"name":"Yoki Farofa de Mandioca Caseiríssima Com Pedaços de Banana","price":8.1,"discount":0.09899882,"real_price":8.99}
+{"name":"Dr. Oetker Mistura em Pó para Bolo de Milho Cremoso","price":5.04,"discount":0.19872814,"real_price":6.29}
+{"name":"Nestlé Aveia em Flocos Cereal Integral","price":5.01,"discount":0.14940572,"real_price":5.89}
+{"name":"Da Terrinha Farofa Temperada Tradicional","price":3.63,"discount":0.4993103,"real_price":7.25}
+{"name":"Dr. Oetker Mistura Para Brownie Sabor Chocolate","price":15.12,"discount":0.09946402,"real_price":16.79}
+{"name":" Italac Aveia Em Flocos  ","price":4,"discount":0.19839676,"real_price":4.99}
+{"name":"Aveia em Flocos Finos Integral Jasmine 400g","price":4.63,"discount":0.49945945,"real_price":9.25}
+{"name":"Jasmine Aveia sem Glúten em Flocos Finos","price":10.5,"discount":0.099485405,"real_price":11.66}
+{"name":"Dr. Oetker Mistura para Bolo Baunilha","price":5.04,"discount":0.19872814,"real_price":6.29}
+{"name":"Jasmine Aveia em Flocos Grossos Vegano sem Glúten","price":10.5,"discount":0.099485405,"real_price":11.66}
+{"name":"La Finca Café Em Grão Especial Chocolate 250 g","price":27.2,"discount":0.15,"real_price":32}
+{"name":"La Finca Café Moído Especial Chocolate 250 g","price":27.2,"discount":0.15,"real_price":32}
+{"name":"La Finca Café Moído Reserva Do Produtor 500 g","price":75.65,"discount":0.15,"real_price":89}
+{"name":"La Finca Drip Coffee Café Gourmet","price":44.2,"discount":0.15,"real_price":52}
+{"name":"2 x Nescafe Cafe em Capsula Dolce Gusto Espresso Intenso","price":37.18,"discount":0.15,"real_price":43.74}
+{"name":"2 x Nescafe Cafe em Capsula Dolce Gusto Au Lait","price":33.97,"discount":0.15,"real_price":39.96}
+{"name":"2 x Nescafe Cafe em Capsula Dolce Gusto Espresso","price":43.3,"discount":0.15,"real_price":50.94}
+{"name":"Illy Café em Cápsula Clássico Espresso","price":24.48,"discount":0.09966903,"real_price":27.19}
+{"name":"Dr. Oetker Chá De Boldo Do Chile","price":4.95,"discount":0.09836065,"real_price":5.49}
+{"name":"Illy Café em Cápsula Torrado e Moído Forte Espresso.","price":13.7,"discount":0.5499343,"real_price":30.44}
+{"name":"Dr. Oetker Chá De Capim Cidreira","price":4.72,"discount":0.099236645,"real_price":5.24}
+{"name":"Chá Pink Lemonade Limão Framboesa Dr Oetker 10 Sachês","price":13.98,"discount":0.09980684,"real_price":15.53}
+{"name":"Dr. Oetker Chá Misto Frutas Do Bosque","price":5.98,"discount":0.4293893,"real_price":10.48}
+{"name":"3 Corações Capsulas Espresso Vibrante","price":17.9,"discount":0.099597566,"real_price":19.88}
+{"name":"Nescafé Café em Cápsula Dolce Gusto Au Lait","price":17.99,"discount":0.09959959,"real_price":19.98}
+{"name":"Hemmer Pepinos em Condimento Suave","price":19.84,"discount":0.09981854,"real_price":22.04}
+{"name":"La Violetera Azeitonas Recheadas Anchova","price":14.94,"discount":0.09945754,"real_price":16.59}
+{"name":"Cepêra Alcaparras","price":9,"discount":0.39959973,"real_price":14.99}
+{"name":"Ervilha Cepera","price":5.85,"discount":0.09861323,"real_price":6.49}
+{"name":"Barilla Molho Pesto Alla Genovese","price":23.79,"discount":0.4,"real_price":39.65}
+{"name":"Heinz Maionese","price":17.21,"discount":0.099895485,"real_price":19.12}
+{"name":"Da Terrinha Pimenta Calabresa Em Flocos","price":1.8,"discount":0.100000024,"real_price":2}
+{"name":"Sakura Molho de Soja Tradicional","price":4.77,"discount":0.09829868,"real_price":5.29}
+{"name":" Bob's Molho para Hambúrguer Big Bob ","price":15.3,"discount":0.09947025,"real_price":16.99}
+{"name":"Knorr Caldo De Legumes","price":2.08,"discount":0.1969112,"real_price":2.59}
+{"name":"Cepêra Molho De Pimenta Vermelha","price":3.78,"discount":0.09785205,"real_price":4.19}
+{"name":"Kitano Tempero Chimichurri","price":7.38,"discount":0.09890104,"real_price":8.19}
+{"name":"Cepêra Maionese de Alho","price":12.15,"discount":0.099332854,"real_price":13.49}
+{"name":"Cocinero Azeite de Oliva Extra Virgem","price":40.95,"discount":0.09980217,"real_price":45.49}
+{"name":"Cepêra Alimentos Molho Inglês","price":5.31,"discount":0.100000024,"real_price":5.9}
+{"name":"Maionese Tradicional Liza","price":6.3,"discount":0.09871239,"real_price":6.99}
+{"name":"Kitano Tempero Alecrim Desidratado","price":2.34,"discount":0.39845762,"real_price":3.89}
+{"name":"Maria Óleo Tradicional Composto de Soja e Oliva ","price":9.24,"discount":0.44967246,"real_price":16.79}
+{"name":"Kitano Tempero Dry Rub para Aves Churrasquear","price":4.93,"discount":0.7497461,"real_price":19.69}
+{"name":"Chalesco Brinquedo para Cães Macaco de Pelúcia ","price":24.3,"discount":0.099666566,"real_price":26.99}
+{"name":"Pedigree Petisco Dentastix para Cães Adultos Raças Pequenas","price":12.6,"discount":0.3997141,"real_price":20.99}
+{"name":"Purina Friskies Petisco Party Mix para Gatos Sabor Camarão Salmão e Atum","price":8.1,"discount":0.09899882,"real_price":8.99}
+{"name":"Pedigree Biscoito Biscrok Multi Cães Adultos","price":23.4,"discount":0.09965372,"real_price":25.99}
+{"name":"Cafuné Toalhas Umedecidas Sem Fragrância","price":16.16,"discount":0.14952603,"real_price":18.99}
+{"name":"Seara Empanado de Frango Steak Tradicional.","price":1.3,"discount":0.3981482,"real_price":2.16}
+{"name":"Empanado Chicken Crispy tradicional Seara 300g","price":5.76,"discount":0.44933078,"real_price":10.46}
+{"name":"Gran angus burger Seara Gourmet 400g","price":26.26,"discount":0.09976002,"real_price":29.17}
+{"name":"Vpj Angus Beef Todo Dia Carne em Cubos","price":15.19,"discount":0.09958513,"real_price":16.87}
+{"name":"Vpj Angus Beef Todo Dia Bife de Contra Filé","price":25.03,"discount":0.14979619,"real_price":29.44}
+{"name":"Frescatto Filé de Tilápia Congelado","price":38.5,"discount":0.09983634,"real_price":42.77}
+{"name":"Vpj Angus Beef Bife de Chorizo Linha Grill","price":30.53,"discount":0.24987714,"real_price":40.7}
+{"name":"Vpj Angus Beef Bife Ancho Linha Grill","price":43.51,"discount":0.09991729,"real_price":48.34}
+{"name":"Korin Carne Moída de Frango Congelada Sustentável","price":26.1,"discount":0.09968953,"real_price":28.99}
+{"name":"Vapza Carne Bovina Curada Desfiada em Conserva","price":51.21,"discount":0.10000004,"real_price":56.9}
+{"name":"I2 go Cabo Auxiliar","price":30.3,"discount":0.3998812,"real_price":50.49}
+{"name":"i2GO Carregador Automotivo Basic Plus ","price":25.75,"discount":0.4999029,"real_price":51.49}
+{"name":"Nude Bebida de Aveia Cacau","price":13.5,"discount":0.2495831,"real_price":17.99}
+{"name":"A Tal da Castanha Bebida Mini de Chocolate","price":2.85,"discount":0.49912128,"real_price":5.69}
+{"name":"Nude Barista Bebida de Aveia 1L","price":19.71,"discount":0.09958887,"real_price":21.89}
+{"name":"Sococo Leite De Coco Tradicional","price":3.06,"discount":0.4486487,"real_price":5.55}
+{"name":"Ades Bebida  Base de Aveia","price":15.21,"discount":0.099467106,"real_price":16.89}
+{"name":"Seda Shampoo Recarga Natural Pureza Detox","price":11.87,"discount":0.05,"real_price":12.49}
+{"name":"2 x Nestle Farinha Láctea Original 360 g","price":34.83,"discount":0.15,"real_price":40.98}
+{"name":"Pantene Shampoo Liso Extremo","price":21.66,"discount":0.23973323,"real_price":28.49}
+{"name":"Johnson's Baby Lenços Umedecidos Recém Nascido","price":34.65,"discount":0.09976617,"real_price":38.49}
+{"name":"Pantene Shampoo Bambu Nutre & Cresce","price":25.65,"discount":0.099684104,"real_price":28.49}
+{"name":"Turma da Mônica Fralda Jumbo RN","price":27.45,"discount":0.09970479,"real_price":30.49}
+{"name":"Pantene Shampoo Pro.V Miracles Equilíbrio Raiz e Pontas","price":26.55,"discount":0.09969483,"real_price":29.49}
+{"name":"Clear Men Shampoo Anticaspa Limpeza Profunda","price":17.5,"discount":0.49985713,"real_price":34.99}
+{"name":"Head & Shoulders Shampoo Anticaspa Men Old Spice","price":24.8,"discount":0.19974187,"real_price":30.99}
+{"name":"Desitin Creme para Assadura Máxima Proteção","price":61.2,"discount":0.09986759,"real_price":67.99}
+{"name":"Pampers Fralda Pants Premium Care","price":50.5,"discount":0.49995047,"real_price":100.99}
+{"name":"Pampers Fralda Descartável Infantil Confort Sec P","price":65.25,"discount":0.4999617,"real_price":130.49}
+{"name":"Bigfral Fralda Descartável Para Adultos Derma Plus XG","price":20.4,"discount":0.31977326,"real_price":29.99}
+{"name":"Pampers Fralda Pants Ajuste Total M","price":83.75,"discount":0.49997017,"real_price":167.49}
+{"name":"Pampers Fralda Descartável Infantil Confort Sec M","price":61.5,"discount":0.49995935,"real_price":122.99}
+{"name":"Band-Aid Curativo Transparente","price":13.41,"discount":0.09999999,"real_price":14.9}
+{"name":"K-Med Gel Lubrificante Íntimo Hot Com Efeito Que Aquece","price":30.6,"discount":0.09973525,"real_price":33.99}
+{"name":"Sundown Protetor Solar Praia e Piscina FPS 50 ","price":62.04,"discount":0.05985751,"real_price":65.99}
+{"name":"Lubs Gel Lubrificante Íntimo Hot Moves","price":42.25,"discount":0.4999408,"real_price":84.49}
+{"name":"Coca-Cola Refrigerante Original","price":10.79,"discount":0.1,"real_price":11.99}
+{"name":"Chocolate Snickers Original 45g","price":3.05,"discount":0,"real_price":3.05}
+{"name":"Nissin Macarrão Instantâneo Cup Noodles Sabor Galinha Caipira","price":6.09,"discount":0,"real_price":6.09}
+{"name":"Energético Red Bull Energy Drink; 250 ml","price":9.95,"discount":0.1,"real_price":11.06}
+{"name":"3 Corações Café 3 Tradicional","price":29.68,"discount":0,"real_price":29.68}
+{"name":"Chocolate Snickers Pé De Moleque 42g","price":4.29,"discount":0,"real_price":4.29}
+{"name":"Amstel Cerveja","price":4.24,"discount":0,"real_price":4.24}
+{"name":"Cerveja Spaten Puro Malte 350 mL Lata","price":4.96,"discount":0,"real_price":4.96}
+{"name":"Pinho Sol Desinfetante de Uso Geral Original.","price":13.99,"discount":0,"real_price":13.99}
+{"name":"Perdigão Mortadela Ouro Defumada","price":7.65,"discount":0.098939896,"real_price":8.49}
+{"name":"Detergente Ypê Clear 500ml","price":3.3,"discount":0,"real_price":3.3}
+{"name":"Nissin Cup Noodles Macarrão Costela com Molho de Churrasco","price":5.22,"discount":0,"real_price":5.22}
+{"name":"Yoki Milho Para Pipoca Tipo 1","price":5.99,"discount":0,"real_price":5.99}
+{"name":"Pepsi Refrigerante","price":9.36,"discount":0,"real_price":9.36}
+{"name":"Président Queijo Prato Fatiado","price":10.8,"discount":0.09924934,"real_price":11.99}
+{"name":"Pullman Pão de Forma Tradicional","price":10.99,"discount":0,"real_price":10.99}
+{"name":"Pomarola Molho de Tomate Tradicional","price":3.25,"discount":0,"real_price":3.25}
+{"name":"Cup Noodles Sabor Carne Defumada","price":5.7,"discount":0,"real_price":5.7}
+{"name":"Preservativo Camisinha Olla Lubrificado - Leve 8 Pague 6 Und","price":11.99,"discount":0,"real_price":11.99}
+{"name":"3 Corações Café 3 Extraforte","price":29.68,"discount":0,"real_price":29.68}
+{"name":"Heineken Cerveja Premium","price":6.32,"discount":0,"real_price":6.32}
+{"name":"Chiclete Trident Tutti-Frutti 25,2g - Embalagem Econ 14 unid.","price":5.39,"discount":0,"real_price":5.39}
+{"name":"Bauducco Pão de Forma Tradicional.","price":4.68,"discount":0.40000004,"real_price":7.8}
+{"name":"Fini Bala de Gelatina Minhocas Sabores Sortidos","price":7.68,"discount":0,"real_price":7.68}
+{"name":"Lux Sabonete em Barra Rosas Francesas","price":2.24,"discount":0,"real_price":2.24}
+{"name":"Salgadinho Batata Frita Pringles® Original 104g ","price":12.32,"discount":0.15,"real_price":14.49}
+{"name":"Kitchen Toalhas de Papel Folha Dupla Máxima Absorção","price":7.39,"discount":0,"real_price":7.39}
+{"name":"Kibon Sorvete Snickers","price":34.54,"discount":0,"real_price":34.54}
+{"name":"Fini Bala de Gelatina Minhocas Cítricas ","price":8.17,"discount":0,"real_price":8.17}
+{"name":"Yoki Milho Para Pipoca Premium","price":8.89,"discount":0,"real_price":8.89}
+{"name":"Bis Ao Leite 100,8g","price":7.19,"discount":0,"real_price":7.19}
+{"name":"Macarrão de Sêmola com Ovos Pena Adria 500g","price":3.7,"discount":0,"real_price":3.7}
+{"name":"Sempre Livre Absorvente Adapt Plus Noite e Dia Suave com Abas","price":11.49,"discount":0,"real_price":11.49}
+{"name":"Detergente Ypê Coco 500ml","price":3.3,"discount":0,"real_price":3.3}
+{"name":"Chocolate Sonho de Valsa 1 Unidade de 20g","price":1.47,"discount":0,"real_price":1.47}
+{"name":"Drink Pronto Beats Senses 269ml Lata","price":7.28,"discount":0,"real_price":7.28}
+{"name":"Perdigão Filezinho de Sassami de Frango Congelado","price":21.1,"discount":0,"real_price":21.1}
+{"name":"Wyda Rolo de Papel Filme de Pvc.","price":5.99,"discount":0,"real_price":5.99}
+{"name":"Hershey's Barra de Chocolate ao Leite","price":6.99,"discount":0,"real_price":6.99}
+{"name":"Pão Wickbold 100% Nutrição 400 g","price":9.02,"discount":0.09980039,"real_price":10.02}
+{"name":"Brownie do Luiz Tradicional 50 g","price":4.2,"discount":0.39914164,"real_price":6.99}
+{"name":"Chocolate Lacta ao Leite com Recheio de Oreo 90g","price":8.14,"discount":0,"real_price":8.14}
+{"name":"Ballantine's Whisky Finest Blended Escocês 1 L","price":147.47,"discount":0,"real_price":147.47}
+{"name":"Hemmer Pepinos em Condimento Suave","price":19.84,"discount":0.09981854,"real_price":22.04}
+{"name":"Heineken Cerveja Puro Malte Lager","price":7.41,"discount":0,"real_price":7.41}
+{"name":"Monster Energético Energy","price":8.8,"discount":0.15,"real_price":10.35}
+{"name":"Chocolate Ao Leite Milka 100G","price":16.31,"discount":0,"real_price":16.31}
+{"name":"Chocolate Lacta Caixa De Variedades Favoritos 250g","price":15.99,"discount":0,"real_price":15.99}
+{"name":"Salgadinho Club Social Snack Pizza 68g","price":3.78,"discount":0.3990461,"real_price":6.29}
+{"name":"Bisão Original Ao Leite 201,6g","price":12.6,"discount":0.099356644,"real_price":13.99}
+{"name":"Sadia Queijo Mussarela Fatiado Soltíssimo","price":12.6,"discount":0.099356644,"real_price":13.99}
+{"name":"Fanta Guaraná 2L","price":6.73,"discount":0.2,"real_price":8.41}
+{"name":"Nissin Ajinomoto Macarrão Instantâneo Sabor Carne","price":3.1,"discount":0,"real_price":3.1}
+{"name":"Nissin Macarrão Instantâneo Galinha Caipira","price":3.08,"discount":0,"real_price":3.08}
+{"name":"Nissin Macarrão Instantâneo Sabor Galinha","price":3.09,"discount":0,"real_price":3.09}
+{"name":"Italac Creme de Leite","price":3.49,"discount":0,"real_price":3.49}
+{"name":"Doritos Salgadinho de Milho Queijo Nacho","price":15.28,"discount":0,"real_price":15.28}
+{"name":"Comfort Amaciante de Roupa Concentrado Puro Cuidado","price":20.19,"discount":0,"real_price":20.19}
+{"name":"Cepêra Molho Barbecue","price":14.65,"discount":0,"real_price":14.65}
+{"name":"Power Whey Bebida Láctea Cookies'n Cream","price":7.47,"discount":0.09891438,"real_price":8.29}
+{"name":"Wickbold Pão de Forma Tradicional Premium","price":4.92,"discount":0.39999998,"real_price":8.2}
+{"name":"Docile Bala Gelatines Amoras 80 g","price":6.49,"discount":0,"real_price":6.49}
+{"name":"Hortmix Banana Prata  500 g","price":7.18,"discount":0.2,"real_price":8.98}
+{"name":"Nestlé Iogurte Natural Integral","price":3.41,"discount":0.1,"real_price":3.79}
+{"name":"Xandô Queijo Minas Frescal","price":15.47,"discount":0,"real_price":15.47}
+{"name":"Bebida Láctea Uht Chocolate Toddynho Caixa 200Ml","price":4.07,"discount":0,"real_price":4.07}
+{"name":"Uva Thompson Hortmix 500 g","price":12.78,"discount":0.2,"real_price":15.98}
+{"name":"Xandô Suco Integral de Laranja","price":16.92,"discount":0,"real_price":16.92}
+{"name":"Banana Nanica Hortmix 500 g","price":7.11,"discount":0.2,"real_price":8.89}
+{"name":"Kero Coco Água de Coco","price":15.48,"discount":0.25,"real_price":20.63}
+{"name":"Italac Bebida Láctea Italakinho Sabor Chocolate","price":1.54,"discount":0,"real_price":1.54}
+{"name":"Chá Matte Leão Original 1,5L","price":7.75,"discount":0.15,"real_price":9.11}
+{"name":"Leão Chá Ice Tea Pêssego Zero","price":8.06,"discount":0,"real_price":8.06}
+{"name":"Xandô Leite Integral Tipo A","price":8.74,"discount":0,"real_price":8.74}
+{"name":"Bauducco Rocambole com Recheio e Cobertura de Chocolate Roll","price":1.72,"discount":0,"real_price":1.72}
+{"name":"Ovo Branco Hortmix - - 20 Und","price":20.29,"discount":0,"real_price":20.29}
+{"name":"YoPRO Bebida Láctea UHT Chocolate 25g de proteínas","price":11.99,"discount":0,"real_price":11.99}
+{"name":"Coca-Cola Refrigerante sem Açúcar","price":10.79,"discount":0.1,"real_price":11.99}
+{"name":"Coca-Cola Sem Açúcar 1,5L","price":8.7,"discount":0.15,"real_price":10.23}
+{"name":"Refrigerante Pepsi Black Sem Açúcar 350 mL Lata","price":3.33,"discount":0,"real_price":3.33}
+{"name":"Cerveja Spaten Puro Malte 350 mL Lata","price":4.96,"discount":0,"real_price":4.96}
+{"name":"Refrigerante Pepsi Twist 350 mL Lata","price":3.33,"discount":0,"real_price":3.33}
+{"name":"Amstel Cerveja Ultra Puro Malte","price":3.85,"discount":0,"real_price":3.85}
+{"name":"Cerveja Budweiser American Lager 350ml Lata","price":4.18,"discount":0,"real_price":4.18}
+{"name":"Cerveja Stella Artois Puro Malte 330ml Long Neck","price":6.37,"discount":0,"real_price":6.37}
+{"name":"FYS Refrigerante Limão Siciliano ","price":2.96,"discount":0,"real_price":2.96}
+{"name":"Lagunitas Cerveja IPA","price":7.99,"discount":0,"real_price":7.99}
+{"name":"Fanta Guaraná 2L","price":6.73,"discount":0.2,"real_price":8.41}
+{"name":"Sprite Refrigerante de Limão Original 2 L","price":9.72,"discount":0,"real_price":9.72}
+{"name":"Sprite Refrigerante Limão","price":3.85,"discount":0,"real_price":3.85}
+{"name":"Powerade Isotônico Sabor Mix de Frutas","price":5.15,"discount":0,"real_price":5.15}
+{"name":"Del Valle Suco Kapo Sabor Uva ","price":2.85,"discount":0,"real_price":2.85}
+{"name":"Monster Energético Energy","price":8.8,"discount":0.15,"real_price":10.35}
+{"name":"Nestlé Iogurte Natural Integral","price":3.41,"discount":0.1,"real_price":3.79}
+{"name":"Yoki Pipoca para Micro Ondas","price":4.07,"discount":0.04,"real_price":4.24}
+{"name":"Yoki Milho Pipoca para Micro-ondas Sabor Manteiga","price":3.95,"discount":0.04,"real_price":4.11}
+{"name":"Yoki Pipoca para Micro Ondas Temperada com Toque de Chef","price":4.09,"discount":0.04,"real_price":4.26}
+{"name":"Yoki Pipoca para Micro-Ondas Natural","price":4.02,"discount":0.04,"real_price":4.19}
+{"name":"Fanta Laranja 2L","price":8.26,"discount":0.15,"real_price":9.72}
+{"name":"Estrella Galicia Cerveja Puro Malte Lager","price":4.32,"discount":0.25,"real_price":5.75}
+{"name":" Hellmann's Maionese Tradicional ","price":6.67,"discount":0.05,"real_price":7.02}
+{"name":"Cerveja Eisenbahn Pale Ale Puro Malte Lata 350ml","price":3.99,"discount":0.3,"real_price":5.69}
+{"name":"Cereal Corn Flakes Kellogg's® 200g","price":12.23,"discount":0.1,"real_price":13.59}
+{"name":"Seda Shampoo Recarga Natural Pureza Detox","price":11.87,"discount":0.05,"real_price":12.49}
+{"name":"Seda Shampoo Liso Perfeito.","price":10.92,"discount":0.05,"real_price":11.49}
+{"name":"Omo Sabão em Pó Lavagem Perfeita","price":36.82,"discount":0.05,"real_price":38.75}
+{"name":"Rexona Sabonete Antibacterial Fresh","price":3.42,"discount":0.05,"real_price":3.59}
+{"name":"Ballantine's Whisky Finest Blended Escocês 1 L","price":147.47,"discount":0,"real_price":147.47}
+{"name":"Ballantine's Whisky Finest Blended Escocês 750 mL","price":115.38,"discount":0,"real_price":115.38}
+{"name":"Energético Red Bull Energy Drink; 250 ml","price":9.95,"discount":0.1,"real_price":11.06}
+{"name":"Coca-Cola Refrigerante Original","price":10.79,"discount":0.1,"real_price":11.99}
+{"name":"Coca-Cola Refrigerante sem Açúcar","price":10.79,"discount":0.1,"real_price":11.99}
+{"name":"Absolut Vodka","price":127.58,"discount":0,"real_price":127.58}
+{"name":"Beefeater Gin London Dry 750 mL","price":119.79,"discount":0,"real_price":119.79}
+{"name":"Tanqueray Gin London Dry","price":158.16,"discount":0,"real_price":158.16}
+{"name":"Energético Red Bull; Tropical; 250 ml","price":8.85,"discount":0.2,"real_price":11.06}
+{"name":"Johnnie Walker Whisky Red Label Escocês Blended","price":105.66,"discount":0,"real_price":105.66}
+{"name":"Chivas Regal Whisky Escocês 12 Anos","price":183.19,"discount":0,"real_price":183.19}
+{"name":"Johnnie Walker Whisky Red Label","price":130.91,"discount":0,"real_price":130.91}
+{"name":"White Horse Whisky 8 Anos","price":116.51,"discount":0,"real_price":116.51}
+{"name":"Jameson Whisky","price":163.87,"discount":0,"real_price":163.87}
+{"name":"whisky Jack Daniel's americano","price":197.82,"discount":0,"real_price":197.82}
+{"name":"Monster Energético Energy","price":8.8,"discount":0.15,"real_price":10.35}
+{"name":"Gordon's Gin London Dry","price":99.83,"discount":0,"real_price":99.83}
+{"name":"Água Crystal Sem Gás 1,5L","price":3.01,"discount":0.15,"real_price":3.54}
+{"name":"Coca-Cola Sem Açúcar 1,5L","price":8.7,"discount":0.15,"real_price":10.23}
+{"name":"Água Crystal Com Gás 1,5L","price":3.29,"discount":0.2,"real_price":4.11}
+{"name":"Chocolate Lacta Caixa De Variedades Favoritos 250g","price":15.99,"discount":0,"real_price":15.99}
+{"name":"whisky Dewars 12 anos 750 ml","price":87.99,"discount":0.4999716,"real_price":175.97}
+{"name":"Cerveja Corona Extra 330ml Long Neck","price":7.65,"discount":0,"real_price":7.65}
+{"name":"Chocolate Snickers Original 45g","price":3.05,"discount":0,"real_price":3.05}
+{"name":"Smirnoff Vodka","price":50.52,"discount":0,"real_price":50.52}
+{"name":"Aperol Aperitivo de Ervas Spritz","price":63.24,"discount":0,"real_price":63.24}
+{"name":"Monster Energético Mango Loco","price":8.8,"discount":0.15,"real_price":10.35}
+{"name":"Eisenbahn Cerveja Pilsen Puro Malte","price":3.06,"discount":0.3,"real_price":4.37}
+{"name":"Sprite Refrigerante de Limão Original 2 L","price":9.72,"discount":0,"real_price":9.72}
+{"name":"Monster Energético Zero Açúcar","price":10.35,"discount":0,"real_price":10.35}
+{"name":"Licor 43 Espanhol Diego Zamora","price":231.31,"discount":0,"real_price":231.31}
+{"name":"Seagers Gin London Dry","price":48.12,"discount":0,"real_price":48.12}
+{"name":"Perdigão Mortadela Ouro Defumada","price":7.65,"discount":0.098939896,"real_price":8.49}
+{"name":"Coca-Cola Original 350ml","price":3.23,"discount":0.2,"real_price":4.04}
+{"name":"Minalba Água Mineral Natural sem Gás","price":3.31,"discount":0,"real_price":3.31}
+{"name":"Sadia Salame Italiano Fatiado","price":15.12,"discount":0.09946402,"real_price":16.79}
+{"name":"Bitter Campari 998ml","price":82.5,"discount":0,"real_price":82.5}
+{"name":"Chocolate Lacta ao Leite com Recheio de Oreo 90g","price":8.14,"discount":0,"real_price":8.14}
+{"name":"Cerveja Stella Artois Puro Malte 330ml Long Neck","price":6.37,"discount":0,"real_price":6.37}
+{"name":"Zinho Pão de Alho Tradicional Com Creme de Alho","price":13.13,"discount":0,"real_price":13.13}
+{"name":"Heineken Cerveja Premium","price":6.32,"discount":0,"real_price":6.32}
+{"name":"Maturatta Hambúrguer de Carne Bovina Picanha Maturatta","price":6.99,"discount":0,"real_price":6.99}
+{"name":"Velho Barreiro Cachaça Adoçada ","price":21.41,"discount":0,"real_price":21.41}
+{"name":"51 Cachaça Pirassununga","price":19.64,"discount":0,"real_price":19.64}
+{"name":"Pullman Pão de Forma Tradicional","price":10.99,"discount":0,"real_price":10.99}
+{"name":"Hortmix Limão Tahiti  500 g","price":4.56,"discount":0.2,"real_price":5.69}
+{"name":"Energético Red Bull; Melancia; 250 ml","price":9.95,"discount":0.1,"real_price":11.06}
+{"name":"Gelo Em Cubos - 2 Kg","price":5.49,"discount":0,"real_price":5.49}
+{"name":"Bebida Alcoólica Jack Danniels & Coca-Cola 350Ml","price":7.27,"discount":0.45,"real_price":13.22}
+{"name":"Cerveja Budweiser American Lager 350ml Lata","price":4.18,"discount":0,"real_price":4.18}
+{"name":"Energético Red Bull; Sem Açúcar; 250 ml","price":9.95,"discount":0.1,"real_price":11.06}
+{"name":"Absolut Vodka Destilada Original","price":116.5,"discount":0,"real_price":116.5}
+{"name":"Perdigão Filezinho de Sassami de Frango Congelado","price":21.1,"discount":0,"real_price":21.1}
+{"name":"Drink Pronto Beats GT Sabor Gin&Tônica Long Neck 269ml","price":9.47,"discount":0,"real_price":9.47}
+{"name":"Heineken Cerveja Puro Malte Lager","price":7.41,"discount":0,"real_price":7.41}
+{"name":"Drink Pronto Skol Beats Red Mix Lata","price":6.99,"discount":0,"real_price":6.99}
+{"name":"Cerveja Antarctica, Pilsen, 350Ml, Lata","price":3.87,"discount":0,"real_price":3.87}
+{"name":"Pullman Pão de Hambúrguer Grand Burger Brioche.","price":17.3,"discount":0,"real_price":17.3}
+{"name":"Cerveja Original, Pilsen, 350Ml, Lata","price":4.88,"discount":0,"real_price":4.88}
+{"name":"Vermouth Martini Bianco 750 ml","price":61.94,"discount":0,"real_price":61.94}
+{"name":"Kitkat Nestlé Chocolate ao Leite","price":4.25,"discount":0,"real_price":4.25}
+{"name":"Salgadinho Queijo Nacho Doritos 210G","price":23.53,"discount":0,"real_price":23.53}
+{"name":"Cerveja Coronita 210ml Long Neck","price":5.76,"discount":0,"real_price":5.76}
+{"name":"Coca-Cola Refrigerante sem Açúcar ","price":2.27,"discount":0.2,"real_price":2.84}
