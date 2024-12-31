@@ -10,10 +10,15 @@ const moment = require("moment");
 const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
-  const [maxOffer, setMaxOffer] = useState(0);
   const [infosStore, setInfoStore] = useState({});
 
+  console.log({ id_store, parent_store_type, store_type, name });
+
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
     get_infosStore();
     get_products();
   }, []);
@@ -32,7 +37,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
     });
     const sortedProducts = productsData.sort((a, b) => b.discount - a.discount);
     setProducts(sortedProducts);
-    setMaxOffer(sortedProducts[0].discount);
+    // setMaxOffer(sortedProducts[0].discount);
     setLoading(false);
   };
 
@@ -125,7 +130,12 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
             {Array(50)
               .fill(null)
               .map((_, index) => (
-                <Skeleton variant="rectangular" width="100%" height={100} />
+                <Skeleton
+                  variant="rectangular"
+                  width="100%"
+                  height={100}
+                  key={index}
+                />
               ))}
           </>
         ) : (
