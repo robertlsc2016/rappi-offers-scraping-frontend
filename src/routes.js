@@ -53,6 +53,17 @@ const Routes_ = () => {
           }
           path="/mambo"
         />
+        <Route
+          element={
+            <LayoutMarkets
+              name={"Barbosa"}
+              id_store={900156624}
+              parent_store_type="market"
+              store_type="barbosa_super"
+            />
+          }
+          path="/barbosa"
+        />
       </Routes>
     </BrowserRouter>
   );

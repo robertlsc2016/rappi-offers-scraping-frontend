@@ -5,6 +5,7 @@ const CardProduct = ({
   price = 0,
   discount = 0,
   image = "",
+  real_price = 0,
 }) => {
   return (
     <div
@@ -31,7 +32,7 @@ const CardProduct = ({
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          height: "49%",
+          height: "45%",
           //   border: "1px solid black",
         }}
       >
@@ -44,6 +45,7 @@ const CardProduct = ({
           }}
         />
       </div>
+
       <div
         className="footer"
         style={{
@@ -53,7 +55,7 @@ const CardProduct = ({
           flexDirection: "column",
           gap: "5px",
           width: "100%",
-          height: "549",
+          height: "50%",
           //   border: "1px solid black",
         }}
       >
@@ -69,10 +71,19 @@ const CardProduct = ({
           <Chip label={`R$ ${price}`} color="success" size="small" />
           <Chip label={discount} color="primary" size="small" />
         </div>
+        <Chip
+          label={`R$ ${real_price}`}
+          color="warning"
+          size="small"
+          style={{
+            textDecoration: "line-through",
+          }}
+        />
         <p
           style={{
             width: "100%",
             fontSize: "12px",
+
             margin: "0",
             padding: "0",
             overflowWrap: "break-word",
