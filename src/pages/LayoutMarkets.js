@@ -1,28 +1,27 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Chip,
-  IconButton,
-  Skeleton,
-  Typography,
-} from "@mui/material";
+import { Box, Chip, IconButton, Skeleton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import CardProduct from "../components/CardProduct";
 import WestIcon from "@mui/icons-material/West";
 import getProducts from "../services/getProducts";
 import AccordionProducts from "../components/AccordionProducts";
+import getInfosStore from "../services/getInfosStore";
+const moment = require("moment");
 
 const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [maxOffer, setMaxOffer] = useState(0);
+  const [infosStore, setInfoStore] = useState({});
 
   useEffect(() => {
+    get_infosStore();
     get_products();
   }, []);
+
+  const get_infosStore = async () => {
+    const infos = await getInfosStore({ id_store: id_store });
+    setInfoStore(infos);
+  };
 
   const get_products = async () => {
     const productsData = await getProducts({
@@ -81,7 +80,15 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
           >
             <Chip label="aberto" color="success" size="small" />
             <Chip label={`ID: ${id_store}`} color="info" size="small" />
-            <Chip label={`min.: R$ 10, 00`} color="info" size="small" />
+            <Chip label={infosStore.address} color="info" size="small" />
+
+            <Chip
+              label={`últ. atual.: ${moment(
+                infosStore.store_type?.updated_at
+              ).format("DD/MM/YYYY HH:mm:ss")}`}
+              color="info"
+              size="small"
+            />
           </div>
           <Box>
             <Chip
@@ -154,6 +161,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
             />
 
             <AccordionProducts
+              expanded={true}
               backgroundColor="#f9f6db"
               products={products}
               initial_rannge={100}

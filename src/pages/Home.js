@@ -66,6 +66,11 @@ const Home = () => {
             route="barbosa"
             img_path="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3cFnZ_W4G3PLXzddGHxCQY4bzM0lZ50G8fA&s"
           />
+          <CardMarkets
+            name="Extra"
+            route="extra"
+            img_path="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0l1NnKquYKPuRzkEpz0Xv_JpVNgw6GiOjbw&s"
+          />
         </div>
       </div>
     </>

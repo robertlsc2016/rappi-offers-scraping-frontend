@@ -13,6 +13,7 @@ const AccordionProducts = ({
   final_range,
   backgroundColor = "#e9e9e9",
   description,
+  expanded = false,
 }) => {
   const filteredProducts = products.filter(
     (product) =>
@@ -22,6 +23,7 @@ const AccordionProducts = ({
 
   return (
     <Accordion
+      defaultExpanded={expanded}
       style={{
         display: filteredProducts.length == 0 ? "none" : "block",
       }}
@@ -58,7 +60,7 @@ const AccordionProducts = ({
           gap: "16px",
           flexWrap: "wrap",
           justifyContent: "center",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         {filteredProducts.map(
