@@ -282,25 +282,35 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                             flexWrap: "wrap",
                           }}
                         >
-                          {filteredItems.map(
-                            ({
-                              id,
-                              name,
-                              price,
-                              discount,
-                              real_price,
-                              image_url,
-                            }) => (
-                              <CardProduct
-                                key={id}
-                                name={name}
-                                price={price}
-                                discount={`${(discount * 100).toFixed(2)}%`}
-                                image={image_url}
-                                real_price={real_price}
-                              />
-                            )
-                          )}
+                          <>
+                            {filteredItems.length == 0 ? (
+                              <>Nenhum item foi encontrado :(</>
+                            ) : (
+                              <>
+                                {filteredItems.map(
+                                  ({
+                                    id,
+                                    name,
+                                    price,
+                                    discount,
+                                    real_price,
+                                    image_url,
+                                  }) => (
+                                    <CardProduct
+                                      key={id}
+                                      name={name}
+                                      price={price}
+                                      discount={`${(discount * 100).toFixed(
+                                        2
+                                      )}%`}
+                                      image={image_url}
+                                      real_price={real_price}
+                                    />
+                                  )
+                                )}
+                              </>
+                            )}
+                          </>
                         </div>
                       </>
                     )}
