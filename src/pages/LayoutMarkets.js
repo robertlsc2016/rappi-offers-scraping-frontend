@@ -28,7 +28,6 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   }, []);
 
   const inputValue = (text) => {
-    console.log(text);
     filterItems(text);
   };
 

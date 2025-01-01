@@ -11,7 +11,6 @@ const SearchBar = ({ inputValue }) => {
   }, []);
 
   const handleInput = (e) => {
-    // console.log(e);
     setSearchInput(e);
     inputValue(e);
   };

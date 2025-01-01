@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const CardMarkets = ({ route, img_path, name }) => {
   return (
     <Link to={`/${route}`}>
-      <Card sx={{ width: "400px", height: "250px" }}>
+      <Card sx={{ width: "240px", height: "270px" }}>
         <CardActionArea>
           <CardMedia height="180" component="img" image={img_path} />
           <CardContent>

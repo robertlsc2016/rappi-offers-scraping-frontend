@@ -8,8 +8,9 @@ const Home = () => {
     <>
       <div
         style={{
+          // border: "1px solid",
           width: "100%",
-          minHeight: "100vh",
+          // minHeight: "100vh",
           height: "auto",
           display: "flex",
           justifyContent: "center",

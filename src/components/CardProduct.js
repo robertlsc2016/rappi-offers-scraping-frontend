@@ -1,5 +1,7 @@
 import { Box, Chip } from "@mui/material";
 import IconOffer from "./IconOffer";
+import ModalProduct from "./ModalProduct";
+import { useRef, useState } from "react";
 
 const CardProduct = ({
   name = "Não definido",
@@ -8,8 +10,17 @@ const CardProduct = ({
   image = "",
   real_price = 0,
 }) => {
+  const modalRef = useRef();
+
+  const chamarFuncaoDoFilho = () => {
+    if (modalRef.current) {
+      modalRef.current.handleOpenMdal(); // Chama a função do filho
+    }
+  };
+
   return (
     <div
+      onClick={() => chamarFuncaoDoFilho()}
       style={{
         cursor: "pointer",
         boxSizing: "border-box",
@@ -34,7 +45,7 @@ const CardProduct = ({
           alignItems: "center",
           width: "100%",
           height: "45%",
-          //   border: "1px solid black",
+          // border: "1px solid black",
         }}
       >
         <img
@@ -137,6 +148,14 @@ const CardProduct = ({
           </p>
         </Box>
       </div>
+      <ModalProduct
+        name={name}
+        banner_url={image}
+        real_price={real_price}
+        discount={discount}
+        price={price}
+        ref={modalRef}
+      />
     </div>
   );
 };
