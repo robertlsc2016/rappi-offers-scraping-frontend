@@ -31,7 +31,7 @@ const AccordionProducts = ({
       slotProps={{ transition: { timeout: 50 } }}
     >
       <AccordionSummary
-        sx={{ backgroundColor: backgroundColor }}
+        sx={{ backgroundColor: backgroundColor, width: "100%", height: "100%" }}
         expandIcon={<ExpandMoreIcon fontSize="large" />}
       >
         <div
@@ -55,12 +55,15 @@ const AccordionProducts = ({
       </AccordionSummary>
       <AccordionDetails
         style={{
+          // overflow: "auto",
+
           display: "flex",
           flexDirection: "row",
           gap: "16px",
           flexWrap: "wrap",
           justifyContent: "center",
           alignItems: "center",
+          // height: "300px",
         }}
       >
         {filteredProducts.map(

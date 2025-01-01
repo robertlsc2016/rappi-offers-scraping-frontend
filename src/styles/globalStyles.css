@@ -1,12 +1,71 @@
 * {
   box-sizing: border-box;
-  /* padding: 0; */
-  /* margin: 0; */
+  /* padding: 0;
+  margin: 0; */
   /* border: 1px solid black; */
+}
+
+html {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* justify-content: flex-start; */
+  /* align-items: center; */
+
+  width: 100vw;
+  height: 100vw;
+  font-family: "Roboto", sans-serif;
+}
+
+input {
+  all: unset; /* Remove quase todos os estilos padrão */
+}
+
+body {
+  overflow-x: hidden;
+  /* border: 1px solid black; */
+  width: 100%;
+  /* justify-content: ; */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
-  padding: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  height: 200vh; /* Para demonstrar a barra de rolagem */
+  background: linear-gradient(180deg, #f8f9fa, #e9ecef);
+  padding: 20px;
+}
+
+/* Estilo da barra de rolagem */
+::-webkit-scrollbar {
+  width: 6px; /* Largura */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor do trilho */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Cor do scroll */
+  border-radius: 4px; /* Borda arredondada */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Cor ao passar o mouse */
+}
+
+/* Para navegadores compatíveis com scrollbar-color */
+body {
+  scrollbar-color: #888 #f1f1f1; /* Cor do scroll e do trilho */
+  scrollbar-width: thin; /* Largura fina */
 }

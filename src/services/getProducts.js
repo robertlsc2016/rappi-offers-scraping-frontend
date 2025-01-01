@@ -54,6 +54,8 @@ const getProducts = async ({
 
   const allProductsCleann = _.uniqBy(allProducts, "id");
 
+  console.log(allProductsCleann);
+
   return allProductsCleann;
 };
 
