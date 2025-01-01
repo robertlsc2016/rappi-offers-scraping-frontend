@@ -12,9 +12,9 @@ const similarOnAmazon = async ({ product_name }) => {
 
   const html = await axios({
     method: "get",
-    Origin: "http://localhost:8080/", // Seu domínio local
     baseURL: `${proxyUrl}${searchUrl}`,
     headers: {
+      Origin: "http://localhost:3000/", // Seu domínio local
       "access-control-allow-origin": "*",
       "access-control-allow-headers": "*",
       "X-Requested-With": "XMLHttpRequest",
