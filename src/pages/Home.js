@@ -5,15 +5,26 @@ import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../components/SearchBar";
 
 import SearchGlobal from "../components/SearchGlobal";
-import { IconButton } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
-import { initial, search } from "../redux/statusViewSlice";
+import { initial } from "../redux/statusViewSlice";
+import {
+  S_BodyHomeBox,
+  S_BodyHomeBoxInner,
+  S_BodyHomeContainer,
+  S_BodyHomeInner,
+  S_BoxStores,
+  S_containerStores,
+  S_GlobalContainer,
+  S_Header,
+  S_HeaderContainer,
+  S_IconButton,
+  S_SearchbarContainer,
+} from "../styles/Home.styles";
+import { IconButton } from "@mui/material";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
-
   const dispatch = useDispatch();
-
   const statusView = useSelector((state) => state.statusView.status_view);
 
   const handleInputChange = (text) => {
@@ -37,145 +48,32 @@ const Home = () => {
   return (
     <>
       {
-        <IconButton
-          onClick={() => returnInitial()}
-          style={{
-            zIndex: "1000",
-            cursor: "pointer",
-            background: "#e9e9e9",
-            position: "fixed",
-            top: "32px",
-            left: "32px",
-          }}
-        >
-          <HomeIcon
-            style={{
-              fontSize: "24px",
-            }}
-          />
-        </IconButton>
+        <S_IconButton onClick={() => returnInitial()}>
+          <HomeIcon />
+        </S_IconButton>
       }
-      <div
-        style={{
-          // border: "1px solid",
-          paddingBottom: "27vh",
-          width: "100%",
-          height: "fit-content",
-          display: "flex",
-          justifyContent: "flex-start",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
-        <div
-          style={{
-            position: "fixed",
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            top: "0",
-            width: "100%",
-            height: "25vh",
-            // padding: "16px",
-            zIndex: "100",
-            // borderRadius: "50px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center",
-              background: "white",
-
-              // border: "1px solid",
-              gap: "16px",
-              width: "50%",
-              padding: "16px",
-              borderRadius: "32px",
-              boxShadow: `rgba(0, 0, 0, 0.56) 0px 4px 50px 5px`,
-            }}
-          >
-            <h1
-              style={{
-                margin: "0",
-                padding: "0",
-                // width: "100%",
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              Filtro de Ofertas do Rappi
-            </h1>
-            <div style={{ width: "100%" }}>
+      <S_GlobalContainer>
+        <S_HeaderContainer>
+          <S_Header>
+            <h1>Filtro de Ofertas do Rappi</h1>
+            <S_SearchbarContainer>
               <SearchBar inputValue={handleInputChange} widthSearchArea="95%" />
-            </div>
-          </div>
-        </div>
+            </S_SearchbarContainer>
+          </S_Header>
+        </S_HeaderContainer>
 
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            flexDirection: "column",
-            // border: "1px solid",
-            padding: "0 10%",
-            marginTop: "28vh",
-          }}
-        >
-          <div
-            style={{
-              // border: "1px solid",
-              display: "flex",
-              flexDirection: "column",
-              gap: "64px",
-              width: "100%",
-              height: "auto",
-            }}
-          >
-            <div
-              style={{
-                width: "100%",
-              }}
-            >
+        <S_BodyHomeContainer>
+          <S_BodyHomeBox>
+            <S_BodyHomeInner>
               {statusView == "SEARCHING_VIEW" && (
                 <SearchGlobal text={textFilter} />
               )}
 
               {statusView == "INITIAL_VIEW" && (
                 <>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "24px",
-                      // border: "1px solid",
-                    }}
-                  >
-                    <h1
-                      style={{
-                        margin: "0",
-                        padding: "0",
-                      }}
-                    >
-                      Mercados
-                    </h1>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        flexWrap: "wrap",
-
-                        height: "fit-content",
-
-                        gap: "10px",
-                        width: "100%",
-                        // padding: "0 16px",
-                      }}
-                    >
+                  <S_containerStores>
+                    <h1>Mercados</h1>
+                    <S_BoxStores>
                       {markets
                         .filter((market) => market.type == "market")
                         .map(({ name, route, banner_url, id_store }) => (
@@ -186,37 +84,11 @@ const Home = () => {
                             key={id_store}
                           />
                         ))}
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "24px",
-                    }}
-                  >
-                    <h1
-                      style={{
-                        margin: "0",
-                        padding: "0",
-                      }}
-                    >
-                      Farmácia
-                    </h1>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        flexWrap: "wrap",
-
-                        height: "fit-content",
-
-                        gap: "10px",
-                        width: "100%",
-                        // padding: "0 16px",
-                      }}
-                    >
+                    </S_BoxStores>
+                  </S_containerStores>
+                  <S_containerStores>
+                    <h1>Farmácia</h1>
+                    <S_BoxStores>
                       {markets
                         .filter((market) => market.type == "drugstore")
                         .map(({ name, route, banner_url, id_store }) => (
@@ -227,14 +99,14 @@ const Home = () => {
                             key={id_store}
                           />
                         ))}
-                    </div>
-                  </div>
+                    </S_BoxStores>
+                  </S_containerStores>
                 </>
               )}
-            </div>
-          </div>
-        </div>
-      </div>
+            </S_BodyHomeInner>
+          </S_BodyHomeBox>
+        </S_BodyHomeContainer>
+      </S_GlobalContainer>
     </>
   );
 };
