@@ -5,6 +5,7 @@ const markets = [
     id_store: 900604367,
     parent_store_type: "avocado_home",
     store_type: "turbo",
+    type: "market",
     banner_url:
       "https://startse-uploader.s3.us-east-2.amazonaws.com/large_rappi_passo_atras_avancos_varejo_d3472fbd04.jpeg",
   },
@@ -14,6 +15,7 @@ const markets = [
     id_store: 900542505,
     parent_store_type: "market",
     store_type: "carrefour_hiper_super_market",
+    type: "market",
     banner_url:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_2ABhb8jXr8Ad2CF0Qr6jkxWWZ6s9P6VVSw&s",
   },
@@ -23,6 +25,7 @@ const markets = [
     id_store: 900536162,
     parent_store_type: "market",
     store_type: "pao_de_azucar",
+    type: "market",
     banner_url:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcTl6OrE1EUtntSDrM_xGQ_i79qJdq5dBq9g&s",
   },
@@ -31,6 +34,7 @@ const markets = [
     route: "mambo",
     id_store: 900020818,
     parent_store_type: "market",
+    type: "market",
     store_type: "mambo",
     banner_url:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0qgnY485Unq1_y7JpeIhcWfXiLhcOosAeeQ&s",
@@ -41,6 +45,7 @@ const markets = [
     id_store: 900156624,
     parent_store_type: "market",
     store_type: "barbosa_super",
+    type: "market",
     banner_url:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3cFnZ_W4G3PLXzddGHxCQY4bzM0lZ50G8fA&s",
   },
@@ -50,6 +55,7 @@ const markets = [
     id_store: 900631973,
     parent_store_type: "market",
     store_type: "extra",
+    type: "market",
     banner_url:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0l1NnKquYKPuRzkEpz0Xv_JpVNgw6GiOjbw&s",
   },
@@ -58,6 +64,7 @@ const markets = [
     route: "violeta",
     parent_store_type: "market",
     store_type: "violeta",
+    type: "market",
     id_store: 900161175,
     banner_url: "https://www.violetaexpress.com.br/assets/img/header-logo.png",
   },
@@ -68,6 +75,7 @@ const markets = [
     parent_store_type: "market",
     store_type: "carrefour_bairro_super_market",
     id_store: 900306752,
+    type: "market",
     banner_url:
       "https://static-cms.carrefour.fr/sites/default/files/2024-06/market_0.png?itok=SC5Z72U4",
   },
@@ -78,6 +86,7 @@ const markets = [
     parent_store_type: "market",
     store_type: "turbo_market_nc",
     id_store: 900685612,
+    type: "market",
     banner_url:
       "https://images.rappi.com.br/marketplace/store_type_1711981761076.jpg",
   },
@@ -88,6 +97,7 @@ const markets = [
     parent_store_type: "market",
     store_type: "carrefour_big_hiper_nc",
     id_store: 900631031,
+    type: "market",
     banner_url:
       "https://static.ifood-static.com.br/image/upload/t_high/logosgde/e6094554-efb1-408a-bf50-876153c5dff3/202303271208_m04c_i.jpg",
   },
@@ -97,9 +107,50 @@ const markets = [
     route: "pao-de-acucar-fresh",
     parent_store_type: "market",
     store_type: "pao_de_azucar_superfresh_nc",
+    type: "market",
     id_store: 900652960,
     banner_url:
       "https://images.rappi.com.br/marketplace/store_type_1725550091733.png",
+  },
+  {
+    name: "Droga Raia",
+    route: "droga raia",
+    parent_store_type: "market",
+    store_type: "raia_market_cash_nc",
+    id_store: 900665408,
+    type: "drugstore",
+    banner_url:
+      "https://iguatemi.com.br/saopaulo/sites/saopaulo/files/2019-10/DrogaRaia.png",
+  },
+  {
+    name: "Pague Menos",
+    route: "pague-menos",
+    parent_store_type: "market",
+    store_type: "pague_menos",
+    type: "drugstore",
+    id_store: 900655314,
+    banner_url:
+      "https://upload.wikimedia.org/wikipedia/commons/5/5a/Logo_Farm%C3%A1cias_Pague_Menos.png",
+  },
+  {
+    name: "Drogaria São Paulo",
+    route: "drogaria-sao-paulo",
+    parent_store_type: "market",
+    store_type: "sao_paulo_market",
+    type: "drugstore",
+    id_store: 900655895,
+    banner_url:
+      "https://www.cidademarketing.com.br/marketing/wp-content/uploads/2023/01/drogaria_saopaulo.jpg",
+  },
+  {
+    name: "Promofarma",
+    route: "promofarma",
+    parent_store_type: "market",
+    store_type: "sao_paulo_market",
+    type: "drugstore",
+    id_store: 900127380,
+    banner_url:
+      "https://images.rappi.com.br/marketplace/store_type_1726250032111.jpg",
   },
 ];
 

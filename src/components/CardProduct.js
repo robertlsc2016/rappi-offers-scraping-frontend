@@ -1,7 +1,7 @@
 import { Box, Chip } from "@mui/material";
 import IconOffer from "./IconOffer";
 import ModalProduct from "./ModalProduct";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 const CardProduct = ({
   name = "Não definido",
@@ -9,6 +9,8 @@ const CardProduct = ({
   discount = 0,
   image = "",
   real_price = 0,
+  quantity = 0,
+  unit_type = 0,
 }) => {
   const modalRef = useRef();
 
@@ -49,7 +51,7 @@ const CardProduct = ({
         }}
       >
         <img
-          src={image}
+          src={`${image}`}
           style={{
             objectFit: "contain",
             width: "100%",
@@ -61,8 +63,6 @@ const CardProduct = ({
       <div
         className="footer"
         style={{
-          // border: "1px solid black",
-
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "flex-start",
@@ -145,6 +145,10 @@ const CardProduct = ({
             >
               {name}
             </b>
+            <p>
+              {quantity}
+              {unit_type}
+            </p>
           </p>
         </Box>
       </div>

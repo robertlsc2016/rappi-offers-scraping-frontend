@@ -1,9 +1,9 @@
 import { Box, CircularProgress, Divider, Grid2, Modal } from "@mui/material";
-import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import IconOffer from "./IconOffer";
 import similarOnAmazon from "../utils/similarOnAmazon";
 import CardProductAmazon from "./CardProductAmazon";
-import AliceCarousel, { Link } from "react-alice-carousel";
+import AliceCarousel from "react-alice-carousel";
 
 const ModalProduct = forwardRef(
   ({ name, banner_url, price, real_price, discount }, ref) => {
@@ -94,7 +94,7 @@ const ModalProduct = forwardRef(
               }}
             >
               <img
-                src={banner_url}
+                src={`${banner_url}`}
                 style={{
                   objectFit: "contain",
                   width: "100%",

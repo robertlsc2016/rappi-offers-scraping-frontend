@@ -1,13 +1,16 @@
 import { Box, Chip, IconButton, Skeleton } from "@mui/material";
 import WestIcon from "@mui/icons-material/West";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import getProducts from "../services/getProducts";
 import AccordionProducts from "../components/AccordionProducts";
 import getInfosStore from "../services/getInfosStore";
 import SearchBar from "../components/SearchBar";
 import CardProduct from "../components/CardProduct";
+import ContainerAccordionProducts from "../components/ContainerAccordionProducts";
+import { useDispatch } from "react-redux";
+import { initial } from "../redux/statusViewSlice";
 const moment = require("moment");
 
 const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
@@ -16,6 +19,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const [infosStore, setInfoStore] = useState({});
   const [filteredItems, setFilteredItems] = useState([]);
   const [textFilter, setTextFilter] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.scrollTo({
@@ -30,6 +34,17 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const inputValue = (text) => {
     filterItems(text);
   };
+
+  function filterItems(text) {
+    setTextFilter(text);
+    const items = products;
+
+    const filteredItems = items.filter((item) =>
+      item.name.toLowerCase().includes(text.toLowerCase())
+    );
+
+    setFilteredItems(filteredItems);
+  }
 
   const get_infosStore = async () => {
     const infos = await getInfosStore({ id_store: id_store });
@@ -47,17 +62,6 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
     setProducts(sortedProducts);
     setLoading(false);
   };
-
-  function filterItems(text) {
-    setTextFilter(text);
-    const items = products;
-
-    const filteredItems = items.filter((item) =>
-      item.name.toLowerCase().includes(text.toLowerCase())
-    );
-
-    setFilteredItems(filteredItems);
-  }
 
   return (
     <>
@@ -80,7 +84,6 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
             justifyContent: "flex-start",
             alignItems: "center",
             gap: "16px",
-
             padding: "12px",
 
             width: "100%",
@@ -90,7 +93,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
           }}
         >
           <Box sx={{ height: "100%" }}>
-            <Link to="/">
+            <Link to="/" onClick={() => dispatch(initial())}>
               <IconButton>
                 <WestIcon />
               </IconButton>
@@ -110,6 +113,8 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
               style={{
                 display: "flex",
                 flexDirection: "row",
+                flexWrap: "wrap",
+
                 gap: "5px",
               }}
             >
@@ -151,7 +156,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
             height: "auto",
             flexWrap: "wrap",
             width: "100%",
-            height: "100%",
+            // height: "100%",
           }}
         >
           {loading ? (
@@ -179,7 +184,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                   height: "100%",
                 }}
               >
-                <div
+                {/* <div
                   className="left-menu"
                   style={{
                     display: "flex",
@@ -200,7 +205,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                   <p>70% - 50%</p>
                   <p>50% - 20%</p>
                   <p>20% - 0%</p>
-                </div>
+                </div> */}
                 <div
                   style={{
                     display: "flex",
@@ -210,7 +215,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                     height: "fit-content",
                   }}
                 >
-                  <SearchBar inputValue={inputValue} />
+                  <SearchBar inputValue={inputValue} widthSearchArea="60%" />
                   <div
                     className="body-products"
                     style={{
@@ -221,51 +226,8 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                       height: "auto",
                     }}
                   >
-                    {textFilter == 0 ? (
-                      <div
-                        style={{
-                          height: "auto",
-                        }}
-                      >
-                        <AccordionProducts
-                          products={products}
-                          initial_rannge={100}
-                          final_range={80}
-                        />
-
-                        <AccordionProducts
-                          products={products}
-                          initial_rannge={80}
-                          final_range={60}
-                        />
-
-                        <AccordionProducts
-                          products={products}
-                          initial_rannge={60}
-                          final_range={40}
-                        />
-
-                        <AccordionProducts
-                          products={products}
-                          initial_rannge={40}
-                          final_range={10}
-                        />
-
-                        <AccordionProducts
-                          products={products}
-                          initial_rannge={9.9}
-                          final_range={0}
-                        />
-
-                        <AccordionProducts
-                          expanded={true}
-                          backgroundColor="#f9f6db"
-                          products={products}
-                          initial_rannge={100}
-                          final_range={0}
-                          description="Todos os Produtos"
-                        />
-                      </div>
+                    {textFilter.length === 0 ? (
+                      <ContainerAccordionProducts products={products} />
                     ) : (
                       <>
                         <div
@@ -282,7 +244,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                           }}
                         >
                           <>
-                            {filteredItems.length == 0 ? (
+                            {filteredItems.length === 0 ? (
                               <>Nenhum item foi encontrado :(</>
                             ) : (
                               <>
@@ -294,8 +256,12 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                                     discount,
                                     real_price,
                                     image_url,
+                                    quantity,
+                                    unit_type,
                                   }) => (
                                     <CardProduct
+                                      unit_type={unit_type}
+                                      quantity={quantity}
                                       key={id}
                                       name={name}
                                       price={price}

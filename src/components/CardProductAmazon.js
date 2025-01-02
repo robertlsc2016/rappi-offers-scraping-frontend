@@ -28,7 +28,7 @@ const CardProductAmazon = ({ name, price, image_url, link }) => {
         }}
       >
         <img
-          src={image_url}
+          src={`${image_url}`}
           style={{ width: "100%", height: "60px", objectFit: "contain" }}
         />
         <p

@@ -25,7 +25,7 @@ const AccordionProducts = ({
     <Accordion
       defaultExpanded={expanded}
       style={{
-        display: filteredProducts.length == 0 ? "none" : "block",
+        display: filteredProducts.length === 0 ? "none" : "block",
       }}
       sx={{ width: "100%" }}
       slotProps={{ transition: { timeout: 50 } }}
@@ -67,8 +67,19 @@ const AccordionProducts = ({
         }}
       >
         {filteredProducts.map(
-          ({ id, name, price, discount, real_price, image_url }) => (
+          ({
+            id,
+            name,
+            price,
+            discount,
+            real_price,
+            image_url,
+            unit_type,
+            quantity,
+          }) => (
             <CardProduct
+              unit_type={unit_type}
+              quantity={quantity}
               key={id}
               name={name}
               price={price}

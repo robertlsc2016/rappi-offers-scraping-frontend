@@ -53,6 +53,7 @@ const getProducts = async ({
   ];
 
   const allProductsCleann = _.uniqBy(allProducts, "id");
+  console.log(allProductsCleann);
   return allProductsCleann;
 };
 
@@ -61,42 +62,26 @@ const filterProducts = (data, initial_index) =>
     .filter((component) => component.index >= initial_index)
     .flatMap((component) =>
       component.resource.products.map(
-        ({ id, name, price, discount, real_price, image_url }) => ({
+        ({
           id,
           name,
           price,
           discount,
           real_price,
           image_url,
+          quantity,
+          unit_type,
+        }) => ({
+          id,
+          name,
+          price,
+          discount,
+          real_price,
+          image_url,
+          quantity,
+          unit_type,
         })
       )
     );
-
-// const filterProducts = (data, initial_index) => {
-//   let productsFiltered = [];
-
-//   for (let compnts = 0; compnts <= data.components.length - 1; compnts++) {
-//     if (data.components[compnts].index >= initial_index) {
-//       for (
-//         let prdcts = 0;
-//         prdcts <= data.components[compnts].resource.products.length - 1;
-//         prdcts++
-//       ) {
-//         productsFiltered.push({
-//           id: data.components[compnts].resource.products[prdcts].id,
-//           name: data.components[compnts].resource.products[prdcts].name,
-//           price: data.components[compnts].resource.products[prdcts].price,
-//           discount: data.components[compnts].resource.products[prdcts].discount,
-//           real_price:
-//             data.components[compnts].resource.products[prdcts].real_price,
-//           image_url:
-//             data.components[compnts].resource.products[prdcts].image_url,
-//         });
-//       }
-//     }
-//   }
-
-//   return productsFiltered;
-// };
 
 export default getProducts;
