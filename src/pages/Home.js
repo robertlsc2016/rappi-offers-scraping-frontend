@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CardMarkets from "../components/CardMarkets";
-import markets from "../data/markets";
+import markets from "../data/stores";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../components/SearchBar";
 
@@ -91,6 +91,21 @@ const Home = () => {
                     <S_BoxStores>
                       {markets
                         .filter((market) => market.type == "drugstore")
+                        .map(({ name, route, banner_url, id_store }) => (
+                          <CardMarkets
+                            name={name}
+                            route={route}
+                            img_path={banner_url}
+                            key={id_store}
+                          />
+                        ))}
+                    </S_BoxStores>
+                  </S_containerStores>
+                  <S_containerStores>
+                    <h1>Shopping</h1>
+                    <S_BoxStores>
+                      {markets
+                        .filter((market) => market.type == "shopping")
                         .map(({ name, route, banner_url, id_store }) => (
                           <CardMarkets
                             name={name}

@@ -1,4 +1,4 @@
-const markets = [
+const stores = [
   {
     name: "Turbo",
     route: "turbo",
@@ -152,6 +152,36 @@ const markets = [
     banner_url:
       "https://images.rappi.com.br/marketplace/store_type_1726250032111.jpg",
   },
+  {
+    name: "MuiltiCoisas",
+    route: "multicoisas",
+    parent_store_type: "rappimall_parent",
+    store_type: "multicoisas",
+    type: "shopping",
+    id_store: 900062430,
+    banner_url:
+      "https://www.multicoisas.com.br/on/demandware.static/-/Library-Sites-RefArchSharedLibrary/default/dw2786a66d/2009.jpg",
+  },
+  {
+    name: "Lojas Mel",
+    route: "lojas-mel",
+    parent_store_type: "rappimall_parent",
+    store_type: "lojasmel_ecomm_enc",
+    type: "shopping",
+    id_store: 900702315,
+    banner_url:
+      "https://mms.img.susercontent.com/fca877bc017049b2da4a26e6bae53d9f",
+  },
+  {
+    name: "Kalunga",
+    route: "kalunga",
+    parent_store_type: "rappimall_parent",
+    store_type: "kalunga_tecnologia_enc",
+    type: "shopping",
+    id_store: 900674942,
+    banner_url:
+      "https://iguatemi.com.br/brasilia/sites/brasilia/files/2020-01/Kalunga_logo.png",
+  },
 ];
 
-export default markets;
+export default stores;

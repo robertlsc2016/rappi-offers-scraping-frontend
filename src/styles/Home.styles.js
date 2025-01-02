@@ -17,7 +17,6 @@ export const S_containerStores = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  /* border: 1px solid; */
 `;
 
 export const S_BoxStores = styled.div`
@@ -27,14 +26,12 @@ export const S_BoxStores = styled.div`
   flex-wrap: wrap;
 
   height: fit-content;
-
-  gap: 10px;
-  width: 100%;
-  /* border: 1px solid; */
+  width: fit-content;
+  gap: 32px;
 `;
 
 export const S_GlobalContainer = styled.div`
-  border: 1px solid;
+  /* border: 1px solid; */
   padding-bottom: 27vh;
   width: 100%;
   height: fit-content;
@@ -102,11 +99,11 @@ export const S_BodyHomeInner = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15vh;
+  /* border: 1px solid; */
 `;
 
 export const S_BodyHomeBoxInner = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-
 `;

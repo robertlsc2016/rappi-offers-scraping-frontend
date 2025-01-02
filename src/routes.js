@@ -3,7 +3,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import LayoutMarkets from "./pages/LayoutMarkets";
-import markets from "./data/markets";
+import stores from "./data/stores";
 
 const Routes_ = () => {
   return (
@@ -11,7 +11,7 @@ const Routes_ = () => {
       <Routes>
         <Route element={<Home />} path="/" />
 
-        {markets.map(
+        {stores.map(
           ({ name, route, id_store, parent_store_type, store_type }) => (
             <Route
               key={id_store}
