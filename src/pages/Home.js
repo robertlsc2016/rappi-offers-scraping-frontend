@@ -3,9 +3,9 @@ import CardMarkets from "../components/CardMarkets";
 import markets from "../data/stores";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../components/SearchBar";
+import HomeIcon from "@mui/icons-material/Home";
 
 import SearchGlobal from "../components/SearchGlobal";
-import HomeIcon from "@mui/icons-material/Home";
 import { initial } from "../redux/statusViewSlice";
 import {
   S_BodyHomeBox,
@@ -48,14 +48,23 @@ const Home = () => {
   return (
     <>
       {
-        <S_IconButton onClick={() => returnInitial()}>
+        <S_IconButton id="homeIconButton" onClick={() => returnInitial()}>
           <HomeIcon />
         </S_IconButton>
       }
       <S_GlobalContainer>
         <S_HeaderContainer>
           <S_Header>
-            <h1>Filtro de Ofertas do Rappi</h1>
+            <h1
+              style={{
+                textAlign: "center",
+                width: "100%",
+                fontSize: `clamp(1rem, 1.5rem, 2rem)`,
+                // fontSize:"1.5rem"
+              }}
+            >
+              Filtro de Ofertas do Rappi
+            </h1>
             <S_SearchbarContainer>
               <SearchBar inputValue={handleInputChange} widthSearchArea="95%" />
             </S_SearchbarContainer>

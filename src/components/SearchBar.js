@@ -2,6 +2,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useRef, useState } from "react";
 import { initial, search } from "../redux/statusViewSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { S_SearchBarBox } from "../styles/SearchBar.styles";
 
 const SearchBar = ({ inputValue, widthSearchArea }) => {
   const dispatch = useDispatch();
@@ -40,20 +41,7 @@ const SearchBar = ({ inputValue, widthSearchArea }) => {
         height: "72px",
       }}
     >
-      <div
-        style={{
-          border: "1px solid black",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          background: "white",
-          width: widthSearchArea,
-          height: "70%",
-          borderRadius: "5000px",
-          padding: "0  32px",
-        }}
-      >
+      <S_SearchBarBox>
         <input
           style={{
             fontSize: "24px",
@@ -69,7 +57,7 @@ const SearchBar = ({ inputValue, widthSearchArea }) => {
           ref={inputRef}
         />
         <SearchIcon />
-      </div>
+      </S_SearchBarBox>
     </div>
   );
 };

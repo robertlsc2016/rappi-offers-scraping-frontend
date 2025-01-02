@@ -118,17 +118,9 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                 gap: "5px",
               }}
             >
-              <Chip label="aberto" color="success" size="small" />
+              {/* <Chip label="aberto" color="success" size="small" /> */}
               <Chip label={`ID: ${id_store}`} color="info" size="small" />
               <Chip label={infosStore.address} color="info" size="small" />
-
-              <Chip
-                label={`últ. atual.: ${moment(
-                  infosStore.store_type?.updated_at
-                ).format("DD/MM/YYYY HH:mm:ss")}`}
-                color="info"
-                size="small"
-              />
             </div>
             <Box>
               <Chip

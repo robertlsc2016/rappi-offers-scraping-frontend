@@ -1,5 +1,6 @@
 import { IconButton } from "@mui/material";
 import styled from "styled-components";
+import HomeIcon from "@mui/icons-material/Home";
 
 export const S_IconButton = styled(IconButton)`
   &.MuiIconButton-root {
@@ -10,6 +11,12 @@ export const S_IconButton = styled(IconButton)`
     top: 32px;
     left: 32px;
     /* border: 1px solid; */
+  }
+
+  @media (max-width: 700px) {
+    &.MuiIconButton-root {
+      display: none;
+    }
   }
 `;
 
@@ -28,6 +35,11 @@ export const S_BoxStores = styled.div`
   height: fit-content;
   width: fit-content;
   gap: 32px;
+
+  @media (max-width: 700px) {
+    justify-content: center;
+
+  }
 `;
 
 export const S_GlobalContainer = styled.div`
@@ -53,6 +65,7 @@ export const S_HeaderContainer = styled.div`
   height: 25vh;
   // padding: 16px;
   z-index: 100;
+
   /* border: 1px solid; */
   // border-radius: 50px;
 `;
@@ -63,13 +76,18 @@ export const S_Header = styled.div`
   flex-direction: column;
   align-items: center;
   background: white;
+  transition: width 0.5s ease, height 0.5ms ease;
 
   /* border: 1px solid; */
-  gap: 16px;
+  gap: 8px;
   width: 50%;
   padding: 16px;
   border-radius: 32px;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 4px 50px 5px;
+
+  @media (max-width: 700px) {
+    width: 95%;
+  }
 `;
 
 export const S_SearchbarContainer = styled.div`
