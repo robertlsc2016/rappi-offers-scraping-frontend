@@ -14,7 +14,7 @@ const similarOnAmazon = async ({ product_name }) => {
     method: "get",
     baseURL: `${proxyUrl}${searchUrl}`,
     headers: {
-      Origin: `${proxyUrl}:${Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000)}`, // Seu domínio local
+      Origin: `${proxyUrl}:${Math.floor(Math.random() * (9999 - 1000 + 1) + 1000)}`, // Seu domínio local
       "access-control-allow-origin": "*",
       "access-control-allow-headers": "*",
       "X-Requested-With": "XMLHttpRequest",
