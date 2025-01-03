@@ -2,9 +2,19 @@ import { Box, CircularProgress, Divider, Grid2, Modal } from "@mui/material";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import IconOffer from "./IconOffer";
 import similarOnAmazon from "../utils/similarOnAmazon";
-import CardProductAmazon from "./CardProductAmazon";
-import AliceCarousel from "react-alice-carousel";
-import useEmblaCarousel from "embla-carousel-react";
+
+import {
+  S_GridDescriptionBox,
+  S_GridDescriptionContainer,
+  S_GridDescriptionrBox,
+  S_GridImage,
+  S_ModalContainer,
+  S_ModalInner,
+  S_ModalInnerBox1,
+  S_SimilarProductsAmazonContainer,
+  S_TitleProduct,
+} from "../styles/ModalProducts.styles";
+import EmblaCarousel from "./carousel/EmblaCarousel";
 
 const ModalProduct = forwardRef(
   ({ name, banner_url, price, real_price, discount }, ref) => {
@@ -39,55 +49,16 @@ const ModalProduct = forwardRef(
     }));
 
     return (
-      <Modal
+      <S_ModalContainer
         open={statusModal}
         onClose={(e) => {
           e.stopPropagation(); // Impede que cliques externos acionem eventos adicionais
           handleClose();
         }}
       >
-        <Box
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            // width: 400,
-            bgcolor: "#EFF0F0",
-            // border: "2px solid #000",
-            boxShadow: 24,
-            p: 4,
-          }}
-        >
-          <Grid2
-            spacing={2}
-            container
-            style={{
-              // display: "flex",
-              // flexDirection: "row",
-              width: "70vw",
-              height: "80vh",
-              background: "white",
-              borderRadius: "16px",
-              padding: "24px",
-            }}
-          >
-            <Grid2
-              size={6}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                border: "2px solid #e9e9e9",
-                borderRadius: "16px",
-                height: "100%",
-                // width: "100%",
-                padding: "32px",
-              }}
-            >
+        <S_ModalInner>
+          <S_ModalInnerBox1 spacing={{ xs: 1, sm: 2 }} container>
+            <S_GridImage size={{ xs: 12, sm: 6 }}>
               <img
                 src={`${banner_url}`}
                 style={{
@@ -96,46 +67,13 @@ const ModalProduct = forwardRef(
                   height: "100%",
                 }}
               />
-            </Grid2>
+            </S_GridImage>
 
-            <Grid2 size={6}>
-              <Box
-                style={{
-                  gap: "12px",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <h1
-                  style={{
-                    // border: "2px solid black",
-                    fontSize: "2.5rem",
-                    margin: 0,
-                    padding: 0,
-                  }}
-                >
-                  {name}
-                </h1>
-                <Box
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                    // border: "2px solid black",
-                    gap: "16px",
-                  }}
-                >
-                  <p
-                    style={{
-                      // border: "2px solid black",
-                      margin: 0,
-                      fontSize: "1.6rem",
-                      padding: 0,
-                    }}
-                  >
-                    R$ {price}
-                  </p>
+            <S_GridDescriptionContainer size={{ xs: 12, sm: 6 }}>
+              <S_GridDescriptionBox>
+                <S_TitleProduct>{name}</S_TitleProduct>
+                <S_GridDescriptionrBox>
+                  <p>R$ {price}</p>
                   <Box
                     style={{
                       gap: "8px",
@@ -169,25 +107,10 @@ const ModalProduct = forwardRef(
                       {discount}
                     </p>
                   </Box>
-                </Box>
+                </S_GridDescriptionrBox>
                 <Divider sx={{ opacity: 1, background: "black" }} />
-                <Box
-                  style={{
-                    overflow: "auto",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "8px",
-                    height: "100%",
-                  }}
-                >
-                  <h2
-                    style={{
-                      margin: "0",
-                      padding: "0",
-                    }}
-                  >
-                    Similares na Amazon:
-                  </h2>
+                <S_SimilarProductsAmazonContainer>
+                  <h2>Similares na Amazon:</h2>
 
                   {loadingProductsAmazon ? (
                     <>
@@ -197,39 +120,15 @@ const ModalProduct = forwardRef(
                           justifyContent: "center",
                           alignItems: "center",
                           flexDirection: "row",
-                          flexWrap: "wrap",
+                          // flexWrap: "wrap",
                           width: "100%",
                           height: "100%",
-                          gap: "12px",
                           // border: "1px solid black",
-
-                          // overflow: "auto",
                         }}
                       >
-                        <AliceCarousel
-                          responsive={{
-                            0: { items: 1 },
-                            400: { items: 2 },
-                            600: { items: 3 },
-                            800: { items: 4 },
-                            1000: { items: 5 },
-                            1200: { items: 7 },
-                          }}
-                          items={similarProductsAmazon.map(
-                            ({ name, link, image, price }, index) => (
-                              <>
-                                <CardProductAmazon
-                                  link={link}
-                                  price={price}
-                                  data-value={index + 1}
-                                  className="item"
-                                  name={name}
-                                  // responsive={responsive}
-                                  image_url={image}
-                                />
-                              </>
-                            )
-                          )}
+                        <EmblaCarousel
+                          slides={similarProductsAmazon}
+                          selection="amazon"
                         />
                       </Box>
                     </>
@@ -252,54 +151,14 @@ const ModalProduct = forwardRef(
                       </div>
                     </>
                   )}
-                </Box>
-              </Box>
-            </Grid2>
-          </Grid2>
-        </Box>
-      </Modal>
+                </S_SimilarProductsAmazonContainer>
+              </S_GridDescriptionBox>
+            </S_GridDescriptionContainer>
+          </S_ModalInnerBox1>
+        </S_ModalInner>
+      </S_ModalContainer>
     );
   }
 );
 
-// ({ name, banner_url, price, open, setOpen }) => {
-
-// };
-
 export default ModalProduct;
-
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "row",
-//     width: "70vw",
-//     height: "80vh",
-//     background: "white",
-//     borderRadius: "16px",
-//     padding: "24px",
-//   }}
-// >
-//   <h2
-//     style={{
-//       margin: 0,
-//       padding: 0,
-//     }}
-//   >
-//     <Box
-//       style={{
-//         width: "50%",
-//         height: "100%",
-//       }}
-//     >
-//       <img
-//         src={banner_url}
-//         style={{
-//           objectFit: "contain",
-//           border: "1px solid",
-//           width: "100%",
-//           height: "100%",
-//         }}
-//       />
-//     </Box>
-//   </h2>
-// </div>;

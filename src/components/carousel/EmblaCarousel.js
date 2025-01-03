@@ -6,9 +6,9 @@ import {
 } from "./EmblaCarouselArrowButtons";
 import useEmblaCarousel from "embla-carousel-react";
 import CardProduct from "../CardProduct";
+import CardProductAmazon from "../CardProductAmazon";
 
-const EmblaCarousel = ({ slides, options }) => {
-  console.log(slides);
+const EmblaCarousel = ({ slides, options, selection, link }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const {
@@ -33,21 +33,38 @@ const EmblaCarousel = ({ slides, options }) => {
                 price,
                 quantity,
                 unit_type,
+                link
               },
               index
             ) => (
               <div className="embla__slide" key={index}>
-                <CardProduct
-                  key={id}
-                  quantity={quantity}
-                  unit_type={unit_type}
-                  className="item"
-                  image={`https://images.rappi.com.br/products/${image}`}
-                  name={name}
-                  discount={discount}
-                  real_price={real_price}
-                  price={price}
-                />{" "}
+                {selection == "amazon" ? (
+                  <CardProductAmazon
+                    link={link}
+                    price={price}
+                    data-value={index + 1}
+                    className="item"
+                    name={name}
+                    // responsive={responsive}
+                    image_url={image}
+                  />
+                ) : (
+                  <CardProduct
+                    key={id}
+                    quantity={quantity}
+                    unit_type={unit_type}
+                    className="item"
+                    image={
+                      image.includes("amazon")
+                        ? image
+                        : `https://images.rappi.com.br/products/${image}`
+                    }
+                    name={name}
+                    discount={discount}
+                    real_price={real_price}
+                    price={price}
+                  />
+                )}
               </div>
             )
           )}

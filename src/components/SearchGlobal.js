@@ -76,7 +76,7 @@ const SearchGlobal = ({ text }) => {
             </div>
 
             <div>
-              <div style={{}}>
+              <div>
                 <EmblaCarousel
                   slides={store.products.sort((a, b) => a.price - b.price)}
                   options={OPTIONS}

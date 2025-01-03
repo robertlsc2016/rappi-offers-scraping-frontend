@@ -64,7 +64,6 @@ const Home = () => {
                 textAlign: "center",
                 width: "100%",
                 fontSize: `clamp(1rem, 1.5rem, 2rem)`,
-                // fontSize:"1.5rem"
               }}
             >
               Filtro de Ofertas do Rappi
@@ -79,16 +78,29 @@ const Home = () => {
                     cursor: "pointer",
                     display: "flex",
                     justifyContent: "center",
-                    // justifyContent: "space-around",
                     alignItems: "center",
                     gap: "16px",
                     width: "100%",
-                    // border: "1px solid black",
                   }}
                 >
-                  <Chip label="Mercados" href="#markets" component="a" />
-                  <Chip label="Farmácia" href="#drugstore" component="a" />
-                  <Chip label="Shopping" href="#shopping" component="a" />
+                  <Chip
+                    color="info"
+                    label="Mercados"
+                    href="#markets"
+                    component="a"
+                  />
+                  <Chip
+                    color="info"
+                    label="Farmácia"
+                    href="#drugstore"
+                    component="a"
+                  />
+                  <Chip
+                    color="info"
+                    label="Shopping"
+                    href="#shopping"
+                    component="a"
+                  />
                 </div>
               </>
             )}

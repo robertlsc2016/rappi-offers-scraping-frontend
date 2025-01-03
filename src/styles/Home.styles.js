@@ -21,10 +21,14 @@ export const S_IconButton = styled(IconButton)`
 `;
 
 export const S_containerStores = styled.div`
-  scroll-margin-top: 27vh;
+  scroll-margin-top: 28vh;
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @media (max-width: 400px) {
+    scroll-margin-top: 32vh;
+  }
 `;
 
 export const S_BoxStores = styled.div`
@@ -56,31 +60,34 @@ export const S_GlobalContainer = styled.div`
 
 export const S_HeaderContainer = styled.div`
   position: fixed;
+
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  top: 0;
   width: 100%;
-  height: 25vh;
-  // padding: 16px;
+  /* height: 25vh; */
+  height: auto;
+
   z-index: 100;
 
   /* border: 1px solid; */
-  // border-radius: 50px;
+  padding-top: 10px;
 `;
 
 export const S_Header = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+
   background: white;
   transition: width 0.5s ease, height 0.5ms ease;
 
   /* border: 1px solid; */
   gap: 8px;
   width: 50%;
+  height: auto;
   padding: 16px;
   border-radius: 32px;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 4px 50px 5px;
@@ -102,6 +109,10 @@ export const S_BodyHomeContainer = styled.div`
   padding: 0 10%;
   /* background: red; */
   margin-top: 28vh;
+
+  @media (max-width: 400px) {
+    margin-top: 32vh;
+  }
 `;
 
 export const S_BodyHomeBox = styled.div`

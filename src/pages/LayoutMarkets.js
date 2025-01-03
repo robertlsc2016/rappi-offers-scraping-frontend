@@ -11,6 +11,7 @@ import CardProduct from "../components/CardProduct";
 import ContainerAccordionProducts from "../components/ContainerAccordionProducts";
 import { useDispatch } from "react-redux";
 import { initial } from "../redux/statusViewSlice";
+import { S_BoxChips } from "../styles/LayoutMarkets.styles";
 const moment = require("moment");
 
 const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
@@ -109,26 +110,17 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
           >
             <h1 style={{ margin: 0, padding: 0 }}>{name}</h1>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-
-                gap: "5px",
-              }}
-            >
-              {/* <Chip label="aberto" color="success" size="small" /> */}
+            <S_BoxChips>
               <Chip label={`ID: ${id_store}`} color="info" size="small" />
               <Chip label={infosStore.address} color="info" size="small" />
-            </div>
-            <Box>
-              <Chip
-                label={` ${products.length} itens`}
-                color="info"
-                size="small"
-              />
-            </Box>
+              <Box>
+                <Chip
+                  label={` ${products.length} itens`}
+                  color="info"
+                  size="small"
+                />
+              </Box>
+            </S_BoxChips>
           </Box>
         </div>
 
@@ -176,28 +168,6 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                   height: "100%",
                 }}
               >
-                {/* <div
-                  className="left-menu"
-                  style={{
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    flexDirection: "column",
-                    gap: "16px",
-
-                    padding: "16px",
-                    backgroundColor: "#e9e9e9",
-                    width: "15%",
-                    height: "100%",
-                    borderRadius: "16px",
-                  }}
-                >
-                  <p>Todas Ofertas</p>
-                  <p>100% - 80%</p>
-                  <p>80% - 70%</p>
-                  <p>70% - 50%</p>
-                  <p>50% - 20%</p>
-                  <p>20% - 0%</p>
-                </div> */}
                 <div
                   style={{
                     display: "flex",
@@ -258,7 +228,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                                       name={name}
                                       price={price}
                                       discount={`${(discount * 100).toFixed(
-                                        2
+                                        1
                                       )}%`}
                                       image={image_url}
                                       real_price={real_price}
