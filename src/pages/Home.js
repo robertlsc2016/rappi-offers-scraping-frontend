@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardMarkets from "../components/CardMarkets";
 import markets from "../data/stores";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +20,7 @@ import {
   S_IconButton,
   S_SearchbarContainer,
 } from "../styles/Home.styles";
-import { IconButton } from "@mui/material";
+import { Chip } from "@mui/material";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
@@ -45,6 +45,10 @@ const Home = () => {
     dispatch(initial());
   };
 
+  useEffect(() => {
+    dispatch(initial());
+  }, []);
+
   return (
     <>
       {
@@ -68,6 +72,26 @@ const Home = () => {
             <S_SearchbarContainer>
               <SearchBar inputValue={handleInputChange} widthSearchArea="95%" />
             </S_SearchbarContainer>
+            {statusView == "INITIAL_VIEW" && (
+              <>
+                <div
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "center",
+                    // justifyContent: "space-around",
+                    alignItems: "center",
+                    gap: "16px",
+                    width: "100%",
+                    // border: "1px solid black",
+                  }}
+                >
+                  <Chip label="Mercados" href="#markets" component="a" />
+                  <Chip label="Farmácia" href="#drugstore" component="a" />
+                  <Chip label="Shopping" href="#shopping" component="a" />
+                </div>
+              </>
+            )}
           </S_Header>
         </S_HeaderContainer>
 
@@ -80,7 +104,7 @@ const Home = () => {
 
               {statusView == "INITIAL_VIEW" && (
                 <>
-                  <S_containerStores>
+                  <S_containerStores id="markets">
                     <h1>Mercados</h1>
                     <S_BoxStores>
                       {markets
@@ -95,7 +119,7 @@ const Home = () => {
                         ))}
                     </S_BoxStores>
                   </S_containerStores>
-                  <S_containerStores>
+                  <S_containerStores id="drugstore">
                     <h1>Farmácia</h1>
                     <S_BoxStores>
                       {markets
@@ -110,7 +134,7 @@ const Home = () => {
                         ))}
                     </S_BoxStores>
                   </S_containerStores>
-                  <S_containerStores>
+                  <S_containerStores id="shopping">
                     <h1>Shopping</h1>
                     <S_BoxStores>
                       {markets

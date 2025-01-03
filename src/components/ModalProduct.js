@@ -4,6 +4,7 @@ import IconOffer from "./IconOffer";
 import similarOnAmazon from "../utils/similarOnAmazon";
 import CardProductAmazon from "./CardProductAmazon";
 import AliceCarousel from "react-alice-carousel";
+import useEmblaCarousel from "embla-carousel-react";
 
 const ModalProduct = forwardRef(
   ({ name, banner_url, price, real_price, discount }, ref) => {
@@ -36,12 +37,6 @@ const ModalProduct = forwardRef(
     useImperativeHandle(ref, () => ({
       handleOpenMdal,
     }));
-
-    const responsive = {
-      0: { items: 4 },
-      568: { items: 4 },
-      1024: { items: 4 },
-    };
 
     return (
       <Modal
@@ -212,7 +207,14 @@ const ModalProduct = forwardRef(
                         }}
                       >
                         <AliceCarousel
-                          responsive={responsive}
+                          responsive={{
+                            0: { items: 1 },
+                            400: { items: 2 },
+                            600: { items: 3 },
+                            800: { items: 4 },
+                            1000: { items: 5 },
+                            1200: { items: 7 },
+                          }}
                           items={similarProductsAmazon.map(
                             ({ name, link, image, price }, index) => (
                               <>
@@ -222,7 +224,7 @@ const ModalProduct = forwardRef(
                                   data-value={index + 1}
                                   className="item"
                                   name={name}
-                                  responsive={responsive}
+                                  // responsive={responsive}
                                   image_url={image}
                                 />
                               </>

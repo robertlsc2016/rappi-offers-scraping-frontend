@@ -3,6 +3,7 @@ import Routes from "./routes";
 import "./styles/globalStyles.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import "./styles/embla.css";
 
 function App() {
   return (

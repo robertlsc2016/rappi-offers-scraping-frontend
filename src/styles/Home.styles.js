@@ -21,6 +21,7 @@ export const S_IconButton = styled(IconButton)`
 `;
 
 export const S_containerStores = styled.div`
+  scroll-margin-top: 27vh;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -38,7 +39,6 @@ export const S_BoxStores = styled.div`
 
   @media (max-width: 700px) {
     justify-content: center;
-
   }
 `;
 

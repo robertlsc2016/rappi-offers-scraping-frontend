@@ -1,39 +1,34 @@
 @import "react-alice-carousel/lib/alice-carousel.css";
 * {
   transition: width 0.5s ease, height 0.5ms ease;
+  scroll-behavior: smooth;
 
   box-sizing: border-box;
-  /* padding: 0;
-  margin: 0; */
-  /* border: 1px solid black; */
 }
 
 html {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  /* justify-content: flex-start; */
-  /* align-items: center; */
-
   width: 100vw;
   height: 100vh;
   font-family: "Roboto", sans-serif;
 }
 
 input {
-  all: unset; /* Remove quase todos os estilos padrão */
+  all: unset;
 }
 
 body {
   display: flex;
   justify-content: center;
   overflow-x: hidden;
-  /* border: 1px solid black; */
   width: 100%;
   height: 100%;
-  /* justify-content: ; */
   padding: 0 !important;
   margin: 0 !important;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
 }
 
 p,
@@ -42,37 +37,30 @@ h1 {
   padding: 0;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
 .content {
-  height: 200vh; /* Para demonstrar a barra de rolagem */
+  height: 200vh;
   background: linear-gradient(180deg, #f8f9fa, #e9ecef);
   padding: 20px;
 }
 
-/* Estilo da barra de rolagem */
 ::-webkit-scrollbar {
-  width: 6px; /* Largura */
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Cor do trilho */
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Cor do scroll */
-  border-radius: 4px; /* Borda arredondada */
+  background: #888;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Cor ao passar o mouse */
+  background: #555;
 }
 
-/* Para navegadores compatíveis com scrollbar-color */
 body {
-  scrollbar-color: #888 #f1f1f1; /* Cor do scroll e do trilho */
-  scrollbar-width: thin; /* Largura fina */
+  scrollbar-color: #888 #f1f1f1;
+  scrollbar-width: thin;
 }
