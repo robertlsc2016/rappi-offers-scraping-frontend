@@ -6,7 +6,6 @@ import {
   Skeleton,
 } from "@mui/material";
 import WestIcon from "@mui/icons-material/West";
-import { useQuery } from "@tanstack/react-query";
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
