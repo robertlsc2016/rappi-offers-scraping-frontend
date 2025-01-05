@@ -1,6 +1,5 @@
 import { IconButton } from "@mui/material";
 import styled from "styled-components";
-import HomeIcon from "@mui/icons-material/Home";
 
 export const S_IconButton = styled(IconButton)`
   &.MuiIconButton-root {
@@ -41,8 +40,18 @@ export const S_BoxStores = styled.div`
   width: fit-content;
   gap: 32px;
 
+
+  /* @media (max-width: 1000px) {
+    justify-content: center;
+  }
+
   @media (max-width: 700px) {
     justify-content: center;
+  } */
+
+  &::after {
+    content: "";
+    justify-content: auto;
   }
 `;
 

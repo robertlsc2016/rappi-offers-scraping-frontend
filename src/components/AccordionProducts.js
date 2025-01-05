@@ -6,20 +6,29 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CardProduct from "./CardProduct";
+import { S_AccordionDetails } from "../styles/AccordionDetails.style";
 
 const AccordionProducts = ({
+  id_store,
   products,
   initial_rannge,
   final_range,
   backgroundColor = "#e9e9e9",
   description,
   expanded = false,
+  IsNewItems = false,
 }) => {
-  const filteredProducts = products.filter(
-    (product) =>
-      product.discount * 100 <= initial_rannge &&
-      product.discount * 100 >= final_range
-  );
+  if (IsNewItems) {
+    products = JSON.parse(localStorage.getItem(`new_items_${id_store}`)) || [];
+  }
+
+  const filteredProducts = products.filter((product) => {
+    const discountPercentage = product.discount * 100;
+
+    return (
+      discountPercentage >= final_range && discountPercentage <= initial_rannge
+    );
+  });
 
   return (
     <Accordion
@@ -53,19 +62,7 @@ const AccordionProducts = ({
           <p>[{filteredProducts.length} itens]</p>
         </div>
       </AccordionSummary>
-      <AccordionDetails
-        style={{
-          // overflow: "auto",
-
-          display: "flex",
-          flexDirection: "row",
-          gap: "16px",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          alignItems: "center",
-          // height: "300px",
-        }}
-      >
+      <S_AccordionDetails>
         {filteredProducts.map(
           ({
             id,
@@ -78,18 +75,19 @@ const AccordionProducts = ({
             quantity,
           }) => (
             <CardProduct
+              key={id}
+              id={id}
               unit_type={unit_type}
               quantity={quantity}
-              key={id}
               name={name}
               price={price}
-              discount={`${(discount * 100).toFixed(2)}%`}
+              discount={discount}
               image={image_url}
               real_price={real_price}
             />
           )
         )}
-      </AccordionDetails>
+      </S_AccordionDetails>
     </Accordion>
   );
 };

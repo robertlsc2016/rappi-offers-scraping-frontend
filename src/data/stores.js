@@ -143,6 +143,16 @@ const stores = [
       "https://www.cidademarketing.com.br/marketing/wp-content/uploads/2023/01/drogaria_saopaulo.jpg",
   },
   {
+    name: "Panvel",
+    route: "panvel",
+    parent_store_type: "farmacia",
+    store_type: "panvel",
+    type: "drugstore",
+    id_store: 900023920,
+    banner_url:
+      "https://cdn1.staticpanvel.com.br/cdn_service/svg/logo-panvel.png",
+  },
+  {
     name: "Promofarma",
     route: "promofarma",
     parent_store_type: "market",

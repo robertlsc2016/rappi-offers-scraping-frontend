@@ -104,7 +104,7 @@ const ModalProduct = forwardRef(
                         fontWeight: "bold",
                       }}
                     >
-                      {discount}
+                      {(discount * 100).toFixed(2)}%
                     </p>
                   </Box>
                 </S_GridDescriptionrBox>

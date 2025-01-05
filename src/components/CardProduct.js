@@ -4,6 +4,7 @@ import ModalProduct from "./ModalProduct";
 import { useRef } from "react";
 
 const CardProduct = ({
+  id = "",
   name = "Não definido",
   price = 0,
   discount = 0,
@@ -22,6 +23,7 @@ const CardProduct = ({
 
   return (
     <div
+      key={id}
       onClick={() => chamarFuncaoDoFilho()}
       style={{
         cursor: "pointer",
@@ -37,7 +39,7 @@ const CardProduct = ({
         gap: "16px",
         // border: "1px solid black",
         borderRadius: "16px",
-        boxShadow: `rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;`,
+        boxShadow: `rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px`,
       }}
     >
       <div
@@ -85,27 +87,29 @@ const CardProduct = ({
           }}
         >
           <Chip
-            label={`R$ ${price}`}
+            label={`R$ ${price.toFixed(2)}`}
             color="success"
             // size="small"
             sx={{ height: "16px" }}
           />
-          <p
-            style={{
-              fontWeight: "bolder",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "row",
-              fontSize: "12px",
-              gap: "1px",
-              margin: "0",
-              padding: "0",
-            }}
-          >
-            {discount}
-            <IconOffer />
-          </p>
+          {discount > 0 && (
+            <p
+              style={{
+                fontWeight: "bolder",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "row",
+                fontSize: "12px",
+                gap: "1px",
+                margin: "0",
+                padding: "0",
+              }}
+            >
+              {(discount * 100).toFixed(1)}%
+              <IconOffer />
+            </p>
+          )}
         </div>
 
         <Box
@@ -116,40 +120,49 @@ const CardProduct = ({
             // border: "1px solid",
           }}
         >
-          <Chip
-            style={{
-              textDecoration: "line-through",
-            }}
-            sx={{ height: "16px" }}
-            label={`R$ ${real_price}`}
-            color="warning"
-          />
-          <p
-            style={{
-              width: "100%",
-              fontSize: "12px",
-
-              margin: "0",
-              padding: "0",
-              overflowWrap: "break-word",
-              wordWrap: "break-word" /* Suporte legado */,
-            }}
-          >
-            <b
+          {discount > 0 && (
+            <Chip
               style={{
+                textDecoration: "line-through",
+              }}
+              sx={{ height: "16px" }}
+              label={`R$ ${real_price}`}
+              color="warning"
+            />
+          )}
+
+          <div>
+            <p
+              style={{
+                width: "100%",
+                fontSize: "12px",
+
                 margin: "0",
+                padding: "0",
                 overflowWrap: "break-word",
                 wordWrap: "break-word",
-                padding: "0",
               }}
             >
-              {name}
-            </b>
-            <p>
+              <b
+                style={{
+                  margin: "0",
+                  overflowWrap: "break-word",
+                  wordWrap: "break-word",
+                  padding: "0",
+                }}
+              >
+                {name}
+              </b>
+            </p>
+            <div
+              style={{
+                fontSize: "12px",
+              }}
+            >
               {quantity}
               {unit_type}
-            </p>
-          </p>
+            </div>
+          </div>
         </Box>
       </div>
       <ModalProduct

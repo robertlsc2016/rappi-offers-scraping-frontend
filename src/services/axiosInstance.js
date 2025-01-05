@@ -10,8 +10,8 @@ const headers = {
   authorization:
     "Bearer ft.gAAAAABndDqAEHOE704kaXtzyIPtWiwNWU5o3ElIz9K1WAOq5pjSwRQibBhCn9wnEkhOwJL2eumA0TBdl_oyGFq_gVHy1x1K56CvvSq6qYsG9_pewR4VgPud4jZdL3nfPtUPBqGIPzDJ7tG_c_ps0-EKU9SEc_6Gu6RVcPp1SaVA2xUsCjIPIKFl3gGAYuhQyJWuQOOYhYzIJCWa4YiPjfvWNijydbWhOL_IGoVnQyfx2kJYoKSTBtOzykiEq_3-lxu-KagAxqixaJoPMTEzlaiPgXKPa8e0F2PK0btvL2yxQOtyeSrcRj-yEFTUllpsVAUz2W14VEmAYTenu-WyoWFiie-LngMpo58HpCSjgjPjna0rp6l1_RA-RUoY2nk-1wh6-OTltc8tJZHyp-P5iNnpsyLljULS-A==",
   "content-type": "application/json",
-  origin: "https://www.rappi.com.br",
-  referer: "https://www.rappi.com.br/",
+  // origin: "https://www.rappi.com.br",
+  // referer: "https://www.rappi.com.br/",
 
   // accept: "application/json",
   // "accept-language": "pt-BR",
