@@ -7,6 +7,8 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CardProduct from "./CardProduct";
 import { S_AccordionDetails } from "../styles/AccordionDetails.style";
+import axios from "axios";
+import Axios from "../services/axiosInstance";
 
 const AccordionProducts = ({
   id_store,
@@ -17,11 +19,9 @@ const AccordionProducts = ({
   description,
   expanded = false,
   IsNewItems = false,
+  store_type,
+  parent_store_type,
 }) => {
-  if (IsNewItems) {
-    products = JSON.parse(localStorage.getItem(`new_items_${id_store}`)) || [];
-  }
-
   const filteredProducts = products.filter((product) => {
     const discountPercentage = product.discount * 100;
 

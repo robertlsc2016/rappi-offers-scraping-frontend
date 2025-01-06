@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import LayoutMarkets from "./pages/LayoutMarkets";
-import stores from "./data/stores";
+import Axios from "./services/axiosInstance";
 
 const Routes_ = () => {
+  const [stores, setStores] = useState([]);
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const getProducts = async () => {
+    const stores = await Axios.get("/getStores");
+    setStores(stores.data);
+  };
+
   return (
     <BrowserRouter>
       <Routes>

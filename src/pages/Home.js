@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import CardMarkets from "../components/CardMarkets";
-import markets from "../data/stores";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../components/SearchBar";
 import HomeIcon from "@mui/icons-material/Home";
@@ -21,9 +20,12 @@ import {
   S_SearchbarContainer,
 } from "../styles/Home.styles";
 import { Chip } from "@mui/material";
+import Axios from "../services/axiosInstance";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
+  const [stores, setStores] = useState([]);
+
   const dispatch = useDispatch();
   const statusView = useSelector((state) => state.statusView.status_view);
 
@@ -46,8 +48,15 @@ const Home = () => {
   };
 
   useEffect(() => {
+    getProducts();
+
     dispatch(initial());
   }, []);
+
+  const getProducts = async () => {
+    const stores = await Axios.get("/getStores");
+    setStores(stores.data);
+  };
 
   return (
     <>
@@ -119,7 +128,7 @@ const Home = () => {
                   <S_containerStores id="markets">
                     <h1>Mercados</h1>
                     <S_BoxStores>
-                      {markets
+                      {stores
                         .filter((market) => market.type == "market")
                         .map(({ name, route, banner_url, id_store }) => (
                           <CardMarkets
@@ -134,7 +143,7 @@ const Home = () => {
                   <S_containerStores id="drugstore">
                     <h1>Farmácia</h1>
                     <S_BoxStores>
-                      {markets
+                      {stores
                         .filter((market) => market.type == "drugstore")
                         .map(({ name, route, banner_url, id_store }) => (
                           <CardMarkets
@@ -149,7 +158,7 @@ const Home = () => {
                   <S_containerStores id="shopping">
                     <h1>Shopping</h1>
                     <S_BoxStores>
-                      {markets
+                      {stores
                         .filter((market) => market.type == "shopping")
                         .map(({ name, route, banner_url, id_store }) => (
                           <CardMarkets

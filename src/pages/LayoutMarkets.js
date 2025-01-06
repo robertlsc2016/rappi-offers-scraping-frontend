@@ -26,9 +26,11 @@ import {
   SBoxChips,
 } from "../styles/LayoutMarkets.styles";
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import Axios from "../services/axiosInstance";
 
 const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const [filteredItems, setFilteredItems] = useState([]);
+  const [newItens, setNewItens] = useState([]);
 
   useEffect(() => {
     window.scrollTo({
@@ -36,9 +38,23 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
       behavior: "instant",
     });
 
+    get_new_itens();
     get_infosStore();
     get_products();
   }, []);
+
+  const get_new_itens = async () => {
+    const newItens = await Axios.post("/getNewProductsStore", {
+      state: {
+        parent_store_type: store_type,
+        store_type: parent_store_type,
+      },
+      stores: [id_store],
+    });
+
+    console.log(newItens.data);
+    setNewItens(newItens.data);
+  };
 
   const get_infosStore = async () => {
     const infos = await getInfosStore({ id_store: id_store });
@@ -52,6 +68,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
       store_type,
       name,
     });
+
     const sortedProducts = productsData.sort((a, b) => b.discount - a.discount);
     setProducts(sortedProducts);
 
@@ -210,6 +227,9 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                   >
                     {textFilter.length === 0 ? (
                       <ContainerAccordionProducts
+                        new_products={newItens}
+                        parent_store_type={parent_store_type}
+                        store_type={store_type}
                         products={products}
                         id_store={id_store}
                       />
