@@ -1,7 +1,7 @@
 import Axios from "./axiosInstance";
 
 const globalSearchProduct = async ({ query }) => {
-  const getGlobalProducts = await Axios.post("/getInfoStore", {
+  const getGlobalProducts = await Axios.post("/globalSearchProducts", {
     query: query,
   });
 

@@ -30,7 +30,6 @@ const getProducts = async ({
 
   const { data } = await Axios.post("/getAllStoreProductOffers", configs);
 
-
   // localStorage.setItem(
   //   id_store,
   //   JSON.stringify({
@@ -39,10 +38,7 @@ const getProducts = async ({
   //   })
   // );
 
-  console.log(data)
-  return data
+  return data;
 };
-
-
 
 export default getProducts;

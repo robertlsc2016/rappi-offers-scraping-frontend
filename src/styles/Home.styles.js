@@ -40,14 +40,14 @@ export const S_BoxStores = styled.div`
   width: fit-content;
   gap: 32px;
 
-
   /* @media (max-width: 1000px) {
     justify-content: center;
   }
+    */
 
-  @media (max-width: 700px) {
+  @media (max-width: 650px) {
     justify-content: center;
-  } */
+  } 
 
   &::after {
     content: "";
