@@ -38,20 +38,30 @@ export const S_BoxStores = styled.div`
 
   height: fit-content;
   width: fit-content;
-  gap: 32px;
-
-  /* @media (max-width: 1000px) {
-    justify-content: center;
-  }
-    */
-
-  @media (max-width: 650px) {
-    justify-content: center;
-  } 
+  /* gap: 32px; */
 
   &::after {
     content: "";
     justify-content: auto;
+  }
+
+  @media (max-width: 650px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 700px) {
+    justify-content: center;
+    gap: 16px;
+
+    &::after {
+      content: none;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    justify-content: center;
+    gap: 24px;
   }
 `;
 
