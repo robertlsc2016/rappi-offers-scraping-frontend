@@ -43,22 +43,27 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
     get_products();
   }, []);
 
-  const get_new_itens = async () => {
-    const newItens = await Axios.post("/getNewProductsStore", {
+  const get_new_itens = () => {
+    const { data } = Axios.post("/getNewProductsStore", {
       state: {
         parent_store_type: store_type,
         store_type: parent_store_type,
       },
       stores: [id_store],
-    });
-
-    console.log(newItens.data);
-    setNewItens(newItens.data);
+    })
+      .then(({ data }) => {
+        setNewItens(data.products);
+      })
+      .catch(() => {
+        setNewItens([]);
+      });
   };
 
-  const get_infosStore = async () => {
-    const infos = await getInfosStore({ id_store: id_store });
-    setInfoStore(infos);
+  const get_infosStore = () => {
+    const { data } = getInfosStore({ id_store: id_store }).then((data) => {
+      setInfoStore(data);
+    });
+
   };
 
   const get_products = async () => {
@@ -69,7 +74,9 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
       name,
     });
 
-    const sortedProducts = productsData.sort((a, b) => b.discount - a.discount);
+    const sortedProducts = productsData.products.sort(
+      (a, b) => b.discount - a.discount
+    );
     setProducts(sortedProducts);
 
     setLoading(false);

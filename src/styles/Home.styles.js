@@ -20,13 +20,29 @@ export const S_IconButton = styled(IconButton)`
 `;
 
 export const S_containerStores = styled.div`
-  scroll-margin-top: 28vh;
   display: flex;
   flex-direction: column;
+
+  scroll-margin-top: 28vh;
   gap: 24px;
 
+  justify-content: flex-start;
+  align-items: center;
+
+  h1 {
+    width: 100%;
+    max-width: 1278px;
+    text-align: start;
+  }
+
+  width: 100%;
+
+  @media (max-width: 300px) {
+    scroll-margin-top: 40vh;
+  }
+
   @media (max-width: 400px) {
-    scroll-margin-top: 32vh;
+    scroll-margin-top: 35vh;
   }
 `;
 
@@ -38,30 +54,16 @@ export const S_BoxStores = styled.div`
 
   height: fit-content;
   width: fit-content;
-  /* gap: 32px; */
+  max-width: 1278px;
 
-  &::after {
-    content: "";
-    justify-content: auto;
-  }
+  gap: 24px;
 
-  @media (max-width: 650px) {
+  @media (max-width: 610px) {
     justify-content: center;
   }
 
-  @media (max-width: 700px) {
+  @media (min-width: 610px) and (max-width: 925px) {
     justify-content: center;
-    gap: 16px;
-
-    &::after {
-      content: none;
-      justify-content: center;
-    }
-  }
-
-  @media (max-width: 1000px) {
-    justify-content: center;
-    gap: 24px;
   }
 `;
 
@@ -124,14 +126,8 @@ export const S_BodyHomeContainer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  /* border: 1px solid; */
   padding: 0 10%;
-  /* background: red; */
-  margin-top: 28vh;
-
-  @media (max-width: 400px) {
-    margin-top: 32vh;
-  }
+  margin-top: 220px;
 `;
 
 export const S_BodyHomeBox = styled.div`

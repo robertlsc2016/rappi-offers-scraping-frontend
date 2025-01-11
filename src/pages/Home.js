@@ -25,6 +25,7 @@ import Axios from "../services/axiosInstance";
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
   const [stores, setStores] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const dispatch = useDispatch();
   const statusView = useSelector((state) => state.statusView.status_view);
@@ -48,23 +49,23 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getProducts();
+    get_stores();
 
     dispatch(initial());
   }, []);
 
-  const getProducts = async () => {
+  const get_stores = async () => {
     const stores = await Axios.get("/getStores");
+    setIsLoading(false);
     setStores(stores.data);
   };
 
   return (
     <>
-      {
-        <S_IconButton id="homeIconButton" onClick={() => returnInitial()}>
-          <HomeIcon />
-        </S_IconButton>
-      }
+      <S_IconButton id="homeIconButton" onClick={() => returnInitial()}>
+        <HomeIcon />
+      </S_IconButton>
+
       <S_GlobalContainer>
         <S_HeaderContainer>
           <S_Header>
@@ -123,7 +124,7 @@ const Home = () => {
                 <SearchGlobal text={textFilter} />
               )}
 
-              {statusView == "INITIAL_VIEW" && (
+              {statusView == "INITIAL_VIEW" && !isLoading && (
                 <>
                   <S_containerStores id="markets">
                     <h1>Mercados</h1>
