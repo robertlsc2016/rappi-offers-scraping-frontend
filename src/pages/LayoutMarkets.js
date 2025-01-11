@@ -26,12 +26,20 @@ import {
   SBoxChips,
 } from "../styles/LayoutMarkets.styles";
 import ScrollToTopButton from "../components/ScrollToTopButton";
-import Axios from "../services/axiosInstance";
 import getNewProductsStore from "../services/getNewProducts";
 
 const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [newItens, setNewItens] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+  const [loadingBody, setLoadingBody] = useState(true);
+
+  const [products, setProducts] = useState([]);
+  const [infosStore, setInfoStore] = useState({});
+  const [textFilter, setTextFilter] = useState("");
+  const [lengthArryFiltered, setLengthArryFiltered] = useState(0);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.scrollTo({
@@ -72,18 +80,8 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
       (a, b) => b.discount - a.discount
     );
     setProducts(sortedProducts);
-
     setLoading(false);
   };
-
-  const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]);
-  const [infosStore, setInfoStore] = useState({});
-  const [textFilter, setTextFilter] = useState("");
-  const [lengthArryFiltered, setLengthArryFiltered] = useState(0);
-  const dispatch = useDispatch();
-
-  const [loadingBody, setLoadingBody] = useState(true);
 
   const inputValue = (text) => {
     setTextFilter(text);

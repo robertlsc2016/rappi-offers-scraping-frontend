@@ -8,7 +8,6 @@ import SearchGlobal from "../components/SearchGlobal";
 import { initial } from "../redux/statusViewSlice";
 import {
   S_BodyHomeBox,
-  S_BodyHomeBoxInner,
   S_BodyHomeContainer,
   S_BodyHomeInner,
   S_BoxStores,
@@ -50,14 +49,13 @@ const Home = () => {
 
   useEffect(() => {
     get_stores();
-
     dispatch(initial());
   }, []);
 
   const get_stores = async () => {
     const stores = await Axios.get("/getStores");
-    setIsLoading(false);
     setStores(stores.data);
+    setIsLoading(false);
   };
 
   return (
