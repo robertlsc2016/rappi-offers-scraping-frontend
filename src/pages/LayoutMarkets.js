@@ -27,6 +27,7 @@ import {
 } from "../styles/LayoutMarkets.styles";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import Axios from "../services/axiosInstance";
+import getNewProductsStore from "../services/getNewProducts";
 
 const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const [filteredItems, setFilteredItems] = useState([]);
@@ -44,26 +45,19 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   }, []);
 
   const get_new_itens = () => {
-    const { data } = Axios.post("/getNewProductsStore", {
-      state: {
-        parent_store_type: store_type,
-        store_type: parent_store_type,
-      },
-      stores: [id_store],
-    })
-      .then(({ data }) => {
-        setNewItens(data.products);
-      })
-      .catch(() => {
-        setNewItens([]);
-      });
+    return getNewProductsStore({
+      id_store,
+      parent_store_type,
+      store_type,
+    }).then((res) => {
+      setNewItens(res.products);
+    });
   };
 
   const get_infosStore = () => {
-    const { data } = getInfosStore({ id_store: id_store }).then((data) => {
+    return getInfosStore({ id_store: id_store }).then((data) => {
       setInfoStore(data);
     });
-
   };
 
   const get_products = async () => {
