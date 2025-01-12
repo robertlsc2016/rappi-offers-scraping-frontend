@@ -16,7 +16,6 @@ const AccordionProducts = ({
   description,
   expanded = false,
 }) => {
-  console.log(products);
   return (
     <Accordion
       defaultExpanded={expanded}

@@ -48,7 +48,6 @@ const getProducts = async ({ id_store, parent_store_type, store_type }) => {
 
     return rangeProducts;
   } catch (error) {
-    console.error("Erro ao buscar produtos:", error);
     return null; // Retorna `null` em caso de erro
   }
 };
