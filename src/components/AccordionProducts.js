@@ -7,8 +7,6 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CardProduct from "./CardProduct";
 import { S_AccordionDetails } from "../styles/AccordionDetails.style";
-import axios from "axios";
-import Axios from "../services/axiosInstance";
 
 const AccordionProducts = ({
   products,
@@ -18,6 +16,7 @@ const AccordionProducts = ({
   description,
   expanded = false,
 }) => {
+  console.log(products);
   return (
     <Accordion
       defaultExpanded={expanded}

@@ -99,7 +99,7 @@ const CardProduct = ({
             gap: "5px",
 
             width: "100%",
-            
+
             fontSize: "12px",
             lineHeight: "12px",
             height: "37px",
@@ -118,17 +118,17 @@ const CardProduct = ({
           }}
         >
           {/* <div> */}
-            {/* <p
+          {/* <p
                 style={{
                   fontSize: "12px",
                   margin: "0px",
                   fontWeight: 400,
                 }}
               > */}
-            {name}
-            {/* </p> */}
-            {/* </div> */}
-            <S_ChipUnit color="warning" label={`${quantity} ${unit_type}`} />
+          {name}
+          {/* </p> */}
+          {/* </div> */}
+          <S_ChipUnit color="warning" label={`${quantity} ${unit_type}`} />
           {/* </div> */}
         </div>
       </div>

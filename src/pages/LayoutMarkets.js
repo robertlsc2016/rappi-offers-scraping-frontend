@@ -80,7 +80,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   function filterItems(text) {
     const items = products;
 
-    const filteredItems = items.filter((item) =>
+    const filteredItems = items.all.filter((item) =>
       item.name.toLowerCase().includes(text.toLowerCase())
     );
 
@@ -107,7 +107,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   }, [debouncedQuery, products]);
 
   const ArrayProducts = () => {
-    const productsFilter = products
+    const productsFilter = products.all
       .filter((item) =>
         item.name.toLowerCase().includes(textFilter.toLowerCase())
       )
@@ -158,13 +158,13 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
 
             <SBoxChips>
               <Chip label={`ID: ${id_store}`} color="info" size="small" />
-              <Box>
+              {!loading && (
                 <Chip
-                  label={` ${products.length} itens`}
+                  label={` ${products.all.length || 0} itens`}
                   color="info"
                   size="small"
                 />
-              </Box>
+              )}
             </SBoxChips>
           </BodyHeader>
         </S_Header>
