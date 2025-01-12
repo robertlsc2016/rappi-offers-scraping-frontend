@@ -37,17 +37,11 @@ const SearchBar = ({ inputValue, widthSearchArea }) => {
         justifyContent: "center",
         alignItems: "center",
         borderRadius: "16px",
-        // backgroundColor: "#e9e9e9",
         height: "72px",
       }}
     >
       <S_SearchBarBox>
         <input
-          style={{
-            fontSize: "24px",
-            width: "100%",
-            height: "100%",
-          }}
           value={searchInput}
           // onChange={(e) => setSearchInput(e.target.value)}
           onChange={(e) => handleInput(e.target.value)}

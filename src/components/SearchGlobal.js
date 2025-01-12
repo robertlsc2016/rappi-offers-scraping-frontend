@@ -29,10 +29,6 @@ const SearchGlobal = ({ text }) => {
     });
     setLoading(false);
     setStores(products);
-
-    const products1 = stores.map((store) => {
-      return store.products.sort((a, b) => a.price - b.price);
-    });
   };
 
   const OPTIONS = { align: "start" };
@@ -46,11 +42,21 @@ const SearchGlobal = ({ text }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              flexDirection: "column",
+              gap: "16px",
               width: "100%",
               height: "30vh",
             }}
           >
             <CircularProgress size="30px" />
+            <p
+              style={{
+                fontSize: "12px",
+                color: "gray",
+              }}
+            >
+              Calma ae que essa busca é pesada!
+            </p>
           </div>
         </>
       )}
