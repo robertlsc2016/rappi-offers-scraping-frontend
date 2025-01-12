@@ -13,7 +13,14 @@ const getNewProductsStore = async ({
     stores: [id_store],
   });
 
-  return data;
+  const reorderProductsDiscount = {
+    id_store: data.id_store,
+    products: data.products
+      .filter((product) => product.discount > 0.25)
+      .sort((a, b) => b.discount - a.discount),
+  };
+
+  return reorderProductsDiscount;
 };
 
 export default getNewProductsStore;

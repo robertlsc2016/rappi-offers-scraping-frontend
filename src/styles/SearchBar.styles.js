@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const S_SearchBarBox = styled.div`
-  border: 1px solid black;
+  border: 1px solid gray;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

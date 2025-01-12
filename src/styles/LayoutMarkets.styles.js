@@ -1,14 +1,24 @@
+import { Box } from "@mui/material";
 import styled from "styled-components";
 
 export const S_LayoutMarketsContainer = styled.div`
   display: flex;
   flex-direction: column;
+
   gap: 16px;
-  padding: 16px;
-  height: 100%;
+  padding: 8px;
+
+  /* min-height: 100%; */
+  height: fit-content;
   width: 100%;
+
+  @media (min-width: 600px) {
+    padding: 8px 32px;
+
+  }
 `;
 export const S_Header = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -18,7 +28,20 @@ export const S_Header = styled.div`
   width: 100%;
   height: auto;
   background-color: #e9e9e9;
+
   border-radius: 16px;
+`;
+
+export const ButtonReturn = styled(Box)`
+  height: 100%;
+`;
+
+export const BodyHeader = styled(Box)`
+  height: 100%;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  width: 100%;
 `;
 
 export const S_BodyMarket = styled.div`
@@ -29,11 +52,9 @@ export const S_BodyMarket = styled.div`
   margin-top: 0px;
   gap: 16px;
   border-radius: 16px;
-  /* border: 1px solid black; */
   height: auto;
   flex-wrap: wrap;
   width: 100%;
-  /* height: 100%; */ /* Comentado conforme seu código */
 `;
 
 export const S_BodyMarketSearching = styled.div`
@@ -59,7 +80,6 @@ export const S_BodyMarketInner = styled.div`
   width: 100%;
   gap: 16px;
   height: 100%;
-  /* border: 1px solid black; */
 `;
 
 export const SBoxChips = styled.div`
@@ -67,7 +87,7 @@ export const SBoxChips = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 5px;
-  /* border: 1px solid black; */
+  width: 100%;
   font-size: 1rem;
 
   @media (max-width: 400px) {
@@ -76,14 +96,3 @@ export const SBoxChips = styled.div`
     }
   }
 `;
-
-// .Grid {
-//   border: 1px solid #d9dddd;
-// }
-
-// .GridItem {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   background-color: #f8f8f0;
-// }

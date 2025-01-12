@@ -2,6 +2,11 @@ import { Box, Chip } from "@mui/material";
 import IconOffer from "./IconOffer";
 import ModalProduct from "./ModalProduct";
 import { useRef } from "react";
+import {
+  S_BoxImage,
+  S_ChipUnit,
+  S_ContainerProducts,
+} from "../styles/CardProduct.styles";
 
 const CardProduct = ({
   id = "",
@@ -22,45 +27,10 @@ const CardProduct = ({
   };
 
   return (
-    <div
-      key={id}
-      onClick={() => chamarFuncaoDoFilho()}
-      style={{
-        cursor: "pointer",
-        boxSizing: "border-box",
-        padding: "5px 5px 5px 5px",
-        backgroundColor: "rgb(239, 240, 240)",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        width: "150px",
-        height: "220px",
-        gap: "16px",
-        // border: "1px solid black",
-        borderRadius: "16px",
-        boxShadow: `rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px`,
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "45%",
-          // border: "1px solid black",
-        }}
-      >
-        <img
-          src={`${image}`}
-          style={{
-            objectFit: "contain",
-            width: "100%",
-            height: "100%",
-          }}
-        />
-      </div>
+    <S_ContainerProducts key={id} onClick={() => chamarFuncaoDoFilho()}>
+      <S_BoxImage>
+        <img src={`${image}`} />
+      </S_BoxImage>
 
       <div
         className="footer"
@@ -69,101 +39,98 @@ const CardProduct = ({
           justifyContent: "flex-start",
           alignItems: "flex-start",
           flexDirection: "column",
+          // gap: "8px",
           gap: "8px",
           width: "100%",
           height: "50%",
-          //   border: "1px solid black",
+          // border: "1px solid black",
         }}
       >
         <div
+          className="box-tags"
           style={{
-            // border: "1px solid black",
             display: "flex",
-            flexDirection: "row",
-            gap: "5px",
-            justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
+            flexDirection: "column",
+            gap: "2px",
             width: "100%",
           }}
         >
-          <Chip
-            label={`R$ ${price.toFixed(2)}`}
-            color="success"
-            // size="small"
-            sx={{ height: "16px" }}
-          />
+          <p
+            style={{
+              fontWeight: "600",
+            }}
+          >{`R$ ${price.toFixed(2)}`}</p>
           {discount > 0 && (
-            <p
-              style={{
-                fontWeight: "bolder",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "row",
-                fontSize: "12px",
-                gap: "1px",
-                margin: "0",
-                padding: "0",
-              }}
-            >
-              {(discount * 100).toFixed(1)}%
-              <IconOffer />
-            </p>
+            <>
+              <p
+                style={{
+                  fontWeight: "bolder",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "row",
+                  fontSize: "12px",
+                  gap: "1px",
+                  margin: "0",
+                  padding: "0",
+                }}
+              >
+                {(discount * 100).toFixed(1)}%
+                <IconOffer />
+              </p>
+              <Chip
+                style={{
+                  textDecoration: "line-through",
+                }}
+                sx={{ height: "16px", fontSize: "12px" }}
+                label={`R$ ${real_price.toFixed(2)}`}
+                color="warning"
+              />
+            </>
           )}
         </div>
 
-        <Box
+        <div
           style={{
             display: "flex",
             flexDirection: "column",
             gap: "5px",
-            // border: "1px solid",
+
+            width: "100%",
+            
+            fontSize: "12px",
+            lineHeight: "12px",
+            height: "37px",
+
+            overflow: "hidden",
+
+            // border: "1px solid black",
+
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+
+            // whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
           }}
         >
-          {discount > 0 && (
-            <Chip
-              style={{
-                textDecoration: "line-through",
-              }}
-              sx={{ height: "16px" }}
-              label={`R$ ${real_price}`}
-              color="warning"
-            />
-          )}
-
-          <div>
-            <p
-              style={{
-                width: "100%",
-                fontSize: "12px",
-
-                margin: "0",
-                padding: "0",
-                overflowWrap: "break-word",
-                wordWrap: "break-word",
-              }}
-            >
-              <b
+          {/* <div> */}
+            {/* <p
                 style={{
-                  margin: "0",
-                  overflowWrap: "break-word",
-                  wordWrap: "break-word",
-                  padding: "0",
+                  fontSize: "12px",
+                  margin: "0px",
+                  fontWeight: 400,
                 }}
-              >
-                {name}
-              </b>
-            </p>
-            <div
-              style={{
-                fontSize: "12px",
-              }}
-            >
-              {quantity}
-              {unit_type}
-            </div>
-          </div>
-        </Box>
+              > */}
+            {name}
+            {/* </p> */}
+            {/* </div> */}
+            <S_ChipUnit color="warning" label={`${quantity} ${unit_type}`} />
+          {/* </div> */}
+        </div>
       </div>
       <ModalProduct
         name={name}
@@ -173,7 +140,7 @@ const CardProduct = ({
         price={price}
         ref={modalRef}
       />
-    </div>
+    </S_ContainerProducts>
   );
 };
 

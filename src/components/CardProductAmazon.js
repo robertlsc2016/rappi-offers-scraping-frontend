@@ -8,12 +8,15 @@ const CardProductAmazon = ({ name, price, image_url, link }) => {
   return (
     <S_CardProductAmazonContainer>
       <S_ImgBox>
-        <img src={`${image_url}`} />
+        <img
+          src={`${image_url} || "" `}
+          alt="foto não encontrada"
+        />
       </S_ImgBox>
 
       <S_DescriptionBox>
         <p>R$ {price}</p>
-        
+
         <div>
           <p>{name}</p>
 

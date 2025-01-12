@@ -76,16 +76,12 @@ export const S_DescriptionBox = styled.div`
     -webkit-box-orient: vertical;
 
     text-overflow: ellipsis;
-    /* text-decoration: dotted; */
-    /* border: 1px solid black; */
   }
 
   div > a > p {
-    /* border: 1px solid black; */
     margin: 0;
     padding: 0;
     font-size: 12px;
     height: auto;
-    /* border: 1px solid; */ /* Comentado conforme seu código */
   }
 `;

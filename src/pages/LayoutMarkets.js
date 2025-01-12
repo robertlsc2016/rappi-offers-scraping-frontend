@@ -18,6 +18,8 @@ import ContainerAccordionProducts from "../components/ContainerAccordionProducts
 import { useDispatch } from "react-redux";
 import { initial } from "../redux/statusViewSlice";
 import {
+  BodyHeader,
+  ButtonReturn,
   S_BodyMarket,
   S_BodyMarketInner,
   S_BodyMarketSearching,
@@ -31,12 +33,9 @@ import getNewProductsStore from "../services/getNewProducts";
 const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [newItens, setNewItens] = useState([]);
-
   const [loading, setLoading] = useState(true);
   const [loadingBody, setLoadingBody] = useState(true);
-
   const [products, setProducts] = useState([]);
-  const [infosStore, setInfoStore] = useState({});
   const [textFilter, setTextFilter] = useState("");
   const [lengthArryFiltered, setLengthArryFiltered] = useState(0);
   const dispatch = useDispatch();
@@ -48,7 +47,6 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
     });
 
     get_new_itens();
-    get_infosStore();
     get_products();
   }, []);
 
@@ -62,12 +60,6 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
     });
   };
 
-  const get_infosStore = () => {
-    return getInfosStore({ id_store: id_store }).then((data) => {
-      setInfoStore(data);
-    });
-  };
-
   const get_products = async () => {
     const productsData = await getProducts({
       id_store,
@@ -76,10 +68,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
       name,
     });
 
-    const sortedProducts = productsData.products.sort(
-      (a, b) => b.discount - a.discount
-    );
-    setProducts(sortedProducts);
+    setProducts(productsData);
     setLoading(false);
   };
 
@@ -157,26 +146,18 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
 
       <S_LayoutMarketsContainer className="container">
         <S_Header>
-          <Box sx={{ height: "100%" }}>
+          <ButtonReturn>
             <Link to="/" onClick={() => dispatch(initial())}>
               <IconButton>
                 <WestIcon />
               </IconButton>
             </Link>
-          </Box>
-          <Box
-            sx={{
-              height: "100%",
-              display: "flex",
-              gap: "5px",
-              flexDirection: "column",
-            }}
-          >
+          </ButtonReturn>
+          <BodyHeader>
             <h1 style={{ margin: 0, padding: 0 }}>{name}</h1>
 
             <SBoxChips>
               <Chip label={`ID: ${id_store}`} color="info" size="small" />
-              <Chip label={infosStore.address} color="info" size="small" />
               <Box>
                 <Chip
                   label={` ${products.length} itens`}
@@ -185,7 +166,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                 />
               </Box>
             </SBoxChips>
-          </Box>
+          </BodyHeader>
         </S_Header>
 
         <S_BodyMarket className="body-market">
@@ -209,7 +190,6 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    // gap: "16px",
                     width: "100%",
                     height: "fit-content",
                   }}
@@ -219,7 +199,6 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                     className="body-products"
                     style={{
                       borderRadius: "16px",
-                      padding: "16px",
                       width: "100%",
                       height: "fit-content",
                     }}
