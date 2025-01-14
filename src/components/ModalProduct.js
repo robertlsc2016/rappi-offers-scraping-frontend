@@ -15,12 +15,15 @@ import {
   S_TitleProduct,
 } from "../styles/ModalProducts.styles";
 import EmblaCarousel from "./carousel/EmblaCarousel";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModal, openModal } from "../redux/statusModal";
 
 const ModalProduct = forwardRef(
   ({ name, banner_url, price, real_price, discount }, ref) => {
     const [statusModal, setStatusModal] = useState(false);
     const [similarProductsAmazon, setSimilarProductsAmazon] = useState([]);
     const [loadingProductsAmazon, setLoadingProductsAmazon] = useState(false);
+    const dispatch = useDispatch();
 
     const [alreadyCalled, setAlreadyCalled] = useState(false);
 
@@ -37,10 +40,13 @@ const ModalProduct = forwardRef(
         getProductsSimilarAmazon();
       }
 
+      dispatch(openModal());
+      // console.log(statusView);
       setStatusModal(true);
     };
 
     const handleClose = () => {
+      dispatch(closeModal());
       setStatusModal(false);
     };
 

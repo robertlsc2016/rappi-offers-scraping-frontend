@@ -1,22 +1,16 @@
-import {
-  Box,
-  Chip,
-  CircularProgress,
-  IconButton,
-  Skeleton,
-} from "@mui/material";
+import { Chip, CircularProgress, IconButton, Skeleton } from "@mui/material";
 import WestIcon from "@mui/icons-material/West";
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import getProducts from "../services/getProducts";
 
-import getInfosStore from "../services/getInfosStore";
 import SearchBar from "../components/SearchBar";
 import CardProduct from "../components/CardProduct";
 import ContainerAccordionProducts from "../components/ContainerAccordionProducts";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { initial } from "../redux/statusViewSlice";
+
 import {
   BodyHeader,
   ButtonReturn,
@@ -27,8 +21,8 @@ import {
   S_LayoutMarketsContainer,
   SBoxChips,
 } from "../styles/LayoutMarkets.styles";
-import ScrollToTopButton from "../components/ScrollToTopButton";
 import getNewProductsStore from "../services/getNewProducts";
+import { ActionButtons } from "../components/actions-buttons/ActionButtons";
 
 const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const [filteredItems, setFilteredItems] = useState([]);
@@ -42,7 +36,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
 
   useEffect(() => {
     window.scrollTo({
-      top: 0,
+      top: 1,
       behavior: "instant",
     });
 
@@ -142,7 +136,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
 
   return (
     <>
-      <ScrollToTopButton />
+      <ActionButtons />
 
       <S_LayoutMarketsContainer className="container">
         <S_Header>

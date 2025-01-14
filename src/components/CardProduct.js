@@ -1,4 +1,4 @@
-import { Box, Chip } from "@mui/material";
+import { Chip } from "@mui/material";
 import IconOffer from "./IconOffer";
 import ModalProduct from "./ModalProduct";
 import { useRef } from "react";
@@ -22,7 +22,7 @@ const CardProduct = ({
 
   const chamarFuncaoDoFilho = () => {
     if (modalRef.current) {
-      modalRef.current.handleOpenMdal(); // Chama a função do filho
+      modalRef.current.handleOpenMdal();
     }
   };
 
@@ -117,19 +117,9 @@ const CardProduct = ({
             textOverflow: "ellipsis",
           }}
         >
-          {/* <div> */}
-          {/* <p
-                style={{
-                  fontSize: "12px",
-                  margin: "0px",
-                  fontWeight: 400,
-                }}
-              > */}
           {name}
-          {/* </p> */}
-          {/* </div> */}
+
           <S_ChipUnit color="warning" label={`${quantity} ${unit_type}`} />
-          {/* </div> */}
         </div>
       </div>
       <ModalProduct

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   status_view: "INITIAL_VIEW",
+  any_modal_open: false,
 };
 
 const statusViewSlice = createSlice({
@@ -16,6 +17,12 @@ const statusViewSlice = createSlice({
     },
     inMarket: (state) => {
       state.status_view = "IN_MARKET";
+    },
+    openModal: (state) => {
+      state.any_modal_open = true;
+    },
+    closeModal: (state) => {
+      state.any_modal_open = false;
     },
   },
 });

@@ -9,7 +9,6 @@ export const S_IconButton = styled(IconButton)`
     position: fixed;
     top: 32px;
     left: 32px;
-    /* border: 1px solid; */
   }
 
   @media (max-width: 700px) {
