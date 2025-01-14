@@ -25,8 +25,9 @@ export const S_containerStores = styled.div`
   scroll-margin-top: 28vh;
   gap: 24px;
 
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  width: fit-content;
 
   h1 {
     width: 100%;
@@ -46,23 +47,20 @@ export const S_containerStores = styled.div`
 `;
 
 export const S_BoxStores = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 230px);
+  gap: 16px;
   height: fit-content;
   width: fit-content;
   max-width: 1278px;
+  /* justify-content: space-between; */
+  align-items: start; /* Alinhamento vertical dos itens */
 
-  gap: 24px;
+  min-width: fit-content;
 
   @media (max-width: 610px) {
     justify-content: center;
-  }
-
-  @media (min-width: 610px) and (max-width: 925px) {
-    justify-content: center;
+    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
   }
 `;
 
