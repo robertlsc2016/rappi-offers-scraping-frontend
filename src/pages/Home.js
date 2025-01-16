@@ -19,7 +19,7 @@ import {
   S_SearchbarContainer,
 } from "../styles/Home.styles";
 import { Chip } from "@mui/material";
-import Axios from "../services/axiosInstance";
+import getStores from "../services/getStores";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
@@ -53,8 +53,8 @@ const Home = () => {
   }, []);
 
   const get_stores = async () => {
-    const stores = await Axios.get("/getStores");
-    setStores(stores.data);
+    const stores = await getStores();
+    setStores(stores);
     setIsLoading(false);
   };
 

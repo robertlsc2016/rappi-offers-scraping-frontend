@@ -33,6 +33,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const [textFilter, setTextFilter] = useState("");
   const [lengthArryFiltered, setLengthArryFiltered] = useState(0);
   const dispatch = useDispatch();
+  const [debouncedQuery, setDebouncedQuery] = useState("");
 
   useEffect(() => {
     window.scrollTo({
@@ -43,6 +44,22 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
     get_new_itens();
     get_products();
   }, []);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedQuery(textFilter);
+    }, 800);
+
+    return () => clearTimeout(handler);
+  }, [textFilter]);
+
+  useEffect(() => {
+    if (debouncedQuery) {
+      filterItems(debouncedQuery);
+      ArrayProducts();
+      setLoadingBody(false);
+    }
+  }, [debouncedQuery, products]);
 
   const get_new_itens = () => {
     return getNewProductsStore({
@@ -81,24 +98,6 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
     setFilteredItems(filteredItems);
     setLoadingBody(false);
   }
-
-  const [debouncedQuery, setDebouncedQuery] = useState("");
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedQuery(textFilter);
-    }, 800);
-
-    return () => clearTimeout(handler);
-  }, [textFilter]);
-
-  useEffect(() => {
-    if (debouncedQuery) {
-      filterItems(debouncedQuery);
-      ArrayProducts();
-      setLoadingBody(false);
-    }
-  }, [debouncedQuery, products]);
 
   const ArrayProducts = () => {
     const productsFilter = products.all

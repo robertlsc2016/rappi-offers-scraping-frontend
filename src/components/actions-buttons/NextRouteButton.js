@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "../../services/axiosInstance";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import getStores from "../../services/getStores";
+
 const NextRouteButton = () => {
   const [routes, setRoutes] = useState([]);
   const [currentRoute, setCurrentRoute] = useState("");
@@ -21,16 +23,9 @@ const NextRouteButton = () => {
 
   const getRoutes = async () => {
     try {
-      const stores = await Axios.get("/getStores")
-        .then((res) => {
-          return res.data.map((store) => store.route);
-        })
-        .finally(() => {
-          setTimeout(() => {
-            setLoading(false);
-          }, 2000);
-        });
+      const stores = await getStores();
       setRoutes(stores);
+      setLoading(false);
     } catch (err) {
       return err;
     }

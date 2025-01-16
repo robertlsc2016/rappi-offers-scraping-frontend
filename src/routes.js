@@ -3,18 +3,18 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import LayoutMarkets from "./pages/LayoutMarkets";
-import Axios from "./services/axiosInstance";
+import getStores from "./services/getStores";
 
 const Routes_ = () => {
   const [stores, setStores] = useState([]);
 
   useEffect(() => {
-    getProducts();
+    get_stores();
   }, []);
 
-  const getProducts = async () => {
-    const stores = await Axios.get("/getStores");
-    setStores(stores.data);
+  const get_stores = async () => {
+    const stores = await getStores();
+    setStores(stores);
   };
 
   return (
