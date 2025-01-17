@@ -7,20 +7,68 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CardProduct from "./CardProduct";
 import { S_AccordionDetails } from "../styles/AccordionDetails.style";
+import { useState, useEffect } from "react";
+import saveLocalStorage from "../services/LocalStorage/saveLocalStorage";
 
 const AccordionProducts = ({
-  products,
+  id_store,
+  products: initialProducts,
   initial_rannge,
   final_range,
   backgroundColor = "#e9e9e9",
   description,
   expanded = false,
 }) => {
+  const [filteredProducts, setFilteredProducts] = useState(initialProducts);
+
+  useEffect(() => {
+    setFilteredProducts(initialProducts);
+  }, [initialProducts]);
+
+  const handleRemoveProduct = (id) => {
+    const selectProductNotInteressed = filteredProducts.filter(
+      (product) => product.id == id
+    )[0];
+
+    const prevItens =
+      JSON.parse(localStorage.getItem(`products-not-interessed-${id_store}`)) ||
+      [];
+
+    if (
+      prevItens.some(
+        (item) =>
+          item.id == id && item.price == selectProductNotInteressed.price
+      )
+    ) {
+      setFilteredProducts((prevProducts) =>
+        prevProducts.filter((product) => product.id !== id)
+      );
+      return;
+    }
+
+    const filterNotInteressedItens = prevItens.filter((item) => item.id !== id);
+
+    saveLocalStorage({
+      name: `products-not-interessed-${id_store}`,
+      data: [
+        ...filterNotInteressedItens,
+        {
+          id: selectProductNotInteressed.id,
+          price: selectProductNotInteressed.price,
+        },
+      ],
+    });
+
+    setFilteredProducts((prevProducts) =>
+      prevProducts.filter((product) => product.id !== id)
+    );
+  };
+
   return (
     <Accordion
       defaultExpanded={expanded}
       style={{
-        display: products.length === 0 ? "none" : "block",
+        display: filteredProducts.length === 0 ? "none" : "block",
       }}
       slotProps={{ transition: { timeout: 50 } }}
     >
@@ -44,12 +92,12 @@ const AccordionProducts = ({
                 : `ofertas ${initial_rannge}% - ${final_range}% `}
             </h3>
           </Typography>
-          <p>[{products.length} itens]</p>
+          <p>[{filteredProducts.length} itens]</p>
         </div>
       </AccordionSummary>
       <S_AccordionDetails>
-        {products.length > 0 &&
-          products.map(
+        {filteredProducts.length > 0 &&
+          filteredProducts.map(
             ({
               id,
               name,
@@ -70,6 +118,7 @@ const AccordionProducts = ({
                 discount={discount}
                 image={image_url}
                 real_price={real_price}
+                removeProduct={handleRemoveProduct}
               />
             )
           )}

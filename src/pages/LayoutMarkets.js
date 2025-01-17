@@ -8,7 +8,7 @@ import getProducts from "../services/getProducts";
 import SearchBar from "../components/SearchBar";
 import CardProduct from "../components/CardProduct";
 import ContainerAccordionProducts from "../components/ContainerAccordionProducts";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { initial } from "../redux/statusViewSlice";
 
 import {
@@ -116,6 +116,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
           unit_type,
         }) => (
           <CardProduct
+            id={id}
             key={id}
             unit_type={unit_type}
             quantity={quantity}
@@ -153,7 +154,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
               <Chip label={`ID: ${id_store}`} color="info" size="small" />
               {!loading && (
                 <Chip
-                  label={` ${products.all.length || 0} itens`}
+                  label={`${products.all.length || 0} itens`}
                   color="info"
                   size="small"
                 />
@@ -252,6 +253,7 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
                                         },
                                       }) => (
                                         <CardProduct
+                                          id={id}
                                           key={id}
                                           unit_type={unit_type}
                                           quantity={quantity}

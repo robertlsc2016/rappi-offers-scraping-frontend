@@ -2,6 +2,7 @@ import { Chip } from "@mui/material";
 import styled from "styled-components";
 
 export const S_ContainerProducts = styled.div`
+  /* border: 1px solid black; */
   position: relative;
   cursor: pointer;
   box-sizing: border-box;
@@ -13,9 +14,9 @@ export const S_ContainerProducts = styled.div`
   align-items: center;
   width: 110px;
   /* height: auto; */
-  height: 230px;
+  height: 260px;
   /* height: auto; */
-  overflow: hidden;
+  /* overflow: hidden; */
   gap: 8px;
   /* border: 1px solid black; */
   border-radius: 16px;

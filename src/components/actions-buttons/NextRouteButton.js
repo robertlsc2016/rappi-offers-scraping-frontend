@@ -23,7 +23,10 @@ const NextRouteButton = () => {
 
   const getRoutes = async () => {
     try {
-      const stores = await getStores();
+      const stores = await getStores().then((res) =>
+        res.map((store) => store.route)
+      );
+
       setRoutes(stores);
       setLoading(false);
     } catch (err) {
@@ -41,9 +44,9 @@ const NextRouteButton = () => {
               justifyContent: "center",
               alignItems: "center",
               borderRadius: "12px",
-              fontSize: "32px",
-              width: "64px",
-              height: "64px",
+              fontSize: "24px",
+              width: "48px",
+              height: "48px",
               color: "white",
               background: "green",
               boxShadow: ` rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px`,

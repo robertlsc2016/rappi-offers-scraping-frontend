@@ -53,14 +53,33 @@ export const S_BoxStores = styled.div`
   height: fit-content;
   width: fit-content;
   max-width: 1278px;
-  /* justify-content: space-between; */
-  align-items: start; /* Alinhamento vertical dos itens */
+  align-items: start;
 
   min-width: fit-content;
 
-  @media (max-width: 610px) {
+  @media (max-width: 600px) {
     justify-content: center;
-    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 600px) and (max-width: 930px) {
+    grid-template-columns: auto auto;
+    justify-content: center;
+  }
+
+  @media (min-width: 930px) and (max-width: 1200px) {
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+  }
+
+  @media (min-width: 1200px) and (max-width: 1400px) {
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+  }
+
+  @media (min-width: 1400px) {
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: center;
   }
 `;
 

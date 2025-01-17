@@ -27,7 +27,7 @@ export const ActionButtons = () => {
     justifyContent: "center",
     alignItems: "center",
     zIndex: "5000",
-    top: { userAgent } ? windowHeight - 100 : windowHeight,
+    top: { userAgent } ? windowHeight - 80 : windowHeight,
 
     height: "95px",
     width: "96vw",
@@ -42,7 +42,7 @@ export const ActionButtons = () => {
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Sombra
     display: "flex",
     justifyContent: "center",
-
+    height: '72px',
     alignItems: "center",
     fontSize: "1.2rem",
     textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)",

@@ -9,7 +9,7 @@ const searchLocalStorage = async ({ name }) => {
   }
 
   const data = await getLocalStorage({ name: name });
-  if (data) return JSON.parse(data);
+  if (data) return data;
 };
 
 export default searchLocalStorage;

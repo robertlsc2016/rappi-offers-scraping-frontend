@@ -1,3 +1,4 @@
+import removeProductsNotInteressed from "../utils/removeProductsNotInteressed";
 import Axios from "./axiosInstance";
 import getLocalStorage from "./LocalStorage/getLocalStorage";
 import saveLocalStorage from "./LocalStorage/saveLocalStorage";
@@ -21,7 +22,15 @@ const getNewProductsStore = async ({
     const localStorage = await searchLocalStorage({
       name: `getNewProductsStore-${id_store}`,
     });
-    if(localStorage) return localStorage
+
+    if (localStorage) {
+      const _removeNotInteressedProducts = await removeProductsNotInteressed(
+        localStorage,
+        id_store
+      );
+
+      return _removeNotInteressedProducts;
+    }
 
     const newProducts = await Axios.post("/getNewProductsStore", configs).then(
       ({ data }) => {

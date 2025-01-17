@@ -6,7 +6,7 @@ import saveLocalStorageTime from "./LocalStorage/saveLocalStorageTime";
 const getStores = async () => {
   try {
     const data = await getLocalStorage({ name: "getStores" });
-    if (data) return JSON.parse(data);
+    if (data) return data;
 
     const stores = await Axios.get("/getStores").then(({ data }) => {
       return data;

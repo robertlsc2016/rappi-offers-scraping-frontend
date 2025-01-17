@@ -12,12 +12,8 @@ export const S_LayoutMarketsContainer = styled.div`
   height: fit-content;
   width: 100%;
 
-
-  padding-bottom: 20vh;
-
   @media (min-width: 600px) {
-    padding: 8px 32px;
-
+    padding: 8px 32px 15vh 32px;
   }
 `;
 export const S_Header = styled.div`
