@@ -17,4 +17,8 @@ export const S_AccordionDetails = styled(AccordionDetails)`
     content: "";
     flex: auto;
   }
+
+  @media (max-width: 375px) {
+    padding: 8px 4px !important;
+  }
 `;
