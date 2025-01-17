@@ -41,7 +41,6 @@ const ModalProduct = forwardRef(
       }
 
       dispatch(openModal());
-      // console.log(statusView);
       setStatusModal(true);
     };
 

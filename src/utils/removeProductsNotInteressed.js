@@ -6,34 +6,25 @@ const removeProductsNotInteressed = async (products, id_store) => {
       name: `products-not-interessed-${id_store}`,
     })) || [];
 
-  console.log(notInteresseProducts);
-
-  // Filtrar os produtos
   for (const key in products) {
     if (Array.isArray(products[key])) {
-      products[key] = products[key].filter((produto) => {
-        // Encontra o produto correspondente pelo ID
-        const produtoNotInteresse = notInteresseProducts.find(
-          (p) => p.id === produto.id
-        )
+      products[key] = products[key].filter((product) => {
+        const productNotInteressed = notInteresseProducts.find(
+          (p) => p.id === product.id
+        );
 
-        // Verifica se o produto está na lista de não interesse e se o preço é menor
-        if (produtoNotInteresse) {
-          console.log(produto)
+        if (productNotInteressed) {
           if (
-            parseFloat(produto.price) >= parseFloat(produtoNotInteresse.price)
-          ) {
+            parseFloat(product.price) >= parseFloat(productNotInteressed.price)
+          )
             return false;
-          }
 
           if (
-            parseFloat(produto.price) < parseFloat(produtoNotInteresse.price)
-          ) {
+            parseFloat(product.price) < parseFloat(productNotInteressed.price)
+          )
             return true;
-          }
         }
 
-        // Se o produto não está na lista de não interesse, mantém ele
         return true;
       });
     }
