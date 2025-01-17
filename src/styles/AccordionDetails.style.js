@@ -18,7 +18,7 @@ export const S_AccordionDetails = styled(AccordionDetails)`
     flex: auto;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 500px) {
     padding: 8px 4px !important;
   }
 `;
