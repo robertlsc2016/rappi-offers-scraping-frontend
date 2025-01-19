@@ -12,6 +12,8 @@ const ContainerAccordionProducts = ({
       style={{
         height: "auto",
         width: "100%",
+        // border: "1px solid black",
+        marginBottom: "85px"
       }}
     >
       {new_products.length > 0 && (

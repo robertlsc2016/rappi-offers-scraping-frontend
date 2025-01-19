@@ -30,6 +30,8 @@ const removeProductsNotInteressed = async (products, id_store) => {
     }
   }
 
+  console.log(products)
+
   return products;
 };
 export default removeProductsNotInteressed;

@@ -1,16 +1,15 @@
-import { Chip, CircularProgress, IconButton, Skeleton } from "@mui/material";
-import WestIcon from "@mui/icons-material/West";
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import getProducts from "../services/getProducts";
-
+import getNewProductsStore from "../services/getNewProducts";
+import { useDispatch } from "react-redux";
+import { initial } from "../redux/statusViewSlice";
+import { Chip, IconButton, Skeleton, CircularProgress } from "@mui/material";
+import WestIcon from "@mui/icons-material/West";
 import SearchBar from "../components/SearchBar";
 import CardProduct from "../components/CardProduct";
 import ContainerAccordionProducts from "../components/ContainerAccordionProducts";
-import { useDispatch } from "react-redux";
-import { initial } from "../redux/statusViewSlice";
-
+import { ActionButtons } from "../components/actions-buttons/ActionButtons";
 import {
   BodyHeader,
   ButtonReturn,
@@ -21,8 +20,6 @@ import {
   S_LayoutMarketsContainer,
   SBoxChips,
 } from "../styles/LayoutMarkets.styles";
-import getNewProductsStore from "../services/getNewProducts";
-import { ActionButtons } from "../components/actions-buttons/ActionButtons";
 
 const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   const [filteredItems, setFilteredItems] = useState([]);
@@ -61,24 +58,23 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
     }
   }, [debouncedQuery, products]);
 
-  const get_new_itens = () => {
-    return getNewProductsStore({
+  const get_new_itens = async () => {
+    const res = await getNewProductsStore({
       id_store,
       parent_store_type,
       store_type,
-    }).then((res) => {
-      setNewItens(res.products);
     });
+    setNewItens(res.products);
   };
 
   const get_products = async () => {
+    setLoading(true);
     const productsData = await getProducts({
       id_store,
       parent_store_type,
       store_type,
       name,
     });
-
     setProducts(productsData);
     setLoading(false);
   };
@@ -89,12 +85,9 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
   };
 
   function filterItems(text) {
-    const items = products;
-
-    const filteredItems = items.all.filter((item) =>
+    const filteredItems = products.all.filter((item) =>
       item.name.toLowerCase().includes(text.toLowerCase())
     );
-
     setFilteredItems(filteredItems);
     setLoadingBody(false);
   }
@@ -165,118 +158,105 @@ const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
 
         <S_BodyMarket className="body-market">
           {loading ? (
-            <>
-              {Array(50)
-                .fill(null)
-                .map((_, index) => (
-                  <Skeleton
-                    variant="rectangular"
-                    width="100%"
-                    height={100}
-                    key={index}
-                  />
-                ))}
-            </>
+            Array(50)
+              .fill(null)
+              .map((_, index) => (
+                <Skeleton
+                  variant="rectangular"
+                  width="100%"
+                  height={100}
+                  key={index}
+                />
+              ))
           ) : (
-            <>
-              <S_BodyMarketInner>
+            <S_BodyMarketInner>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  height: "fit-content",
+                }}
+              >
+                <SearchBar inputValue={inputValue} widthSearchArea="60%" />
                 <div
+                  className="body-products"
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
+                    borderRadius: "16px",
                     width: "100%",
                     height: "fit-content",
                   }}
                 >
-                  <SearchBar inputValue={inputValue} widthSearchArea="60%" />
-                  <div
-                    className="body-products"
-                    style={{
-                      borderRadius: "16px",
-                      width: "100%",
-                      height: "fit-content",
-                    }}
-                  >
-                    {textFilter.length === 0 ? (
-                      <ContainerAccordionProducts
-                        new_products={newItens}
-                        parent_store_type={parent_store_type}
-                        store_type={store_type}
-                        products={products}
-                        id_store={id_store}
-                      />
-                    ) : (
-                      <>
-                        {loadingBody && (
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
-                              width: "100%",
-                            }}
-                          >
-                            <CircularProgress size="30px" />
-                          </div>
-                        )}
-                        {!loadingBody && (
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "flex-start",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              background: "white",
-                              width: "100%",
-                              height: "100%",
-                              borderRadius: "16px",
-                              // border: "1px solid black",
-                            }}
-                          >
-                            {filteredItems.length == 0 && <>Nada Encontrado</>}
-                            <S_BodyMarketSearching>
-                              <>
-                                {lengthArryFiltered.length === 0 ? (
-                                  <>Nenhum item foi encontrado :(</>
-                                ) : (
-                                  <>
-                                    {filteredItems.map(
-                                      ({
-                                        props: {
-                                          id,
-                                          unit_type,
-                                          quantity,
-                                          name,
-                                          price,
-                                          discount,
-                                          image,
-                                          real_price,
-                                        },
-                                      }) => (
-                                        <CardProduct
-                                          id={id}
-                                          key={id}
-                                          unit_type={unit_type}
-                                          quantity={quantity}
-                                          name={name}
-                                          price={price}
-                                          discount={discount}
-                                          image={image}
-                                          real_price={real_price}
-                                        />
-                                      )
-                                    )}
-                                  </>
-                                )}
-                              </>
-                            </S_BodyMarketSearching>
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </div>
+                  {textFilter.length === 0 ? (
+                    <ContainerAccordionProducts
+                      new_products={newItens}
+                      parent_store_type={parent_store_type}
+                      store_type={store_type}
+                      products={products}
+                      id_store={id_store}
+                    />
+                  ) : (
+                    <>
+                      {loadingBody && (
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "100%",
+                          }}
+                        >
+                          <CircularProgress size="30px" />
+                        </div>
+                      )}
+                      {!loadingBody && (
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "flex-start",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            background: "white",
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: "16px",
+                          }}
+                        >
+                          {filteredItems.length === 0 && <>Nada Encontrado</>}
+                          <S_BodyMarketSearching>
+                            {filteredItems.map(
+                              ({
+                                props: {
+                                  id,
+                                  unit_type,
+                                  quantity,
+                                  name,
+                                  price,
+                                  discount,
+                                  image,
+                                  real_price,
+                                },
+                              }) => (
+                                <CardProduct
+                                  id={id}
+                                  key={id}
+                                  unit_type={unit_type}
+                                  quantity={quantity}
+                                  name={name}
+                                  price={price}
+                                  discount={discount}
+                                  image={image}
+                                  real_price={real_price}
+                                />
+                              )
+                            )}
+                          </S_BodyMarketSearching>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
-              </S_BodyMarketInner>
-            </>
+              </div>
+            </S_BodyMarketInner>
           )}
         </S_BodyMarket>
       </S_LayoutMarketsContainer>

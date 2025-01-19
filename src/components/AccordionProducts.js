@@ -55,6 +55,7 @@ const AccordionProducts = ({
         {
           id: selectProductNotInteressed.id,
           price: selectProductNotInteressed.price,
+          product_name: selectProductNotInteressed.name,
         },
       ],
     });

@@ -45,14 +45,19 @@ const getNewProductsStore = async ({
         .sort((a, b) => b.discount - a.discount),
     };
 
+    const _removeNotInteressedProducts = await removeProductsNotInteressed(
+      reorderProductsDiscount,
+      id_store
+    );
+
     saveLocalStorage({
       name: `getNewProductsStore-${id_store}`,
-      data: reorderProductsDiscount,
+      data: _removeNotInteressedProducts,
     });
 
     saveLocalStorageTime({ name: `getNewProductsStore-${id_store}` });
 
-    return reorderProductsDiscount;
+    return _removeNotInteressedProducts;
   } catch (err) {
     return err;
   }

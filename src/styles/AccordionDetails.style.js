@@ -9,7 +9,6 @@ export const S_AccordionDetails = styled(AccordionDetails)`
   justify-content: space-between;
   align-items: flex-start;
 
-  /* border: 1px solid black; */
   padding: 8px !important;
   gap: 10px;
 
