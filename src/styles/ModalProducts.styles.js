@@ -106,7 +106,7 @@ export const S_SimilarProductsAmazonContainer = styled(Box)`
 export const S_TitleProduct = styled.h1`
   font-size: 2.5rem;
   margin: 0;
-
+  font-weight: 600;
   @media (min-width: 0px) {
     font-size: 1rem; /* Diminui o tamanho base em telas menores */
   }

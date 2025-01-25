@@ -78,7 +78,16 @@ const ModalProduct = forwardRef(
               <S_GridDescriptionBox>
                 <S_TitleProduct>{name}</S_TitleProduct>
                 <S_GridDescriptionrBox>
-                  <p>R$ {price}</p>
+                  <p
+                    style={{
+                      color: "rgb(11, 144, 44)",
+
+                      fontSize: "24px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    R$ {price}
+                  </p>
                   <Box
                     style={{
                       gap: "8px",
@@ -86,6 +95,7 @@ const ModalProduct = forwardRef(
                       flexDirection: "row",
                       justifyContent: "center",
                       alignItems: "center",
+
                       // border: "2px solid black",
                     }}
                   >
@@ -113,7 +123,9 @@ const ModalProduct = forwardRef(
                     </p>
                   </Box>
                 </S_GridDescriptionrBox>
-                <Divider sx={{ opacity: 1, background: "black" }} />
+                <Divider
+                  sx={{ opacity: 1, background: "rgb(181, 199, 199)" }}
+                />
                 <S_SimilarProductsAmazonContainer>
                   <h2>Similares na Amazon:</h2>
 

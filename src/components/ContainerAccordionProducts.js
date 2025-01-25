@@ -7,8 +7,7 @@ const ContainerAccordionProducts = ({
   parent_store_type,
   store_type,
 }) => {
-  // console.log(products);
-  // console.log(new_products);
+
 
   return (
     <div

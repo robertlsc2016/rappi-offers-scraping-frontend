@@ -6,7 +6,6 @@ const getSimilarOnAmazon = async ({ query }) => {
       product_name: query,
     });
 
-    console.log(products_amazon);
     return products_amazon;
   } catch (err) {
     return err;

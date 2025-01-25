@@ -145,7 +145,6 @@ const Home = () => {
                         );
                       })}
                       {/* {storesGroups.map((stores) => {
-                        console.log(stores);
                         return (
                           <S_containerStores id="turbo">
                             <h1>Turbo</h1>
