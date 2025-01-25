@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const S_LayoutMarketsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   gap: 16px;
   padding: 8px;
@@ -15,7 +16,7 @@ export const S_LayoutMarketsContainer = styled.div`
 `;
 export const S_Header = styled.div`
   /* position: relative; */
-
+  /* border: 1px solid; */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -99,8 +100,6 @@ export const SBoxChips = styled.div`
   width: 80%;
   gap: 5px;
   font-size: 1rem;
-  
-
 
   @media (max-width: 400px) {
     * {

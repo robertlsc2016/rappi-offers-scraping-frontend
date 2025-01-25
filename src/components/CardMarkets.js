@@ -1,13 +1,8 @@
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { CardActionArea, CardContent, CardMedia } from "@mui/material";
 import { Link } from "react-router-dom";
 import { inMarket } from "../redux/statusViewSlice";
 import { useDispatch } from "react-redux";
+import { S_Card, S_Typography } from "../styles/CardMarkets.styles";
 
 const CardMarkets = ({ store_id, store_name, img_path }) => {
   const dispatch = useDispatch();
@@ -17,20 +12,25 @@ const CardMarkets = ({ store_id, store_name, img_path }) => {
 
   return (
     <Link
+      style={{
+        all: "unset",
+      }}
       to={`/store/${store_id}`}
-      state={{ store_id: store_id, store_name: store_name }}
+      state={{ store_id: store_id, store_name: store_name, fromHome: true }}
       onClick={() => dispatch(inMarket())}
     >
-      <Card sx={{ width: "230px", height: "220px" }}>
+      <S_Card>
         <CardActionArea>
           <CardMedia height="160" component="img" image={baseUrlImage} />
-          <CardContent>
-            <Typography gutterBottom variant="h6" component="div">
-              {store_name}
-            </Typography>
+          <CardContent
+            style={{
+              overflow: "hidden",
+            }}
+          >
+            <S_Typography>{store_name.toLowerCase()}</S_Typography>
           </CardContent>
         </CardActionArea>
-      </Card>
+      </S_Card>
     </Link>
   );
 };

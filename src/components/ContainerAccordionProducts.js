@@ -1,32 +1,33 @@
 import AccordionProducts from "./AccordionProducts";
 
 const ContainerAccordionProducts = ({
-  products,
+  products = [],
   new_products = [],
   store_id,
   parent_store_type,
   store_type,
 }) => {
+  // console.log(products);
+  // console.log(new_products);
 
   return (
     <div
       style={{
         height: "auto",
         width: "100%",
-        // border: "1px solid black",
-        marginBottom: "85px"
+        marginBottom: "85px",
       }}
     >
       {new_products.length > 0 && (
         <AccordionProducts
-          parent_store_type={parent_store_type}
-          store_type={store_type}
           store_id={store_id}
           products={new_products}
           initial_rannge={100}
           final_range={0}
-          backgroundColor="#f9f6db"
           IsNewItems={true}
+          // parent_store_type={parent_store_type}
+          // store_type={store_type}
+          backgroundColor="#f9f6db"
           description="Novo Produtos"
         />
       )}
@@ -68,11 +69,11 @@ const ContainerAccordionProducts = ({
 
       <AccordionProducts
         store_id={store_id}
-        expanded={true}
-        backgroundColor="#f9f6db"
         products={products.all}
         initial_rannge={100}
         final_range={0}
+        expanded={true}
+        backgroundColor="#f9f6db"
         description="Todos os Produtos"
       />
     </div>

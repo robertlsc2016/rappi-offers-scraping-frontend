@@ -12,7 +12,7 @@ import saveLocalStorage from "../services/LocalStorage/saveLocalStorage";
 
 const AccordionProducts = ({
   store_id,
-  products: initialProducts,
+  products: initialProducts = [],
   initial_rannge,
   final_range,
   backgroundColor = "#e9e9e9",

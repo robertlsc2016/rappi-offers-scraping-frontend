@@ -7,7 +7,8 @@ export const S_SearchBarBox = styled.div`
   justify-content: space-between;
   align-items: center;
   background: white;
-  width: ${(props) => props.widthSearchArea};
+  width: 100%;
+  /* width: ${(props) => props.widthSearchArea}; */
   height: 70%;
   border-radius: 8px;
   padding: 0 32px;

@@ -11,6 +11,7 @@ import {
   S_BodyHomeContainer,
   S_BodyHomeInner,
   S_BoxStores,
+  S_ContainerChips,
   S_containerStores,
   S_GlobalContainer,
   S_Header,
@@ -22,10 +23,11 @@ import { Chip } from "@mui/material";
 import getStores from "../services/getStores";
 // import GetLocation from "../components/GetLocation";
 import getLocalStorage from "../services/LocalStorage/getLocalStorage";
+import returnTop from "../utils/returnTop";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
-  const [stores, setStores] = useState([]);
+  const [storesGroups, setStoresGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [location, setLocation] = useState(true);
 
@@ -37,10 +39,7 @@ const Home = () => {
   };
 
   const returnInitial = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "instant",
-    });
+    returnTop();
 
     document.getElementById("searchBar").value = "";
     document.getElementById("searchBar").innerHTML = "";
@@ -57,7 +56,7 @@ const Home = () => {
 
   const get_stores = async () => {
     const stores = await getStores();
-    setStores(stores);
+    setStoresGroups(stores);
     setIsLoading(false);
   };
 
@@ -81,6 +80,7 @@ const Home = () => {
                   style={{
                     textAlign: "center",
                     width: "100%",
+                    // border: '1px solid',
                     fontSize: `clamp(1rem, 1.5rem, 2rem)`,
                   }}
                 >
@@ -89,42 +89,24 @@ const Home = () => {
                 <S_SearchbarContainer>
                   <SearchBar
                     inputValue={handleInputChange}
-                    widthSearchArea="95%"
+                    widthSearchArea="100%"
                   />
+                  {statusView == "INITIAL_VIEW" && (
+                    <S_ContainerChips>
+                      {Object.entries(storesGroups).map(([group]) => (
+                        <Chip
+                          key={group} // Sempre use uma key única!
+                          style={{ textTransform: "capitalize" }}
+                          size="small"
+                          color="info"
+                          label={`${group}`}
+                          href={`#${group}`}
+                          component="a"
+                        />
+                      ))}
+                    </S_ContainerChips>
+                  )}
                 </S_SearchbarContainer>
-                {statusView == "INITIAL_VIEW" && (
-                  <>
-                    <div
-                      style={{
-                        cursor: "pointer",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        gap: "16px",
-                        width: "100%",
-                      }}
-                    >
-                      <Chip
-                        color="info"
-                        label="Mercados"
-                        href="#markets"
-                        component="a"
-                      />
-                      <Chip
-                        color="info"
-                        label="Farmácia"
-                        href="#drugstore"
-                        component="a"
-                      />
-                      <Chip
-                        color="info"
-                        label="Shopping"
-                        href="#shopping"
-                        component="a"
-                      />
-                    </div>
-                  </>
-                )}
               </S_Header>
             </S_HeaderContainer>
 
@@ -137,29 +119,59 @@ const Home = () => {
 
                   {statusView == "INITIAL_VIEW" && !isLoading && (
                     <>
-                      <S_containerStores id="markets">
-                        <h1>Turbo</h1>
-                        <S_BoxStores>
-                          {stores
-                            .filter(
-                              (market) =>
-                                market.sub_group.toLowerCase() == "turbo"
-                            )
-                            .map(({ store_id, store_img, store_name }) => (
-                              <CardMarkets
-                                key={store_id}
-                                store_id={store_id}
-                                store_name={store_name}
-                                img_path={store_img}
-                              />
-                            ))}
-                        </S_BoxStores>
-                      </S_containerStores>
+                      {Object.entries(storesGroups).map(([group, stores]) => {
+                        return (
+                          <S_containerStores id={`${group}`}>
+                            <h1
+                              style={{
+                                textTransform: "capitalize",
+                              }}
+                            >
+                              {group}
+                            </h1>
+                            <S_BoxStores>
+                              {stores.map(
+                                ({ store_id, store_img, store_name }) => (
+                                  <CardMarkets
+                                    key={store_id}
+                                    store_id={store_id}
+                                    store_name={store_name}
+                                    img_path={store_img}
+                                  />
+                                )
+                              )}
+                            </S_BoxStores>
+                          </S_containerStores>
+                        );
+                      })}
+                      {/* {storesGroups.map((stores) => {
+                        console.log(stores);
+                        return (
+                          <S_containerStores id="turbo">
+                            <h1>Turbo</h1>
+                            <S_BoxStores>
+                              {storesGroups
+                                .filter(
+                                  (market) =>
+                                    market.sub_group.toLowerCase() == "turbo"
+                                )
+                                .map(({ store_id, store_img, store_name }) => (
+                                  <CardMarkets
+                                    key={store_id}
+                                    store_id={store_id}
+                                    store_name={store_name}
+                                    img_path={store_img}
+                                  />
+                                ))}
+                            </S_BoxStores>
+                          </S_containerStores>
+                        );
+                      })} */}
 
-                      <S_containerStores id="markets">
+                      {/* <S_containerStores id="markets">
                         <h1>Mercados</h1>
                         <S_BoxStores>
-                          {stores
+                          {storesGroups
                             .filter(
                               (market) =>
                                 market.sub_group.toLowerCase() == "super"
@@ -178,7 +190,7 @@ const Home = () => {
                       <S_containerStores id="drugstore">
                         <h1>Farmácia</h1>
                         <S_BoxStores>
-                          {stores
+                          {storesGroups
                             .filter(
                               (market) =>
                                 market.sub_group.toLowerCase() == "farmacia"
@@ -194,19 +206,38 @@ const Home = () => {
                         </S_BoxStores>
                       </S_containerStores>
 
-                      {/* <S_containerStores id="shopping">
+                      <S_containerStores id="shopping">
                         <h1>Shopping</h1>
                         <S_BoxStores>
-                          {stores
-                            .filter((market) => market.type == "shopping")
-                            .map(({ name, route, banner_url, store_id }) => (
+                          {storesGroups
+                            .filter(
+                              (market) =>
+                                market.sub_group.toLowerCase() == "hogar"
+                            )
+                            .map(({ store_id, store_img, store_name }) => (
                               <CardMarkets
-                                name={name}
-                                route={route}
-                                img_path={banner_url}
                                 key={store_id}
+                                store_id={store_id}
+                                store_name={store_name}
+                                img_path={store_img}
                               />
                             ))}
+                        </S_BoxStores>
+                      </S_containerStores>
+
+                      <S_containerStores id="especializada">
+                        <h1>Especializada</h1>
+                        <S_BoxStores>
+                          {storesGroups.especializada.map(
+                            ({ store_id, store_img, store_name }) => (
+                              <CardMarkets
+                                key={store_id}
+                                store_id={store_id}
+                                store_name={store_name}
+                                img_path={store_img}
+                              />
+                            )
+                          )}
                         </S_BoxStores>
                       </S_containerStores> */}
                     </>

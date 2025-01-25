@@ -2,30 +2,24 @@ import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import getStores from "../../services/getStores";
+import returnTop from "../../utils/returnTop";
 
 const NextRouteButton = () => {
   const [routes, setRoutes] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const location = useLocation(); // Hook para obter a localização atual
+  const location = useLocation();
 
-  // Atualiza as rotas disponíveis ao montar o componente
   useEffect(() => {
     getRoutes();
+    returnTop();
   }, []);
 
-  // Atualiza o `currentRoute` sempre que a URL mudar
   const currentRoute = location.pathname.replace("/store/", "");
 
   const nextRoute = () => {
-    console.log("Rota atual: ", currentRoute);
-
     const currentIndex = routes.indexOf(Number(currentRoute));
-    console.log("Posição da rota atual: ", currentIndex);
-
     const nextIndex = (currentIndex + 1) % routes.length;
-    console.log("Próxima rota: ", routes[nextIndex]);
-
     navigate(`/store/${routes[nextIndex]}`);
   };
 

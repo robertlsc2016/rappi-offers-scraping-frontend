@@ -1,7 +1,6 @@
 import { Box, CircularProgress, Divider, Grid2, Modal } from "@mui/material";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import IconOffer from "./IconOffer";
-import similarOnAmazon from "../utils/similarOnAmazon";
 
 import {
   S_GridDescriptionBox,
@@ -17,6 +16,7 @@ import {
 import EmblaCarousel from "./carousel/EmblaCarousel";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal, openModal } from "../redux/statusModal";
+import getSimilarOnAmazon from "../services/getSimilarOnAmazon";
 
 const ModalProduct = forwardRef(
   ({ name, banner_url, price, real_price, discount }, ref) => {
@@ -29,8 +29,8 @@ const ModalProduct = forwardRef(
 
     const getProductsSimilarAmazon = async () => {
       setAlreadyCalled(true);
-      const getSimilarAmazon = await similarOnAmazon({
-        product_name: name,
+      const getSimilarAmazon = await getSimilarOnAmazon({
+        query: name,
       }).finally(() => setLoadingProductsAmazon(true));
       setSimilarProductsAmazon(getSimilarAmazon);
     };

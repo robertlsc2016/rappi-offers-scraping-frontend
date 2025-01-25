@@ -9,7 +9,7 @@ export const S_ModalInner = styled(Box)`
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 24px;

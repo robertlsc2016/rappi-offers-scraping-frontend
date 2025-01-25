@@ -84,7 +84,6 @@ export const S_BoxStores = styled.div`
 `;
 
 export const S_GlobalContainer = styled.div`
-  /* border: 1px solid; */
   padding-bottom: 27vh;
   width: 100%;
   height: fit-content;
@@ -92,7 +91,6 @@ export const S_GlobalContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  /* border: 1px solid; */
 `;
 
 export const S_HeaderContainer = styled.div`
@@ -103,12 +101,9 @@ export const S_HeaderContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  /* height: 25vh; */
   height: auto;
 
   z-index: 100;
-
-  /* border: 1px solid; */
   padding-top: 10px;
 `;
 
@@ -135,7 +130,50 @@ export const S_Header = styled.div`
 `;
 
 export const S_SearchbarContainer = styled.div`
+  width: 80%;
+  /* border: 1px solid; */
+`;
+
+export const S_ContainerChips = styled.div`
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  column-gap: 16px;
+  row-gap: 8px;
   width: 100%;
+  height: 50px;
+  overflow-x: auto; /* Habilita scroll horizontal */
+  white-space: nowrap; /* Garante que o conteúdo não quebre linhas */
+
+  /* border-radius: 8px; */
+  /* background-color: white; */
+  /* border: 1px solid #ccc; */
+  /* border: 1px solid #ccc; */
+
+  //box-shadow: inset -10px 0 15px -10px rgba(0, 0, 0, 0.2);  /* Estilização do scroll */
+  
+  &::-webkit-scrollbar {
+    height: 6px; /* Para o scroll horizontal */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* Para navegadores que suportam scrollbar-color */
+  scrollbar-color: #888 #f1f1f1; /* thumb | track */
+  scrollbar-width: thin; /* Para navegadores Firefox */
 `;
 
 export const S_BodyHomeContainer = styled.div`
@@ -143,7 +181,7 @@ export const S_BodyHomeContainer = styled.div`
   width: 100%;
   flex-direction: column;
   padding: 0 10%;
-  margin-top: 220px;
+  margin-top: 235px;
 `;
 
 export const S_BodyHomeBox = styled.div`
