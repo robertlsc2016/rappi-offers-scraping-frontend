@@ -129,8 +129,9 @@ const Home = () => {
                             >
                               {group}
                             </h1>
+
                             <S_BoxStores>
-                              {stores.map(
+                              {stores?.map(
                                 ({ store_id, store_img, store_name }) => (
                                   <CardMarkets
                                     key={store_id}
