@@ -18,18 +18,25 @@ const NextRouteButton = () => {
   const currentRoute = location.pathname.replace("/store/", "");
 
   const nextRoute = () => {
-    const currentIndex = routes.indexOf(Number(currentRoute));
+    const currentIndex = routes.findIndex(
+      (route) => route.store_id == Number(currentRoute)
+    );
+
     const nextIndex = (currentIndex + 1) % routes.length;
-    navigate(`/store/${routes[nextIndex]}`);
+    navigate(`/store/${routes[nextIndex].store_id}`);
   };
 
   const getRoutes = async () => {
     try {
-      const stores = await getStores().then((res) =>
-        res.map((store) => store.store_id)
-      );
+      const _stores = [];
 
-      setRoutes(stores);
+      await getStores().then((res) => {
+        Object.entries(res).map(([group, stores]) => {
+          _stores.push(...stores);
+        });
+      });
+
+      setRoutes(_stores);
       setLoading(false);
     } catch (err) {
       console.error(err);
