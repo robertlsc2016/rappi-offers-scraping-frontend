@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import saveLocalStorage from "../services/LocalStorage/saveLocalStorage";
 
 const AccordionProducts = ({
-  id_store,
+  store_id,
   products: initialProducts,
   initial_rannge,
   final_range,
@@ -31,7 +31,7 @@ const AccordionProducts = ({
     )[0];
 
     const prevItens =
-      JSON.parse(localStorage.getItem(`products-not-interessed-${id_store}`)) ||
+      JSON.parse(localStorage.getItem(`products-not-interessed-${store_id}`)) ||
       [];
 
     if (
@@ -49,7 +49,7 @@ const AccordionProducts = ({
     const filterNotInteressedItens = prevItens.filter((item) => item.id !== id);
 
     saveLocalStorage({
-      name: `products-not-interessed-${id_store}`,
+      name: `products-not-interessed-${store_id}`,
       data: [
         ...filterNotInteressedItens,
         {
@@ -117,7 +117,7 @@ const AccordionProducts = ({
                 name={name}
                 price={price}
                 discount={discount}
-                image={image_url}
+                image_url={image_url}
                 real_price={real_price}
                 removeProduct={handleRemoveProduct}
               />

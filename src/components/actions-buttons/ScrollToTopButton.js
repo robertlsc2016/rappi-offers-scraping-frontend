@@ -33,6 +33,7 @@ const ScrollToTopButton = () => {
         <div
           onClick={scrollToTop}
           style={{
+            cursor: "pointer",
             zIndex: "1000px",
             display: "flex",
             justifyContent: "center",

@@ -8,7 +8,10 @@ const getStores = async () => {
     const data = await getLocalStorage({ name: "getStores" });
     if (data) return data;
 
-    const stores = await Axios.get("/getStores").then(({ data }) => {
+    const stores = await Axios.post("/getStoresByLocation", {
+      lat: "-23.57162",
+      lng: "-46.73031",
+    }).then(({ data }) => {
       return data;
     });
 
@@ -17,7 +20,7 @@ const getStores = async () => {
 
     return stores;
   } catch (err) {
-    return err;
+    throw new Error(err);
   }
 };
 

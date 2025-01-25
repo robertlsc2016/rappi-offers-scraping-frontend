@@ -9,7 +9,9 @@ const HomeButton = () => {
   };
 
   return (
-    <div onClick={returnHome}>
+    <div onClick={returnHome} style={{
+      cursor: 'pointer'
+    }}>
       <IconButton
         style={{
           display: "flex",

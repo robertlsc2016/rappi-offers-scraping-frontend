@@ -1,32 +1,32 @@
 import removeProductsNotInteressed from "../utils/removeProductsNotInteressed";
 import Axios from "./axiosInstance";
-import getLocalStorage from "./LocalStorage/getLocalStorage";
+// import getLocalStorage from "./LocalStorage/getLocalStorage";
 import saveLocalStorage from "./LocalStorage/saveLocalStorage";
 import saveLocalStorageTime from "./LocalStorage/saveLocalStorageTime";
 import searchLocalStorage from "./LocalStorage/searchLocalStorage";
 
 const getNewProductsStore = async ({
-  id_store,
+  store_id,
   store_type,
   parent_store_type,
 }) => {
   const configs = {
     state: {
-      parent_store_type: store_type,
-      store_type: parent_store_type,
+      parent_store_type: parent_store_type,
+      store_type: store_type,
     },
-    stores: [id_store],
+    stores: [Number(store_id)],
   };
 
   try {
     const localStorage = await searchLocalStorage({
-      name: `getNewProductsStore-${id_store}`,
+      name: `getNewProductsStore-${store_id}`,
     });
 
     if (localStorage) {
       const _removeNotInteressedProducts = await removeProductsNotInteressed(
         localStorage,
-        id_store
+        store_id
       );
 
       return _removeNotInteressedProducts;
@@ -39,25 +39,25 @@ const getNewProductsStore = async ({
     );
 
     const reorderProductsDiscount = {
-      id_store: newProducts.id_store,
+      store_id: newProducts.store_id,
       products: newProducts.products
         .filter((product) => product.discount > 0.25)
         .sort((a, b) => b.discount - a.discount),
     };
 
     const _removeNotInteressedProducts = await removeProductsNotInteressed(
-      reorderProductsDiscount,
-      id_store
+      newProducts,
+      store_id
     );
 
     saveLocalStorage({
-      name: `getNewProductsStore-${id_store}`,
+      name: `getNewProductsStore-${store_id}`,
       data: _removeNotInteressedProducts,
     });
 
-    saveLocalStorageTime({ name: `getNewProductsStore-${id_store}` });
+    saveLocalStorageTime({ name: `getNewProductsStore-${store_id}` });
 
-    return _removeNotInteressedProducts;
+    return reorderProductsDiscount;
   } catch (err) {
     return err;
   }

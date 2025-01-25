@@ -4,24 +4,25 @@ import saveLocalStorage from "./LocalStorage/saveLocalStorage";
 import saveLocalStorageTime from "./LocalStorage/saveLocalStorageTime";
 import searchLocalStorage from "./LocalStorage/searchLocalStorage";
 
-const getProducts = async ({ id_store, parent_store_type, store_type }) => {
+const getProducts = async ({ store_id, parent_store_type, store_type }) => {
+
   const configs = {
     state: {
       parent_store_type,
       store_type,
     },
-    stores: [id_store],
+    stores: [Number(store_id)],
   };
 
   try {
     const localStorage = await searchLocalStorage({
-      name: `getProducts-${id_store}`,
+      name: `getProducts-${store_id}`,
     });
 
     if (localStorage) {
       const _removeNotInteressedProducts = await removeProductsNotInteressed(
         localStorage,
-        id_store
+        store_id
       );
 
       return _removeNotInteressedProducts;
@@ -36,11 +37,11 @@ const getProducts = async ({ id_store, parent_store_type, store_type }) => {
 
     const _removeNotInteressedProducts = await removeProductsNotInteressed(
       productsOffers,
-      id_store
+      store_id
     );
 
-    saveLocalStorage({ name: `getProducts-${id_store}`, data: productsOffers });
-    saveLocalStorageTime({ name: `getProducts-${id_store}` });
+    saveLocalStorage({ name: `getProducts-${store_id}`, data: productsOffers });
+    saveLocalStorageTime({ name: `getProducts-${store_id}` });
 
     return _removeNotInteressedProducts;
   } catch (error) {

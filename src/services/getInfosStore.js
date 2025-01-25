@@ -3,22 +3,22 @@ import saveLocalStorage from "./LocalStorage/saveLocalStorage";
 import saveLocalStorageTime from "./LocalStorage/saveLocalStorageTime";
 import searchLocalStorage from "./LocalStorage/searchLocalStorage";
 
-const getInfosStore = async ({ id_store }) => {
+const getInfosStore = async ({ store_id }) => {
   try {
     const localStorage = await searchLocalStorage({
-      name: `getInfoStore-${id_store}`,
+      name: `getInfoStore-${store_id}`,
     });
 
-    if (localStorage) localStorage;
+    if (localStorage) return localStorage;
 
     const infosStore = await Axios.post("/getInfoStore", {
-      id_store: id_store,
+      store_id: Number(store_id),
     }).then((data) => {
-      return data;
+      return data.data;
     });
 
-    saveLocalStorage({ name: `getInfoStore-${id_store}`, data: infosStore });
-    saveLocalStorageTime({ name: `getInfoStore-${id_store}` });
+    saveLocalStorage({ name: `getInfoStore-${store_id}`, data: infosStore });
+    saveLocalStorageTime({ name: `getInfoStore-${store_id}` });
     return infosStore;
   } catch (err) {
     return err;

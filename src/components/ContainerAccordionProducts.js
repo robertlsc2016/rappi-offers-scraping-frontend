@@ -3,10 +3,11 @@ import AccordionProducts from "./AccordionProducts";
 const ContainerAccordionProducts = ({
   products,
   new_products = [],
-  id_store,
+  store_id,
   parent_store_type,
   store_type,
 }) => {
+
   return (
     <div
       style={{
@@ -20,7 +21,7 @@ const ContainerAccordionProducts = ({
         <AccordionProducts
           parent_store_type={parent_store_type}
           store_type={store_type}
-          id_store={id_store}
+          store_id={store_id}
           products={new_products}
           initial_rannge={100}
           final_range={0}
@@ -31,42 +32,42 @@ const ContainerAccordionProducts = ({
       )}
 
       <AccordionProducts
-        id_store={id_store}
+        store_id={store_id}
         products={products[80]}
         initial_rannge={100}
         final_range={80}
       />
 
       <AccordionProducts
-        id_store={id_store}
+        store_id={store_id}
         products={products[60]}
         initial_rannge={80}
         final_range={60}
       />
 
       <AccordionProducts
-        id_store={id_store}
+        store_id={store_id}
         products={products[40]}
         initial_rannge={60}
         final_range={40}
       />
 
       <AccordionProducts
-        id_store={id_store}
+        store_id={store_id}
         products={products[10]}
         initial_rannge={40}
         final_range={10}
       />
 
       <AccordionProducts
-        id_store={id_store}
+        store_id={store_id}
         products={products[0]}
         initial_rannge={9.9}
         final_range={0}
       />
 
       <AccordionProducts
-        id_store={id_store}
+        store_id={store_id}
         expanded={true}
         backgroundColor="#f9f6db"
         products={products.all}

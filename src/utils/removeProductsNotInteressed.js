@@ -1,9 +1,9 @@
 import getLocalStorage from "../services/LocalStorage/getLocalStorage";
 
-const removeProductsNotInteressed = async (products, id_store) => {
+const removeProductsNotInteressed = async (products, store_id) => {
   const notInteresseProducts =
     (await getLocalStorage({
-      name: `products-not-interessed-${id_store}`,
+      name: `products-not-interessed-${store_id}`,
     })) || [];
 
   for (const key in products) {
@@ -29,8 +29,6 @@ const removeProductsNotInteressed = async (products, id_store) => {
       });
     }
   }
-
-  console.log(products)
 
   return products;
 };

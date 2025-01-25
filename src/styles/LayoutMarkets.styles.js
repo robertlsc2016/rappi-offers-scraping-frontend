@@ -14,29 +14,41 @@ export const S_LayoutMarketsContainer = styled.div`
   min-height: 100vh;
 `;
 export const S_Header = styled.div`
-  position: relative;
+  /* position: relative; */
+
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+
+  width: 100%;
+
   gap: 16px;
   padding: 12px;
-  width: 100%;
   height: auto;
   background-color: #e9e9e9;
-
+  min-height: 120px;
+  height: auto;
   border-radius: 16px;
 `;
 
 export const ButtonReturn = styled(Box)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid; */
+
   height: 100%;
 `;
 
 export const BodyHeader = styled(Box)`
   height: 100%;
   display: flex;
-  gap: 5px;
+  justify-content: center;
+  align-items: flex-start;
   flex-direction: column;
+
+  gap: 5px;
   width: 100%;
 `;
 
@@ -51,6 +63,8 @@ export const S_BodyMarket = styled.div`
   height: auto;
   flex-wrap: wrap;
   width: 100%;
+
+  /* border: 1px solid; */
 `;
 
 export const S_BodyMarketSearching = styled.div`
@@ -59,14 +73,12 @@ export const S_BodyMarketSearching = styled.div`
   justify-content: center;
   flex-wrap: wrap;
 
-  background-color: white;
-
   width: 100%;
   height: auto;
   gap: 10px;
   padding: 8px;
 
-  /* border: 1px solid black; */
+  border: 1px solid black;
 `;
 
 export const S_BodyMarketInner = styled.div`
@@ -74,7 +86,7 @@ export const S_BodyMarketInner = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  gap: 16px;
+  gap: 4px;
   height: 100%;
 `;
 
@@ -82,9 +94,13 @@ export const SBoxChips = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  /* border: 1px solid; */
+  width: 80%;
   gap: 5px;
-  width: 100%;
   font-size: 1rem;
+  
+
 
   @media (max-width: 400px) {
     * {

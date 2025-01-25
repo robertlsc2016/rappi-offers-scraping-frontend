@@ -6,39 +6,35 @@ import LayoutMarkets from "./pages/LayoutMarkets";
 import getStores from "./services/getStores";
 
 const Routes_ = () => {
-  const [stores, setStores] = useState([]);
+  // const [stores, setStores] = useState([]);
 
-  useEffect(() => {
-    get_stores();
-  }, []);
+  // useEffect(() => {
+  //   get_stores();
+  // }, []);
 
-  const get_stores = async () => {
-    const stores = await getStores();
-    setStores(stores);
-  };
+  // const get_stores = async () => {
+  //   const stores = await getStores();
+  //   setStores(stores);
+  // };
 
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Home />} path="/" />
-
-        {stores.map(
-          ({ name, route, id_store, parent_store_type, store_type }) => (
-            <Route
-              key={id_store}
-              element={
-                <LayoutMarkets
-                  name={name}
-                  id_store={id_store}
-                  parent_store_type={parent_store_type}
-                  store_type={store_type}
-                  key={id_store}
-                />
-              }
-              path={`/${route}`}
+        <Route
+          element={
+            <LayoutMarkets
+            // key={}
+            // name={name}
+            // store_id={store_id}
+            // parent_store_type={parent_store_type}
+            // store_type={store_type}
+            // key={store_id}
             />
-          )
-        )}
+          }
+          path="/store/:store_id"
+        />
+
       </Routes>
     </BrowserRouter>
   );

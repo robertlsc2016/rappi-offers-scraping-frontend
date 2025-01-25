@@ -1,266 +1,166 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import getProducts from "../services/getProducts";
-import getNewProductsStore from "../services/getNewProducts";
+import React, { useEffect, useState, useMemo } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { initial } from "../redux/statusViewSlice";
-import { Chip, IconButton, Skeleton, CircularProgress } from "@mui/material";
+import { Chip, IconButton, CircularProgress } from "@mui/material";
 import WestIcon from "@mui/icons-material/West";
 import SearchBar from "../components/SearchBar";
 import CardProduct from "../components/CardProduct";
 import ContainerAccordionProducts from "../components/ContainerAccordionProducts";
 import { ActionButtons } from "../components/actions-buttons/ActionButtons";
 import {
-  BodyHeader,
-  ButtonReturn,
-  S_BodyMarket,
-  S_BodyMarketInner,
-  S_BodyMarketSearching,
-  S_Header,
   S_LayoutMarketsContainer,
+  S_BodyMarket,
+  S_Header,
   SBoxChips,
 } from "../styles/LayoutMarkets.styles";
+import useFetchStoreData from "../hooks/useFetchStoreData"; // Hook personalizado
+import useDebouncedValue from "../hooks/useDebouncedValue"; // Debouncing
 
-const LayoutMarkets = ({ id_store, parent_store_type, store_type, name }) => {
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [newItens, setNewItens] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [loadingBody, setLoadingBody] = useState(true);
-  const [products, setProducts] = useState([]);
-  const [textFilter, setTextFilter] = useState("");
-  const [lengthArryFiltered, setLengthArryFiltered] = useState(0);
+const LayoutMarkets = () => {
+  const location = useLocation();
+
+  const { store_id } = useParams();
   const dispatch = useDispatch();
-  const [debouncedQuery, setDebouncedQuery] = useState("");
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 1,
-      behavior: "instant",
-    });
+  const [textFilter, setTextFilter] = useState("");
+  const [loadingRoute, setLoadingRoute] = useState(false); // Estado para rota
+  const debouncedQuery = useDebouncedValue(textFilter, 800);
 
-    get_new_itens();
-    get_products();
-  }, []);
+  const { storeInfos, products, newItems, loading, error } =
+    useFetchStoreData(store_id); // Hook reutilizável
 
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedQuery(textFilter);
-    }, 800);
+  const filteredItems = useMemo(() => {
+    if (!products.all) return [];
 
-    return () => clearTimeout(handler);
-  }, [textFilter]);
-
-  useEffect(() => {
-    if (debouncedQuery) {
-      filterItems(debouncedQuery);
-      ArrayProducts();
-      setLoadingBody(false);
-    }
-  }, [debouncedQuery, products]);
-
-  const get_new_itens = async () => {
-    const res = await getNewProductsStore({
-      id_store,
-      parent_store_type,
-      store_type,
-    });
-    setNewItens(res.products);
-  };
-
-  const get_products = async () => {
-    setLoading(true);
-    const productsData = await getProducts({
-      id_store,
-      parent_store_type,
-      store_type,
-      name,
-    });
-    setProducts(productsData);
-    setLoading(false);
-  };
-
-  const inputValue = (text) => {
-    setTextFilter(text);
-    setLoadingBody(true);
-  };
-
-  function filterItems(text) {
-    const filteredItems = products.all.filter((item) =>
-      item.name.toLowerCase().includes(text.toLowerCase())
+    return products.all.filter((item) =>
+      item.name.toLowerCase().includes(debouncedQuery.toLowerCase())
     );
-    setFilteredItems(filteredItems);
-    setLoadingBody(false);
-  }
+  }, [debouncedQuery, products.all]);
 
-  const ArrayProducts = () => {
-    const productsFilter = products.all
-      .filter((item) =>
-        item.name.toLowerCase().includes(textFilter.toLowerCase())
-      )
-      .map(
-        ({
-          id,
-          name,
-          price,
-          discount,
-          real_price,
-          image_url,
-          quantity,
-          unit_type,
-        }) => (
-          <CardProduct
-            id={id}
-            key={id}
-            unit_type={unit_type}
-            quantity={quantity}
-            name={name}
-            price={price}
-            discount={discount}
-            image={image_url}
-            real_price={real_price}
-          />
-        )
-      );
+  const handleSearch = (text) => setTextFilter(text);
 
-    setFilteredItems(productsFilter);
-    setLengthArryFiltered(productsFilter.length);
-    return productsFilter;
-  };
+  useEffect(() => {
+    setLoadingRoute(true);
+    const timer = setTimeout(() => setLoadingRoute(false), 500); // Simula tempo de carregamento
+    return () => clearTimeout(timer); // Limpa timeout anterior
+  }, [location]);
 
   return (
-    <>
+    <S_LayoutMarketsContainer>
       <ActionButtons />
+      <S_Header>
+        <Link
+          to="/"
+          onClick={() => dispatch(initial())}
+          style={{
+            width: "auto",
+          }}
+        >
+          <IconButton>
+            <WestIcon />
+          </IconButton>
+        </Link>
 
-      <S_LayoutMarketsContainer className="container">
-        <S_Header>
-          <ButtonReturn>
-            <Link to="/" onClick={() => dispatch(initial())}>
-              <IconButton>
-                <WestIcon />
-              </IconButton>
-            </Link>
-          </ButtonReturn>
-          <BodyHeader>
-            <h1 style={{ margin: 0, padding: 0 }}>{name}</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            flexDirection: "column",
 
-            <SBoxChips>
-              <Chip label={`ID: ${id_store}`} color="info" size="small" />
-              {!loading && (
-                <Chip
-                  label={`${products.all.length || 0} itens`}
-                  color="info"
-                  size="small"
-                />
-              )}
-            </SBoxChips>
-          </BodyHeader>
-        </S_Header>
+            height: "100%",
+            width: "100%",
+            gap: "4px",
+          }}
+        >
+          {!loadingRoute && (
+            <>
+              <h1 style={{ margin: 0, padding: 0, fontSize: "24px" }}>
+                {location.state
+                  ? location.state.store_name
+                  : storeInfos
+                  ? storeInfos.name
+                  : "..."}
+              </h1>
+              <SBoxChips>
+                {storeInfos?.address && (
+                  <Chip
+                    style={{
+                      maxWidth: "60%",
+                      minWidth: "auto",
+                    }}
+                    label={`ID: ${storeInfos.address}`}
+                    color="info"
+                    size="small"
+                  />
+                )}
 
-        <S_BodyMarket className="body-market">
-          {loading ? (
-            Array(50)
-              .fill(null)
-              .map((_, index) => (
-                <Skeleton
-                  variant="rectangular"
-                  width="100%"
-                  height={100}
-                  key={index}
-                />
-              ))
-          ) : (
-            <S_BodyMarketInner>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "100%",
-                  height: "fit-content",
-                }}
-              >
-                <SearchBar inputValue={inputValue} widthSearchArea="60%" />
-                <div
-                  className="body-products"
-                  style={{
-                    borderRadius: "16px",
-                    width: "100%",
-                    height: "fit-content",
-                  }}
-                >
-                  {textFilter.length === 0 ? (
-                    <ContainerAccordionProducts
-                      new_products={newItens}
-                      parent_store_type={parent_store_type}
-                      store_type={store_type}
-                      products={products}
-                      id_store={id_store}
+                {(location?.state?.store_name || storeInfos.name) && (
+                  <Chip
+                    label={`ID: ${
+                      location.state
+                        ? location.state.store_id
+                        : storeInfos
+                        ? storeInfos.store_id
+                        : "..."
+                    }`}
+                    color="info"
+                    size="small"
+                  />
+                )}
+
+                {!loading ||
+                  (loadingRoute && (
+                    <Chip
+                      label={`${products?.all?.length || 0} itens`}
+                      color="info"
+                      size="small"
                     />
-                  ) : (
-                    <>
-                      {loadingBody && (
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            width: "100%",
-                          }}
-                        >
-                          <CircularProgress size="30px" />
-                        </div>
-                      )}
-                      {!loadingBody && (
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "flex-start",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            background: "white",
-                            width: "100%",
-                            height: "100%",
-                            borderRadius: "16px",
-                          }}
-                        >
-                          {filteredItems.length === 0 && <>Nada Encontrado</>}
-                          <S_BodyMarketSearching>
-                            {filteredItems.map(
-                              ({
-                                props: {
-                                  id,
-                                  unit_type,
-                                  quantity,
-                                  name,
-                                  price,
-                                  discount,
-                                  image,
-                                  real_price,
-                                },
-                              }) => (
-                                <CardProduct
-                                  id={id}
-                                  key={id}
-                                  unit_type={unit_type}
-                                  quantity={quantity}
-                                  name={name}
-                                  price={price}
-                                  discount={discount}
-                                  image={image}
-                                  real_price={real_price}
-                                />
-                              )
-                            )}
-                          </S_BodyMarketSearching>
-                        </div>
-                      )}
-                    </>
-                  )}
-                </div>
-              </div>
-            </S_BodyMarketInner>
+                  ))}
+              </SBoxChips>
+            </>
           )}
-        </S_BodyMarket>
-      </S_LayoutMarketsContainer>
-    </>
+        </div>
+      </S_Header>
+      <S_BodyMarket>
+        {loading || loadingRoute ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              // border: "1px solid",
+              width: "100%",
+              height: "60vh",
+            }}
+          >
+            <CircularProgress />
+          </div>
+        ) : (
+          <>
+            <SearchBar inputValue={handleSearch} widthSearchArea="60%" />
+            {debouncedQuery ? (
+              filteredItems.length ? (
+                filteredItems.map((product) => {
+                  console.log(product);
+                  return <CardProduct key={product.id} {...product} />;
+                })
+              ) : (
+                <p>Nada encontrado</p>
+              )
+            ) : (
+              <ContainerAccordionProducts
+                new_products={newItems}
+                products={products}
+                store_id={store_id}
+                store_type={storeInfos?.store_type?.parent_id}
+              />
+            )}
+          </>
+        )}
+      </S_BodyMarket>
+    </S_LayoutMarketsContainer>
   );
 };
 

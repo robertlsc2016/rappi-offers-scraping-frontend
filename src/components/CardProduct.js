@@ -14,7 +14,7 @@ const CardProduct = ({
   name = "Não definido",
   price = 0,
   discount = 0,
-  image = "",
+  image_url = "",
   real_price = 0,
   quantity = 0,
   unit_type = 0,
@@ -68,7 +68,7 @@ const CardProduct = ({
 
       <S_ContainerProducts key={id} onClick={() => chamarFuncaoDoFilho()}>
         <S_BoxImage>
-          <img src={`${image}`} />
+          <img src={`${image_url}`} />
         </S_BoxImage>
 
         <div
@@ -163,7 +163,7 @@ const CardProduct = ({
         </div>
         <ModalProduct
           name={name}
-          banner_url={image}
+          banner_url={image_url}
           real_price={real_price}
           discount={discount}
           price={price}

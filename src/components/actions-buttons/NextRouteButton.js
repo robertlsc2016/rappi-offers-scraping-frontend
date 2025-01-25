@@ -1,43 +1,56 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Axios from "../../services/axiosInstance";
+import { useNavigate, useLocation } from "react-router-dom";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import getStores from "../../services/getStores";
 
 const NextRouteButton = () => {
   const [routes, setRoutes] = useState([]);
-  const [currentRoute, setCurrentRoute] = useState("");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation(); // Hook para obter a localização atual
 
+  // Atualiza as rotas disponíveis ao montar o componente
   useEffect(() => {
-    setCurrentRoute(window.location.pathname.replace("/", ""));
     getRoutes();
   }, []);
 
+  // Atualiza o `currentRoute` sempre que a URL mudar
+  const currentRoute = location.pathname.replace("/store/", "");
+
   const nextRoute = () => {
-    const currentIndex = routes.indexOf(currentRoute);
+    console.log("Rota atual: ", currentRoute);
+
+    const currentIndex = routes.indexOf(Number(currentRoute));
+    console.log("Posição da rota atual: ", currentIndex);
+
     const nextIndex = (currentIndex + 1) % routes.length;
-    navigate(`/${routes[nextIndex]}`);
+    console.log("Próxima rota: ", routes[nextIndex]);
+
+    navigate(`/store/${routes[nextIndex]}`);
   };
 
   const getRoutes = async () => {
     try {
       const stores = await getStores().then((res) =>
-        res.map((store) => store.route)
+        res.map((store) => store.store_id)
       );
 
       setRoutes(stores);
       setLoading(false);
     } catch (err) {
-      return err;
+      console.error(err);
     }
   };
 
   return (
     <>
       {!loading && (
-        <div onClick={nextRoute}>
+        <div
+          onClick={nextRoute}
+          style={{
+            cursor: "pointer",
+          }}
+        >
           <div
             style={{
               display: "flex",
@@ -49,7 +62,7 @@ const NextRouteButton = () => {
               height: "48px",
               color: "white",
               background: "green",
-              boxShadow: ` rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px`,
+              boxShadow: `rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px`,
             }}
           >
             <ArrowForwardOutlinedIcon fontSize="inherit" />

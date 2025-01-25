@@ -38,6 +38,7 @@ const SearchBar = ({ inputValue, widthSearchArea }) => {
         alignItems: "center",
         borderRadius: "16px",
         height: "72px",
+        width: "100%",
       }}
     >
       <S_SearchBarBox>

@@ -9,8 +9,10 @@ export const S_SearchBarBox = styled.div`
   background: white;
   width: ${(props) => props.widthSearchArea};
   height: 70%;
-  border-radius: 5000px;
+  border-radius: 8px;
   padding: 0 32px;
+
+  /* border: 1px solid; */
 
   input {
     font-size: 24px;

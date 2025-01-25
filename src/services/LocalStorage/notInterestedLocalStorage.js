@@ -1,3 +1,3 @@
-const notInterestedLocalStorage = ({ id_store }) => {};
+const notInterestedLocalStorage = ({ store_id }) => {};
 
 export default notInterestedLocalStorage;
