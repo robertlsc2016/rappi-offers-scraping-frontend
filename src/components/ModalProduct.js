@@ -31,7 +31,11 @@ const ModalProduct = forwardRef(
       setAlreadyCalled(true);
       const getSimilarAmazon = await getSimilarOnAmazon({
         query: name,
-      }).finally(() => setLoadingProductsAmazon(true));
+      })
+        .catch(() => {
+          setSimilarProductsAmazon([]);
+        })
+        .finally(() => setLoadingProductsAmazon(true));
       setSimilarProductsAmazon(getSimilarAmazon);
     };
 
@@ -144,7 +148,7 @@ const ModalProduct = forwardRef(
                         }}
                       >
                         <EmblaCarousel
-                          slides={similarProductsAmazon}
+                          slides={similarProductsAmazon || []}
                           selection="amazon"
                         />
                       </Box>
