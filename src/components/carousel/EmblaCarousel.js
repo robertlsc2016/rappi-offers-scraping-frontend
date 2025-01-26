@@ -9,7 +9,6 @@ import CardProduct from "../CardProduct";
 import CardProductAmazon from "../CardProductAmazon";
 
 const EmblaCarousel = ({ slides, options, selection, link }) => {
-  console.log(slides);
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const {
