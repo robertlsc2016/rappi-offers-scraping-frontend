@@ -66,6 +66,12 @@ const Home = () => {
   const get_location = async () => {
     const location = await getLocalStorage({ name: "location" });
 
+    if (!location) {
+      localStorage.removeItem("getStores");
+      localStorage.removeItem("location");
+      localStorage.removeItem("getStores-time");
+    }
+
     if (location) {
       get_stores();
     }
@@ -76,7 +82,7 @@ const Home = () => {
   const clearLocation = () => {
     localStorage.removeItem("getStores");
     localStorage.removeItem("location");
-
+    localStorage.removeItem("getStores-time");
     window.location.reload();
   };
 
