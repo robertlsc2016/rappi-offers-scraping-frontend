@@ -11,6 +11,7 @@ import {
   S_BodyHomeContainer,
   S_BodyHomeInner,
   S_BoxStores,
+  S_ContainerButtonAbsolute,
   S_ContainerChips,
   S_containerStores,
   S_GlobalContainer,
@@ -92,33 +93,6 @@ const Home = () => {
 
       {location && (
         <>
-          <div
-            style={{
-              display: "flex",
-              gap: "16px",
-              zIndex: "1000",
-              cursor: "pointer",
-              // background: "#e9e9e9",
-              position: "fixed",
-              top: "32px",
-              left: "32px",
-              // border: "1px solid",
-              width: "auto",
-              height: "auto",
-            }}
-          >
-            <S_IconButton id="homeIconButton" onClick={() => returnInitial()}>
-              <HomeIcon />
-            </S_IconButton>
-
-            <S_IconButton>
-              <LocationSearchingIcon
-                fontSize="inherit"
-                onClick={() => clearLocation()}
-              />
-            </S_IconButton>
-          </div>
-
           <S_GlobalContainer>
             <S_HeaderContainer>
               <S_Header>
@@ -158,6 +132,21 @@ const Home = () => {
                   )}
                 </S_SearchbarContainer>
               </S_Header>
+              <S_ContainerButtonAbsolute>
+                <S_IconButton
+                  id="homeIconButton"
+                  onClick={() => returnInitial()}
+                >
+                  <HomeIcon />
+                </S_IconButton>
+
+                <S_IconButton>
+                  <LocationSearchingIcon
+                    fontSize="inherit"
+                    onClick={() => clearLocation()}
+                  />
+                </S_IconButton>
+              </S_ContainerButtonAbsolute>
             </S_HeaderContainer>
 
             <S_BodyHomeContainer>

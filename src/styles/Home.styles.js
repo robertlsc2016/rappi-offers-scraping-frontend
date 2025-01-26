@@ -1,6 +1,30 @@
 import { IconButton } from "@mui/material";
 import styled from "styled-components";
 
+export const S_ContainerButtonAbsolute = styled.div`
+  display: flex;
+  gap: 16px;
+  z-index: 1000;
+  cursor: pointer;
+
+  /* border: 1px solid black; */
+
+  margin-top: 8px;
+  /* background: white; */
+  border-radius: 16px;
+  padding: 0px 8px;
+  /* position: fixed; */
+  /* top: 32px; */
+  /* left: 32px; */
+  /* border: 1px solid; */
+  width: auto;
+  height: auto;
+
+  /* @media (max-width: 700px) {
+    display: none;
+  } */
+`;
+
 export const S_IconButton = styled(IconButton)`
   &.MuiIconButton-root {
     /* z-index: 1000; */
@@ -9,12 +33,6 @@ export const S_IconButton = styled(IconButton)`
     /* position: fixed; */
     /* top: 32px; */
     /* left: 32px; */
-  }
-
-  @media (max-width: 700px) {
-    &.MuiIconButton-root {
-      display: none;
-    }
   }
 `;
 
@@ -153,7 +171,7 @@ export const S_ContainerChips = styled.div`
   /* border: 1px solid #ccc; */
 
   //box-shadow: inset -10px 0 15px -10px rgba(0, 0, 0, 0.2);  /* Estilização do scroll */
-  
+
   &::-webkit-scrollbar {
     height: 6px; /* Para o scroll horizontal */
   }
@@ -181,7 +199,7 @@ export const S_BodyHomeContainer = styled.div`
   width: 100%;
   flex-direction: column;
   padding: 0 10%;
-  margin-top: 235px;
+  margin-top: 255px;
 `;
 
 export const S_BodyHomeBox = styled.div`
