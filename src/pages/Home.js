@@ -69,11 +69,14 @@ const Home = () => {
     if (location) {
       get_stores();
     }
+
     setLocation(location);
   };
 
   const clearLocation = () => {
+    localStorage.removeItem("getStores");
     localStorage.removeItem("location");
+
     window.location.reload();
   };
 
@@ -105,7 +108,7 @@ const Home = () => {
             <S_IconButton>
               <LocationSearchingIcon
                 fontSize="inherit"
-                onClick={clearLocation}
+                onClick={() => clearLocation()}
               />
             </S_IconButton>
           </div>
