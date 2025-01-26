@@ -67,9 +67,10 @@ const Home = () => {
         return;
       }
 
-      setStoresGroups(stores);
       setIsLoading(false);
+      setStoresGroups(stores);
     } catch (err) {
+      setIsLoading(false);
       setStoresGroups([]);
     }
   };
@@ -78,6 +79,8 @@ const Home = () => {
     const location = await getLocalStorage({ name: "location" });
 
     if (!location) {
+      setIsLoading(false);
+
       localStorage.removeItem("getStores");
       localStorage.removeItem("location");
       localStorage.removeItem("getStores-time");
@@ -168,7 +171,7 @@ const Home = () => {
             </S_HeaderContainer>
 
             <S_BodyHomeContainer>
-              {storesGroups.length == 0 && (
+              {storesGroups.length == 0 && !isLoading && (
                 <div
                   style={{
                     width: "100%",
