@@ -9,6 +9,7 @@ import CardProduct from "../CardProduct";
 import CardProductAmazon from "../CardProductAmazon";
 
 const EmblaCarousel = ({ slides, options, selection, link }) => {
+
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const {
@@ -33,7 +34,7 @@ const EmblaCarousel = ({ slides, options, selection, link }) => {
                 price,
                 quantity,
                 unit_type,
-                link
+                link,
               },
               index
             ) => (
@@ -54,7 +55,7 @@ const EmblaCarousel = ({ slides, options, selection, link }) => {
                     quantity={quantity}
                     unit_type={unit_type}
                     className="item"
-                    image={
+                    image_url={
                       image.includes("amazon")
                         ? image
                         : `https://images.rappi.com.br/products/${image}`

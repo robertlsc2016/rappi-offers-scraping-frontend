@@ -137,7 +137,7 @@ export const S_SearchbarContainer = styled.div`
 export const S_ContainerChips = styled.div`
   cursor: pointer;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
   column-gap: 16px;

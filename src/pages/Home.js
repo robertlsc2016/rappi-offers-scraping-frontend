@@ -24,12 +24,13 @@ import getStores from "../services/getStores";
 // import GetLocation from "../components/GetLocation";
 import getLocalStorage from "../services/LocalStorage/getLocalStorage";
 import returnTop from "../utils/returnTop";
+import GetLocation from "../components/GetLocation";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
   const [storesGroups, setStoresGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [location, setLocation] = useState(true);
+  const [location, setLocation] = useState({});
 
   const dispatch = useDispatch();
   const statusView = useSelector((state) => state.statusView.status_view);
@@ -50,7 +51,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    get_stores();
+    get_location();
     dispatch(initial());
   }, []);
 
@@ -60,13 +61,18 @@ const Home = () => {
     setIsLoading(false);
   };
 
-  const get_location = () => {
-    const location = getLocalStorage({ name: "location" });
+  const get_location = async () => {
+    const location = await getLocalStorage({ name: "location" });
+
+    if (location) {
+      get_stores();
+    }
+    setLocation(location);
   };
 
   return (
     <>
-      {/* <GetLocation /> */}
+      {!location && <GetLocation />}
 
       {location && (
         <>
@@ -93,17 +99,21 @@ const Home = () => {
                   />
                   {statusView == "INITIAL_VIEW" && (
                     <S_ContainerChips>
-                      {Object.entries(storesGroups).map(([group]) => (
-                        <Chip
-                          key={group} // Sempre use uma key única!
-                          style={{ textTransform: "capitalize" }}
-                          size="small"
-                          color="info"
-                          label={`${group}`}
-                          href={`#${group}`}
-                          component="a"
-                        />
-                      ))}
+                      {Object.entries(storesGroups).map(([group, stores]) => {
+                        if (stores.length > 0) {
+                          return (
+                            <Chip
+                              key={group} // Sempre use uma key única!
+                              style={{ textTransform: "capitalize" }}
+                              size="small"
+                              color="info"
+                              label={`${group}`}
+                              href={`#${group}`}
+                              component="a"
+                            />
+                          );
+                        }
+                      })}
                     </S_ContainerChips>
                   )}
                 </S_SearchbarContainer>
@@ -120,126 +130,38 @@ const Home = () => {
                   {statusView == "INITIAL_VIEW" && !isLoading && (
                     <>
                       {Object.entries(storesGroups).map(([group, stores]) => {
-                        return (
-                          <S_containerStores id={`${group}`}>
-                            <h1
-                              style={{
-                                textTransform: "capitalize",
-                              }}
-                            >
-                              {group}
-                            </h1>
+                        if (stores.length > 0) {
+                          return (
+                            <>
+                              <S_containerStores
+                                key={group}
+                                id={`${group} ${stores.length}`}
+                              >
+                                <h1
+                                  style={{
+                                    textTransform: "capitalize",
+                                  }}
+                                >
+                                  {group}
+                                </h1>
 
-                            <S_BoxStores>
-                              {stores?.map(
-                                ({ store_id, store_img, store_name }) => (
-                                  <CardMarkets
-                                    key={store_id}
-                                    store_id={store_id}
-                                    store_name={store_name}
-                                    img_path={store_img}
-                                  />
-                                )
-                              )}
-                            </S_BoxStores>
-                          </S_containerStores>
-                        );
+                                <S_BoxStores>
+                                  {stores?.map(
+                                    ({ store_id, store_img, store_name }) => (
+                                      <CardMarkets
+                                        key={store_id}
+                                        store_id={store_id}
+                                        store_name={store_name}
+                                        img_path={store_img}
+                                      />
+                                    )
+                                  )}
+                                </S_BoxStores>
+                              </S_containerStores>
+                            </>
+                          );
+                        }
                       })}
-                      {/* {storesGroups.map((stores) => {
-                        return (
-                          <S_containerStores id="turbo">
-                            <h1>Turbo</h1>
-                            <S_BoxStores>
-                              {storesGroups
-                                .filter(
-                                  (market) =>
-                                    market.sub_group.toLowerCase() == "turbo"
-                                )
-                                .map(({ store_id, store_img, store_name }) => (
-                                  <CardMarkets
-                                    key={store_id}
-                                    store_id={store_id}
-                                    store_name={store_name}
-                                    img_path={store_img}
-                                  />
-                                ))}
-                            </S_BoxStores>
-                          </S_containerStores>
-                        );
-                      })} */}
-
-                      {/* <S_containerStores id="markets">
-                        <h1>Mercados</h1>
-                        <S_BoxStores>
-                          {storesGroups
-                            .filter(
-                              (market) =>
-                                market.sub_group.toLowerCase() == "super"
-                            )
-                            .map(({ store_id, store_img, store_name }) => (
-                              <CardMarkets
-                                key={store_id}
-                                store_id={store_id}
-                                store_name={store_name}
-                                img_path={store_img}
-                              />
-                            ))}
-                        </S_BoxStores>
-                      </S_containerStores>
-
-                      <S_containerStores id="drugstore">
-                        <h1>Farmácia</h1>
-                        <S_BoxStores>
-                          {storesGroups
-                            .filter(
-                              (market) =>
-                                market.sub_group.toLowerCase() == "farmacia"
-                            )
-                            .map(({ store_id, store_img, store_name }) => (
-                              <CardMarkets
-                                key={store_id}
-                                store_id={store_id}
-                                store_name={store_name}
-                                img_path={store_img}
-                              />
-                            ))}
-                        </S_BoxStores>
-                      </S_containerStores>
-
-                      <S_containerStores id="shopping">
-                        <h1>Shopping</h1>
-                        <S_BoxStores>
-                          {storesGroups
-                            .filter(
-                              (market) =>
-                                market.sub_group.toLowerCase() == "hogar"
-                            )
-                            .map(({ store_id, store_img, store_name }) => (
-                              <CardMarkets
-                                key={store_id}
-                                store_id={store_id}
-                                store_name={store_name}
-                                img_path={store_img}
-                              />
-                            ))}
-                        </S_BoxStores>
-                      </S_containerStores>
-
-                      <S_containerStores id="especializada">
-                        <h1>Especializada</h1>
-                        <S_BoxStores>
-                          {storesGroups.especializada.map(
-                            ({ store_id, store_img, store_name }) => (
-                              <CardMarkets
-                                key={store_id}
-                                store_id={store_id}
-                                store_name={store_name}
-                                img_path={store_img}
-                              />
-                            )
-                          )}
-                        </S_BoxStores>
-                      </S_containerStores> */}
                     </>
                   )}
                 </S_BodyHomeInner>

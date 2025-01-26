@@ -1,70 +1,170 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import useDebouncedValue from "../hooks/useDebouncedValue";
+import Axios from "../services/axiosInstance";
 
 const GetLocation = () => {
-  const [address, setAddress] = useState([]); // Estado para armazenar o endereço
+  const [textAddress, setTextAddress] = useState("");
+  const [places, setPlaces] = useState([]);
 
-  const handleSearch = async () => {
-    if (!address.trim()) {
-      console.error("Por favor, insira um endereço válido.");
-      return;
-    }
+  const handleSearch = (text) => {
+    setPlaces([]);
+    setTextAddress(text);
+  };
 
-    const apiKey = "AIzaSyBYEPf74iKGQJKAGwzae_F9Rs--J6lmPsA"; // Substitua pela sua chave da API do Google
-    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-      address
-    )}&components=country:BR|administrative_area:SPS&key=${apiKey}`;
+  const handleGetGeolocation = (place_id) => {
+    getGeolocation({ place_id: place_id });
+  };
 
+  const debouncedQuery = useDebouncedValue(textAddress, 800);
+
+  useEffect(() => {
+    getPlaces({ place: debouncedQuery });
+  }, [debouncedQuery]);
+
+  const getPlaces = async ({ place }) => {
     try {
-      const response = await axios.get(geocodeUrl);
+      const { data: places } = await Axios.post("/searchLocations", {
+        query: place,
+      });
+      setPlaces(places);
+    } catch (err) {
+      return err;
+    }
+  };
 
-      if (response.data.status === "OK") {
-        const results = response.data.results;
-
-        const resultss = results.map((result) => {
-          return {
-            address: result.formatted_address,
-            lat: result.geometry.location.lat,
-            lng: result.geometry.location.lng,
-          };
-        });
-
-        setAddress(resultss);
-      }
-    } catch (error) {
-      console.error("Erro na requisição à API:", error.message);
+  const getGeolocation = async ({ place_id }) => {
+    try {
+      const { data: location_infos } = await Axios.post("/getGeolocation", {
+        place_id: place_id,
+      });
+      localStorage.setItem("location", JSON.stringify(location_infos));
+      window.location.reload();
+    } catch (err) {
+      return err;
     }
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h2>Buscar Coordenadas</h2>
-      <input
-        type="text"
-        placeholder="Digite o endereço"
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
+    <div
+      style={{
+        position: "relative",
+        background: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+        url('https://img.freepik.com/vetores-premium/padrao-sobre-shopping_1061-495.jpg')`,
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "100vw",
+        height: "100vh",
+        fontFamily: "Arial, sans-serif",
+        gap: "16px",
+        touchAction: "none",
+      }}
+    >
+      <div
         style={{
-          padding: "10px",
-          width: "300px",
-          marginRight: "10px",
-          border: "1px solid #ccc",
-          borderRadius: "4px",
-        }}
-      />
-      <button
-        onClick={handleSearch}
-        style={{
-          padding: "10px 15px",
-          backgroundColor: "#4285F4",
-          color: "#fff",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
+          position: "fixed",
+          top: "20px",
+          opacity: "10% !important",
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+          background: "white",
+          flexDirection: "column",
+          padding: "20px",
+          fontFamily: "Arial, sans-serif",
+          // border: "1px solid black",
+          marginTop: " 8px",
+          boxShadow: `rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px`,
+          width: "90%",
+          height: "90%",
+          borderRadius: "24px",
+          gap: "16px",
+          overflow: "hidden",
+          paddingBottom: "16px",
         }}
       >
-        Pesquisar
-      </button>
+        <h2
+          style={{
+            fontSize: "46px",
+            fontWeight: "lighter",
+            margin: "0",
+            padding: "0",
+          }}
+        >
+          Insira sua
+          <p
+            style={{
+              fontWeight: "800",
+              color: "blue",
+            }}
+          >
+            Localização 📍
+          </p>
+        </h2>
+        <input
+          type="text"
+          placeholder="Digite o endereço"
+          value={textAddress}
+          onChange={(e) => handleSearch(e.target.value)}
+          style={{
+            width: "100%",
+            height: "64px",
+            fontSize: "32px",
+            marginRight: "10px",
+            borderRadius: "4px",
+          }}
+        />
+        <div
+          style={{
+            width: "100%",
+            height: "auto",
+            // border: '1px solid black',
+            overflow: "auto",
+          }}
+        >
+          {places.map((place, index) => (
+            <div
+              onClick={() => handleGetGeolocation(place.place_id)}
+              key={place.id || index} // Usando o índice como chave caso não tenha um id único
+              style={{
+                animation: `drop 0.5s ease forwards`,
+                animationDelay: `${index * 0.2}s`, // Adiciona um delay para cada item
+                opacity: 0, // Começa invisível
+                transform: "translateY(-20px)", // Começa um pouco acima
+                marginBottom: "10px",
+              }}
+            >
+              <p
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "#3498db",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  fontSize: "18px",
+                  cursor: "pointer",
+                  width: "100%",
+                  textAlign: "center",
+                }}
+              >
+                {place.address}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>
+        {`
+          @keyframes drop {
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

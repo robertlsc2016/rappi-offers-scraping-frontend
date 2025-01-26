@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import globalSearchProduct from "../services/globalSearchProduct";
 import { Avatar, CircularProgress } from "@mui/material";
 import EmblaCarousel from "./carousel/EmblaCarousel";
+import getLocalStorage from "../services/LocalStorage/getLocalStorage";
 
 const SearchGlobal = ({ text }) => {
   const [debouncedQuery, setDebouncedQuery] = useState("");
@@ -24,9 +25,14 @@ const SearchGlobal = ({ text }) => {
   }, [debouncedQuery]);
 
   const getProducts = async (query) => {
+    const location = await getLocalStorage({ name: "location" });
+
     const products = await globalSearchProduct({
       query: query,
+      lat: location.geolocation.lat,
+      lng: location.geolocation.lng,
     });
+
     setLoading(false);
     setStores(products);
   };
@@ -75,18 +81,15 @@ const SearchGlobal = ({ text }) => {
             >
               <Avatar
                 sx={{ width: 48, height: 48 }}
-                src={`https://images.rappi.com.br/marketplace/${store.logo}`}
+                src={`https://images.rappi.com.br/marketplace/${store.store_image}`}
               />
 
-              <div>{store.store_name}</div>
+              <div>{store.name}</div>
             </div>
 
             <div>
               <div>
-                <EmblaCarousel
-                  slides={store.products.sort((a, b) => a.price - b.price)}
-                  options={OPTIONS}
-                />
+                <EmblaCarousel slides={store.products} options={OPTIONS} />
               </div>
             </div>
           </div>

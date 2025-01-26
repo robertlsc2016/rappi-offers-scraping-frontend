@@ -30,9 +30,10 @@ export const S_BoxImage = styled.div`
   align-items: flex-start;
   width: 100%;
   height: 100px;
-  padding: 1px;
+  padding: 4px;
 
   img {
+    background-color: white;
     object-fit: contain;
     width: 100%;
     height: 100%;
