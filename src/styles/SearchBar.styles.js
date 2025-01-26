@@ -11,7 +11,7 @@ export const S_SearchBarBox = styled.div`
   /* width: ${(props) => props.widthSearchArea}; */
   height: 70%;
   border-radius: 8px;
-  padding: 0 32px;
+  padding: 0 24px;
 
   /* border: 1px solid; */
 

@@ -20,6 +20,10 @@ const getStores = async () => {
       return data;
     });
 
+    if (stores.status == 204) {
+      throw new Error("não existem lojas disponiveis nessa localidade");
+    }
+
     saveLocalStorage({ name: "getStores", data: stores });
     saveLocalStorageTime({ name: `getStores` });
 

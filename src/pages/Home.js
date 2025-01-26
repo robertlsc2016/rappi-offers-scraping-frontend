@@ -22,7 +22,6 @@ import {
 } from "../styles/Home.styles";
 import { Chip } from "@mui/material";
 import getStores from "../services/getStores";
-// import GetLocation from "../components/GetLocation";
 import getLocalStorage from "../services/LocalStorage/getLocalStorage";
 import returnTop from "../utils/returnTop";
 import GetLocation from "../components/GetLocation";
@@ -59,9 +58,20 @@ const Home = () => {
   }, []);
 
   const get_stores = async () => {
-    const stores = await getStores();
-    setStoresGroups(stores);
-    setIsLoading(false);
+    try {
+      const stores = await getStores();
+
+      if (stores.status == 204) {
+        setStoresGroups([]);
+        setIsLoading(false);
+        return;
+      }
+
+      setStoresGroups(stores);
+      setIsLoading(false);
+    } catch (err) {
+      setStoresGroups([]);
+    }
   };
 
   const get_location = async () => {
@@ -87,6 +97,13 @@ const Home = () => {
     window.location.reload();
   };
 
+  // Rolagem de 1px caso storesGroups.length seja 0
+  useEffect(() => {
+    if (storesGroups.length === 0) {
+      window.scrollBy(0, 50); // Rola a página 1px verticalmente
+    }
+  }, [storesGroups]);
+
   return (
     <>
       {!location && <GetLocation />}
@@ -100,7 +117,6 @@ const Home = () => {
                   style={{
                     textAlign: "center",
                     width: "100%",
-                    // border: '1px solid',
                     fontSize: `clamp(1rem, 1.5rem, 2rem)`,
                   }}
                 >
@@ -111,13 +127,13 @@ const Home = () => {
                     inputValue={handleInputChange}
                     widthSearchArea="100%"
                   />
-                  {statusView == "INITIAL_VIEW" && (
+                  {statusView == "INITIAL_VIEW" && storesGroups.length > 0 && (
                     <S_ContainerChips>
                       {Object.entries(storesGroups).map(([group, stores]) => {
                         if (stores.length > 0) {
                           return (
                             <Chip
-                              key={group} // Sempre use uma key única!
+                              key={group}
                               style={{ textTransform: "capitalize" }}
                               size="small"
                               color="info"
@@ -133,12 +149,14 @@ const Home = () => {
                 </S_SearchbarContainer>
               </S_Header>
               <S_ContainerButtonAbsolute>
-                <S_IconButton
-                  id="homeIconButton"
-                  onClick={() => returnInitial()}
-                >
-                  <HomeIcon />
-                </S_IconButton>
+                {statusView !== "INITIAL_VIEW" && (
+                  <S_IconButton
+                    id="homeIconButton"
+                    onClick={() => returnInitial()}
+                  >
+                    <HomeIcon />
+                  </S_IconButton>
+                )}
 
                 <S_IconButton>
                   <LocationSearchingIcon
@@ -150,6 +168,28 @@ const Home = () => {
             </S_HeaderContainer>
 
             <S_BodyHomeContainer>
+              {storesGroups.length == 0 && (
+                <div
+                  style={{
+                    width: "100%",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  <p>Não existem lojas disponíveis na sua localidade :(</p>
+                  <p>moras em Xique-Xique Bahia?</p>
+                  <iframe
+                    width="500"
+                    height="300"
+                    src="https://www.youtube.com/embed/0QswgI6RBqA?autoplay=1&mute=0?si=qJgHOqdu49oR-r4f"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              )}
               <S_BodyHomeBox>
                 <S_BodyHomeInner>
                   {statusView == "SEARCHING_VIEW" && (
@@ -161,33 +201,31 @@ const Home = () => {
                       {Object.entries(storesGroups).map(([group, stores]) => {
                         if (stores.length > 0) {
                           return (
-                            <>
-                              <S_containerStores
-                                key={group}
-                                id={`${group} ${stores.length}`}
+                            <S_containerStores
+                              key={group}
+                              id={`${group} ${stores.length}`}
+                            >
+                              <h1
+                                style={{
+                                  textTransform: "capitalize",
+                                }}
                               >
-                                <h1
-                                  style={{
-                                    textTransform: "capitalize",
-                                  }}
-                                >
-                                  {group}
-                                </h1>
+                                {group}
+                              </h1>
 
-                                <S_BoxStores>
-                                  {stores?.map(
-                                    ({ store_id, store_img, store_name }) => (
-                                      <CardMarkets
-                                        key={store_id}
-                                        store_id={store_id}
-                                        store_name={store_name}
-                                        img_path={store_img}
-                                      />
-                                    )
-                                  )}
-                                </S_BoxStores>
-                              </S_containerStores>
-                            </>
+                              <S_BoxStores>
+                                {stores?.map(
+                                  ({ store_id, store_img, store_name }) => (
+                                    <CardMarkets
+                                      key={store_id}
+                                      store_id={store_id}
+                                      store_name={store_name}
+                                      img_path={store_img}
+                                    />
+                                  )
+                                )}
+                              </S_BoxStores>
+                            </S_containerStores>
                           );
                         }
                       })}
