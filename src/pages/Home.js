@@ -25,6 +25,8 @@ import getStores from "../services/getStores";
 import getLocalStorage from "../services/LocalStorage/getLocalStorage";
 import returnTop from "../utils/returnTop";
 import GetLocation from "../components/GetLocation";
+import ChangeLocation from "../components/actions-buttons/ChangeLocation";
+import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
@@ -70,15 +72,44 @@ const Home = () => {
     setLocation(location);
   };
 
+  const clearLocation = () => {
+    localStorage.removeItem("location");
+    window.location.reload();
+  };
+
   return (
     <>
       {!location && <GetLocation />}
 
       {location && (
         <>
-          <S_IconButton id="homeIconButton" onClick={() => returnInitial()}>
-            <HomeIcon />
-          </S_IconButton>
+          <div
+            style={{
+              display: "flex",
+              gap: "16px",
+              zIndex: "1000",
+              cursor: "pointer",
+              // background: "#e9e9e9",
+              position: "fixed",
+              top: "32px",
+              left: "32px",
+              // border: "1px solid",
+              width: "auto",
+              height: "auto",
+            }}
+          >
+            <S_IconButton id="homeIconButton" onClick={() => returnInitial()}>
+              <HomeIcon />
+            </S_IconButton>
+
+            <S_IconButton>
+              <LocationSearchingIcon
+                fontSize="inherit"
+                onClick={clearLocation}
+              />
+            </S_IconButton>
+          </div>
+
           <S_GlobalContainer>
             <S_HeaderContainer>
               <S_Header>

@@ -3,12 +3,12 @@ import styled from "styled-components";
 
 export const S_IconButton = styled(IconButton)`
   &.MuiIconButton-root {
-    z-index: 1000;
+    /* z-index: 1000; */
     cursor: pointer;
     background: #e9e9e9;
-    position: fixed;
-    top: 32px;
-    left: 32px;
+    /* position: fixed; */
+    /* top: 32px; */
+    /* left: 32px; */
   }
 
   @media (max-width: 700px) {
