@@ -7,32 +7,19 @@ export const S_ContainerButtonAbsolute = styled.div`
   z-index: 1000;
   cursor: pointer;
 
-  /* border: 1px solid black; */
-
   margin-top: 8px;
-  /* background: white; */
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.border_radius.medium};
   padding: 0px 8px;
-  /* position: fixed; */
-  /* top: 32px; */
-  /* left: 32px; */
-  /* border: 1px solid; */
+
   width: auto;
   height: auto;
-
-  /* @media (max-width: 700px) {
-    display: none;
-  } */
 `;
 
 export const S_IconButton = styled(IconButton)`
   &.MuiIconButton-root {
-    /* z-index: 1000; */
+    color: white;
     cursor: pointer;
-    background: #e9e9e9;
-    /* position: fixed; */
-    /* top: 32px; */
-    /* left: 32px; */
+    background: #0288d1;
   }
 `;
 
@@ -40,27 +27,22 @@ export const S_containerStores = styled.div`
   display: flex;
   flex-direction: column;
 
-  scroll-margin-top: 28vh;
+  /* border: 1px solid black; */
+
+  width: 100%;
+  max-width: 1250px;
+
+  scroll-margin-top: 4vh;
   gap: 24px;
 
   justify-content: center;
   align-items: center;
-  width: fit-content;
+  /* width: fit-content; */
 
   h1 {
     width: 100%;
-    max-width: 1278px;
+    max-width: 1250px;
     text-align: start;
-  }
-
-  width: 100%;
-
-  @media (max-width: 300px) {
-    scroll-margin-top: 40vh;
-  }
-
-  @media (max-width: 400px) {
-    scroll-margin-top: 35vh;
   }
 `;
 
@@ -86,12 +68,12 @@ export const S_BoxStores = styled.div`
   }
 
   @media (min-width: 930px) and (max-width: 1200px) {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     justify-content: center;
   }
 
   @media (min-width: 1200px) and (max-width: 1400px) {
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto ;
     justify-content: center;
   }
 
@@ -103,7 +85,12 @@ export const S_BoxStores = styled.div`
 
 export const S_GlobalContainer = styled.div`
   padding-bottom: 27vh;
+
+  /* background-color: red; */
+
   width: 100%;
+  max-width: 1200px;
+  
   height: fit-content;
   display: flex;
   justify-content: flex-start;
@@ -118,18 +105,26 @@ export const S_HeaderContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+
+  /* background-color: white; */
+
   width: 100%;
   height: auto;
-
+  gap: 8px;
   z-index: 100;
-  padding-top: 10px;
+
+  position: fixed;
+  bottom: 0;
 `;
 
 export const S_Header = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+
   flex-direction: column;
   align-items: center;
+
+  /* border: 1px solid; */
 
   background: white;
   transition: width 0.5s ease, height 0.5ms ease;
@@ -137,19 +132,16 @@ export const S_Header = styled.div`
   /* border: 1px solid; */
   gap: 8px;
   width: 50%;
+
   height: auto;
-  padding: 16px;
-  border-radius: 32px;
+  padding: 4px;
+
+  border-radius: 32px 32px 0px 0px;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 4px 50px 5px;
 
   @media (max-width: 700px) {
-    width: 95%;
+    width: 100%;
   }
-`;
-
-export const S_SearchbarContainer = styled.div`
-  width: 80%;
-  /* border: 1px solid; */
 `;
 
 export const S_ContainerChips = styled.div`
@@ -159,18 +151,16 @@ export const S_ContainerChips = styled.div`
   align-items: center;
   flex-direction: row;
   column-gap: 16px;
-  row-gap: 8px;
+
+  /* border: 1px solid black; */
+  padding-bottom: 6px;
+  /* row-gap: 8px; */
   width: 100%;
-  height: 50px;
+  height: auto;
+  /* height: 50px; */
+
   overflow-x: auto; /* Habilita scroll horizontal */
   white-space: nowrap; /* Garante que o conteúdo não quebre linhas */
-
-  /* border-radius: 8px; */
-  /* background-color: white; */
-  /* border: 1px solid #ccc; */
-  /* border: 1px solid #ccc; */
-
-  //box-shadow: inset -10px 0 15px -10px rgba(0, 0, 0, 0.2);  /* Estilização do scroll */
 
   &::-webkit-scrollbar {
     height: 6px; /* Para o scroll horizontal */
@@ -198,8 +188,15 @@ export const S_BodyHomeContainer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  padding: 0 10%;
-  margin-top: 255px;
+  /* padding: 0 8px; */
+  margin-top: 64px;
+
+  /* border: 1px solid black; */
+
+  @media (max-width: 500px) {
+    /* width: 100%; */
+    padding: 0px 8px;
+  }
 `;
 
 export const S_BodyHomeBox = styled.div`

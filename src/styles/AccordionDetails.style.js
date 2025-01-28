@@ -4,12 +4,13 @@ import styled from "styled-components";
 export const S_AccordionDetails = styled(AccordionDetails)`
   display: flex;
   flex-direction: row;
-  /* gap: 16px; */
+
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
 
   padding: 8px !important;
+
   gap: 10px;
 
   &::after {

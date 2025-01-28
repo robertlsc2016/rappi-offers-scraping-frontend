@@ -44,10 +44,10 @@ const CardProduct = ({
           justifyContent: "center",
           alignItems: "center",
           position: "absolute",
-          zIndex: " 100",
           bottom: "8px",
           width: "100%",
           opacity: "80%",
+          zIndex: "1"
         }}
       >
         <Button
@@ -145,19 +145,14 @@ const CardProduct = ({
 
               overflow: "hidden",
 
-              // border: "1px solid black",
-
               display: "-webkit-box",
               WebkitLineClamp: 3,
               WebkitBoxOrient: "vertical",
-
-              // whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",
             }}
           >
             {name}
-
             <S_ChipUnit color="warning" label={`${quantity} ${unit_type}`} />
           </div>
         </div>

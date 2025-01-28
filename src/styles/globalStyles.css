@@ -31,6 +31,11 @@ body {
   scroll-behavior: smooth;
   scrollbar-color: #888 #f1f1f1;
   scrollbar-width: thin;
+
+  padding-top: calc(60px + env(safe-area-inset-top));
+
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 p,

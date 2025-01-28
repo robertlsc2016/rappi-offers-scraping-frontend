@@ -7,13 +7,25 @@ export const S_LayoutMarketsContainer = styled.div`
   align-items: center;
 
   gap: 16px;
-  padding: 8px;
+  margin-top: 32px;
 
   /* min-height: 100%; */
   height: fit-content;
+
   width: 100%;
-  min-height: 100vh;
+  max-width: 1200px;
+
+  /* border: 1px solid; */
+
+  /* padding: 16px 10%; */
+
+  @media (max-width: 500px) {
+    padding: 16px 8px;
+  }
+
+  /* min-height: 100vh; */
 `;
+
 export const S_Header = styled.div`
   /* position: relative; */
   /* border: 1px solid; */
@@ -30,7 +42,7 @@ export const S_Header = styled.div`
   background-color: #e9e9e9;
   min-height: 120px;
   height: auto;
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.border_radius.medium};
 `;
 
 export const ButtonReturn = styled(Box)`
@@ -48,6 +60,7 @@ export const BodyHeader = styled(Box)`
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  /* margin-top: 32px; */
 
   gap: 5px;
   width: 100%;
@@ -58,14 +71,12 @@ export const S_BodyMarket = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: row;
-  margin-top: 0px;
+  /* margin-top: 32px; */
   gap: 16px;
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.border_radius.medium};
   height: auto;
   flex-wrap: wrap;
   width: 100%;
-
-  /* border: 1px solid; */
 `;
 
 export const S_BodyMarketSearching = styled.div`

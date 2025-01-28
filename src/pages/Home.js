@@ -27,12 +27,15 @@ import returnTop from "../utils/returnTop";
 import GetLocation from "../components/GetLocation";
 import ChangeLocation from "../components/actions-buttons/ChangeLocation";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
+import InitialApresentation from "../components/widgets/InitialApresentation";
+import LocationTag from "../components/widgets/LocationTag";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
   const [storesGroups, setStoresGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [location, setLocation] = useState({});
+  const [chipsStoreGroups, setChipsStoreGroups] = useState([]);
 
   const dispatch = useDispatch();
   const statusView = useSelector((state) => state.statusView.status_view);
@@ -53,6 +56,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    returnTop();
     get_location();
     dispatch(initial());
   }, []);
@@ -68,6 +72,17 @@ const Home = () => {
       }
 
       setIsLoading(false);
+
+      const chipGroupStores = Object.entries(stores)
+        .map(([group, stores]) => {
+          if (stores.length > 0) {
+            return group;
+          }
+        })
+        .filter((store) => store);
+
+      setChipsStoreGroups(chipGroupStores);
+
       setStoresGroups(stores);
     } catch (err) {
       setIsLoading(false);
@@ -100,58 +115,17 @@ const Home = () => {
     window.location.reload();
   };
 
-  // Rolagem de 1px caso storesGroups.length seja 0
-  useEffect(() => {
-    if (storesGroups.length === 0) {
-      window.scrollBy(0, 50); // Rola a página 1px verticalmente
-    }
-  }, [storesGroups]);
-
   return (
     <>
+      <InitialApresentation />
       {!location && <GetLocation />}
 
       {location && (
         <>
+          <LocationTag />
           <S_GlobalContainer>
             <S_HeaderContainer>
-              <S_Header>
-                <h1
-                  style={{
-                    textAlign: "center",
-                    width: "100%",
-                    fontSize: `clamp(1rem, 1.5rem, 2rem)`,
-                  }}
-                >
-                  Filtro de Ofertas do Rappi
-                </h1>
-                <S_SearchbarContainer>
-                  <SearchBar
-                    inputValue={handleInputChange}
-                    widthSearchArea="100%"
-                  />
-                  {statusView == "INITIAL_VIEW" && storesGroups.length > 0 && (
-                    <S_ContainerChips>
-                      {Object.entries(storesGroups).map(([group, stores]) => {
-                        if (stores.length > 0) {
-                          return (
-                            <Chip
-                              key={group}
-                              style={{ textTransform: "capitalize" }}
-                              size="small"
-                              color="info"
-                              label={`${group}`}
-                              href={`#${group}`}
-                              component="a"
-                            />
-                          );
-                        }
-                      })}
-                    </S_ContainerChips>
-                  )}
-                </S_SearchbarContainer>
-              </S_Header>
-              <S_ContainerButtonAbsolute>
+              {/* <S_ContainerButtonAbsolute>
                 {statusView !== "INITIAL_VIEW" && (
                   <S_IconButton
                     id="homeIconButton"
@@ -167,7 +141,9 @@ const Home = () => {
                     onClick={() => clearLocation()}
                   />
                 </S_IconButton>
-              </S_ContainerButtonAbsolute>
+              </S_ContainerButtonAbsolute> */}
+
+              <SearchBar inputValue={handleInputChange} />
             </S_HeaderContainer>
 
             <S_BodyHomeContainer>
@@ -204,10 +180,7 @@ const Home = () => {
                       {Object.entries(storesGroups).map(([group, stores]) => {
                         if (stores.length > 0) {
                           return (
-                            <S_containerStores
-                              key={group}
-                              id={`${group} ${stores.length}`}
-                            >
+                            <S_containerStores key={group} id={`${group}`}>
                               <h1
                                 style={{
                                   textTransform: "capitalize",

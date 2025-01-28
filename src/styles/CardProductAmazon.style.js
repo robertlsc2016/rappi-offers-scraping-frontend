@@ -6,7 +6,7 @@ export const S_CardProductAmazonContainer = styled(Box)`
   justify-content: flex-start;
   flex-direction: column;
   background: #e9e9e9;
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.border_radius.medium};
   
   width: 120px;
   height: 220px !important;

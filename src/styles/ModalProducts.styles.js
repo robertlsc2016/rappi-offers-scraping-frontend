@@ -20,7 +20,7 @@ export const S_ModalInnerBox1 = styled(Grid2)`
   width: 70vw;
   height: 80vh;
   background: white;
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.border_radius.medium};
   padding: 24px;
 
   @media (max-width: 600px) {
@@ -34,7 +34,7 @@ export const S_GridImage = styled(Grid2)`
   flex-direction: column;
   justify-content: center;
   border: 2px solid #e9e9e9;
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.border_radius.medium};
   height: 100%;
   padding: 32px;
   /* border: 1px solid black; */
@@ -48,7 +48,7 @@ export const S_GridDescriptionContainer = styled(Grid2)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.border_radius.medium};
   height: 100%;
   /* border: 2px solid black; */
 
