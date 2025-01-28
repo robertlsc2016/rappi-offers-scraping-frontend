@@ -3,14 +3,18 @@ import { useEffect, useRef, useState } from "react";
 import { initial, search } from "../redux/statusViewSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  S_ContainerChips,
   S_ContainerSearchBar,
   S_SearchBarBox,
   S_SearchbarContainer,
 } from "../styles/SearchBar.styles";
 import { useTypewriter } from "react-simple-typewriter";
-import { S_ContainerChips, S_Header } from "../styles/Home.styles";
+import { Chip } from "@mui/material";
+import NextRouteButton from "./actions-buttons/NextRouteButton";
+import HomeButton from "./actions-buttons/HomeButton";
+import ScrollToTopButton from "./actions-buttons/ScrollToTopButton";
 
-const SearchBar = ({ inputValue, widthSearchArea }) => {
+const SearchBar = ({ inputValue, stores_group }) => {
   const [text] = useTypewriter({
     words: [
       "busque seu item aqui...",
@@ -31,12 +35,6 @@ const SearchBar = ({ inputValue, widthSearchArea }) => {
   const [searchInput, setSearchInput] = useState("");
   const statusView = useSelector((state) => state.statusView.status_view);
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
-
   const handleInput = (e) => {
     if (e == "") {
       dispatch(initial());
@@ -52,10 +50,22 @@ const SearchBar = ({ inputValue, widthSearchArea }) => {
   return (
     <S_ContainerSearchBar className="search-bar">
       {/* <S_Header> */}
+      {statusView == "IN_MARKET" && (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "8px",
+          }}
+        >
+          <ScrollToTopButton />
+          <HomeButton />
+          <NextRouteButton />
+        </div>
+      )}
       <S_SearchbarContainer>
         {/* <SearchBar inputValue={handleInputChange} widthSearchArea="100%" /> */}
         {/* {statusView == "INITIAL_VIEW" && chipsStoreGroups.length > 0 && ( */}
-
         <S_SearchBarBox>
           <input
             value={searchInput}
@@ -66,25 +76,27 @@ const SearchBar = ({ inputValue, widthSearchArea }) => {
             ref={inputRef}
           />
           <SearchIcon />
-          {/* <S_ContainerChips></S_ContainerChips> */}
         </S_SearchBarBox>
-        {/* {chipsStoreGroups.map((group) => {
-                return (
-                  <Chip
-                    key={group}
-                    style={{
-                      textTransform: "capitalize",
-                      padding: "16px 8px",
-                    }}
-                    size="small"
-                    color="info"
-                    label={`${group}`}
-                    href={`#${group}`}
-                    component="a"
-                  />
-                );
-              })} */}
-        {/* )} */}
+        {statusView == "INITIAL_VIEW" && stores_group && (
+          <S_ContainerChips>
+            {stores_group.map((group) => {
+              return (
+                <Chip
+                  key={group}
+                  style={{
+                    textTransform: "capitalize",
+                    padding: "16px 8px",
+                  }}
+                  size="small"
+                  color="info"
+                  label={`${group}`}
+                  href={`#${group}`}
+                  component="a"
+                />
+              );
+            })}
+          </S_ContainerChips>
+        )}
       </S_SearchbarContainer>
       {/* </S_Header> */}
     </S_ContainerSearchBar>

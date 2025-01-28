@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useDebouncedValue from "../hooks/useDebouncedValue";
 import Axios from "../services/axiosInstance";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -10,6 +10,8 @@ import {
 import reloadPage from "../utils/reloadPage";
 
 const GetLocation = () => {
+  const inputRef = useRef(null);
+
   const [textAddress, setTextAddress] = useState("");
   const [places, setPlaces] = useState([]);
 
@@ -51,6 +53,14 @@ const GetLocation = () => {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 1000);
+  }, []);
+
   return (
     <S_GetLocation>
       <S_ContainerGetLocation>
@@ -75,6 +85,7 @@ const GetLocation = () => {
           ?
         </h2>
         <input
+          ref={inputRef}
           type="text"
           placeholder="Digite o endereço"
           value={textAddress}

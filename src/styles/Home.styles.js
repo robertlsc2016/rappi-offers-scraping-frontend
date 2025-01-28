@@ -32,7 +32,7 @@ export const S_containerStores = styled.div`
   width: 100%;
   max-width: 1250px;
 
-  scroll-margin-top: 4vh;
+  scroll-margin-top: 48px;
   gap: 24px;
 
   justify-content: center;
@@ -73,7 +73,7 @@ export const S_BoxStores = styled.div`
   }
 
   @media (min-width: 1200px) and (max-width: 1400px) {
-    grid-template-columns: auto auto auto auto auto ;
+    grid-template-columns: auto auto auto auto auto;
     justify-content: center;
   }
 
@@ -90,7 +90,7 @@ export const S_GlobalContainer = styled.div`
 
   width: 100%;
   max-width: 1200px;
-  
+
   height: fit-content;
   display: flex;
   justify-content: flex-start;
@@ -142,46 +142,6 @@ export const S_Header = styled.div`
   @media (max-width: 700px) {
     width: 100%;
   }
-`;
-
-export const S_ContainerChips = styled.div`
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  column-gap: 16px;
-
-  /* border: 1px solid black; */
-  padding-bottom: 6px;
-  /* row-gap: 8px; */
-  width: 100%;
-  height: auto;
-  /* height: 50px; */
-
-  overflow-x: auto; /* Habilita scroll horizontal */
-  white-space: nowrap; /* Garante que o conteúdo não quebre linhas */
-
-  &::-webkit-scrollbar {
-    height: 6px; /* Para o scroll horizontal */
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
-  /* Para navegadores que suportam scrollbar-color */
-  scrollbar-color: #888 #f1f1f1; /* thumb | track */
-  scrollbar-width: thin; /* Para navegadores Firefox */
 `;
 
 export const S_BodyHomeContainer = styled.div`

@@ -145,7 +145,10 @@ const Home = () => {
                 </S_IconButton>
               </S_ContainerButtonAbsolute> */}
 
-              <SearchBar inputValue={handleInputChange} />
+              <SearchBar
+                inputValue={handleInputChange}
+                stores_group={chipsStoreGroups}
+              />
             </S_HeaderContainer>
 
             <S_BodyHomeContainer>
