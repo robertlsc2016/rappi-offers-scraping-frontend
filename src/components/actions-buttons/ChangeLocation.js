@@ -1,10 +1,12 @@
 import { IconButton } from "@mui/material";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
+import reloadPage from "../../utils/reloadPage";
 
 const ChangeLocation = () => {
+  
   const clearLocation = () => {
     localStorage.removeItem("location");
-    window.location.reload();
+    // reloadPage();
   };
 
   return (

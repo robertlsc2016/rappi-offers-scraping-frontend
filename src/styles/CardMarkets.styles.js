@@ -3,7 +3,12 @@ import styled from "styled-components";
 
 export const S_Card = styled(Card)`
   height: auto;
-  width: 164px;
+
+  width: 200px;
+
+  /* @media (max-width: 500px) {
+    width: 200px;
+  } */
 
   * {
     text-transform: capitalize !important;

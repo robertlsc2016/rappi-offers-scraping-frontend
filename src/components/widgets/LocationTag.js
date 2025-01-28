@@ -6,9 +6,12 @@ import {
   S_LocationTag,
   S_LocationTagInner,
 } from "../../styles/LocationTag.styles";
+import reloadPage from "../../utils/reloadPage";
+import { useNavigate } from "react-router-dom";
 
 const LocationTag = () => {
   const [location, setLocation] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     getLocation();
@@ -21,7 +24,8 @@ const LocationTag = () => {
 
   const clearLocation = () => {
     localStorage.removeItem("location");
-    window.location.reload();
+    navigate("/", { replace: true });
+    reloadPage()
   };
 
   return (

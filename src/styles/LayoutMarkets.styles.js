@@ -7,23 +7,24 @@ export const S_LayoutMarketsContainer = styled.div`
   align-items: center;
 
   gap: 16px;
-  margin-top: 32px;
-
-  /* min-height: 100%; */
   height: fit-content;
-
   width: 100%;
   max-width: 1200px;
+  margin-top: 48px;
 
   /* border: 1px solid; */
 
-  /* padding: 16px 10%; */
-
   @media (max-width: 500px) {
-    padding: 16px 8px;
+    padding: 0px 8px;
   }
 
-  /* min-height: 100vh; */
+  @media (min-width: 500px) and (max-width: 1200px) {
+    padding: 0px 10%;
+  }
+
+  /* @media (max-width: 1200px) {
+    padding: 0px 10%;
+  } */
 `;
 
 export const S_Header = styled.div`

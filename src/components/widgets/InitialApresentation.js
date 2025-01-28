@@ -1,5 +1,6 @@
 import { LinearProgress } from "@mui/material";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useTypewriter } from "react-simple-typewriter";
 
 const InitialApresentation = () => {
@@ -21,7 +22,8 @@ const InitialApresentation = () => {
   });
 
   return (
-    visible && (
+    visible &&
+    (!window.performance || performance.navigation.type === 1) && (
       // process.env.NODE_ENV === "production" && (
       <div
         style={{

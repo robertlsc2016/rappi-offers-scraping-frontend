@@ -29,6 +29,8 @@ import ChangeLocation from "../components/actions-buttons/ChangeLocation";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import InitialApresentation from "../components/widgets/InitialApresentation";
 import LocationTag from "../components/widgets/LocationTag";
+import reloadPage from "../utils/reloadPage";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
@@ -44,16 +46,16 @@ const Home = () => {
     setTextFilter(text);
   };
 
-  const returnInitial = () => {
-    returnTop();
+  // const returnInitial = () => {
+  //   returnTop();
 
-    document.getElementById("searchBar").value = "";
-    document.getElementById("searchBar").innerHTML = "";
-    handleInputChange("");
-    setTextFilter("");
+  //   document.getElementById("searchBar").value = "";
+  //   document.getElementById("searchBar").innerHTML = "";
+  //   handleInputChange("");
+  //   setTextFilter("");
 
-    dispatch(initial());
-  };
+  //   dispatch(initial());
+  // };
 
   useEffect(() => {
     returnTop();
@@ -108,12 +110,12 @@ const Home = () => {
     setLocation(location);
   };
 
-  const clearLocation = () => {
-    localStorage.removeItem("getStores");
-    localStorage.removeItem("location");
-    localStorage.removeItem("getStores-time");
-    window.location.reload();
-  };
+  // const clearLocation = () => {
+  //   localStorage.removeItem("getStores");
+  //   localStorage.removeItem("location");
+  //   localStorage.removeItem("getStores-time");
+  //   reloadPage();
+  // };
 
   return (
     <>

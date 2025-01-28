@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { initial } from "../redux/statusViewSlice";
 import { Chip, IconButton, CircularProgress } from "@mui/material";
@@ -26,18 +26,27 @@ import {
 import LocationTag from "../components/widgets/LocationTag";
 
 const LayoutMarkets = () => {
+  console.log()
   const [infosStore, setInfosStore] = useState({});
   const [products, setProducts] = useState([]);
   const [newProducts, setNewProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [textFilter, setTextFilter] = useState("");
-
+  
+  const navigate = useNavigate();
   const location = useLocation();
+
   const { store_id } = useParams();
   const dispatch = useDispatch();
 
   const loc_store_name = location?.state?.store_name;
   const loc_store_id = location?.state?.store_id;
+
+
+  const goToHome = () => {
+    dispatch(initial());
+    navigate("/"); // Navega para a rota "/about"
+  };
 
   useEffect(() => {
     fetchData();
@@ -117,17 +126,9 @@ const LayoutMarkets = () => {
 
         {!loading && (
           <S_Header>
-            <Link
-              to="/"
-              onClick={() => dispatch(initial())}
-              style={{
-                width: "auto",
-              }}
-            >
-              <IconButton>
-                <WestIcon />
-              </IconButton>
-            </Link>
+            <IconButton onClick={goToHome}>
+              <WestIcon />
+            </IconButton>
 
             <div
               style={{
