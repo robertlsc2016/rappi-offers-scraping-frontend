@@ -106,8 +106,11 @@ const AccordionProducts = ({
               discount,
               real_price,
               image_url,
-              unit_type,
               quantity,
+              unit_type,
+              stock,
+              pum,
+              navigation,
             }) => (
               <CardProduct
                 key={id}
@@ -120,6 +123,9 @@ const AccordionProducts = ({
                 image_url={image_url}
                 real_price={real_price}
                 removeProduct={handleRemoveProduct}
+                stock={stock}
+                pum={pum}
+                navigation={navigation}
               />
             )
           )}

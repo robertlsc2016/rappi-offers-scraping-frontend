@@ -8,23 +8,29 @@ import {
   S_GetLocation,
 } from "../styles/GetLocations.styles";
 import reloadPage from "../utils/reloadPage";
+import { CircularProgress } from "@mui/material";
 
 const GetLocation = () => {
   const inputRef = useRef(null);
 
   const [textAddress, setTextAddress] = useState("");
   const [places, setPlaces] = useState([]);
+  const [loading, setIsLoading] = useState(false);
 
   const handleSearch = (text) => {
     setPlaces([]);
     setTextAddress(text);
   };
 
+  useEffect(() => {
+    setIsLoading(true);
+  }, [textAddress]);
+
   const handleGetGeolocation = (place_id) => {
     getGeolocation({ place_id: place_id });
   };
 
-  const debouncedQuery = useDebouncedValue(textAddress, 800);
+  const debouncedQuery = useDebouncedValue(textAddress, 400);
 
   useEffect(() => {
     getPlaces({ place: debouncedQuery });
@@ -34,7 +40,10 @@ const GetLocation = () => {
     try {
       const { data: places } = await Axios.post("/searchLocations", {
         query: place,
+      }).finally(() => {
+        setIsLoading(false);
       });
+
       setPlaces(places);
     } catch (err) {
       return err;
@@ -114,38 +123,56 @@ const GetLocation = () => {
             // overflow: "hidden",
           }}
         >
-          {places.map((place, index) => (
-            <S_BoxAddress
-              onClick={() => handleGetGeolocation(place.place_id)}
-              key={place.id || index}
-            >
+          {!loading ? (
+            <>
+              {places.map((place, index) => (
+                <S_BoxAddress
+                  onClick={() => handleGetGeolocation(place.place_id)}
+                  key={place.id || index}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                      gap: "4px",
+                      width: "90%",
+                    }}
+                  >
+                    <LocationOnIcon />
+                    <p
+                      style={{
+                        display: "flex",
+                        // justifyContent: "center",
+                        // alignItems: "center",
+                        flexDirection: "row",
+                        fontSize: "16px",
+                        cursor: "pointer",
+                        height: "100%",
+                        textAlign: "start",
+                      }}
+                    >
+                      {place.address}
+                    </p>
+                  </div>
+                </S_BoxAddress>
+              ))}
+            </>
+          ) : (
+            textAddress.length > 0 && (
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "flex-start",
+                  justifyContent: "center",
                   alignItems: "center",
-                  gap: "4px",
-                  width: "90%",
+                  height: "100%",
+                  width: "100%",
                 }}
               >
-                <LocationOnIcon />
-                <p
-                  style={{
-                    display: "flex",
-                    // justifyContent: "center",
-                    // alignItems: "center",
-                    flexDirection: "row",
-                    fontSize: "16px",
-                    cursor: "pointer",
-                    height: "100%",
-                    textAlign: "start",
-                  }}
-                >
-                  {place.address}
-                </p>
+                <CircularProgress />
               </div>
-            </S_BoxAddress>
-          ))}
+            )
+          )}
         </div>
         <div
           style={{

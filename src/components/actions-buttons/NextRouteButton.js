@@ -3,6 +3,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import getStores from "../../services/getStores";
 import returnTop from "../../utils/returnTop";
+import {
+  S_InnerNextRouteButton,
+  S_NextRouteButton,
+} from "../../styles/NextRouteButton.styles";
 
 const NextRouteButton = () => {
   const [routes, setRoutes] = useState([]);
@@ -45,30 +49,12 @@ const NextRouteButton = () => {
 
   return (
     <>
-      {!loading && (
-        <div
-          onClick={nextRoute}
-          style={{
-            cursor: "pointer",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: "12px",
-              fontSize: "24px",
-              width: "48px",
-              height: "48px",
-              color: "white",
-              background: "green",
-              boxShadow: `rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px`,
-            }}
-          >
+      {!loading && routes.length > 1 && (
+        <S_NextRouteButton onClick={nextRoute}>
+          <S_InnerNextRouteButton>
             <ArrowForwardOutlinedIcon fontSize="inherit" />
-          </div>
-        </div>
+          </S_InnerNextRouteButton>
+        </S_NextRouteButton>
       )}
     </>
   );

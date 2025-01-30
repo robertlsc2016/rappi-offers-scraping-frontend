@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import CardMarkets from "../components/CardMarkets";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../components/SearchBar";
-import HomeIcon from "@mui/icons-material/Home";
 
 import SearchGlobal from "../components/SearchGlobal";
 import { initial } from "../redux/statusViewSlice";
@@ -11,26 +10,16 @@ import {
   S_BodyHomeContainer,
   S_BodyHomeInner,
   S_BoxStores,
-  S_ContainerButtonAbsolute,
-  S_ContainerChips,
   S_containerStores,
   S_GlobalContainer,
-  S_Header,
   S_HeaderContainer,
-  S_IconButton,
-  S_SearchbarContainer,
 } from "../styles/Home.styles";
-import { Chip } from "@mui/material";
 import getStores from "../services/getStores";
 import getLocalStorage from "../services/LocalStorage/getLocalStorage";
 import returnTop from "../utils/returnTop";
 import GetLocation from "../components/GetLocation";
-import ChangeLocation from "../components/actions-buttons/ChangeLocation";
-import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import InitialApresentation from "../components/widgets/InitialApresentation";
 import LocationTag from "../components/widgets/LocationTag";
-import reloadPage from "../utils/reloadPage";
-import { useLocation } from "react-router-dom";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
@@ -45,17 +34,6 @@ const Home = () => {
   const handleInputChange = (text) => {
     setTextFilter(text);
   };
-
-  // const returnInitial = () => {
-  //   returnTop();
-
-  //   document.getElementById("searchBar").value = "";
-  //   document.getElementById("searchBar").innerHTML = "";
-  //   handleInputChange("");
-  //   setTextFilter("");
-
-  //   dispatch(initial());
-  // };
 
   useEffect(() => {
     returnTop();
@@ -98,7 +76,6 @@ const Home = () => {
     if (!location) {
       setIsLoading(false);
 
-      localStorage.removeItem("getStores");
       localStorage.removeItem("location");
       localStorage.removeItem("getStores-time");
     }
@@ -109,13 +86,6 @@ const Home = () => {
 
     setLocation(location);
   };
-
-  // const clearLocation = () => {
-  //   localStorage.removeItem("getStores");
-  //   localStorage.removeItem("location");
-  //   localStorage.removeItem("getStores-time");
-  //   reloadPage();
-  // };
 
   return (
     <>

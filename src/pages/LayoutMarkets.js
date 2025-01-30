@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { initial } from "../redux/statusViewSlice";
+import { initial, inMarket } from "../redux/statusViewSlice";
 import { Chip, IconButton, CircularProgress } from "@mui/material";
 import WestIcon from "@mui/icons-material/West";
 import SearchBar from "../components/SearchBar";
@@ -24,15 +24,15 @@ import {
   S_HeaderContainer,
 } from "../styles/Home.styles";
 import LocationTag from "../components/widgets/LocationTag";
+import { theme } from "../styles/theme";
 
 const LayoutMarkets = () => {
-  console.log()
   const [infosStore, setInfosStore] = useState({});
   const [products, setProducts] = useState([]);
   const [newProducts, setNewProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [textFilter, setTextFilter] = useState("");
-  
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -42,13 +42,13 @@ const LayoutMarkets = () => {
   const loc_store_name = location?.state?.store_name;
   const loc_store_id = location?.state?.store_id;
 
-
   const goToHome = () => {
     dispatch(initial());
     navigate("/"); // Navega para a rota "/about"
   };
 
   useEffect(() => {
+    dispatch(inMarket());
     fetchData();
   }, []);
 
@@ -126,9 +126,9 @@ const LayoutMarkets = () => {
 
         {!loading && (
           <S_Header>
-            <IconButton onClick={goToHome}>
+            {/* <IconButton onClick={goToHome}>
               <WestIcon />
-            </IconButton>
+            </IconButton> */}
 
             <div
               style={{
@@ -161,23 +161,30 @@ const LayoutMarkets = () => {
                 <SBoxChips>
                   <Chip
                     style={{
+                      background: `${theme.colors.default_blue}`,
+                      color: "white",
                       maxWidth: "60%",
                       minWidth: "auto",
                     }}
                     label={`ID: ${infosStore.address}`}
-                    color="info"
                     size="small"
                   />
 
                   <Chip
                     label={`ID: ${loc_store_id || infosStore.store_id}`}
-                    color="info"
+                    style={{
+                      background: `${theme.colors.default_blue}`,
+                      color: "white",
+                    }}
                     size="small"
                   />
 
                   <Chip
                     label={`${products?.all?.length || 0} itens`}
-                    color="info"
+                    style={{
+                      background: `${theme.colors.default_blue}`,
+                      color: "white",
+                    }}
                     size="small"
                   />
                 </SBoxChips>

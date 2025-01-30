@@ -86,14 +86,14 @@ export const S_BoxStores = styled.div`
 export const S_GlobalContainer = styled.div`
   padding-bottom: 27vh;
 
-  /* background-color: red; */
+  min-height: 100%;
 
   width: 100%;
   max-width: 1200px;
 
   height: fit-content;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
 `;

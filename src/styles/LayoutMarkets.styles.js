@@ -12,8 +12,6 @@ export const S_LayoutMarketsContainer = styled.div`
   max-width: 1200px;
   margin-top: 48px;
 
-  /* border: 1px solid; */
-
   @media (max-width: 500px) {
     padding: 0px 8px;
   }
@@ -21,10 +19,6 @@ export const S_LayoutMarketsContainer = styled.div`
   @media (min-width: 500px) and (max-width: 1200px) {
     padding: 0px 10%;
   }
-
-  /* @media (max-width: 1200px) {
-    padding: 0px 10%;
-  } */
 `;
 
 export const S_Header = styled.div`

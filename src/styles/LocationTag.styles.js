@@ -7,21 +7,22 @@ export const S_LocationTag = styled.div`
   align-items: center;
 
   flex-direction: row;
-  
+
   width: auto;
   max-width: 100%;
-
 
   top: 0;
   height: auto;
   padding: 0px 10%;
+
   z-index: 500;
+
+  color: ${({ theme }) => theme.colors.default_white};
 
   @media (max-width: 500px) {
     width: 100%;
     padding: 0px 8px;
   }
-
 `;
 
 export const S_LocationTagInner = styled.div`
@@ -29,11 +30,12 @@ export const S_LocationTagInner = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  
+
   cursor: pointer;
 
   width: 100%;
   gap: 16px;
+
   padding: 8px 24px 8px 24px;
 
   background: rgb(36, 37, 39);
@@ -41,9 +43,4 @@ export const S_LocationTagInner = styled.div`
   color: white;
 
   text-align: center;
-
-  @media (max-width: 500px) {
-    width: 100%;
-    /* padding: 0px 8px; */
-  }
 `;

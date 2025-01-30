@@ -1,13 +1,23 @@
-import { Badge, Button, Chip } from "@mui/material";
+import { Badge, Button, Chip, Slide, Snackbar } from "@mui/material";
 import IconOffer from "./IconOffer";
 import ModalProduct from "./ModalProduct";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   S_BoxImage,
+  S_Button,
+  S_Buttons,
   S_ChipUnit,
+  S_ContainerChips,
   S_ContainerProducts,
+  S_Notify,
+  S_ToastContainer,
 } from "../styles/CardProduct.styles";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { theme } from "../styles/theme";
 
 const CardProduct = ({
   id = "",
@@ -19,18 +29,85 @@ const CardProduct = ({
   quantity = 0,
   unit_type = 0,
   removeProduct,
+  stock,
+  pum,
+  navigation,
 }) => {
   const modalRef = useRef();
-
   const chamarFuncaoDoFilho = () => {
     if (modalRef.current) {
       modalRef.current.handleOpenMdal();
     }
   };
 
-  const handleRemove = () => {
-    removeProduct(id); // Passando o ID do produto
+  console.log(navigation);
+
+  const goToApp = () => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    const regex = /\(([^)]+)\)/;
+    const matches = userAgent.match(regex);
+
+    if (matches && matches[1]) {
+      const SO = matches[1]
+        .split(";")
+        .map((param) => param.trim())[0]
+        .toLowerCase();
+
+      if (SO.length > 0) {
+        window.location.href = navigation.fallback;
+
+        // if (/android/i.test(SO)) {
+        //   window.location.href = navigation.deeplink;
+        // }
+        // if (/iphone|ipad|ipod/i.test(SO)) {
+        //   window.location.href = navigation.fallback;
+        // }
+
+        // if (/linux|windows/i.test(SO)) {
+        //   alert("é pc");
+        // }
+      }
+    }
+
+    // alert("nao identificado");
+
+    // window.location.href = link;
   };
+
+  const notify = () =>
+    toast.error(
+      <S_Notify
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          // background: "green",
+          padding: "0",
+        }}
+      >
+        <h3
+          style={{
+            margin: "0",
+            padding: "0",
+          }}
+        >
+          Item Excluído
+        </h3>
+        <p>o item retornará caso o preço reduza</p>
+      </S_Notify>,
+      {
+        position: "top-center",
+        autoClose: 800,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+        transition: Bounce,
+      }
+    );
 
   return (
     <div
@@ -38,37 +115,46 @@ const CardProduct = ({
         position: "relative",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "absolute",
-          bottom: "8px",
-          width: "100%",
-          opacity: "80%",
-          zIndex: "1"
+      <S_ToastContainer
+        icon={({ type }) => {
+          switch (type) {
+            case "error":
+              return <TrendingDownIcon fontSize="inherit" />;
+          }
         }}
-      >
-        <Button
+      />
+
+      <S_Buttons>
+        <S_Button color="green" size="small" onClick={() => goToApp()}>
+          <AddShoppingCartIcon fontSize="inherit" />
+        </S_Button>
+
+        <div
           style={{
-            border: "1px solid",
-            // padding: "6px",
-            margin: "0px",
-            fontSize: "16px",
-            width: "80%",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "row",
+            gap: "4px",
+            //  border: "1px solid"
           }}
-          color="error"
-          size="small"
-          onClick={handleRemove}
         >
-          <DeleteIcon fontSize="inherit" />
-        </Button>
-      </div>
+          <S_Button color="orange" size="small" onClick={notify}>
+            <TrendingDownIcon fontSize="inherit" />
+          </S_Button>
+
+          <S_Button color="red" size="small" onClick={notify}>
+            <DeleteOutlineIcon fontSize="inherit" />
+          </S_Button>
+        </div>
+      </S_Buttons>
 
       <S_ContainerProducts key={id} onClick={() => chamarFuncaoDoFilho()}>
         <S_BoxImage>
-          <img src={`${image_url}`} />
+          <img
+            src={image_url || `https://placehold.co/300x300?text=Sem+Image`}
+          />
         </S_BoxImage>
 
         <div
@@ -78,11 +164,9 @@ const CardProduct = ({
             justifyContent: "flex-start",
             alignItems: "flex-start",
             flexDirection: "column",
-            // gap: "8px",
             gap: "8px",
             width: "100%",
             height: "50%",
-            // border: "1px solid black",
           }}
         >
           <div
@@ -121,6 +205,7 @@ const CardProduct = ({
                 </p>
                 <Chip
                   style={{
+                    background: theme.colors.default_orange,
                     textDecoration: "line-through",
                   }}
                   sx={{ height: "16px", fontSize: "12px" }}
@@ -144,7 +229,6 @@ const CardProduct = ({
               height: "37px",
 
               overflow: "hidden",
-
               display: "-webkit-box",
               WebkitLineClamp: 3,
               WebkitBoxOrient: "vertical",
@@ -152,8 +236,14 @@ const CardProduct = ({
               textOverflow: "ellipsis",
             }}
           >
-            {name}
-            <S_ChipUnit color="warning" label={`${quantity} ${unit_type}`} />
+            <span>{name}</span>
+            <S_ContainerChips>
+              <S_ChipUnit color="warning" label={`${quantity} ${unit_type}`} />
+              {stock > 0 && (
+                <S_ChipUnit color="info" label={`stock: ${stock}`} />
+              )}
+              {pum && <S_ChipUnit color="info" label={`${pum}`} />}
+            </S_ContainerChips>
           </div>
         </div>
         <ModalProduct

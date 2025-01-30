@@ -15,19 +15,13 @@ const CardMarkets = ({ store_id, store_name, img_path }) => {
     : "https://via.placeholder.com/300";
 
   const goToMarket = () => {
-    dispatch(inMarket());
     navigate(`/store/${store_id}`, {
       state: { store_id: store_id, store_name: store_name, fromHome: true },
     });
   };
 
   return (
-    <S_Card
-      // style={{
-      //   all: "unset",
-      // }}
-      onClick={goToMarket}
-    >
+    <S_Card onClick={goToMarket}>
       <CardActionArea>
         <CardMedia height="160" component="img" image={baseUrlImage} />
         <CardContent
