@@ -97,24 +97,6 @@ const Home = () => {
           <LocationTag />
           <S_GlobalContainer>
             <S_HeaderContainer>
-              {/* <S_ContainerButtonAbsolute>
-                {statusView !== "INITIAL_VIEW" && (
-                  <S_IconButton
-                    id="homeIconButton"
-                    onClick={() => returnInitial()}
-                  >
-                    <HomeIcon />
-                  </S_IconButton>
-                )}
-
-                <S_IconButton>
-                  <LocationSearchingIcon
-                    fontSize="inherit"
-                    onClick={() => clearLocation()}
-                  />
-                </S_IconButton>
-              </S_ContainerButtonAbsolute> */}
-
               <SearchBar
                 inputValue={handleInputChange}
                 stores_group={chipsStoreGroups}

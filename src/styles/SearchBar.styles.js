@@ -13,7 +13,7 @@ export const S_ContainerSearchBar = styled.div`
 
   width: 100vw;
   height: auto;
-  
+
   gap: 8px;
 
   /* padding: 0 10%; */
@@ -95,13 +95,13 @@ export const S_ContainerChips = styled.div`
   column-gap: 16px;
 
   width: 100%;
-
-  /* border: 1px solid black; */
   padding-bottom: 6px;
   /* row-gap: 8px; */
   width: 100%;
   height: auto;
   /* height: 50px; */
+
+  /* border: 1px solid; */
 
   overflow-x: auto; /* Habilita scroll horizontal */
   white-space: nowrap; /* Garante que o conteúdo não quebre linhas */

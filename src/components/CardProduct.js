@@ -40,8 +40,6 @@ const CardProduct = ({
     }
   };
 
-  console.log(navigation);
-
   const goToApp = () => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 

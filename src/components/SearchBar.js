@@ -64,8 +64,6 @@ const SearchBar = ({ inputValue, stores_group }) => {
         </div>
       )}
       <S_SearchbarContainer>
-        {/* <SearchBar inputValue={handleInputChange} widthSearchArea="100%" /> */}
-        {/* {statusView == "INITIAL_VIEW" && chipsStoreGroups.length > 0 && ( */}
         <S_SearchBarBox>
           <input
             value={searchInput}
@@ -77,7 +75,7 @@ const SearchBar = ({ inputValue, stores_group }) => {
           />
           <SearchIcon />
         </S_SearchBarBox>
-        {statusView == "INITIAL_VIEW" && stores_group && (
+        {statusView == "INITIAL_VIEW" && stores_group?.length > 0 && (
           <S_ContainerChips>
             {stores_group.map((group) => {
               return (
@@ -98,23 +96,8 @@ const SearchBar = ({ inputValue, stores_group }) => {
           </S_ContainerChips>
         )}
       </S_SearchbarContainer>
-      {/* </S_Header> */}
     </S_ContainerSearchBar>
   );
 };
 
 export default SearchBar;
-
-{
-  /* <S_SearchBarBox>
-  <input
-    value={searchInput}
-    onChange={(e) => handleInput(e.target.value)}
-    type="text"
-    id="searchBar"
-    placeholder={text.toLocaleLowerCase()}
-    ref={inputRef}
-  />
-  <SearchIcon />
-</S_SearchBarBox>; */
-}

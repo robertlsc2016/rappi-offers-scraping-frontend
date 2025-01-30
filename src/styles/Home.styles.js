@@ -93,7 +93,7 @@ export const S_GlobalContainer = styled.div`
 
   height: fit-content;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 `;
