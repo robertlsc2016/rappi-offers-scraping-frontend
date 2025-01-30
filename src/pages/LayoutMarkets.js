@@ -105,6 +105,7 @@ const LayoutMarkets = () => {
   return (
     <>
       <S_ToastContainer
+        stacked
         icon={({ type }) => {
           switch (type) {
             case "error":
