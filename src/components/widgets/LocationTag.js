@@ -39,16 +39,29 @@ const LocationTag = () => {
           <S_LocationTagInner>
             {location.address ? <LocationOnIcon /> : <LocationOffIcon />}
 
-            <p
-              style={{
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                // width: "100%",
-              }}
-            >
-              {location.address || "Sem Localização"}
-            </p>
+            {location.address ? (
+              <p
+                style={{
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  // width: "100%",
+                }}
+              >
+                {location.address}
+              </p>
+            ) : (
+              <p
+                style={{
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  // width: "100%",
+                }}
+              >
+                Sem Localização
+              </p>
+            )}
           </S_LocationTagInner>
         </S_LocationTag>
       </Tooltip>
