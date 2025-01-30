@@ -45,8 +45,8 @@ export const S_ToastContainer = styled(ToastContainer)`
 
   @media (max-width: 500px) {
     margin-top: 42px;
-    --toastify-container-width: 30px !important;
-    --toastify-toast-width: 30px !important;
+    --toastify-container-width: 100% !important;
+    --toastify-toast-width: 100%  !important;
   }
 `;
 
