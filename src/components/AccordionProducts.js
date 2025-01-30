@@ -74,7 +74,13 @@ const AccordionProducts = ({
       slotProps={{ transition: { timeout: 50 } }}
     >
       <AccordionSummary
-        sx={{ backgroundColor: backgroundColor, width: "100%", height: "100%" }}
+        sx={{
+          backgroundColor: backgroundColor,
+          width: "100%",
+          height: "100%",
+          padding: "0px 32px",
+          // border: "1px solid black",
+        }}
         expandIcon={<ExpandMoreIcon fontSize="large" />}
       >
         <div
@@ -87,10 +93,15 @@ const AccordionProducts = ({
           }}
         >
           <Typography component="span">
-            <h3>
+            <h3
+              style={{
+                fontSize: "16px",
+                fontWeight: "400",
+              }}
+            >
               {description
                 ? description
-                : `ofertas ${initial_rannge}% - ${final_range}% `}
+                : `${initial_rannge}% - ${final_range}% `}
             </h3>
           </Typography>
           <p>[{filteredProducts.length} itens]</p>

@@ -29,10 +29,14 @@ export const S_Header = styled.div`
   justify-content: flex-start;
   align-items: center;
 
+  /* border: 1px solid; */
+
   width: 100%;
 
   gap: 16px;
-  padding: 12px;
+  /* padding: 12px; */
+  padding: 0px 32px;
+
   height: auto;
   background-color: #e9e9e9;
   min-height: 120px;

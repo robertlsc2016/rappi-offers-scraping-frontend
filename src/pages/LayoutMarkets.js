@@ -104,32 +104,13 @@ const LayoutMarkets = () => {
       <LocationTag />
 
       <S_LayoutMarketsContainer>
-        {/* <ActionButtons /> */}
         <S_HeaderContainer>
-          <S_ContainerButtonAbsolute>
-            {/* {statusView !== "INITIAL_VIEW" && (
-            <S_IconButton id="homeIconButton" onClick={() => returnInitial()}>
-              <HomeIcon />
-            </S_IconButton>
-          )} */}
-
-            {/* <S_IconButton>
-            <LocationSearchingIcon
-              fontSize="inherit"
-              onClick={() => clearLocation()}
-            />
-          </S_IconButton> */}
-          </S_ContainerButtonAbsolute>
-
+          <S_ContainerButtonAbsolute></S_ContainerButtonAbsolute>
           <SearchBar inputValue={handleInputChange} />
         </S_HeaderContainer>
 
         {!loading && (
           <S_Header>
-            {/* <IconButton onClick={goToHome}>
-              <WestIcon />
-            </IconButton> */}
-
             <div
               style={{
                 display: "flex",

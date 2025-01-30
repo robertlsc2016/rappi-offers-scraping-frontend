@@ -110,11 +110,15 @@ export const S_HeaderContainer = styled.div`
 
   width: 100%;
   height: auto;
+
   gap: 8px;
+
   z-index: 100;
 
   position: fixed;
   bottom: 0;
+
+
 `;
 
 export const S_Header = styled.div`
@@ -124,17 +128,14 @@ export const S_Header = styled.div`
   flex-direction: column;
   align-items: center;
 
-  /* border: 1px solid; */
-
   background: white;
   transition: width 0.5s ease, height 0.5ms ease;
 
-  /* border: 1px solid; */
   gap: 8px;
   width: 50%;
 
   height: auto;
-  padding: 4px;
+  /* padding: 4px; */
 
   border-radius: 32px 32px 0px 0px;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 4px 50px 5px;

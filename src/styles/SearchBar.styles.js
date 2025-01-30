@@ -69,7 +69,7 @@ export const S_SearchBarBox = styled.div`
   /* border-radius: 8px; */
 
   input {
-    font-size: 24px;
+    font-size: 16px;
     padding: 4px 0px;
     width: 100%;
     height: 100%;
