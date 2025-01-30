@@ -70,7 +70,7 @@ export const S_SearchBarBox = styled.div`
 
   input {
     font-size: 16px;
-    padding: 4px 0px;
+    padding: 16px 0px;
     width: 100%;
     height: 100%;
     background-color: transparent !important;
@@ -97,7 +97,7 @@ export const S_ContainerChips = styled.div`
   width: 100%;
 
   /* border: 1px solid black; */
-  /* padding-bottom: 6px; */
+  padding-bottom: 6px;
   /* row-gap: 8px; */
   width: 100%;
   height: auto;
