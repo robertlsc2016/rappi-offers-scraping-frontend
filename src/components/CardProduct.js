@@ -20,7 +20,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { theme } from "../styles/theme";
 
 const CardProduct = ({
-  id = "",
+  id,
   name = "Não definido",
   price = 0,
   discount = 0,
@@ -34,10 +34,16 @@ const CardProduct = ({
   navigation,
 }) => {
   const modalRef = useRef();
+
   const chamarFuncaoDoFilho = () => {
     if (modalRef.current) {
       modalRef.current.handleOpenMdal();
     }
+  };
+
+  const handleLowePrice = async () => {
+    await notifyLowerPrice();
+    await removeProduct(id);
   };
 
   const goToApp = () => {
@@ -53,18 +59,18 @@ const CardProduct = ({
         .toLowerCase();
 
       if (SO.length > 0) {
-        window.location.href = navigation.fallback;
+        // window.location.href = navigation.fallback;
 
-        // if (/android/i.test(SO)) {
-        //   window.location.href = navigation.deeplink;
-        // }
-        // if (/iphone|ipad|ipod/i.test(SO)) {
-        //   window.location.href = navigation.fallback;
-        // }
+        if (/android/i.test(SO)) {
+          window.location.href = navigation.deeplink;
+        }
+        if (/iphone|ipad|ipod/i.test(SO)) {
+          window.location.href = navigation.fallback;
+        }
 
-        // if (/linux|windows/i.test(SO)) {
-        //   alert("é pc");
-        // }
+        if (/linux|windows/i.test(SO)) {
+          window.open(`https://www.rappi.com.br/produto/${id}`, "_blank");
+        }
       }
     }
 
@@ -73,8 +79,24 @@ const CardProduct = ({
     // window.location.href = link;
   };
 
-  const notify = () =>
+  const notifyLowerPrice = async () =>
     toast.error(
+      <S_Notify>
+        <h3>Esperar Redução do Item</h3>
+        <p>o item retornará caso o preço reduza</p>
+      </S_Notify>,
+      {
+        position: "top-center",
+        autoClose: 1200,
+        hideProgressBar: true,
+
+        theme: "dark",
+        transition: Bounce,
+      }
+    );
+
+  const notifyDeleteProduct = () =>
+    toast.info(
       <S_Notify
         style={{
           display: "flex",
@@ -89,19 +111,20 @@ const CardProduct = ({
           style={{
             margin: "0",
             padding: "0",
+            color: "white",
           }}
         >
           Item Excluído
         </h3>
-        <p>o item retornará caso o preço reduza</p>
+        <p>Você não verá mais esse item</p>
       </S_Notify>,
       {
         position: "top-center",
-        autoClose: 800,
+        autoClose: 1200,
         hideProgressBar: true,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
+        // closeOnClick: false,
+        // pauseOnHover: true,
+        // draggable: true,
         theme: "dark",
         transition: Bounce,
       }
@@ -113,15 +136,6 @@ const CardProduct = ({
         position: "relative",
       }}
     >
-      <S_ToastContainer
-        icon={({ type }) => {
-          switch (type) {
-            case "error":
-              return <TrendingDownIcon fontSize="inherit" />;
-          }
-        }}
-      />
-
       <S_Buttons>
         <S_Button color="green" size="small" onClick={() => goToApp()}>
           <AddShoppingCartIcon fontSize="inherit" />
@@ -135,16 +149,24 @@ const CardProduct = ({
             alignItems: "center",
             flexDirection: "row",
             gap: "4px",
-            //  border: "1px solid"
           }}
         >
-          <S_Button color="orange" size="small" onClick={notify}>
+          <S_Button
+            color="orange"
+            size="small"
+            onClick={() => handleLowePrice()}
+          >
             <TrendingDownIcon fontSize="inherit" />
           </S_Button>
 
-          <S_Button color="red" size="small" onClick={notify}>
+          {/* <S_Button
+            disabled
+            color="disabled"
+            size="small"
+            onClick={() => notifyDeleteProduct()}
+          >
             <DeleteOutlineIcon fontSize="inherit" />
-          </S_Button>
+          </S_Button> */}
         </div>
       </S_Buttons>
 

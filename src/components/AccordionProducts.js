@@ -25,7 +25,7 @@ const AccordionProducts = ({
     setFilteredProducts(initialProducts);
   }, [initialProducts]);
 
-  const handleRemoveProduct = (id) => {
+  const handleRemoveProduct = async (id) => {
     const selectProductNotInteressed = filteredProducts.filter(
       (product) => product.id == id
     )[0];
@@ -43,7 +43,7 @@ const AccordionProducts = ({
       setFilteredProducts((prevProducts) =>
         prevProducts.filter((product) => product.id !== id)
       );
-      return;
+      // return;
     }
 
     const filterNotInteressedItens = prevItens.filter((item) => item.id !== id);

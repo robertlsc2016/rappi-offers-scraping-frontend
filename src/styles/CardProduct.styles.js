@@ -98,8 +98,12 @@ export const S_Notify = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0;
-  /* opacity: 80%; */
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    color: white;
+  }
 `;
 
 export const S_BoxImage = styled.div`
@@ -143,7 +147,7 @@ export const S_ContainerChips = styled.div`
   padding-right: 8px;
   /* border: 1px solid black; */
   overflow: hidden;
-  
+
   span {
     padding: 2px 4px !important;
   }

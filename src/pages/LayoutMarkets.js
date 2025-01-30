@@ -25,6 +25,9 @@ import {
 } from "../styles/Home.styles";
 import LocationTag from "../components/widgets/LocationTag";
 import { theme } from "../styles/theme";
+import { S_ToastContainer } from "../styles/CardProduct.styles";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 const LayoutMarkets = () => {
   const [infosStore, setInfosStore] = useState({});
@@ -101,6 +104,17 @@ const LayoutMarkets = () => {
 
   return (
     <>
+      <S_ToastContainer
+        icon={({ type }) => {
+          switch (type) {
+            case "error":
+              return <TrendingDownIcon fontSize="inherit" />;
+
+            case "info":
+              return <DeleteOutlineIcon fontSize="inherit" />;
+          }
+        }}
+      />
       <LocationTag />
 
       <S_LayoutMarketsContainer>
