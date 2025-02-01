@@ -21,7 +21,7 @@ const removeProductsNotInteressed = async (products) => {
 
           if (
             parseFloat(productNotInteressed.price) >
-            parseFloat(product.price) - 0.25
+            (parseFloat(product.price) * 0.90)
           )
             return true;
         }
