@@ -7,6 +7,7 @@ import {
   S_InnerNextRouteButton,
   S_NextRouteButton,
 } from "../../styles/NextRouteButton.styles";
+import searchLocalStorage from "../../services/LocalStorage/searchLocalStorage";
 
 const NextRouteButton = () => {
   const [routes, setRoutes] = useState([]);
@@ -22,6 +23,8 @@ const NextRouteButton = () => {
   const currentRoute = location.pathname.replace("/store/", "");
 
   const nextRoute = () => {
+    returnTop();
+
     const currentIndex = routes.findIndex(
       (route) => route.store_id == Number(currentRoute)
     );
@@ -32,6 +35,14 @@ const NextRouteButton = () => {
 
   const getRoutes = async () => {
     try {
+      const localStorage = await searchLocalStorage({
+        name: `location`,
+      });
+
+      if (!localStorage) {
+        return;
+      }
+
       const _stores = [];
 
       await getStores().then((res) => {

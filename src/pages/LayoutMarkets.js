@@ -66,7 +66,7 @@ const LayoutMarkets = () => {
       const storeInfos = await getInfosStore({ store_id: store_id });
       setInfosStore(storeInfos);
 
-      const products = await getProducts({
+      const {data: products} = await getProducts({
         store_id: store_id,
         store_type: storeInfos.store_type_id,
         parent_store_type: storeInfos.store_type_id,

@@ -5,16 +5,20 @@ import searchLocalStorage from "./LocalStorage/searchLocalStorage";
 
 const getInfosStore = async ({ store_id }) => {
   try {
-    const localStorage = await searchLocalStorage({
-      name: `getInfoStore-${store_id}`,
-    });
+    // const localStorage = await searchLocalStorage({
+    //   name: `getInfoStore-${store_id}`,
+    // });
 
-    if (localStorage) return localStorage;
+    // if (localStorage) return localStorage;
 
-    const infosStore = await Axios.post("/getInfoStore", {
+    const { data: infosStore } = await Axios.post("/getInfoStore", {
       store_id: Number(store_id),
-    }).then((data) => {
-      return data.data;
+    }).catch((err) => {
+      if (err.status == 500) {
+        throw new Error(
+          "erro ao se compunica com a rota de coleta de informações da api"
+        );
+      }
     });
 
     saveLocalStorage({ name: `getInfoStore-${store_id}`, data: infosStore });

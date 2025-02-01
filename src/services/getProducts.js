@@ -5,7 +5,6 @@ import saveLocalStorageTime from "./LocalStorage/saveLocalStorageTime";
 import searchLocalStorage from "./LocalStorage/searchLocalStorage";
 
 const getProducts = async ({ store_id, parent_store_type, store_type }) => {
-
   const configs = {
     state: {
       parent_store_type,
@@ -28,12 +27,7 @@ const getProducts = async ({ store_id, parent_store_type, store_type }) => {
       return _removeNotInteressedProducts;
     }
 
-    const productsOffers = await Axios.post(
-      "/products_offer",
-      configs
-    ).then(({ data }) => {
-      return data;
-    });
+    const productsOffers = await Axios.post("/products_offer", configs);
 
     const _removeNotInteressedProducts = await removeProductsNotInteressed(
       productsOffers,
@@ -45,7 +39,7 @@ const getProducts = async ({ store_id, parent_store_type, store_type }) => {
 
     return _removeNotInteressedProducts;
   } catch (error) {
-    return null;
+    return error;
   }
 };
 
