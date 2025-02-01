@@ -62,13 +62,13 @@ const GetLocation = () => {
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (inputRef.current) {
-        inputRef.current.focus();
-      }
-    }, 1000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (inputRef.current) {
+  //       inputRef.current.focus();
+  //     }
+  //   }, 1000);
+  // }, []);
 
   return (
     <S_GetLocation>
@@ -123,9 +123,8 @@ const GetLocation = () => {
             // overflow: "hidden",
           }}
         >
-          {!loading ? (
-            <>
-              {places.map((place, index) => (
+          {!loading && places.length > 0
+            ? places?.map((place, index) => (
                 <S_BoxAddress
                   onClick={() => handleGetGeolocation(place.place_id)}
                   key={place.id || index}
@@ -156,23 +155,20 @@ const GetLocation = () => {
                     </p>
                   </div>
                 </S_BoxAddress>
-              ))}
-            </>
-          ) : (
-            textAddress.length > 0 && (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "100%",
-                  width: "100%",
-                }}
-              >
-                <CircularProgress />
-              </div>
-            )
-          )}
+              ))
+            : textAddress.length > 0 && (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                >
+                  <CircularProgress />
+                </div>
+              )}
         </div>
         <div
           style={{

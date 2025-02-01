@@ -65,12 +65,14 @@ const LayoutMarkets = () => {
     try {
       const storeInfos = await getInfosStore({ store_id: store_id });
       setInfosStore(storeInfos);
+      console.log(storeInfos);
 
       const products = await getProducts({
         store_id: store_id,
         store_type: storeInfos.store_type_id,
-        parent_store_type: storeInfos.store_type.parent_id,
+        parent_store_type: storeInfos.store_type_id,
       });
+
       setProducts(products);
       setLoading(false);
 
