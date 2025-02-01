@@ -65,7 +65,6 @@ const LayoutMarkets = () => {
     try {
       const storeInfos = await getInfosStore({ store_id: store_id });
       setInfosStore(storeInfos);
-      console.log(storeInfos);
 
       const products = await getProducts({
         store_id: store_id,
@@ -75,14 +74,6 @@ const LayoutMarkets = () => {
 
       setProducts(products);
       setLoading(false);
-
-      const newProducts = await getNewProductsStore({
-        store_id: store_id,
-        store_type: storeInfos.store_type_id,
-        parent_store_type: storeInfos.store_type.parent_id,
-      });
-
-      setNewProducts(newProducts.products);
     } catch (error) {
       return error;
     }
@@ -92,7 +83,7 @@ const LayoutMarkets = () => {
     setTextFilter(text);
   };
 
-  const handleSearch = (text) => setTextFilter(text);
+  // const handleSearch = (text) => setTextFilter(text);
 
   const debouncedQuery = useDebouncedValue(textFilter, 800);
 

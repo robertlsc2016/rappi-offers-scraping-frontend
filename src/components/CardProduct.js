@@ -21,6 +21,7 @@ import { theme } from "../styles/theme";
 
 const CardProduct = ({
   id,
+  product_id,
   name = "Não definido",
   price = 0,
   discount = 0,
@@ -43,7 +44,7 @@ const CardProduct = ({
 
   const handleLowePrice = async () => {
     await notifyLowerPrice();
-    await removeProduct(id);
+    await removeProduct(product_id);
   };
 
   const goToApp = () => {

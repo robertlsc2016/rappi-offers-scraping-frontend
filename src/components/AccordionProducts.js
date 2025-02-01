@@ -25,35 +25,37 @@ const AccordionProducts = ({
     setFilteredProducts(initialProducts);
   }, [initialProducts]);
 
-  const handleRemoveProduct = async (id) => {
+  const handleRemoveProduct = async (product_id) => {
     const selectProductNotInteressed = filteredProducts.filter(
-      (product) => product.id == id
+      (product) => product.product_id == product_id
     )[0];
 
     const prevItens =
-      JSON.parse(localStorage.getItem(`products-not-interessed-${store_id}`)) ||
-      [];
+      JSON.parse(localStorage.getItem(`products-not-interessed`)) || [];
 
     if (
       prevItens.some(
         (item) =>
-          item.id == id && item.price == selectProductNotInteressed.price
+          item.product_id == product_id &&
+          item.price == selectProductNotInteressed.price
       )
     ) {
       setFilteredProducts((prevProducts) =>
-        prevProducts.filter((product) => product.id !== id)
+        prevProducts.filter((product) => product.product_id !== product_id)
       );
       // return;
     }
 
-    const filterNotInteressedItens = prevItens.filter((item) => item.id !== id);
+    const filterNotInteressedItens = prevItens.filter(
+      (item) => item.product_id !== product_id
+    );
 
     saveLocalStorage({
-      name: `products-not-interessed-${store_id}`,
+      name: `products-not-interessed`,
       data: [
         ...filterNotInteressedItens,
         {
-          id: selectProductNotInteressed.id,
+          product_id: selectProductNotInteressed.product_id,
           price: selectProductNotInteressed.price,
           product_name: selectProductNotInteressed.name,
         },
@@ -61,7 +63,7 @@ const AccordionProducts = ({
     });
 
     setFilteredProducts((prevProducts) =>
-      prevProducts.filter((product) => product.id !== id)
+      prevProducts.filter((product) => product.product_id !== product_id)
     );
   };
 
@@ -112,6 +114,7 @@ const AccordionProducts = ({
           filteredProducts.map(
             ({
               id,
+              product_id,
               name,
               price,
               discount,
@@ -125,6 +128,7 @@ const AccordionProducts = ({
             }) => (
               <CardProduct
                 key={id}
+                product_id={product_id}
                 id={id}
                 unit_type={unit_type}
                 quantity={quantity}
