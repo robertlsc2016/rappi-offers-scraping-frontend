@@ -29,7 +29,7 @@ const getProducts = async ({ store_id, parent_store_type, store_type }) => {
     }
 
     const productsOffers = await Axios.post(
-      "/getAllStoreProductOffers",
+      "/products_offer",
       configs
     ).then(({ data }) => {
       return data;
