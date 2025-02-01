@@ -9,20 +9,19 @@ export const S_ContainerSearchBar = styled.div`
   align-items: center;
   flex-direction: column;
   height: fit-content;
-  /* padding-top: calc(60px + env(safe-area-inset-top)); */
 
   width: 100vw;
   height: auto;
 
   gap: 8px;
-
-  /* padding: 0 10%; */
   z-index: 100;
-
-  /* border: 2px solid green; */
 
   @media (max-width: 500px) {
     padding: 0px 8px;
+  }
+
+  @media (min-width: 500px) and (max-width: 1200px) {
+    padding: 0px 10%;
   }
 `;
 
@@ -40,15 +39,13 @@ export const S_SearchbarContainer = styled.div`
 
   min-height: 64px;
 
-  padding: 8px 24px 8px 24px;
-
-  max-width: 1200px;
-
   background: white;
   transition: width 0.5s ease, height 0.5ms ease;
 
   border-radius: 16px 16px 0px 0px;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 4px 50px 5px;
+
+  padding: 8px 24px 8px 24px;
 `;
 
 export const S_SearchBarBox = styled.div`
@@ -57,16 +54,10 @@ export const S_SearchBarBox = styled.div`
   justify-content: space-between;
 
   align-items: center;
-  /* background: white; */
-  /* width: 100%; */
   height: 100%;
   width: 100%;
 
-  /* border: 2px solid green; */
-  /* border: 1px solid black; */
-
   max-width: 450px;
-  /* border-radius: 8px; */
 
   input {
     font-size: 16px;
@@ -100,8 +91,6 @@ export const S_ContainerChips = styled.div`
   width: 100%;
   height: auto;
   /* height: 50px; */
-
-  /* border: 1px solid; */
 
   overflow-x: auto; /* Habilita scroll horizontal */
   white-space: nowrap; /* Garante que o conteúdo não quebre linhas */
