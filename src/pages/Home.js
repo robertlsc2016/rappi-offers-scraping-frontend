@@ -20,6 +20,7 @@ import returnTop from "../utils/returnTop";
 import GetLocation from "../components/GetLocation";
 import InitialApresentation from "../components/widgets/InitialApresentation";
 import LocationTag from "../components/widgets/LocationTag";
+import LocationUnavailable from "../components/carousel/LocationUnavailable";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
@@ -96,35 +97,17 @@ const Home = () => {
         <>
           <LocationTag />
           <S_GlobalContainer>
-            <S_HeaderContainer>
+            {location && !isLoading && storesGroups && (
               <SearchBar
+                from={"home"}
                 inputValue={handleInputChange}
                 stores_group={chipsStoreGroups}
               />
-            </S_HeaderContainer>
+            )}
 
             <S_BodyHomeContainer>
               {storesGroups.length == 0 && !isLoading && (
-                <div
-                  style={{
-                    width: "100%",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  <p>Não existem lojas disponíveis na sua localidade :(</p>
-                  <p>moras em Xique-Xique Bahia?</p>
-                  <iframe
-                    width="500"
-                    height="300"
-                    src="https://www.youtube.com/embed/0QswgI6RBqA?autoplay=1&mute=0?si=qJgHOqdu49oR-r4f"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  ></iframe>
-                </div>
+                <LocationUnavailable />
               )}
               <S_BodyHomeBox>
                 <S_BodyHomeInner>

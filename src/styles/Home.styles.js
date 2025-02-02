@@ -86,16 +86,19 @@ export const S_BoxStores = styled.div`
 export const S_GlobalContainer = styled.div`
   padding-bottom: 27vh;
 
+  /* border: 1px solid black; */
   min-height: 100%;
 
   width: 100%;
   max-width: 1200px;
 
   height: fit-content;
+
   display: flex;
+  flex-direction: column;
+
   justify-content: flex-start;
   align-items: center;
-  flex-direction: column;
 `;
 
 export const S_HeaderContainer = styled.div`
@@ -148,7 +151,7 @@ export const S_BodyHomeContainer = styled.div`
   width: 100%;
   flex-direction: column;
   /* padding: 0 8px; */
-  margin-top: 64px;
+  margin-top: 46px;
 
   /* border: 1px solid black; */
 

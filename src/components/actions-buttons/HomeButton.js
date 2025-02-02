@@ -2,17 +2,25 @@ import { IconButton } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { useNavigate } from "react-router-dom";
 import { theme } from "../../styles/theme";
+import { useDispatch } from "react-redux";
+import { initial } from "../../redux/statusViewSlice";
 
 const HomeButton = () => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const returnHome = () => {
+    dispatch(initial());
     navigate(`/`);
   };
 
   return (
-    <div onClick={returnHome} style={{
-      cursor: 'pointer'
-    }}>
+    <div
+      onClick={returnHome}
+      style={{
+        cursor: "pointer",
+      }}
+    >
       <IconButton
         style={{
           display: "flex",

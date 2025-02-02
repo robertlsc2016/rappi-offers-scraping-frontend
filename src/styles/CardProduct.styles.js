@@ -158,5 +158,9 @@ export const S_ContainerChips = styled.div`
 export const S_ChipUnit = styled(Chip)`
   height: 12px !important;
   padding: 0px !important;
-  font-size: 10px !important;
+
+  &.MuiChip-root {
+    font-size: 9px !important;
+    /* line-height: 10px !important; */
+  }
 `;

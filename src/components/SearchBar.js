@@ -15,8 +15,8 @@ import HomeButton from "./actions-buttons/HomeButton";
 import ScrollToTopButton from "./actions-buttons/ScrollToTopButton";
 import { useLocation } from "react-router-dom";
 
-const SearchBar = ({ inputValue, stores_group }) => {
-  const [isHidden, setIsHidden] = useState("disable");
+const SearchBar = ({ inputValue, stores_group, from }) => {
+  const [isHidden, setIsHidden] = useState("false");
   const [searchInput, setSearchInput] = useState("");
 
   const location = useLocation();
@@ -54,12 +54,17 @@ const SearchBar = ({ inputValue, stores_group }) => {
   useEffect(() => {
     let lastHeight = 0;
     const handleScroll = () => {
-      if (window.scrollY > lastHeight) {
-        setIsHidden("disable");
-      } else if (window.scrollY < lastHeight) {
-        setIsHidden("enabled");
+      if (window.scrollY > lastHeight && window.scrollY >= 0) {
+        setIsHidden("true");
       }
-      lastHeight = window.scrollY;
+
+      if (window.scrollY < lastHeight && window.scrollY >= 0) {
+        setIsHidden("false");
+      }
+
+      if (window.scrollY >= 0) {
+        lastHeight = window.scrollY;
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -75,8 +80,12 @@ const SearchBar = ({ inputValue, stores_group }) => {
   }, [location.pathname]);
   return (
     <>
-      <S_ContainerSearchBar $ishidden={isHidden} className="search-bar">
-        {statusView == "IN_MARKET" && (
+      <S_ContainerSearchBar
+        $ishidden={isHidden}
+        $from={from}
+        className="search-bar"
+      >
+        {(statusView == "IN_MARKET" || statusView == "SEARCHING_VIEW") && (
           <div
             style={{
               display: "flex",
@@ -86,10 +95,10 @@ const SearchBar = ({ inputValue, stores_group }) => {
           >
             <ScrollToTopButton />
             <HomeButton />
-            <NextRouteButton />
+            {!(statusView == "SEARCHING_VIEW") && <NextRouteButton />}
           </div>
         )}
-        <S_SearchbarContainer>
+        <S_SearchbarContainer $ishidden={isHidden}>
           <S_SearchBarBox>
             <input
               value={searchInput}

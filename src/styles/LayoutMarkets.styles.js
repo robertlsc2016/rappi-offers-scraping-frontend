@@ -9,15 +9,18 @@ export const S_LayoutMarketsContainer = styled.div`
   gap: 16px;
   height: fit-content;
   width: 100%;
+
   max-width: 1200px;
-  margin-top: 48px;
+
+  padding-top: 48px;
+  min-height: 100%;
 
   @media (max-width: 500px) {
-    padding: 0px 8px;
+    padding: 48px 8px 0px 0px;
   }
 
   @media (min-width: 500px) and (max-width: 1200px) {
-    padding: 0px 10%;
+    padding: 48px 10% 0px 10%;
   }
 `;
 

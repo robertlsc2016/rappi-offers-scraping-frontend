@@ -10,28 +10,28 @@ import {
   S_ContainerChips,
   S_ContainerProducts,
   S_Notify,
-  S_ToastContainer,
 } from "../styles/CardProduct.styles";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
-import { Bounce, ToastContainer, toast } from "react-toastify";
-import DeleteIcon from "@mui/icons-material/Delete";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { Bounce, toast } from "react-toastify";
 import { theme } from "../styles/theme";
 
 const CardProduct = ({
   id,
-  product_id,
   name = "Não definido",
   price = 0,
+
   discount = 0,
-  image_url = "",
   real_price = 0,
+  image_url = "",
+
   quantity = 0,
   unit_type = 0,
-  removeProduct,
-  stock,
+  product_id,
   pum,
+  stock,
+
+  removeProduct,
   navigation,
 }) => {
   const modalRef = useRef();
@@ -60,8 +60,6 @@ const CardProduct = ({
         .toLowerCase();
 
       if (SO.length > 0) {
-        // window.location.href = navigation.fallback;
-
         if (/android/i.test(SO)) {
           window.location.href = navigation.deeplink;
         }
@@ -74,10 +72,6 @@ const CardProduct = ({
         }
       }
     }
-
-    // alert("nao identificado");
-
-    // window.location.href = link;
   };
 
   const notifyLowerPrice = async () =>
@@ -133,6 +127,7 @@ const CardProduct = ({
 
   return (
     <div
+      key={id}
       style={{
         position: "relative",
       }}

@@ -15,16 +15,13 @@ import {
 import useDebouncedValue from "../hooks/useDebouncedValue"; // Debouncing
 import getProducts from "../services/getProducts";
 import getInfosStore from "../services/getInfosStore";
-import {
-  S_ContainerButtonAbsolute,
-  S_HeaderContainer,
-} from "../styles/Home.styles";
 import LocationTag from "../components/widgets/LocationTag";
 import { theme } from "../styles/theme";
 import { S_ToastContainer } from "../styles/CardProduct.styles";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import returnTop from "../utils/returnTop";
+import HomeButton from "../components/actions-buttons/HomeButton";
 
 const LayoutMarkets = () => {
   const [infosStore, setInfosStore] = useState({});
@@ -39,12 +36,6 @@ const LayoutMarkets = () => {
 
   const loc_store_name = location?.state?.store_name;
   const loc_store_id = location?.state?.store_id;
-
-  // useEffect(() => {
-  //   console.log("entrou aqui 1");
-  //   dispatch(inMarket());
-  //   fetchData();
-  // }, []);
 
   useEffect(() => {
     dispatch(inMarket());
@@ -106,12 +97,10 @@ const LayoutMarkets = () => {
         }}
       />
       <LocationTag />
-
       <S_LayoutMarketsContainer>
-        <S_HeaderContainer>
-          <S_ContainerButtonAbsolute></S_ContainerButtonAbsolute>
-          <SearchBar inputValue={handleInputChange} />
-        </S_HeaderContainer>
+        {!loading && products.all.length > 0 && (
+          <SearchBar inputValue={handleInputChange} from={"market"} />
+        )}
 
         {!loading && (
           <S_Header>
@@ -218,6 +207,14 @@ const LayoutMarkets = () => {
                     width: "100%",
                   }}
                 >
+                  <div
+                    style={{
+                      position: "fixed",
+                      bottom: "8px",
+                    }}
+                  >
+                    <HomeButton />
+                  </div>
                   Sem produtos em oferta no momento
                 </div>
               ) : (

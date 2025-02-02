@@ -30,13 +30,17 @@ const EmblaCarousel = ({ slides, options, selection, link }) => {
                     {
                       id,
                       name,
-                      image,
+                      price,
+
                       discount,
                       real_price,
-                      price,
+                      image,
+
                       quantity,
                       unit_type,
-                      link,
+                      product_id,
+                      pum,
+                      stock,
                     },
                     index
                   ) => (
@@ -54,18 +58,26 @@ const EmblaCarousel = ({ slides, options, selection, link }) => {
                       ) : (
                         <CardProduct
                           key={id}
-                          quantity={quantity}
-                          unit_type={unit_type}
-                          className="item"
+
+                          id={id}
+                          name={name}
+                          price={price}
+
+                          discount={discount}
+                          real_price={real_price}
                           image_url={
                             image.includes("amazon")
                               ? image
                               : `https://images.rappi.com.br/products/${image}`
                           }
-                          name={name}
-                          discount={discount}
-                          real_price={real_price}
-                          price={price}
+
+                          quantity={quantity}
+                          unit_type={unit_type}
+                          product_id={product_id}
+                          
+                          pum={pum}
+                          stock={stock}
+                          className="item"
                         />
                       )}
                     </div>

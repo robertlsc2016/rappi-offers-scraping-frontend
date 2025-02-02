@@ -3,7 +3,10 @@ import globalSearchProduct from "../services/globalSearchProduct";
 import { Avatar, CircularProgress } from "@mui/material";
 import EmblaCarousel from "./carousel/EmblaCarousel";
 import getLocalStorage from "../services/LocalStorage/getLocalStorage";
-import { S_ContainerSearchGlobal } from "../styles/SearchGlobal.styles";
+import {
+  S_LoadingSearchGlobal,
+  SearchGlobalContainer,
+} from "../styles/SearchGlobal.styles";
 
 const SearchGlobal = ({ text }) => {
   const [debouncedQuery, setDebouncedQuery] = useState("");
@@ -35,7 +38,7 @@ const SearchGlobal = ({ text }) => {
     });
 
     setLoading(false);
-    setStores(products);
+    setStores(products.slice(0, 9));
   };
 
   const OPTIONS = { align: "start" };
@@ -44,7 +47,7 @@ const SearchGlobal = ({ text }) => {
     <>
       {loading && (
         <>
-          <S_ContainerSearchGlobal>
+          <S_LoadingSearchGlobal>
             <CircularProgress size="30px" />
             <p
               style={{
@@ -54,40 +57,51 @@ const SearchGlobal = ({ text }) => {
             >
               Calma ae que essa busca é pesada!
             </p>
-          </S_ContainerSearchGlobal>
+          </S_LoadingSearchGlobal>
         </>
       )}
-      {!loading &&
-        stores.map(
-          (store) =>
-            store.products.length > 0 && (
-              <div>
+      {!loading && (
+        <SearchGlobalContainer>
+          {stores.map(
+            (store) =>
+              store.products.length > 0 && (
                 <div
                   style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                    marginBottom: "16px",
-                    gap: "16px",
+                    width: "100%",
                   }}
                 >
-                  <Avatar
-                    sx={{ width: 48, height: 48 }}
-                    src={`https://images.rappi.com.br/marketplace/${store.store_image}`}
-                  />
+                  <div
+                    key={store.id}
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      alignItems: "center",
+                      marginBottom: "16px",
+                      gap: "16px",
+                    }}
+                  >
+                    <Avatar
+                      sx={{ width: 48, height: 48 }}
+                      src={`https://images.rappi.com.br/marketplace/${store.store_image}`}
+                    />
 
-                  <div>{store.name}</div>
-                </div>
+                    <div>{store.name}</div>
+                  </div>
 
-                <div>
                   <div>
-                    <EmblaCarousel slides={store.products} options={OPTIONS} />
+                    <div>
+                      <EmblaCarousel
+                        slides={store.products}
+                        options={OPTIONS}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-        )}
+              )
+          )}
+        </SearchGlobalContainer>
+      )}
     </>
   );
 };

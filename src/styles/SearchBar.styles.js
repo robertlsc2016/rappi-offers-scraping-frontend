@@ -12,20 +12,25 @@ export const S_ContainerSearchBar = styled.div`
   gap: 8px;
   z-index: 100;
 
+  /* border: 1px solid black; */
+  padding-bottom: env(safe-area-inset-bottom);
+  
   transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
-  transform: ${(props) =>
-    props.$ishidden == 'disable' ? 'translateY(160px)' : 'translateY(0)'};
 
-  opacity: ${(props) => (props.$ishidden == 'disable' ? '0' : '1')};
+  transform: ${(props) => props.$ishidden == "true" ? (props.$from == "home" ? "translateY(120px)" : "translateY(70px)") : "translateY(0)"};
+
+  /* opacity: ${(props) => (props.$ishidden == "disable" ? "0" : "1")}; */
   /* transform: ${({ ishidden }) =>
     ishidden == "disable" ? "translateY(160px)" : "translateY(0)"};
   opacity: ${({ ishidden }) => (ishidden == "disable" ? "0" : "1")}; */
   @media (max-width: 500px) {
     padding: 0px 8px;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   @media (min-width: 500px) and (max-width: 1200px) {
     padding: 0px 10%;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 `;
 
@@ -47,7 +52,13 @@ export const S_SearchbarContainer = styled.div`
   transition: width 0.5s ease, height 0.5ms ease;
 
   border-radius: 16px 16px 0px 0px;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 4px 50px 5px;
+
+  box-shadow: ${(props) =>
+    props.$ishidden == "disable"
+      ? "none"
+      : "rgba(0, 0, 0, 0.56) 0px 4px 50px 5px"};
+
+  /* box-shadow: rgba(0, 0, 0, 0.56) 0px 4px 50px 5px; */
 
   padding: 8px 24px 8px 24px;
 `;
