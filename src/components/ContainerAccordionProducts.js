@@ -1,10 +1,6 @@
 import AccordionProducts from "./AccordionProducts";
 
-const ContainerAccordionProducts = ({
-  products = [],
-  new_products = [],
-  store_id,
-}) => {
+const ContainerAccordionProducts = ({ products = [], store_id }) => {
   return (
     <div
       style={{
@@ -13,18 +9,6 @@ const ContainerAccordionProducts = ({
         marginBottom: "130px",
       }}
     >
-      {new_products.length > 0 && (
-        <AccordionProducts
-          store_id={store_id}
-          products={new_products}
-          initial_rannge={100}
-          final_range={0}
-          IsNewItems={true}
-          backgroundColor="#f9f6db"
-          description="Novo Produtos"
-        />
-      )}
-
       <AccordionProducts
         store_id={store_id}
         products={products[80]}

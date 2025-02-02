@@ -2,20 +2,24 @@ import styled from "styled-components";
 
 export const S_ContainerSearchBar = styled.div`
   position: fixed;
-  bottom: 0px;
-
+  bottom: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  height: fit-content;
-
   width: 100vw;
   height: auto;
-
   gap: 8px;
   z-index: 100;
 
+  transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
+  transform: ${(props) =>
+    props.$ishidden == 'disable' ? 'translateY(160px)' : 'translateY(0)'};
+
+  opacity: ${(props) => (props.$ishidden == 'disable' ? '0' : '1')};
+  /* transform: ${({ ishidden }) =>
+    ishidden == "disable" ? "translateY(160px)" : "translateY(0)"};
+  opacity: ${({ ishidden }) => (ishidden == "disable" ? "0" : "1")}; */
   @media (max-width: 500px) {
     padding: 0px 8px;
   }

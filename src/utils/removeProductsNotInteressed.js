@@ -19,6 +19,7 @@ const removeProductsNotInteressed = async (products) => {
           )
             return false;
 
+          // SE O VALOR DO PRODUTO QUE ESTA EM LOCALSTORAGE É MAIOR QUE O QUE ESTÁ SENDO RECEBIDO ==> EXEBIR PRODUTO
           if (
             parseFloat(productNotInteressed.price) > parseFloat(product.price)
           )

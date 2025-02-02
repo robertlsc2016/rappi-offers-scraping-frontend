@@ -13,18 +13,15 @@ const NextRouteButton = () => {
   const [routes, setRoutes] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
   const location = useLocation();
+  const currentRoute = location.pathname.replace("/store/", "");
 
   useEffect(() => {
     getRoutes();
-    returnTop();
   }, []);
 
-  const currentRoute = location.pathname.replace("/store/", "");
-
   const nextRoute = () => {
-    returnTop();
-
     const currentIndex = routes.findIndex(
       (route) => route.store_id == Number(currentRoute)
     );

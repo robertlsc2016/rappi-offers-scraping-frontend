@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Routes from "./routes";
 import "./styles/globalStyles.css";
 import { Provider } from "react-redux";

@@ -117,8 +117,6 @@ export const S_HeaderContainer = styled.div`
 
   position: fixed;
   bottom: 0;
-
-
 `;
 
 export const S_Header = styled.div`

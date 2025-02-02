@@ -5,11 +5,11 @@ import searchLocalStorage from "./LocalStorage/searchLocalStorage";
 
 const getInfosStore = async ({ store_id }) => {
   try {
-    // const localStorage = await searchLocalStorage({
-    //   name: `getInfoStore-${store_id}`,
-    // });
+    const localStorage = await searchLocalStorage({
+      name: `getInfoStore-${store_id}`,
+    });
 
-    // if (localStorage) return localStorage;
+    if (localStorage) return localStorage;
 
     const { data: infosStore } = await Axios.post("/getInfoStore", {
       store_id: Number(store_id),

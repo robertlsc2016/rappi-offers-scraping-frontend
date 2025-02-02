@@ -27,7 +27,10 @@ const getProducts = async ({ store_id, parent_store_type, store_type }) => {
       return _removeNotInteressedProducts;
     }
 
-    const productsOffers = await Axios.post("/products_offer", configs);
+    const { data: productsOffers } = await Axios.post(
+      "/products_offer",
+      configs
+    );
 
     const _removeNotInteressedProducts = await removeProductsNotInteressed(
       productsOffers,

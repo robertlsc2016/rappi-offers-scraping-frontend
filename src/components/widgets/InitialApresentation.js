@@ -1,13 +1,12 @@
 import { LinearProgress } from "@mui/material";
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useTypewriter } from "react-simple-typewriter";
 
 const InitialApresentation = () => {
   const [visible, setVisible] = useState(true);
   const [written, setWritten] = useState(false);
 
-  const [text, helper] = useTypewriter({
+  const [text] = useTypewriter({
     words: ["Filtro de ofertas do"],
     loop: 1,
     cursor: true,
@@ -16,10 +15,15 @@ const InitialApresentation = () => {
 
       setTimeout(() => {
         setVisible(false);
+        document.body.style.overflowY = "auto";
       }, 800);
     },
     typeSpeed: 30,
   });
+
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+  }, []);
 
   return (
     visible &&
@@ -30,9 +34,7 @@ const InitialApresentation = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "flex-start",
-
           // border: "1px solid",
-          // backgroundColor: "rgb(230, 36, 36)",
           background: "white",
           color: "rgb(0, 0, 0)",
           position: "fixed",
@@ -46,7 +48,6 @@ const InitialApresentation = () => {
           height: "100%",
           padding: "32px",
           // border: "1px solid",
-          //   background: 'red',
           touchAction: "none",
         }}
       >
@@ -54,24 +55,18 @@ const InitialApresentation = () => {
           style={{
             display: "flex",
             justifyContent: "space-around",
-            // alignItems: 'flex-start',
             flexDirection: "column",
-            // border: "1px solid black",
             height: "auto",
             width: "100%",
           }}
         >
           <h1
             style={{
-              // top: "25%",
-              // left: "25%",
-              // width: "fit-contain",
               fontWeight: "lighter",
               height: "auto",
               textAlign: "start",
               fontSize: "84px",
               padding: "0px",
-              // border: "1px solid",
             }}
           >
             {text}{" "}

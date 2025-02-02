@@ -1,22 +1,18 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { initial, inMarket } from "../redux/statusViewSlice";
-import { Chip, IconButton, CircularProgress } from "@mui/material";
-import WestIcon from "@mui/icons-material/West";
+import { inMarket } from "../redux/statusViewSlice";
+import { Chip, CircularProgress } from "@mui/material";
 import SearchBar from "../components/SearchBar";
 import CardProduct from "../components/CardProduct";
 import ContainerAccordionProducts from "../components/ContainerAccordionProducts";
-import { ActionButtons } from "../components/actions-buttons/ActionButtons";
 import {
   S_LayoutMarketsContainer,
   S_BodyMarket,
   S_Header,
   SBoxChips,
 } from "../styles/LayoutMarkets.styles";
-import useFetchStoreData from "../hooks/useFetchStoreData"; // Hook personalizado
 import useDebouncedValue from "../hooks/useDebouncedValue"; // Debouncing
-import getNewProductsStore from "../services/getNewProducts";
 import getProducts from "../services/getProducts";
 import getInfosStore from "../services/getInfosStore";
 import {
@@ -28,15 +24,14 @@ import { theme } from "../styles/theme";
 import { S_ToastContainer } from "../styles/CardProduct.styles";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import returnTop from "../utils/returnTop";
 
 const LayoutMarkets = () => {
   const [infosStore, setInfosStore] = useState({});
   const [products, setProducts] = useState([]);
-  const [newProducts, setNewProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [textFilter, setTextFilter] = useState("");
 
-  const navigate = useNavigate();
   const location = useLocation();
 
   const { store_id } = useParams();
@@ -45,28 +40,26 @@ const LayoutMarkets = () => {
   const loc_store_name = location?.state?.store_name;
   const loc_store_id = location?.state?.store_id;
 
-  const goToHome = () => {
-    dispatch(initial());
-    navigate("/"); // Navega para a rota "/about"
-  };
+  // useEffect(() => {
+  //   console.log("entrou aqui 1");
+  //   dispatch(inMarket());
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     dispatch(inMarket());
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     fetchData();
   }, [store_id]);
 
   const fetchData = async () => {
     setLoading(true);
+    returnTop();
 
     try {
       const storeInfos = await getInfosStore({ store_id: store_id });
       setInfosStore(storeInfos);
 
-      const {data: products} = await getProducts({
+      const products = await getProducts({
         store_id: store_id,
         store_type: storeInfos.store_type_id,
         parent_store_type: storeInfos.store_type_id,
@@ -83,17 +76,20 @@ const LayoutMarkets = () => {
     setTextFilter(text);
   };
 
-  // const handleSearch = (text) => setTextFilter(text);
-
   const debouncedQuery = useDebouncedValue(textFilter, 800);
 
   const filteredItems = useMemo(() => {
     if (!products.all) return [];
+    // returnTop();
 
     return products.all.filter((item) =>
       item.name.toLowerCase().includes(debouncedQuery.toLowerCase())
     );
   }, [debouncedQuery, products.all]);
+
+  useEffect(() => {
+    setTextFilter("");
+  }, [location.pathname]);
 
   return (
     <>
@@ -198,7 +194,6 @@ const LayoutMarkets = () => {
             </div>
           ) : (
             <>
-              {/* <SearchBar inputValue={handleSearch} widthSearchArea="60%" /> */}
               {debouncedQuery ? (
                 filteredItems.length ? (
                   filteredItems.map((product) => {
@@ -227,7 +222,6 @@ const LayoutMarkets = () => {
                 </div>
               ) : (
                 <ContainerAccordionProducts
-                  new_products={newProducts}
                   products={products}
                   store_id={store_id}
                   store_type={infosStore?.store_type?.parent_id}
