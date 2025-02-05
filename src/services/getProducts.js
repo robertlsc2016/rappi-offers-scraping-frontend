@@ -6,11 +6,9 @@ import searchLocalStorage from "./LocalStorage/searchLocalStorage";
 
 const getProducts = async ({ store_id, parent_store_type, store_type }) => {
   const configs = {
-    state: {
-      parent_store_type,
-      store_type,
-    },
-    stores: [Number(store_id)],
+    store_id: store_id,
+    parent_store_type: parent_store_type,
+    store_type: store_type,
   };
 
   try {
