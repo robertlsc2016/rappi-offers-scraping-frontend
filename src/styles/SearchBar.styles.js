@@ -13,7 +13,7 @@ export const S_ContainerSearchBar = styled.div`
   z-index: 100;
 
   /* border: 1px solid black; */
-  padding-bottom: env(safe-area-inset-bottom);
+  /* padding-bottom: env(safe-area-inset-bottom); */
   
   transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
 

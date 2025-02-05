@@ -21,8 +21,7 @@ import { S_ToastContainer } from "../styles/CardProduct.styles";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import returnTop from "../utils/returnTop";
-import HomeButton from "../components/actions-buttons/HomeButton";
-import NextRouteButton from "../components/actions-buttons/NextRouteButton";
+import GenericScreenMessage from "../components/widgets/GenericScreenMessage";
 
 const LayoutMarkets = () => {
   const [infosStore, setInfosStore] = useState({});
@@ -43,6 +42,10 @@ const LayoutMarkets = () => {
     fetchData();
     document.body.style.overflowY = "auto";
   }, [store_id]);
+
+  useEffect(() => {
+    dispatch(inMarket());
+  }, []);
 
   const fetchData = async () => {
     setLoading(true);
@@ -77,7 +80,7 @@ const LayoutMarkets = () => {
 
   const filteredItems = useMemo(() => {
     if (!products.all) return [];
-    // returnTop();
+    returnTop();
 
     return products.all.filter((item) =>
       item.name.toLowerCase().includes(debouncedQuery.toLowerCase())
@@ -184,42 +187,10 @@ const LayoutMarkets = () => {
                     return <CardProduct key={product.id} {...product} />;
                   })
                 ) : (
-                  <div
-                    style={{
-                      width: "100%",
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
-                    Nada encontrado
-                  </div>
+                  <GenericScreenMessage message={"nada encontrado"} />
                 )
               ) : products.products_count == 0 ? (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "0px",
-                    left: "0px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "8px",
-                      position: "fixed",
-                      bottom: "8px",
-                    }}
-                  >
-                    <HomeButton />
-                    <NextRouteButton />
-                  </div>
-                  Sem produtos em oferta no momento
-                </div>
+                <GenericScreenMessage message={"sem produtos em promoção :("} />
               ) : (
                 <ContainerAccordionProducts
                   products={products}

@@ -18,6 +18,7 @@ import { useLocation } from "react-router-dom";
 const SearchBar = ({ inputValue, stores_group, from }) => {
   const [isHidden, setIsHidden] = useState("false");
   const [searchInput, setSearchInput] = useState("");
+  const lastScrollY = useRef(0);
 
   const location = useLocation();
 
@@ -51,33 +52,26 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
     inputValue(e);
   };
 
-  useEffect(() => {
-    let lastHeight = 0;
-    const handleScroll = () => {
-      if (window.scrollY > lastHeight && window.scrollY >= 0) {
-        setIsHidden("true");
-      }
 
-      if (window.scrollY < lastHeight && window.scrollY >= 0) {
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY.current) {
+        setIsHidden("true");
+      } else {
         setIsHidden("false");
       }
-
-      if (window.scrollY >= 0) {
-        lastHeight = window.scrollY;
-      }
+      lastScrollY.current = window.scrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    inputValue = "";
+    inputValue("");
     setSearchInput("");
   }, [location.pathname]);
+
   return (
     <>
       <S_ContainerSearchBar
@@ -105,17 +99,17 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
               onChange={(e) => handleInput(e.target.value)}
               type="text"
               id="searchBar"
-              placeholder={text.toLocaleLowerCase()}
+              placeholder={text.toLowerCase()}
               ref={inputRef}
             />
             <SearchIcon />
           </S_SearchBarBox>
           {statusView == "INITIAL_VIEW" && stores_group?.length > 0 && (
             <S_ContainerChips>
-              {stores_group.map((group) => {
+              {stores_group.map((group, index) => {
                 return (
                   <Chip
-                    key={group}
+                    key={`${group}-${index}`}
                     style={{
                       textTransform: "capitalize",
                       padding: "16px 8px",
