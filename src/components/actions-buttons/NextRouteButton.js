@@ -18,6 +18,7 @@ const NextRouteButton = () => {
   const currentRoute = location.pathname.replace("/store/", "");
 
   useEffect(() => {
+    returnTop()
     getRoutes();
   }, []);
 

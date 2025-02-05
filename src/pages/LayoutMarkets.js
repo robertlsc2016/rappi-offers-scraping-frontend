@@ -22,6 +22,7 @@ import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import returnTop from "../utils/returnTop";
 import HomeButton from "../components/actions-buttons/HomeButton";
+import NextRouteButton from "../components/actions-buttons/NextRouteButton";
 
 const LayoutMarkets = () => {
   const [infosStore, setInfosStore] = useState({});
@@ -40,6 +41,7 @@ const LayoutMarkets = () => {
   useEffect(() => {
     dispatch(inMarket());
     fetchData();
+    document.body.style.overflowY = "auto";
   }, [store_id]);
 
   const fetchData = async () => {
@@ -55,6 +57,10 @@ const LayoutMarkets = () => {
         store_type: storeInfos.store_type,
         parent_store_type: storeInfos.parent_store_type,
       });
+
+      if (products.products_count == 0) {
+        document.body.style.overflowY = "hidden";
+      }
 
       setProducts(products);
       setLoading(false);
@@ -134,17 +140,6 @@ const LayoutMarkets = () => {
                 </h1>
                 <SBoxChips>
                   <Chip
-                    style={{
-                      background: `${theme.colors.default_blue}`,
-                      color: "white",
-                      maxWidth: "60%",
-                      minWidth: "auto",
-                    }}
-                    label={`ID: ${infosStore.address}`}
-                    size="small"
-                  />
-
-                  <Chip
                     label={`ID: ${loc_store_id || infosStore.store_id}`}
                     style={{
                       background: `${theme.colors.default_blue}`,
@@ -202,18 +197,26 @@ const LayoutMarkets = () => {
               ) : products.products_count == 0 ? (
                 <div
                   style={{
+                    position: "absolute",
+                    top: "0px",
+                    left: "0px",
                     display: "flex",
                     justifyContent: "center",
+                    alignItems: "center",
                     width: "100%",
+                    height: "100%",
                   }}
                 >
                   <div
                     style={{
+                      display: "flex",
+                      gap: "8px",
                       position: "fixed",
                       bottom: "8px",
                     }}
                   >
                     <HomeButton />
+                    <NextRouteButton />
                   </div>
                   Sem produtos em oferta no momento
                 </div>

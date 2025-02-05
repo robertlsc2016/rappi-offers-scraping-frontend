@@ -16,7 +16,7 @@ export const S_LayoutMarketsContainer = styled.div`
   min-height: 100%;
 
   @media (max-width: 500px) {
-    padding: 48px 8px 0px 0px;
+    padding: 48px 8px 0px 8px;
   }
 
   @media (min-width: 500px) and (max-width: 1200px) {
