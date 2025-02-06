@@ -37,6 +37,8 @@ const GetLocation = () => {
   }, [debouncedQuery]);
 
   const getPlaces = async ({ place }) => {
+    if (!place) return;
+
     try {
       const { data: places } = await Axios.post("/searchLocations", {
         query: place,

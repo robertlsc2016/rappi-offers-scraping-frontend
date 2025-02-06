@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { inMarket } from "../redux/statusViewSlice";
@@ -22,11 +22,15 @@ import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import returnTop from "../utils/returnTop";
 import GenericScreenMessage from "../components/widgets/GenericScreenMessage";
+import ProductsFilter from "../components/ProductsFilter";
 
 const LayoutMarkets = () => {
   const [infosStore, setInfosStore] = useState({});
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingSearch, setLoadingSearch] = useState(true);
+  const [error, setError] = useState(false);
+
   const [textFilter, setTextFilter] = useState("");
 
   const location = useLocation();
@@ -47,7 +51,7 @@ const LayoutMarkets = () => {
     dispatch(inMarket());
   }, []);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
     returnTop();
 
@@ -64,50 +68,57 @@ const LayoutMarkets = () => {
       if (products.products_count == 0) {
         document.body.style.overflowY = "hidden";
       }
-
-      setProducts(products);
       setLoading(false);
+      setProducts(products);
     } catch (error) {
-      return error;
+      setLoading(false);
+      setProducts(false);
+      setError(true);
     }
-  };
+  }, []);
 
   const handleInputChange = (text) => {
     setTextFilter(text);
   };
 
-  const debouncedQuery = useDebouncedValue(textFilter, 800);
+  const debouncedQuery = useDebouncedValue(textFilter, 100);
 
   const filteredItems = useMemo(() => {
     if (!products.all) return [];
     returnTop();
+    const productsFilter = ProductsFilter({
+      products: products.all,
+      textFilter: debouncedQuery,
+    });
 
-    return products.all.filter((item) =>
-      item.name.toLowerCase().includes(debouncedQuery.toLowerCase())
-    );
+    setLoadingSearch(false);
+    return productsFilter;
   }, [debouncedQuery, products.all]);
 
   useEffect(() => {
-    setTextFilter("");
-  }, [location.pathname]);
+    setLoadingSearch(true);
+  }, [textFilter]);
 
   return (
     <>
-      <S_ToastContainer
-        stacked
-        icon={({ type }) => {
-          switch (type) {
-            case "error":
-              return <TrendingDownIcon fontSize="inherit" />;
+      {products && (
+        <S_ToastContainer
+          stacked
+          icon={({ type }) => {
+            switch (type) {
+              case "error":
+                return <TrendingDownIcon fontSize="inherit" />;
 
-            case "info":
-              return <DeleteOutlineIcon fontSize="inherit" />;
-          }
-        }}
-      />
+              case "info":
+                return <DeleteOutlineIcon fontSize="inherit" />;
+            }
+          }}
+        />
+      )}
+
       <LocationTag />
       <S_LayoutMarketsContainer>
-        {!loading && products.all.length > 0 && (
+        {products?.all?.length > 0 && (
           <SearchBar inputValue={handleInputChange} from={"market"} />
         )}
 
@@ -166,7 +177,7 @@ const LayoutMarkets = () => {
         )}
 
         <S_BodyMarket>
-          {loading ? (
+          {loadingSearch ? (
             <div
               style={{
                 display: "flex",
@@ -181,8 +192,8 @@ const LayoutMarkets = () => {
             </div>
           ) : (
             <>
-              {debouncedQuery ? (
-                filteredItems.length ? (
+              {!error && debouncedQuery !== "" ? (
+                filteredItems?.length ? (
                   filteredItems.map((product) => {
                     return <CardProduct key={product.id} {...product} />;
                   })
@@ -192,13 +203,21 @@ const LayoutMarkets = () => {
               ) : products.products_count == 0 ? (
                 <GenericScreenMessage message={"sem produtos em promoção :("} />
               ) : (
-                <ContainerAccordionProducts
-                  products={products}
-                  store_id={store_id}
-                  store_type={infosStore?.store_type?.parent_id}
-                />
+                !error && (
+                  <ContainerAccordionProducts
+                    products={products}
+                    store_id={store_id}
+                    store_type={infosStore?.store_type?.parent_id}
+                  />
+                )
               )}
             </>
+          )}
+
+          {!loading && error && (
+            <GenericScreenMessage
+              message={"Erro ao coletar os produtos! Tente novamente :("}
+            />
           )}
         </S_BodyMarket>
       </S_LayoutMarketsContainer>

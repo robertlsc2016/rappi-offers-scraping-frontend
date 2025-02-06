@@ -6,7 +6,7 @@ import searchLocalStorage from "./LocalStorage/searchLocalStorage";
 
 const getStores = async () => {
   try {
-    const { geolocation: location } = await searchLocalStorage({
+    const { geolocation: location } = searchLocalStorage({
       name: "location",
     });
 

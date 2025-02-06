@@ -20,7 +20,7 @@ export const S_ContainerProducts = styled.div`
   align-items: center;
   width: 110px;
   /* height: auto; */
-  height: 280px;
+  height: 290px;
   /* height: auto; */
   /* overflow: hidden; */
   gap: 8px;
@@ -69,6 +69,8 @@ export const S_Buttons = styled.div`
 export const S_Button = styled(Button)`
   font-size: 16px !important;
   z-index: 1000;
+  padding: 8px;
+
 
   ${(props) => {
     if (props.color == "orange") {

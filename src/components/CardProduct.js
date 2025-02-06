@@ -15,6 +15,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import { Bounce, toast } from "react-toastify";
 import { theme } from "../styles/theme";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 
 const CardProduct = ({
   id,
@@ -32,6 +33,7 @@ const CardProduct = ({
   stock,
 
   removeProduct,
+  deleteProduct,
   navigation,
 }) => {
   const modalRef = useRef();
@@ -45,6 +47,11 @@ const CardProduct = ({
   const handleLowePrice = async () => {
     await notifyLowerPrice();
     await removeProduct(product_id);
+  };
+
+  const handleDeleteProduct = async () => {
+    notifyDeleteProduct();
+    await deleteProduct(product_id);
   };
 
   const goToApp = () => {
@@ -78,7 +85,7 @@ const CardProduct = ({
     toast.error(
       <S_Notify>
         <h3>Esperar Redução do Item</h3>
-        <p>o item retornará caso o preço reduza</p>
+        <p>o item retornará caso o preço reduza em R$0.30</p>
       </S_Notify>,
       {
         position: "top-center",
@@ -133,7 +140,7 @@ const CardProduct = ({
       }}
     >
       <S_Buttons>
-        <S_Button color="green" size="small" onClick={() => goToApp()}>
+        <S_Button color="green" size="medium" onClick={() => goToApp()}>
           <AddShoppingCartIcon fontSize="inherit" />
         </S_Button>
 
@@ -149,20 +156,19 @@ const CardProduct = ({
         >
           <S_Button
             color="orange"
-            size="small"
+            size="medium"
             onClick={() => handleLowePrice()}
           >
             <TrendingDownIcon fontSize="inherit" />
           </S_Button>
 
-          {/* <S_Button
-            disabled
-            color="disabled"
-            size="small"
-            onClick={() => notifyDeleteProduct()}
+          <S_Button
+            color="red"
+            size="medium"
+            onClick={() => handleDeleteProduct()}
           >
-            <DeleteOutlineIcon fontSize="inherit" />
-          </S_Button> */}
+            <DeleteOutlinedIcon fontSize="inherit" />
+          </S_Button>
         </div>
       </S_Buttons>
 

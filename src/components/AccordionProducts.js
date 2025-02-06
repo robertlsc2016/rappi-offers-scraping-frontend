@@ -8,7 +8,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CardProduct from "./CardProduct";
 import { S_AccordionDetails } from "../styles/AccordionDetails.style";
 import { useState, useEffect } from "react";
-import saveLocalStorage from "../services/LocalStorage/saveLocalStorage";
+import handleRemoveProduct from "../utils/handleProductsNotInteressed";
+import handleDeleteProduct from "../utils/handleExcludedProducts";
 
 const AccordionProducts = ({
   store_id,
@@ -25,48 +26,6 @@ const AccordionProducts = ({
     setFilteredProducts(initialProducts);
   }, [initialProducts]);
 
-  const handleRemoveProduct = async (product_id) => {
-    const selectProductNotInteressed = filteredProducts.filter(
-      (product) => product.product_id == product_id
-    )[0];
-
-    const prevItens =
-      JSON.parse(localStorage.getItem(`products-not-interessed`)) || [];
-
-    if (
-      prevItens.some(
-        (item) =>
-          item.product_id == product_id &&
-          item.price == selectProductNotInteressed.price
-      )
-    ) {
-      setFilteredProducts((prevProducts) =>
-        prevProducts.filter((product) => product.product_id !== product_id)
-      );
-      // return;
-    }
-
-    const filterNotInteressedItens = prevItens.filter(
-      (item) => item.product_id !== product_id
-    );
-
-    saveLocalStorage({
-      name: `products-not-interessed`,
-      data: [
-        ...filterNotInteressedItens,
-        {
-          product_id: selectProductNotInteressed.product_id,
-          price: selectProductNotInteressed.price,
-          product_name: selectProductNotInteressed.name,
-        },
-      ],
-    });
-
-    setFilteredProducts((prevProducts) =>
-      prevProducts.filter((product) => product.product_id !== product_id)
-    );
-  };
-
   return (
     <Accordion
       defaultExpanded={expanded}
@@ -81,7 +40,6 @@ const AccordionProducts = ({
           width: "100%",
           height: "100%",
           padding: "0px 32px",
-          // border: "1px solid black",
         }}
         expandIcon={<ExpandMoreIcon fontSize="large" />}
       >
@@ -137,7 +95,20 @@ const AccordionProducts = ({
                 discount={discount}
                 image_url={image_url}
                 real_price={real_price}
-                removeProduct={handleRemoveProduct}
+                removeProduct={(product_id) =>
+                  handleRemoveProduct(
+                    filteredProducts,
+                    setFilteredProducts,
+                    product_id
+                  )
+                }
+                deleteProduct={(product_id) =>
+                  handleDeleteProduct(
+                    filteredProducts,
+                    setFilteredProducts,
+                    product_id
+                  )
+                }
                 stock={stock}
                 pum={pum}
                 navigation={navigation}

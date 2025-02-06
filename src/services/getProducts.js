@@ -1,3 +1,4 @@
+import removeExcludedProducts from "../utils/removeExcludedProducts";
 import removeProductsNotInteressed from "../utils/removeProductsNotInteressed";
 import Axios from "./axiosInstance";
 import saveLocalStorage from "./LocalStorage/saveLocalStorage";
@@ -12,14 +13,15 @@ const getProducts = async ({ store_id, parent_store_type, store_type }) => {
   };
 
   try {
-    const localStorage = await searchLocalStorage({
+    const localStorage = searchLocalStorage({
       name: `getProducts-${store_id}`,
     });
 
     if (localStorage) {
-      const _removeNotInteressedProducts = await removeProductsNotInteressed(
-        localStorage,
-        store_id
+      const _removeExcludedProducts = removeExcludedProducts(localStorage);
+
+      const _removeNotInteressedProducts = removeProductsNotInteressed(
+        _removeExcludedProducts
       );
 
       return _removeNotInteressedProducts;
@@ -30,9 +32,10 @@ const getProducts = async ({ store_id, parent_store_type, store_type }) => {
       configs
     );
 
-    const _removeNotInteressedProducts = await removeProductsNotInteressed(
-      productsOffers,
-      store_id
+    const _removeExcludedProducts = removeExcludedProducts(productsOffers);
+
+    const _removeNotInteressedProducts = removeProductsNotInteressed(
+      _removeExcludedProducts
     );
 
     saveLocalStorage({ name: `getProducts-${store_id}`, data: productsOffers });
@@ -40,7 +43,7 @@ const getProducts = async ({ store_id, parent_store_type, store_type }) => {
 
     return _removeNotInteressedProducts;
   } catch (error) {
-    return error;
+    throw new Error("falha ao coletar produtos da api");
   }
 };
 

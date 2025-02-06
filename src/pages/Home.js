@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CardMarkets from "../components/CardMarkets";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../components/SearchBar";
@@ -39,12 +39,18 @@ const Home = () => {
   useEffect(() => {
     returnTop();
     get_location();
+    get_stores();
     dispatch(initial());
   }, []);
 
   const get_stores = async () => {
     try {
+      console.log("entrou aqui");
       const stores = await getStores();
+      if (!stores) {
+        setIsLoading(false);
+        return;
+      }
 
       if (stores.status == 204) {
         setStoresGroups([]);
@@ -71,18 +77,14 @@ const Home = () => {
     }
   };
 
-  const get_location = async () => {
-    const location = await getLocalStorage({ name: "location" });
+  const get_location = () => {
+    const location = getLocalStorage({ name: "location" });
 
     if (!location) {
       setIsLoading(false);
 
       localStorage.removeItem("location");
       localStorage.removeItem("getStores-time");
-    }
-
-    if (location) {
-      get_stores();
     }
 
     setLocation(location);

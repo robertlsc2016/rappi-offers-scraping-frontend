@@ -14,8 +14,11 @@ import NextRouteButton from "./actions-buttons/NextRouteButton";
 import HomeButton from "./actions-buttons/HomeButton";
 import ScrollToTopButton from "./actions-buttons/ScrollToTopButton";
 import { useLocation } from "react-router-dom";
+import searchLocalStorage from "../services/LocalStorage/searchLocalStorage";
 
 const SearchBar = ({ inputValue, stores_group, from }) => {
+  // const stores = searchLocalStorage("stores");
+
   const [isHidden, setIsHidden] = useState("false");
   const [searchInput, setSearchInput] = useState("");
   const lastScrollY = useRef(0);
@@ -26,19 +29,19 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
   const inputRef = useRef(null);
   const statusView = useSelector((state) => state.statusView.status_view);
 
-  const [text] = useTypewriter({
-    words: [
-      "busque seu item aqui...",
-      "capacete para cortar cabelo em casa...",
-      "Chapéu de Banho para Gatos...",
-      "Guarda-chuva invertido...",
-      "Bacon em lata...",
-      "não busque lojas aqui 😡",
-    ],
-    loop: 0,
-    pauseFor: 800,
-    deleteSpeed: 20,
-  });
+  // const [text] = useTypewriter({
+  //   words: [
+  //     "busque seu item aqui...",
+  //     "capacete para cortar cabelo em casa...",
+  //     "Chapéu de Banho para Gatos...",
+  //     "Guarda-chuva invertido...",
+  //     "Bacon em lata...",
+  //     "não busque lojas aqui 😡",
+  //   ],
+  //   loop: 0,
+  //   pauseFor: 800,
+  //   deleteSpeed: 20,
+  // });
 
   const handleInput = (e) => {
     if (e == "") {
@@ -51,7 +54,6 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
     setSearchInput(e);
     inputValue(e);
   };
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,7 +101,8 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
               onChange={(e) => handleInput(e.target.value)}
               type="text"
               id="searchBar"
-              placeholder={text.toLowerCase()}
+              placeholder={"busque seu item aqui..."}
+              // placeholder={text.toLowerCase()}
               ref={inputRef}
             />
             <SearchIcon />

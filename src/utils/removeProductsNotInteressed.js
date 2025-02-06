@@ -1,36 +1,37 @@
 import getLocalStorage from "../services/LocalStorage/getLocalStorage";
 
-const removeProductsNotInteressed = async (products) => {
+const removeProductsNotInteressed = (products) => {
   const notInteresseProducts =
-    (await getLocalStorage({
+    getLocalStorage({
       name: `products-not-interessed`,
-    })) || [];
+    }) || [];
 
-  for (const key in products) {
-    if (Array.isArray(products[key])) {
-      products[key] = products[key].filter((product) => {
-        const productNotInteressed = notInteresseProducts.find(
-          (p) => p.product_id === product.product_id
-        );
+  try {
+    for (const key in products) {
+      if (Array.isArray(products[key])) {
+        products[key] = products[key].filter((product) => {
+          const productNotInteressed = notInteresseProducts.find(
+            (p) => p.product_id === product.product_id
+          );
 
-        if (productNotInteressed) {
-          if (
-            parseFloat(product.price) >= parseFloat(productNotInteressed.price)
-          )
-            return false;
+          if (productNotInteressed) {
+            const priceDifference = product.price - productNotInteressed.price;
+            if (priceDifference > -0.3) {
+              return false;
+            }
+          }
 
-          // SE O VALOR DO PRODUTO QUE ESTA EM LOCALSTORAGE É MAIOR QUE O QUE ESTÁ SENDO RECEBIDO ==> EXEBIR PRODUTO
-          if (
-            parseFloat(productNotInteressed.price) > parseFloat(product.price)
-          )
-            return true;
-        }
-
-        return true;
-      });
+          return true;
+        });
+      }
     }
-  }
 
-  return products;
+    return products;
+  } catch {
+    throw new Error(
+      "erro ao remover produtos aguardando redução pelo usuario do retorno da api"
+    );
+  }
 };
+
 export default removeProductsNotInteressed;
