@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const S_ContainerSearchBar = styled.div`
   position: fixed;
-  bottom: 0;
+  bottom: 8px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -51,12 +51,12 @@ export const S_SearchbarContainer = styled.div`
   background: white;
   transition: width 0.5s ease, height 0.5ms ease;
 
-  border-radius: 16px 16px 0px 0px;
+  border-radius: 16px;
 
   box-shadow: ${(props) =>
     props.$ishidden == "disable"
       ? "none"
-      : "rgba(0, 0, 0, 0.56) 0px 4px 50px 5px"};
+      : "rgba(0, 0, 0, 0.56) 0px 0px 64px 0px"};
 
   /* box-shadow: rgba(0, 0, 0, 0.56) 0px 4px 50px 5px; */
 
