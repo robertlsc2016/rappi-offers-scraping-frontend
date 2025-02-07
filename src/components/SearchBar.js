@@ -22,6 +22,7 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
   const [isHidden, setIsHidden] = useState("false");
   const [searchInput, setSearchInput] = useState("");
   const lastScrollY = useRef(0);
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
   const location = useLocation();
 
@@ -44,13 +45,24 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
   // });
 
   const handleInput = (e) => {
-    if (e == "") {
+
+
+    if (e !== "" && statusView == "INITIAL_VIEW") {
+      dispatch(search()); 
+    }
+
+    if (e == "" && statusView == "SEARCHING_VIEW") {
       dispatch(initial());
     }
 
-    if (e !== "" && statusView !== "IN_MARKET") {
-      dispatch(search());
+    if (e !== "" && statusView == "IN_MARKET") {
+      dispatch(inMarket());
     }
+
+    if (e == "" && statusView == "IN_MARKET") {
+      dispatch(inMarket());
+    }
+
     setSearchInput(e);
     inputValue(e);
   };
@@ -74,62 +86,71 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
     setSearchInput("");
   }, [location.pathname]);
 
+  const handleFocus = () => {
+    setIsKeyboardOpen(true);
+  };
+
+  const handleBlur = () => {
+    setIsKeyboardOpen(false);
+  };
+
   return (
-    <>
-      <S_ContainerSearchBar
-        $ishidden={isHidden}
-        $from={from}
-        className="search-bar"
-      >
-        {(statusView == "IN_MARKET" || statusView == "SEARCHING_VIEW") && (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: "8px",
-            }}
-          >
-            <ScrollToTopButton />
-            <HomeButton />
-            {!(statusView == "SEARCHING_VIEW") && <NextRouteButton />}
-          </div>
+    <S_ContainerSearchBar
+      $keyboardIsOpen={isKeyboardOpen}
+      $ishidden={isHidden}
+      $from={from}
+      className="search-bar"
+    >
+      {(statusView == "IN_MARKET" || statusView == "SEARCHING_VIEW") && (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "8px",
+          }}
+        >
+          <ScrollToTopButton />
+          <HomeButton />
+          {!(statusView == "SEARCHING_VIEW") && <NextRouteButton />}
+        </div>
+      )}
+      <S_SearchbarContainer $ishidden={isHidden}>
+        <S_SearchBarBox>
+          <input
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            value={searchInput}
+            onChange={(e) => handleInput(e.target.value)}
+            type="text"
+            id="searchBar"
+            placeholder={"busque seu item aqui..."}
+            // placeholder={text.toLowerCase()}
+            ref={inputRef}
+          />
+          <SearchIcon />
+        </S_SearchBarBox>
+        {statusView == "INITIAL_VIEW" && stores_group?.length > 0 && (
+          <S_ContainerChips>
+            {stores_group.map((group, index) => {
+              return (
+                <Chip
+                  key={`${group}-${index}`}
+                  style={{
+                    textTransform: "capitalize",
+                    padding: "16px 8px",
+                  }}
+                  size="small"
+                  color="info"
+                  label={`${group}`}
+                  href={`#${group}`}
+                  component="a"
+                />
+              );
+            })}
+          </S_ContainerChips>
         )}
-        <S_SearchbarContainer $ishidden={isHidden}>
-          <S_SearchBarBox>
-            <input
-              value={searchInput}
-              onChange={(e) => handleInput(e.target.value)}
-              type="text"
-              id="searchBar"
-              placeholder={"busque seu item aqui..."}
-              // placeholder={text.toLowerCase()}
-              ref={inputRef}
-            />
-            <SearchIcon />
-          </S_SearchBarBox>
-          {statusView == "INITIAL_VIEW" && stores_group?.length > 0 && (
-            <S_ContainerChips>
-              {stores_group.map((group, index) => {
-                return (
-                  <Chip
-                    key={`${group}-${index}`}
-                    style={{
-                      textTransform: "capitalize",
-                      padding: "16px 8px",
-                    }}
-                    size="small"
-                    color="info"
-                    label={`${group}`}
-                    href={`#${group}`}
-                    component="a"
-                  />
-                );
-              })}
-            </S_ContainerChips>
-          )}
-        </S_SearchbarContainer>
-      </S_ContainerSearchBar>
-    </>
+      </S_SearchbarContainer>
+    </S_ContainerSearchBar>
   );
 };
 

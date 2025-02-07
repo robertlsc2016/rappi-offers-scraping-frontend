@@ -38,9 +38,6 @@ const LayoutMarkets = () => {
   const { store_id } = useParams();
   const dispatch = useDispatch();
 
-  const loc_store_name = location?.state?.store_name;
-  const loc_store_id = location?.state?.store_id;
-
   useEffect(() => {
     dispatch(inMarket());
     fetchData();
@@ -51,7 +48,7 @@ const LayoutMarkets = () => {
     dispatch(inMarket());
   }, []);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     setLoading(true);
     returnTop();
 
@@ -75,7 +72,7 @@ const LayoutMarkets = () => {
       setProducts(false);
       setError(true);
     }
-  }, []);
+  };
 
   const handleInputChange = (text) => {
     setTextFilter(text);
@@ -84,8 +81,9 @@ const LayoutMarkets = () => {
   const debouncedQuery = useDebouncedValue(textFilter, 100);
 
   const filteredItems = useMemo(() => {
-    if (!products.all) return [];
+    // if (!products.all) return [];
     returnTop();
+
     const productsFilter = ProductsFilter({
       products: products.all,
       textFilter: debouncedQuery,
@@ -118,6 +116,19 @@ const LayoutMarkets = () => {
 
       <LocationTag />
       <S_LayoutMarketsContainer>
+        {/* <div
+          style={{
+            position: "fixed",
+            // top: "322px",
+            bottom: '0px',
+            left: "8px",
+            background: "red",
+            zIndex: "9999",
+          }}
+        >
+          <p>altura da tela do cliente: {innerHeight}</p>
+          <p>tela disponivel: {availHeight}</p>
+        </div> */}
         {products?.all?.length > 0 && (
           <SearchBar inputValue={handleInputChange} from={"market"} />
         )}
@@ -150,11 +161,11 @@ const LayoutMarkets = () => {
                     textOverflow: "ellipsis",
                   }}
                 >
-                  {loc_store_name || infosStore.name}
+                  {infosStore.name}
                 </h1>
                 <SBoxChips>
                   <Chip
-                    label={`ID: ${loc_store_id || infosStore.store_id}`}
+                    label={`ID: ${infosStore.store_id}`}
                     style={{
                       background: `${theme.colors.default_blue}`,
                       color: "white",
@@ -177,7 +188,7 @@ const LayoutMarkets = () => {
         )}
 
         <S_BodyMarket>
-          {loadingSearch ? (
+          {loadingSearch || loading ? (
             <div
               style={{
                 display: "flex",
@@ -203,7 +214,8 @@ const LayoutMarkets = () => {
               ) : products.products_count == 0 ? (
                 <GenericScreenMessage message={"sem produtos em promoção :("} />
               ) : (
-                !error && (
+                !error &&
+                !loading && (
                   <ContainerAccordionProducts
                     products={products}
                     store_id={store_id}

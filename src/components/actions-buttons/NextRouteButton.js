@@ -18,7 +18,7 @@ const NextRouteButton = () => {
   const currentRoute = location.pathname.replace("/store/", "");
 
   useEffect(() => {
-    returnTop()
+    returnTop();
     getRoutes();
   }, []);
 
@@ -28,6 +28,7 @@ const NextRouteButton = () => {
     );
 
     const nextIndex = (currentIndex + 1) % routes.length;
+
     navigate(`/store/${routes[nextIndex].store_id}`);
   };
 
@@ -43,10 +44,9 @@ const NextRouteButton = () => {
 
       const _stores = [];
 
-      await getStores().then((res) => {
-        Object.entries(res).map(([group, stores]) => {
-          _stores.push(...stores);
-        });
+      const routes = await getStores();
+      const filterRoutes = Object.entries(routes).map(([group, stores]) => {
+        _stores.push(...stores);
       });
 
       setRoutes(_stores);

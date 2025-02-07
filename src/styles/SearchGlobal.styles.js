@@ -35,7 +35,7 @@ export const S_LoadingSearchGlobal = styled.div`
   align-items: center;
   flex-direction: column;
 
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
   /* gap: 16px; */
   width: 100%;

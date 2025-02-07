@@ -1,6 +1,6 @@
 const ProductsFilter = ({ products, textFilter }) => {
-  if (textFilter == "") return;
-  if (!products) return;
+  if (textFilter == "") return [];
+  if (!products) return [];
 
   const productsFilter = products.filter((item) =>
     item.name

@@ -137,6 +137,7 @@ const CardProduct = ({
       key={id}
       style={{
         position: "relative",
+        // background: 'red'
       }}
     >
       <S_Buttons>

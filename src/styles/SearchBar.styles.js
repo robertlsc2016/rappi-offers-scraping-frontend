@@ -3,34 +3,50 @@ import styled from "styled-components";
 export const S_ContainerSearchBar = styled.div`
   position: fixed;
   bottom: 8px;
+
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
+
   width: 100vw;
   height: auto;
+
   gap: 8px;
+
   z-index: 100;
 
   /* border: 1px solid black; */
   /* padding-bottom: env(safe-area-inset-bottom); */
-  
+
   transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
 
-  transform: ${(props) => props.$ishidden == "true" ? (props.$from == "home" ? "translateY(120px)" : "translateY(70px)") : "translateY(0)"};
-
-  /* opacity: ${(props) => (props.$ishidden == "disable" ? "0" : "1")}; */
-  /* transform: ${({ ishidden }) =>
-    ishidden == "disable" ? "translateY(160px)" : "translateY(0)"};
-  opacity: ${({ ishidden }) => (ishidden == "disable" ? "0" : "1")}; */
   @media (max-width: 500px) {
     padding: 0px 8px;
-    padding-bottom: env(safe-area-inset-bottom);
+
+    transform: ${(props) =>
+      props.$ishidden == "true" && !props.$keyboardIsOpen
+        ? props.$from == "INITIAL_VIEW"
+          ? "translateY(100px)"
+          : "translateY(70px)"
+        : "translateY(0)"};
+
+    transform: ${(props) =>
+      props.$ishidden == "true" &&
+      !props.$keyboardIsOpen &&
+      props.$from == "SEARCHING_VIEW" &&
+      "translateY(78px)"};
+
+    /*        
+        ? props.$from == "home"
+          ? "translateY(110px)"
+          : "translateY(70px)"
+        : "translateY(0)"}; */
   }
 
   @media (min-width: 500px) and (max-width: 1200px) {
     padding: 0px 10%;
-    padding-bottom: env(safe-area-inset-bottom);
+    /* padding-bottom: env(safe-area-inset-bottom); */
   }
 `;
 

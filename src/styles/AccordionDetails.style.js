@@ -13,11 +13,6 @@ export const S_AccordionDetails = styled(AccordionDetails)`
 
   gap: 10px;
 
-  &::after {
-    content: "";
-    flex: auto;
-  }
-
   @media (max-width: 500px) {
     padding: 8px 4px !important;
   }

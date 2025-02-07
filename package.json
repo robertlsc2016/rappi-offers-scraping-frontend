@@ -28,7 +28,7 @@
     "styled-components": "^6.1.13"
   },
   "scripts": {
-    "start": "set PORT=3005 && react-scripts start",
+    "start": "set PORT=3005 && set NODE_ENV=production && react-scripts start",
     "dev": "set PORT=3005 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

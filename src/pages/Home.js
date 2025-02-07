@@ -45,7 +45,6 @@ const Home = () => {
 
   const get_stores = async () => {
     try {
-      console.log("entrou aqui");
       const stores = await getStores();
       if (!stores) {
         setIsLoading(false);
@@ -101,7 +100,7 @@ const Home = () => {
           <S_GlobalContainer>
             {location && !isLoading && storesGroups && (
               <SearchBar
-                from={"home"}
+                from={statusView}
                 inputValue={handleInputChange}
                 stores_group={chipsStoreGroups}
               />

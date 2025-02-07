@@ -92,7 +92,7 @@ export const S_BodyMarketSearching = styled.div`
   gap: 10px;
   padding: 8px;
 
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 export const S_BodyMarketInner = styled.div`

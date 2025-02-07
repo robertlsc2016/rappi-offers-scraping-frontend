@@ -6,7 +6,8 @@ const ContainerAccordionProducts = ({ products = [], store_id }) => {
       style={{
         height: "auto",
         width: "100%",
-        marginBottom: "130px",
+        marginBottom: "140px",
+        // background: 'red'
       }}
     >
       <AccordionProducts
