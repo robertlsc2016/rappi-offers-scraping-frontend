@@ -92,6 +92,7 @@ const Home = () => {
   return (
     <>
       <InitialApresentation />
+      
       {!location && <GetLocation />}
 
       {location && (
@@ -131,9 +132,7 @@ const Home = () => {
                               </h1>
 
                               <S_BoxStores>
-                                <EmblaCarouselMarkets
-                                  slides={stores}
-                                />
+                                <EmblaCarouselMarkets slides={stores} />
                               </S_BoxStores>
                             </S_containerStores>
                           );

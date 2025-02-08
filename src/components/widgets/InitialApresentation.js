@@ -1,15 +1,20 @@
 import { LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useTypewriter } from "react-simple-typewriter";
+import {
+  SInitialApresentation,
+  SSubTitle,
+  STitle,
+} from "../../styles/InitialApresentation.styles";
 
 const InitialApresentation = () => {
   const [visible, setVisible] = useState(true);
   const [written, setWritten] = useState(false);
 
   const [text] = useTypewriter({
-    words: ["Filtro de ofertas do"],
+    words: ["um filtro de ofertas do Rappi"],
     loop: 1,
-    cursor: true,
+    cursor: false,
     onLoopDone: () => {
       setWritten(true);
 
@@ -18,7 +23,7 @@ const InitialApresentation = () => {
         document.body.style.overflowY = "auto";
       }, 800);
     },
-    typeSpeed: 30,
+    typeSpeed: 10,
   });
 
   useEffect(() => {
@@ -26,71 +31,40 @@ const InitialApresentation = () => {
   }, []);
 
   return (
-    visible &&
-    (!window.performance || performance.navigation.type === 1) && (
+    visible && (
+      // (!window.performance || performance.navigation.type === 1) && (
       // process.env.NODE_ENV === "production" && (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          // border: "1px solid",
-          background: "white",
-          color: "rgb(0, 0, 0)",
-          position: "fixed",
-
-          zIndex: "1000",
-          overflow: "hidden",
-
-          flexDirection: "column",
-
-          width: "100vw",
-          height: "100%",
-          padding: "32px",
-          // border: "1px solid",
-          touchAction: "none",
-        }}
-      >
+      <SInitialApresentation>
         <div
           style={{
             display: "flex",
-            justifyContent: "space-around",
+            justifyContent: "center",
+            alignItems: "center",
             flexDirection: "column",
             height: "auto",
             width: "100%",
+            // border: "1px solid black",
+            // fontSize: '164px'
           }}
         >
-          <h1
-            style={{
-              fontWeight: "lighter",
-              height: "auto",
-              textAlign: "start",
-              fontSize: "84px",
-              padding: "0px",
-            }}
-          >
-            {text}{" "}
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "100px",
-                color: "rgb(255, 68, 31)",
-              }}
-            >
-              Rappi
-            </span>
-          </h1>
-          <div
-            style={{
-              marginTop: "16px",
-            }}
-          >
-            {written && <LinearProgress />}
+          <div>
+            <STitle>
+              <span
+                style={{
+                  color: "#FF441F",
+                }}
+              >
+                Rapp
+              </span>
+              <span style={{ color: "#0288D1" }}>eek</span>
+            </STitle>
+            <SSubTitle>{text}</SSubTitle>
           </div>
         </div>
-      </div>
+      </SInitialApresentation>
     )
   );
+  // );
 };
 
 export default InitialApresentation;
