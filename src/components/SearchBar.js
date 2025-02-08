@@ -127,7 +127,9 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
             // placeholder={text.toLowerCase()}
             ref={inputRef}
           />
-          <SearchIcon />
+          <SearchIcon style={{
+            color: '#0288D1'
+          }} />
         </S_SearchBarBox>
         {statusView == "INITIAL_VIEW" && stores_group?.length > 0 && (
           <S_ContainerChips>

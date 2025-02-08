@@ -1,6 +1,33 @@
 import { IconButton } from "@mui/material";
 import styled from "styled-components";
 
+export const S_containerStores = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  /* border: 1px solid black; */
+  /* padding-bottom: 8px; */
+  width: 100%;
+  height: auto;
+
+  max-width: 1250px;
+
+  scroll-margin-top: 48px;
+  gap: 16px;
+
+  /* background-color: green; */
+
+  justify-content: center;
+  align-items: center;
+  /* width: fit-content; */
+
+  h1 {
+    width: 100%;
+    max-width: 1250px;
+    text-align: start;
+  }
+`;
+
 export const S_ContainerButtonAbsolute = styled.div`
   display: flex;
   gap: 16px;
@@ -23,39 +50,12 @@ export const S_IconButton = styled(IconButton)`
   }
 `;
 
-export const S_containerStores = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  /* border: 1px solid black; */
-
-  width: 100%;
-  max-width: 1250px;
-
-  scroll-margin-top: 48px;
-  gap: 24px;
-
-  justify-content: center;
-  align-items: center;
-  /* width: fit-content; */
-
-  h1 {
-    width: 100%;
-    max-width: 1250px;
-    text-align: start;
-  }
-`;
-
 export const S_BoxStores = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 230px);
-  gap: 16px;
-  height: fit-content;
-  width: fit-content;
+  /* gap: 16px; */
+  /* height: fit-content; */
+  /* width: fit-content; */
   max-width: 1278px;
-  align-items: start;
-
-  min-width: fit-content;
+  width: 100%;
 
   @media (max-width: 600px) {
     justify-content: center;
@@ -150,8 +150,11 @@ export const S_BodyHomeContainer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
+  /* background-color: gray; */
   /* padding: 0 8px; */
-  margin-top: 46px;
+  margin-top: 52px;
+
+  gap: 16px;
 
   /* border: 1px solid black; */
 
@@ -161,11 +164,17 @@ export const S_BodyHomeContainer = styled.div`
   }
 `;
 
-export const S_BodyHomeBox = styled.div`
-  /* border: 1px solid; */
+export const S_BodyHomeBox = styled.div`  
   display: flex;
+  align-items: center;
+
   flex-direction: column;
-  gap: 64px;
+  justify-content: flex-start;
+  
+
+  /* background-color: red; */
+
+  gap: 16px;
   width: 100%;
   height: auto;
 `;
@@ -173,7 +182,14 @@ export const S_BodyHomeBox = styled.div`
 export const S_BodyHomeInner = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15vh;
+  justify-content: center;
+  align-items: center;
+  /* gap: 15vh; */
+  
+
+  gap: 32px;
+
+  width: 100%;
   /* border: 1px solid; */
 `;
 

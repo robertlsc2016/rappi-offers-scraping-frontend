@@ -4,6 +4,12 @@ const ContainerAccordionProducts = ({ products = [], store_id }) => {
   return (
     <div
       style={{
+        display: 'flex',
+        justifyContent: 'flex-start',
+        flexDirection: 'column',
+        gap: '8px',
+        // alignItems: 'center',
+
         height: "auto",
         width: "100%",
         marginBottom: "140px",
@@ -51,7 +57,7 @@ const ContainerAccordionProducts = ({ products = [], store_id }) => {
         initial_rannge={100}
         final_range={0}
         expanded={true}
-        backgroundColor="#f9f6db"
+        backgroundColor="rgba(2, 137, 209, 0.25)"
         description="Todos os Produtos"
       />
     </div>

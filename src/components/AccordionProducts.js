@@ -8,15 +8,17 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CardProduct from "./CardProduct";
 import { S_AccordionDetails } from "../styles/AccordionDetails.style";
 import { useState, useEffect } from "react";
+
 import handleRemoveProduct from "../utils/handleProductsNotInteressed";
 import handleDeleteProduct from "../utils/handleExcludedProducts";
+import { SAccordionProducts } from "../styles/AccordionProducts.styles";
 
 const AccordionProducts = ({
   store_id,
   products: initialProducts = [],
   initial_rannge,
   final_range,
-  backgroundColor = "#e9e9e9",
+  backgroundColor = "rgba(231, 231, 231, 0.66)",
   description,
   expanded = false,
 }) => {
@@ -27,96 +29,102 @@ const AccordionProducts = ({
   }, [initialProducts]);
 
   return (
-    <Accordion
-      defaultExpanded={expanded}
-      style={{
-        display: filteredProducts.length === 0 ? "none" : "block",
-      }}
-      slotProps={{ transition: { timeout: 50 } }}
-    >
-      <AccordionSummary
+    filteredProducts.length > 0 && (
+      <SAccordionProducts
         sx={{
-          backgroundColor: backgroundColor,
-          width: "100%",
-          height: "100%",
-          padding: "0px 32px",
+          boxShadow: 'none',
+          bordeR: 'none',
+          margin: '0px !important',
+          padding: '0px !important'
         }}
-        expandIcon={<ExpandMoreIcon fontSize="large" />}
+        defaultExpanded={expanded}
+        slotProps={{ transition: { timeout: 50 } }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "16px",
+        <AccordionSummary
+          sx={{
+            backgroundColor: backgroundColor,
+            width: "100%",
+            height: "100%",
+            padding: "0px 32px",
+            borderRadius: "16px",
           }}
+          expandIcon={<ExpandMoreIcon fontSize="large" />}
         >
-          <Typography component="span">
-            <h3
-              style={{
-                fontSize: "16px",
-                fontWeight: "400",
-              }}
-            >
-              {description
-                ? description
-                : `${initial_rannge}% - ${final_range}% `}
-            </h3>
-          </Typography>
-          <p>[{filteredProducts.length} itens]</p>
-        </div>
-      </AccordionSummary>
-      <S_AccordionDetails>
-        {filteredProducts.length > 0 &&
-          filteredProducts.map(
-            ({
-              id,
-              product_id,
-              name,
-              price,
-              discount,
-              real_price,
-              image_url,
-              quantity,
-              unit_type,
-              stock,
-              pum,
-              navigation,
-            }) => (
-              <CardProduct
-                key={id}
-                product_id={product_id}
-                id={id}
-                unit_type={unit_type}
-                quantity={quantity}
-                name={name}
-                price={price}
-                discount={discount}
-                image_url={image_url}
-                real_price={real_price}
-                removeProduct={(product_id) =>
-                  handleRemoveProduct(
-                    filteredProducts,
-                    setFilteredProducts,
-                    product_id
-                  )
-                }
-                deleteProduct={(product_id) =>
-                  handleDeleteProduct(
-                    filteredProducts,
-                    setFilteredProducts,
-                    product_id
-                  )
-                }
-                stock={stock}
-                pum={pum}
-                navigation={navigation}
-              />
-            )
-          )}
-      </S_AccordionDetails>
-    </Accordion>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "16px",
+            }}
+          >
+            <Typography component="span">
+              <h3
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "400",
+                }}
+              >
+                {description
+                  ? description
+                  : `${initial_rannge}% - ${final_range}% `}
+              </h3>
+            </Typography>
+            <p>[{filteredProducts.length} itens]</p>
+          </div>
+        </AccordionSummary>
+        <S_AccordionDetails>
+          {filteredProducts.length > 0 &&
+            filteredProducts.map(
+              ({
+                id,
+                product_id,
+                name,
+                price,
+                discount,
+                real_price,
+                image_url,
+                quantity,
+                unit_type,
+                stock,
+                pum,
+                navigation,
+              }) => (
+                <CardProduct
+                  key={id}
+                  product_id={product_id}
+                  id={id}
+                  unit_type={unit_type}
+                  quantity={quantity}
+                  name={name}
+                  price={price}
+                  discount={discount}
+                  image_url={image_url}
+                  real_price={real_price}
+                  removeProduct={(product_id) =>
+                    handleRemoveProduct(
+                      filteredProducts,
+                      setFilteredProducts,
+                      product_id
+                    )
+                  }
+                  deleteProduct={(product_id) =>
+                    handleDeleteProduct(
+                      filteredProducts,
+                      setFilteredProducts,
+                      product_id
+                    )
+                  }
+                  stock={stock}
+                  pum={pum}
+                  navigation={navigation}
+                />
+              )
+            )}
+        </S_AccordionDetails>
+      </SAccordionProducts>
+    )
   );
 };
 

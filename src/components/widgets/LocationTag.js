@@ -5,6 +5,7 @@ import { Tooltip } from "@mui/material";
 import {
   S_LocationTag,
   S_LocationTagInner,
+  SLocationOnIcon,
 } from "../../styles/LocationTag.styles";
 import reloadPage from "../../utils/reloadPage";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +38,7 @@ const LocationTag = () => {
       <Tooltip title="Mudar Localização">
         <S_LocationTag onClick={clearLocation}>
           <S_LocationTagInner>
-            {location.address ? <LocationOnIcon /> : <LocationOffIcon />}
+            {location.address ? <SLocationOnIcon /> : <LocationOffIcon />}
 
             {location.address ? (
               <p

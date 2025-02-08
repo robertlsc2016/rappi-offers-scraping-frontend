@@ -21,6 +21,7 @@ import GetLocation from "../components/GetLocation";
 import InitialApresentation from "../components/widgets/InitialApresentation";
 import LocationTag from "../components/widgets/LocationTag";
 import LocationUnavailable from "../components/carousel/LocationUnavailable";
+import EmblaCarouselMarkets from "../components/carousel/EmblaCarouselMarkets";
 
 const Home = () => {
   const [textFilter, setTextFilter] = useState("");
@@ -35,7 +36,6 @@ const Home = () => {
   const handleInputChange = (text) => {
     setTextFilter(text);
   };
-
   useEffect(() => {
     returnTop();
     get_location();
@@ -131,16 +131,9 @@ const Home = () => {
                               </h1>
 
                               <S_BoxStores>
-                                {stores?.map(
-                                  ({ store_id, store_img, store_name }) => (
-                                    <CardMarkets
-                                      key={store_id}
-                                      store_id={store_id}
-                                      store_name={store_name}
-                                      img_path={store_img}
-                                    />
-                                  )
-                                )}
+                                <EmblaCarouselMarkets
+                                  slides={stores}
+                                />
                               </S_BoxStores>
                             </S_containerStores>
                           );

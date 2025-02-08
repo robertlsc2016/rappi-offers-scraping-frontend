@@ -71,7 +71,6 @@ export const S_Button = styled(Button)`
   z-index: 1000;
   padding: 8px;
 
-
   ${(props) => {
     if (props.color == "orange") {
       return `min-width: 0px !important;
@@ -163,6 +162,9 @@ export const S_ChipUnit = styled(Chip)`
 
   &.MuiChip-root {
     font-size: 9px !important;
+    background: ${({ theme }) => theme.colors.default_blue} !important;
+    font-size: 9px !important;
+    color: ${({ theme }) => theme.colors.default_white} !important;
     /* line-height: 10px !important; */
   }
 `;

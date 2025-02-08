@@ -261,11 +261,9 @@ const CardProduct = ({
           >
             <span>{name}</span>
             <S_ContainerChips>
-              <S_ChipUnit color="warning" label={`${quantity} ${unit_type}`} />
-              {stock > 0 && (
-                <S_ChipUnit color="info" label={`stock: ${stock}`} />
-              )}
-              {pum && <S_ChipUnit color="info" label={`${pum}`} />}
+              <S_ChipUnit label={`${quantity} ${unit_type}`} />
+              {stock > 0 && <S_ChipUnit label={`disp.: ${stock}`} />}
+              {pum && <S_ChipUnit label={`${pum}`} />}
             </S_ContainerChips>
           </div>
         </div>

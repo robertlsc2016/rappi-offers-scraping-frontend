@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 export const S_LocationTag = styled.div`
   position: fixed;
@@ -23,6 +24,9 @@ export const S_LocationTag = styled.div`
     width: 100%;
     padding: 0px 8px;
   }
+`;
+export const SLocationOnIcon = styled(LocationOnIcon)`
+  color: ${({ theme }) => theme.colors.rappi_color};
 `;
 
 export const S_LocationTagInner = styled.div`
