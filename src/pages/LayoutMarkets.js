@@ -133,7 +133,7 @@ const LayoutMarkets = () => {
         <SearchBar
           inputValue={handleInputChange}
           from={"market"}
-          empty={products.all.length == 0}
+          empty={products?.products_count == 0}
         />
         {/* )} */}
 
@@ -228,12 +228,6 @@ const LayoutMarkets = () => {
                 )
               )}
             </>
-          )}
-
-          {products.all.length == 0 && !loading && (
-            <GenericScreenMessage
-              message={"você filtrou todos os produtos disponíveis (bem exigente você, né?)"}
-            />
           )}
 
           {!loading && error && (
