@@ -129,9 +129,13 @@ const LayoutMarkets = () => {
           <p>altura da tela do cliente: {innerHeight}</p>
           <p>tela disponivel: {availHeight}</p>
         </div> */}
-        {products?.all?.length > 0 && (
-          <SearchBar inputValue={handleInputChange} from={"market"} />
-        )}
+        {/* {products && ( */}
+        <SearchBar
+          inputValue={handleInputChange}
+          from={"market"}
+          empty={products.all.length == 0}
+        />
+        {/* )} */}
 
         {!loading && (
           <S_Header>
@@ -224,6 +228,12 @@ const LayoutMarkets = () => {
                 )
               )}
             </>
+          )}
+
+          {products.all.length == 0 && !loading && (
+            <GenericScreenMessage
+              message={"você filtrou todos os produtos disponíveis (bem exigente você, né?)"}
+            />
           )}
 
           {!loading && error && (

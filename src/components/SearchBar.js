@@ -16,7 +16,7 @@ import ScrollToTopButton from "./actions-buttons/ScrollToTopButton";
 import { useLocation } from "react-router-dom";
 import searchLocalStorage from "../services/LocalStorage/searchLocalStorage";
 
-const SearchBar = ({ inputValue, stores_group, from }) => {
+const SearchBar = ({ inputValue, stores_group, from, empty = false }) => {
   // const stores = searchLocalStorage("stores");
 
   const [isHidden, setIsHidden] = useState("false");
@@ -45,10 +45,8 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
   // });
 
   const handleInput = (e) => {
-
-
     if (e !== "" && statusView == "INITIAL_VIEW") {
-      dispatch(search()); 
+      dispatch(search());
     }
 
     if (e == "" && statusView == "SEARCHING_VIEW") {
@@ -114,44 +112,48 @@ const SearchBar = ({ inputValue, stores_group, from }) => {
           {!(statusView == "SEARCHING_VIEW") && <NextRouteButton />}
         </div>
       )}
-      <S_SearchbarContainer $ishidden={isHidden}>
-        <S_SearchBarBox>
-          <input
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            value={searchInput}
-            onChange={(e) => handleInput(e.target.value)}
-            type="text"
-            id="searchBar"
-            placeholder={"busque seu item aqui..."}
-            // placeholder={text.toLowerCase()}
-            ref={inputRef}
-          />
-          <SearchIcon style={{
-            color: '#0288D1'
-          }} />
-        </S_SearchBarBox>
-        {statusView == "INITIAL_VIEW" && stores_group?.length > 0 && (
-          <S_ContainerChips>
-            {stores_group.map((group, index) => {
-              return (
-                <Chip
-                  key={`${group}-${index}`}
-                  style={{
-                    textTransform: "capitalize",
-                    padding: "16px 8px",
-                  }}
-                  size="small"
-                  color="info"
-                  label={`${group}`}
-                  href={`#${group}`}
-                  component="a"
-                />
-              );
-            })}
-          </S_ContainerChips>
-        )}
-      </S_SearchbarContainer>
+      {statusView == "IN_MARKET" && !empty && (
+        <S_SearchbarContainer $ishidden={isHidden}>
+          <S_SearchBarBox>
+            <input
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              value={searchInput}
+              onChange={(e) => handleInput(e.target.value)}
+              type="text"
+              id="searchBar"
+              placeholder={"busque seu item aqui..."}
+              // placeholder={text.toLowerCase()}
+              ref={inputRef}
+            />
+            <SearchIcon
+              style={{
+                color: "#0288D1",
+              }}
+            />
+          </S_SearchBarBox>
+          {statusView == "INITIAL_VIEW" && stores_group?.length > 0 && (
+            <S_ContainerChips>
+              {stores_group.map((group, index) => {
+                return (
+                  <Chip
+                    key={`${group}-${index}`}
+                    style={{
+                      textTransform: "capitalize",
+                      padding: "16px 8px",
+                    }}
+                    size="small"
+                    color="info"
+                    label={`${group}`}
+                    href={`#${group}`}
+                    component="a"
+                  />
+                );
+              })}
+            </S_ContainerChips>
+          )}
+        </S_SearchbarContainer>
+      )}
     </S_ContainerSearchBar>
   );
 };
