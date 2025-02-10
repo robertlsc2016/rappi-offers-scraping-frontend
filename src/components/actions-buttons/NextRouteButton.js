@@ -7,6 +7,7 @@ import {
   S_InnerNextRouteButton,
   S_NextRouteButton,
 } from "../../styles/NextRouteButton.styles";
+import getProducts from "../../services/getProducts";
 
 const NextRouteButton = () => {
   const [routes, setRoutes] = useState([]);
@@ -21,14 +22,21 @@ const NextRouteButton = () => {
     getRoutes();
   }, []);
 
-  const nextRoute = () => {
+  const nextRoute = async () => {
     const currentIndex = routes.findIndex(
       (route) => route.store_id == Number(currentRoute)
     );
 
     const nextIndex = (currentIndex + 1) % routes.length;
 
+    console.log(routes[nextIndex + 1]);
+
     navigate(`/store/${routes[nextIndex].store_id}`);
+    getProducts({
+      parent_store_type: routes[nextIndex + 1].parent_store_type,
+      store_id: routes[nextIndex + 1].store_id,
+      store_type: routes[nextIndex + 1].store_type,
+    });
   };
 
   const getRoutes = async () => {
