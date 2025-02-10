@@ -63,7 +63,7 @@ const SearchBar = ({ inputValue, stores_group, from, empty = false }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY.current) {
+      if (window.scrollY > lastScrollY.current && window.scrollY > 200) {
         setIsHidden("true");
       } else {
         setIsHidden("false");
