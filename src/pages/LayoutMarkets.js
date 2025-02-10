@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { inMarket } from "../redux/statusViewSlice";
 import { Chip, CircularProgress } from "@mui/material";
@@ -33,13 +33,13 @@ const LayoutMarkets = () => {
 
   const [textFilter, setTextFilter] = useState("");
 
-  const location = useLocation();
-
   const { store_id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(inMarket());
+    setTextFilter("");
+
     fetchData();
     document.body.style.overflowY = "auto";
   }, [store_id]);
@@ -81,7 +81,6 @@ const LayoutMarkets = () => {
   const debouncedQuery = useDebouncedValue(textFilter, 100);
 
   const filteredItems = useMemo(() => {
-    // if (!products.all) return [];
     returnTop();
 
     const productsFilter = ProductsFilter({
@@ -116,26 +115,11 @@ const LayoutMarkets = () => {
 
       <LocationTag />
       <S_LayoutMarketsContainer>
-        {/* <div
-          style={{
-            position: "fixed",
-            // top: "322px",
-            bottom: '0px',
-            left: "8px",
-            background: "red",
-            zIndex: "9999",
-          }}
-        >
-          <p>altura da tela do cliente: {innerHeight}</p>
-          <p>tela disponivel: {availHeight}</p>
-        </div> */}
-        {/* {products && ( */}
         <SearchBar
           inputValue={handleInputChange}
           from={"market"}
           empty={products?.products_count == 0}
         />
-        {/* )} */}
 
         {!loading && (
           <S_Header>

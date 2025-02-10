@@ -89,7 +89,7 @@ const Home = () => {
     setLocation(location);
   };
 
-  return (
+  return (  
     <>
       <InitialApresentation />
       
@@ -125,6 +125,8 @@ const Home = () => {
                             <S_containerStores key={group} id={`${group}`}>
                               <h1
                                 style={{
+                                  color: "#242527",
+                                  fontSize: '48px',
                                   textTransform: "capitalize",
                                 }}
                               >

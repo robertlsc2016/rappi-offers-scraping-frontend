@@ -7,7 +7,6 @@ import {
   S_InnerNextRouteButton,
   S_NextRouteButton,
 } from "../../styles/NextRouteButton.styles";
-import searchLocalStorage from "../../services/LocalStorage/searchLocalStorage";
 
 const NextRouteButton = () => {
   const [routes, setRoutes] = useState([]);
@@ -34,18 +33,17 @@ const NextRouteButton = () => {
 
   const getRoutes = async () => {
     try {
-      const localStorage = await searchLocalStorage({
-        name: `location`,
-      });
+      const localStorageLocation = localStorage.getItem("location");
 
-      if (!localStorage) {
+      if (!localStorageLocation) {
         return;
       }
 
       const _stores = [];
 
       const routes = await getStores();
-      const filterRoutes = Object.entries(routes).map(([group, stores]) => {
+
+      Object.entries(routes).map(([group, stores]) => {
         _stores.push(...stores);
       });
 

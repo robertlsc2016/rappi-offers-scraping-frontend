@@ -6,7 +6,6 @@
   scroll-behavior: smooth;
 
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 html {
@@ -18,11 +17,9 @@ html {
   width: 100vw;
   height: auto;
 
-  /* font-family: "Roboto", sans-serif; */
-
-  * {
-    font-family: "Roboto", sans-serif;
-  }
+  font-family: "Roboto", sans-serif;
+  /* font-family: Kanit, serif; */
+  
   input {
     all: unset;
   }
@@ -56,7 +53,6 @@ body {
   padding: 0 !important;
   margin: 0 !important;
 
-  font-family: Arial, sans-serif;
   scroll-behavior: smooth;
   scrollbar-color: #888 #f1f1f1;
   scrollbar-width: thin;
@@ -64,7 +60,6 @@ body {
   padding-top: calc(60px + env(safe-area-inset-top));
 
   margin: 0;
-  font-family: Arial, sans-serif;
 }
 
 p,

@@ -16,6 +16,7 @@ import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import { Bounce, toast } from "react-toastify";
 import { theme } from "../styles/theme";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { useSelector } from "react-redux";
 
 const CardProduct = ({
   id,
@@ -37,6 +38,7 @@ const CardProduct = ({
   navigation,
 }) => {
   const modalRef = useRef();
+  const statusView = useSelector((state) => state.statusView.status_view);
 
   const chamarFuncaoDoFilho = () => {
     if (modalRef.current) {
@@ -145,32 +147,34 @@ const CardProduct = ({
           <AddShoppingCartIcon fontSize="inherit" />
         </S_Button>
 
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "row",
-            gap: "4px",
-          }}
-        >
-          <S_Button
-            color="orange"
-            size="medium"
-            onClick={() => handleLowePrice()}
+        {statusView !== "SEARCHING_VIEW" && (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              gap: "4px",
+            }}
           >
-            <TrendingDownIcon fontSize="inherit" />
-          </S_Button>
+            <S_Button
+              color="orange"
+              size="medium"
+              onClick={() => handleLowePrice()}
+            >
+              <TrendingDownIcon fontSize="inherit" />
+            </S_Button>
 
-          <S_Button
-            color="red"
-            size="medium"
-            onClick={() => handleDeleteProduct()}
-          >
-            <DeleteOutlinedIcon fontSize="inherit" />
-          </S_Button>
-        </div>
+            <S_Button
+              color="red"
+              size="medium"
+              onClick={() => handleDeleteProduct()}
+            >
+              <DeleteOutlinedIcon fontSize="inherit" />
+            </S_Button>
+          </div>
+        )}
       </S_Buttons>
 
       <S_ContainerProducts key={id} onClick={() => chamarFuncaoDoFilho()}>

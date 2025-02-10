@@ -8,23 +8,19 @@ import {
   S_SearchBarBox,
   S_SearchbarContainer,
 } from "../styles/SearchBar.styles";
-import { useTypewriter } from "react-simple-typewriter";
 import { Chip } from "@mui/material";
 import NextRouteButton from "./actions-buttons/NextRouteButton";
 import HomeButton from "./actions-buttons/HomeButton";
 import ScrollToTopButton from "./actions-buttons/ScrollToTopButton";
-import { useLocation } from "react-router-dom";
-import searchLocalStorage from "../services/LocalStorage/searchLocalStorage";
+import {  useParams } from "react-router-dom";
 
 const SearchBar = ({ inputValue, stores_group, from, empty = false }) => {
-  // const stores = searchLocalStorage("stores");
-
   const [isHidden, setIsHidden] = useState("false");
   const [searchInput, setSearchInput] = useState("");
   const lastScrollY = useRef(0);
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
-  const location = useLocation();
+  const { store_id } = useParams();
 
   const dispatch = useDispatch();
   const inputRef = useRef(null);
@@ -79,11 +75,6 @@ const SearchBar = ({ inputValue, stores_group, from, empty = false }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    inputValue("");
-    setSearchInput("");
-  }, [location.pathname]);
-
   const handleFocus = () => {
     setIsKeyboardOpen(true);
   };
@@ -91,6 +82,16 @@ const SearchBar = ({ inputValue, stores_group, from, empty = false }) => {
   const handleBlur = () => {
     setIsKeyboardOpen(false);
   };
+
+  useEffect(() => {
+    if (statusView == "INITIAL_VIEW") {
+      setSearchInput("");
+    }
+  }, [statusView]);
+
+  useEffect(() => {
+    setSearchInput("");
+  }, [store_id]);
 
   return (
     <S_ContainerSearchBar
@@ -112,48 +113,51 @@ const SearchBar = ({ inputValue, stores_group, from, empty = false }) => {
           {!(statusView == "SEARCHING_VIEW") && <NextRouteButton />}
         </div>
       )}
-      {statusView == "IN_MARKET" && !empty && (
-        <S_SearchbarContainer $ishidden={isHidden}>
-          <S_SearchBarBox>
-            <input
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              value={searchInput}
-              onChange={(e) => handleInput(e.target.value)}
-              type="text"
-              id="searchBar"
-              placeholder={"busque seu item aqui..."}
-              // placeholder={text.toLowerCase()}
-              ref={inputRef}
-            />
-            <SearchIcon
-              style={{
-                color: "#0288D1",
-              }}
-            />
-          </S_SearchBarBox>
-          {statusView == "INITIAL_VIEW" && stores_group?.length > 0 && (
-            <S_ContainerChips>
-              {stores_group.map((group, index) => {
-                return (
-                  <Chip
-                    key={`${group}-${index}`}
-                    style={{
-                      textTransform: "capitalize",
-                      padding: "16px 8px",
-                    }}
-                    size="small"
-                    color="info"
-                    label={`${group}`}
-                    href={`#${group}`}
-                    component="a"
-                  />
-                );
-              })}
-            </S_ContainerChips>
-          )}
-        </S_SearchbarContainer>
-      )}
+      {(statusView == "IN_MARKET" ||
+        statusView == "INITIAL_VIEW" ||
+        statusView == "SEARCHING_VIEW") &&
+        !empty && (
+          <S_SearchbarContainer $ishidden={isHidden}>
+            <S_SearchBarBox>
+              <input
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                value={searchInput}
+                onChange={(e) => handleInput(e.target.value)}
+                type="text"
+                id="searchBar"
+                placeholder={"busque seu item aqui..."}
+                // placeholder={text.toLowerCase()}
+                ref={inputRef}
+              />
+              <SearchIcon
+                style={{
+                  color: "#0288D1",
+                }}
+              />
+            </S_SearchBarBox>
+            {statusView == "INITIAL_VIEW" && stores_group?.length > 0 && (
+              <S_ContainerChips>
+                {stores_group.map((group, index) => {
+                  return (
+                    <Chip
+                      key={`${group}-${index}`}
+                      style={{
+                        textTransform: "capitalize",
+                        padding: "16px 8px",
+                      }}
+                      size="small"
+                      color="info"
+                      label={`${group}`}
+                      href={`#${group}`}
+                      component="a"
+                    />
+                  );
+                })}
+              </S_ContainerChips>
+            )}
+          </S_SearchbarContainer>
+        )}
     </S_ContainerSearchBar>
   );
 };

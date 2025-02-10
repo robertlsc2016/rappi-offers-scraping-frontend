@@ -12,6 +12,7 @@ const SearchGlobal = ({ text }) => {
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
+  const OPTIONS = { align: "start" };
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -29,6 +30,8 @@ const SearchGlobal = ({ text }) => {
   }, [debouncedQuery]);
 
   const getProducts = async (query) => {
+    setStores([]);
+    // arrumar isso
     const location = await getLocalStorage({ name: "location" });
 
     const products = await globalSearchProduct({
@@ -38,10 +41,8 @@ const SearchGlobal = ({ text }) => {
     });
 
     setLoading(false);
-    setStores(products.slice(0, 9));
+    setStores(products);
   };
-
-  const OPTIONS = { align: "start" };
 
   return (
     <>
@@ -66,6 +67,7 @@ const SearchGlobal = ({ text }) => {
             (store) =>
               store.products.length > 0 && (
                 <div
+                  key={store.id}
                   style={{
                     width: "100%",
                   }}

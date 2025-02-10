@@ -6,7 +6,6 @@ export const S_GetLocation = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: Arial, sans-serif;
   gap: 16px;
 
   /* bottom: 1px solid black; */
@@ -34,7 +33,6 @@ export const S_ContainerGetLocation = styled.div`
   flex-direction: column;
   
   /* padding: 20px; */
-  font-family: Arial, sans-serif;
   /* margin-top: 8px; */
   max-width: 500px;
   height: 95%;
