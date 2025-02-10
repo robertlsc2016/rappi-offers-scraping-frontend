@@ -6,18 +6,23 @@ import searchLocalStorage from "./LocalStorage/searchLocalStorage";
 
 const getStores = async () => {
   try {
-    const { geolocation: location } = searchLocalStorage({
-      name: "location",
+    const { geolocation } = JSON.parse(localStorage.getItem("location"));
+
+    if (!geolocation) {
+      throw new Error("sem localizacao em localstorage");
+    }
+
+    const _localStorage = searchLocalStorage({
+      name: `getStores`,
     });
 
-    const data = await getLocalStorage({ name: "getStores" });
-    if (data) return data;
-    
-    const stores = await Axios.post("/getStoresByLocation", {
-      lat: location.lat.toString(),
-      lng: location.lng.toString(),
-    }).then(({ data }) => {
-      return data;
+    if (_localStorage) {
+      return _localStorage;
+    }
+
+    const {data: stores} = await Axios.post("/getStoresByLocation", {
+      lat: geolocation.lat.toString(),
+      lng: geolocation.lng.toString(),
     });
 
     if (stores.status == 204) {
@@ -29,6 +34,7 @@ const getStores = async () => {
 
     return stores;
   } catch (err) {
+    console.log(err);
     throw new Error(err);
   }
 };
